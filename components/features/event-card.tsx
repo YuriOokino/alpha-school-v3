@@ -15,10 +15,7 @@ export interface EventCardProps {
   locationTag: string // e.g. "ALPHA MIAMI"
   category: string // e.g. "SHOWCASE"
   title: string
-  location: string // e.g. "Austin Campus"
   address: string // e.g. "8000 SW 56th St, Miami, FL 33155"
-  description: string
-  buttonText: string
 }
 
 export default function EventCard({
@@ -28,10 +25,7 @@ export default function EventCard({
   locationTag,
   category,
   title,
-  location,
   address,
-  description,
-  buttonText
 }: EventCardProps) {
   return (
     <div className="bg-[var(--color-primary-light)] rounded-2xl flex flex-col overflow-hidden">
@@ -49,7 +43,6 @@ export default function EventCard({
           <span className="tag-blue">{category}</span>
         </div>
         <h2 className="text-2xl font-bold mb-4 text-[var(--color-primary)]">{title}</h2>
-        <h3 className="text-lg font-semibold mb-1">{location}</h3>
         <div className="flex items-center gap-2 mb-2 font-medium">
           <Calendar className="h-5 w-5" />
           <span>{date}</span>
@@ -58,11 +51,10 @@ export default function EventCard({
           <MapPin className="h-5 w-5" />
           <span>{address}</span>
         </div>
-        <p className="mb-4 text-[var(--color-text-main)]">{description}</p>
         <Link href={url} passHref legacyBehavior>
           <a className="block">
             <Button variant="default" className="w-full">
-              {buttonText}
+              Register now
             </Button>
           </a>
         </Link>

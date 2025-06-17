@@ -3,7 +3,7 @@
 import { useState } from "react"
 import WhatsNextSection from "@/components/sections/whats-next-section"
 import EventCard from "@/components/features/event-card"
-import { events } from "@/content/events"
+import { events } from "@/content/events/events"
 
 export default function EventsPage() {
   const [school, setSchool] = useState("");
@@ -18,11 +18,15 @@ export default function EventsPage() {
   const filteredEvents = events.filter(event => {
     const matchesSchool = !school || event.locationTag === school;
     const matchesType = !eventType || event.category === eventType;
+    const searchTerm = search.toLowerCase();
     const matchesSearch =
       !search ||
-      event.title.toLowerCase().includes(search.toLowerCase()) ||
-      event.location.toLowerCase().includes(search.toLowerCase()) ||
-      event.description.toLowerCase().includes(search.toLowerCase());
+      event.title.toLowerCase().includes(searchTerm) ||
+      event.locationTag.toLowerCase().includes(searchTerm) ||
+      event.category.toLowerCase().includes(searchTerm) ||
+      event.address.toLowerCase().includes(searchTerm) ||
+      event.date.toLowerCase().includes(searchTerm) ||
+      event.id.toLowerCase().includes(searchTerm);
     return matchesSchool && matchesType && matchesSearch;
   });
 
@@ -85,19 +89,16 @@ export default function EventsPage() {
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[var(--space-md)]">
-          {filteredEvents.map((event, idx) => (
+          {filteredEvents.map((event) => (
             <EventCard
-              key={idx}
-              url={event.url}
+              key={event.id}
+              url={`/events/${event.slug}`}
               image={event.image}
               date={event.date}
               locationTag={event.locationTag}
               category={event.category}
               title={event.title}
-              location={event.location}
               address={event.address}
-              description={event.description}
-              buttonText={event.buttonText}
             />
           ))}
         </div>

@@ -4,7 +4,7 @@ import FeatureCard from "@/components/features/feature-card"
 import LocationCard from "@/components/features/location-card"
 import WhatsNextSection from "@/components/sections/whats-next-section"
 import EventCard from "@/components/features/event-card"
-import { events } from "@/content/events"
+import { events } from "@/content/events/events"
 import MainHeading from "@/components/layout/main-heading"
 
 export const metadata: Metadata = {

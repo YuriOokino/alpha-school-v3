@@ -3,7 +3,7 @@ import WhatsNextSection from "@/components/sections/whats-next-section"
 import { Button } from "@/components/ui/button"
 import FeatureCard from "@/components/features/feature-card"
 import EventCard from "@/components/features/event-card"
-import { events } from "@/content/events"
+import { events } from "@/content/events/events"
 
 export default async function AustinPage() {
   return (

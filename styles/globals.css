@@ -157,7 +157,7 @@
 @layer utilities {
   /* Cards */
   .alpha-card {
-    @apply p-[var(--space-sm)] rounded-[var(--radius-sm)];
+    @apply p-[var(--space-md)] rounded-[var(--radius-sm)];
   }
   
   /* Section Content Card */
@@ -189,6 +189,11 @@
   
   .tag-pink {
     @apply px-[var(--space-sm)] py-[var(--space-xs)] rounded-[var(--radius-xs)] bg-[var(--color-warm)] text-[var(--color-warm-dark)] text-xs font-medium inline-block;
+  }
+
+  /* Forms */
+  .alpha-form {
+    @apply bg-[var(--color-primary-light)] rounded-[40px] p-16 flex flex-col gap-4 shadow-none border-0 mx-auto;
   }
 }
 
