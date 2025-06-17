@@ -1,0 +1,51 @@
+export const testimonials = [
+  {
+    quote: "At Alpha, I don't have to stick just to second grade. I can learn third and fourth grade content, too.",
+    name: "Marshall",
+    grade: "X",
+    age: "7 years old",
+    imageSrc: "/assets/students/marshall.webp",
+  },
+  {
+    quote: "There's no hand holding, and I get to learn at my own pace.",
+    name: "Silas",
+    grade: "L2",
+    age: "X year old",
+    imageSrc: "/assets/students/silas.webp",
+  },
+  {
+    quote: "One of the reasons I love Alpha is because we have our own currency that motivates us to do more work.",
+    name: "Lulu",
+    grade: "L2",
+    age: "X Years Old",
+    imageSrc: "/assets/students/lulu.webp",
+  },
+  {
+    quote: "What I love about Alpha is the freedom we get here that isn't like another school.",
+    name: "Shepard",
+    grade: "L1",
+    age: "X Years Old",
+    imageSrc: "/assets/students/shepard.webp",
+  },
+  {
+    quote: "I love Alpha because I'm surrounded by kids that like to work as hard as me.",
+    name: "Rosie",
+    grade: "L1",
+    age: "X Years Old",
+    imageSrc: "/assets/students/rosie.webp",
+  },
+  {
+    quote: "I love Alpha because it's taught me to be limitless.",
+    name: "Kai",
+    grade: "L1",
+    age: "8th Grade",
+    imageSrc: "/assets/students/kai.webp",
+  },
+  {
+    quote: "I love Alpha because I can learn at my own pace whether I'm ahead or behind the class.",
+    name: "Chloe",
+    grade: "L1",
+    age: "X Years old",
+    imageSrc: "/assets/students/chloe.webp",
+  },
+]; 

@@ -1,0 +1,13 @@
+{
+  "id": "blog-post-template",
+  "type": "blog",
+  "title": "[Blog Post Title]",
+  "date": "[Month DDth, YYYY]",
+  "authorName": "[Author Full Name]",
+  "authorRole": "[Author Role/Title]",
+  "authorBio": "[Author Bio - 2-3 sentences describing their background and expertise]",
+  "summary": "[1-2 sentence summary of the blog post]",
+  "image": "/assets/blog-images/[image-name].webp",
+  "content": "<div class=\"space-y-[var(--space-md)]\">\n  <!-- Introduction paragraph(s) -->\n  <p>[Opening paragraph that hooks the reader and introduces the main topic]</p>\n  <p>[Additional context or background information if needed]</p>\n\n  <!-- Main content sections with headings -->\n  <h2 class=\"heading-style-h4\">[Section 1 Title]</h2>\n  <p>[Section 1 content]</p>\n\n  <h2 class=\"heading-style-h4\">[Section 2 Title]</h2>\n  <p>[Section 2 content]</p>\n\n  <!-- Lists should be used for key points or steps -->\n  <ul>\n    <li>[Key point 1]</li>\n    <li>[Key point 2]</li>\n    <li>[Key point 3]</li>\n  </ul>\n\n  <!-- Conclusion -->\n  <h2 class=\"heading-style-h4\">[Conclusion Title]</h2>\n  <p>[Concluding paragraph that summarizes key points and provides a call to action or final thought]</p>\n</div>",
+  "slug": "[blog-post-slug]"
+}

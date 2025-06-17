@@ -1,0 +1,13 @@
+{
+  "id": "news-article-template",
+  "type": "news",
+  "title": "[News Article Title]",
+  "date": "[Month DDth, YYYY]",
+  "authorName": "[Author Full Name]",
+  "authorRole": "[Author Role/Title]",
+  "authorBio": "[Author Bio - 2-3 sentences describing their background and expertise]",
+  "summary": "[1-2 sentence summary of the news article]",
+  "image": "/assets/news-images/[image-name].webp",
+  "content": "<div class=\"space-y-[var(--space-md)]\">\n  <p>[Opening paragraph that introduces the news story and its significance]</p>\n  <p>[Additional context or background information if needed]</p>\n\n  <h2 class=\"heading-style-h4\">[Key Development or Event]</h2>\n  <p>[Details about the main event or development]</p>\n\n  <h2 class=\"heading-style-h4\">[Impact or Implications]</h2>\n  <p>[Analysis of how this affects the school, students, or community]</p>\n\n  <ul>\n    <li>[Key point or highlight 1]</li>\n    <li>[Key point or highlight 2]</li>\n    <li>[Key point or highlight 3]</li>\n  </ul>\n\n  <h2 class=\"heading-style-h4\">[Looking Forward]</h2>\n  <p>[Future implications or next steps]</p>\n</div>",
+  "slug": "[news-article-slug]"
+} 

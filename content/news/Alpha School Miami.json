@@ -1,0 +1,12 @@
+{
+  "id": "sample-news-2",
+  "type": "news",
+  "title": "Alpha School Miami: The Future of Education in Our Community",
+  "date": "March 13th, 2025",
+  "authorName": "Kelly Davis",
+  "authorRole": "Global Strategy Lead for Education Marketing",
+  "authorBio": "Kelly Davis is an education strategist with 16 years of teaching experience and a passion for reimagining how students learn. With extensive background in alternative education models, she now leads strategy in education marketing globally—connecting innovative AI learning solutions with the families and students who need them most.",
+  "summary": "Alpha School represents a radical departure from traditional education. Their model is bold but a bold claim: By leveraging AI-driven, adaptive learning technology, students can complete an entire day's worth of academics in just two hours. The rest of the day is dedicated to life skills, passion projects, and co-curricular activities, creating a balance between independent mastery and communal engagement.",
+  "image": "/assets/article-images/Alpha-Blog-Image-Size.webp",
+  "content": "An innovative new school opens in Miami set out to redefine education for families looking beyond the traditional school model. It's a school where 8-year-olds launch startups, 10-year-olds give TED-style talks and 12-year-olds tackle Harvard Business School challenges. Alpha School boasts a 10-year track record of excellence in Texas, where classes consistently rank in the top 2% in core curriculum, kids get prepared for life, and one of the key measures of success is that 'students love school.'"
+}
