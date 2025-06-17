@@ -126,9 +126,9 @@ export default async function HoustonPage() {
           Explore our showcases to tour the campus, and enjoy our camps and afterschool programs offering exciting, hands-on experiences for kids.
         </p>
         <div className="flex flex-col md:flex-row flex-wrap gap-[var(--space-xl)] justify-center">
-          {events.filter(e => e.location.toLowerCase().includes("houston")).map((event, idx) => (
-            <div className="max-w-md w-full" key={event.url + idx}>
-              <EventCard {...event} />
+          {events.filter(e => e.locationTag.toLowerCase().includes("houston")).map((event, idx) => (
+            <div className="max-w-md w-full" key={event.slug + idx}>
+              <EventCard {...event} url={`/events/${event.slug}`} />
             </div>
           ))}
         </div>
@@ -143,7 +143,7 @@ export default async function HoustonPage() {
         __html: `
           document.addEventListener('DOMContentLoaded', function() {
             const events = ${JSON.stringify(events)};
-            const houstonEvents = events.filter(e => e.location.toLowerCase().includes("houston"));
+            const houstonEvents = events.filter(e => e.locationTag.toLowerCase().includes("houston"));
             const noEventsContainer = document.querySelector('.no-events-container');
             const eventsContainer = document.querySelector('.flex.flex-col');
             

@@ -157,9 +157,9 @@ export default async function BrownsvillePage() {
           Explore our showcases to tour the campus, and enjoy our camps and afterschool programs offering exciting, hands-on experiences for kids.
         </p>
         <div className="flex flex-col md:flex-row flex-wrap gap-[var(--space-xl)] justify-center">
-          {events.filter(e => e.location.toLowerCase().includes("brownsville")).map((event, idx) => (
-            <div className="max-w-md w-full" key={event.url + idx}>
-              <EventCard {...event} />
+          {events.filter(e => e.locationTag.toLowerCase().includes("brownsville")).map((event, idx) => (
+            <div className="max-w-md w-full" key={event.slug + idx}>
+              <EventCard {...event} url={`/events/${event.slug}`} />
             </div>
           ))}
         </div>
@@ -174,7 +174,7 @@ export default async function BrownsvillePage() {
         __html: `
           document.addEventListener('DOMContentLoaded', function() {
             const events = ${JSON.stringify(events)};
-            const brownsvilleEvents = events.filter(e => e.location.toLowerCase().includes("brownsville"));
+            const brownsvilleEvents = events.filter(e => e.locationTag.toLowerCase().includes("brownsville"));
             const noEventsContainer = document.querySelector('.no-events-container');
             const eventsContainer = document.querySelector('.flex.flex-col');
             
