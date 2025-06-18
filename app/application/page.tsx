@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import MainHeading from "@/components/layout/headings/main-heading";
 import WhatsNextSection from "@/components/layout/navigation/whats-next-section";
@@ -20,7 +20,7 @@ const referralOptions = [
   "Friend/Family", "Online Search", "Social Media", "Event", "Other"
 ];
 
-export default function ApplicationPage() {
+function ApplicationForm() {
   const searchParams = useSearchParams();
   const submissionCampus = searchParams.get('submission_campus');
   
@@ -271,5 +271,13 @@ export default function ApplicationPage() {
       
       <WhatsNextSection />
     </main>
+  );
+}
+
+export default function ApplicationPage() {
+  return (
+    <Suspense fallback={<div className="alpha-section">Loading...</div>}>
+      <ApplicationForm />
+    </Suspense>
   );
 } 
