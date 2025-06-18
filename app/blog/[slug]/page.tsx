@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
-import MainHeading from "@/components/layout/main-heading";
+import MainHeading from "@/components/layout/headings/main-heading";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useState as useReactState } from "react";

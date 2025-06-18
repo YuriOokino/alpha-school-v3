@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import MainHeading from "@/components/layout/main-heading";
+import MainHeading from "@/components/layout/headings/main-heading";
 import WhatsNextSection from "@/components/layout/navigation/whats-next-section";
 import {
   Accordion,
