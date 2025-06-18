@@ -1,8 +1,8 @@
 "use client"
 
-import GuideCard from "@/components/features/guide-card"
+import GuideCard from "@/components/features/cards/guide-card"
 import { guides } from "@/content/guides"
-import WhatsNextSection from "@/components/sections/whats-next-section"
+import WhatsNextSection from "@/components/layout/navigation/whats-next-section"
 
 export default function GuidesPage() {
   return (

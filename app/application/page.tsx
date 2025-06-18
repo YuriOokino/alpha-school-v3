@@ -1,11 +1,14 @@
 "use client";
 
-import { useState } from "react";
-import MainHeading from "@/components/layout/main-heading";
-import WhatsNextSection from "@/components/sections/whats-next-section";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+import MainHeading from "@/components/layout/headings/main-heading";
+import WhatsNextSection from "@/components/layout/navigation/whats-next-section";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { campuses } from "@/content/campuses";
+import { parseCampusFromUrl } from "@/utils/campuses";
 
 const gradeOptions = [
   "PreK3", "PreK4", "K", "1", "2", "3", "4", "5", "6", "7", "8"
@@ -18,6 +21,11 @@ const referralOptions = [
 ];
 
 export default function ApplicationPage() {
+  const searchParams = useSearchParams();
+  const submissionCampus = searchParams.get('submission_campus');
+  
+  const selectedCampus = parseCampusFromUrl(submissionCampus);
+
   const [formData, setFormData] = useState({
     parent1FirstName: "",
     parent1LastName: "",
@@ -43,7 +51,18 @@ export default function ApplicationPage() {
     accommodations: "",
     referralSource: "",
     smsConsent: false,
+    campus: selectedCampus?.name || "",
   });
+
+  // Update form data when campus changes
+  useEffect(() => {
+    if (selectedCampus) {
+      setFormData(prev => ({
+        ...prev,
+        campus: selectedCampus.name
+      }));
+    }
+  }, [selectedCampus]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -71,21 +90,25 @@ export default function ApplicationPage() {
 
   return (
     <main>
-      <MainHeading variant="primary">
+      <MainHeading 
+        variant="default" 
+        tagline={selectedCampus?.name}
+        description={
+          <>
+            <p>We are actively enrolling, offering an all-inclusive, revolutionary educational experience. If you have any questions about the admissions process, feel free to reach out to us at <a href="mailto:admissions@alpha.school">admissions@alpha.school</a>.</p>
+            <p><strong>Alpha School requires a separate application and a non-refundable $100 fee for each child.</strong></p>
+          </>
+        }
+      >
         Application Form
       </MainHeading>
 
       <section className="alpha-section">
-        <div className="scheme-lightblue rounded-[40px] p-8 md:p-16 shadow-none border-0 mx-auto max-w-[1200px]">
-          <div className="mb-8 text-center space-y-4">
-            <p>
-              We are actively enrolling, offering an all-inclusive, revolutionary educational experience. If you have any questions about the admissions process, feel free to reach out to us at <a href="mailto:admissions@alpha.school" className="underline">admissions@alpha.school</a>.
-            </p>
-            <p>
-              <strong>Alpha School requires a separate application and a non-refundable $100 fee for each child.</strong>
-            </p>
-          </div>
+        <div className="alpha-form">
           <form className="space-y-8" onSubmit={handleSubmit}>
+            {/* Hidden campus field */}
+            <input type="hidden" name="campus" value={formData.campus} />
+            
             {/* Parent 1 & 2 Info */}
             <div className="flex flex-col gap-6">
               <div className="flex flex-col md:flex-row gap-4">
@@ -236,11 +259,11 @@ export default function ApplicationPage() {
             <div className="text-sm">
               <strong>Please note your registration is only complete once you've completed your payment successfully below.</strong>
             </div>
-            <div className="text-center">
+            
               <Button type="submit">
                 Continue to Payment
               </Button>
-            </div>
+           
           </form>
         </div>
       </section>

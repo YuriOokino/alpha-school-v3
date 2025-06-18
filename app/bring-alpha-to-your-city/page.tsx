@@ -4,8 +4,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import MainHeading from "@/components/layout/main-heading";
-import WhatsNextSection from "@/components/sections/whats-next-section";
+import MainHeading from "@/components/layout/headings/main-heading";
+import WhatsNextSection from "@/components/layout/navigation/whats-next-section";
 
 const howDidYouHearOptions = [
   "Google Search",

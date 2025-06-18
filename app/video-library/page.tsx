@@ -1,8 +1,8 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import MainHeading from "@/components/layout/main-heading";
-import WhatsNextSection from "@/components/sections/whats-next-section";
+import MainHeading from "@/components/layout/headings/main-heading";
+import WhatsNextSection from "@/components/layout/navigation/whats-next-section";
 import Link from "next/link";
 import React from "react";
 import VideoCard from "@/components/ui/video-card";

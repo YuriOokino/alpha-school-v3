@@ -1,12 +1,14 @@
-import MainHeading from "@/components/layout/main-heading"
-import WhatsNextSection from "@/components/sections/whats-next-section"
+import MainHeading from "@/components/layout/headings/main-heading"
+import WhatsNextSection from "@/components/layout/navigation/whats-next-section"
 import { Button } from "@/components/ui/button"
-import FeatureCard from "@/components/features/feature-card"
-import Gallery from "@/components/features/gallery"
-import EventCard from "@/components/features/event-card"
-import { events } from "@/content/events/events"
+import FeatureCard from "@/components/features/content-blocks/feature-card"
+import Gallery from "@/components/features/content-blocks/gallery"
+import EventCard from "@/components/features/cards/event-card"
+import { loadEvents } from "@/utils/content-loader.server"
+import { CampusApplicationLink } from "@/components/ui/campus-application-link"
 
 export default async function BrownsvillePage() {
+  const events = await loadEvents()
 
   return (
     <main>
@@ -41,18 +43,18 @@ export default async function BrownsvillePage() {
       <section className="alpha-section">
         <Gallery 
           images={[
-            { src: "/assets/brownsville/brownsville-1.webp", alt: "Brownsville campus photo" },
-            { src: "/assets/brownsville/brownsville-2.webp", alt: "Brownsville campus photo" },
-            { src: "/assets/brownsville/brownsville-3.webp", alt: "Brownsville campus photo" },
-            { src: "/assets/brownsville/brownsville-4.webp", alt: "Brownsville campus photo" },
-            { src: "/assets/brownsville/brownsville-5.webp", alt: "Brownsville campus photo" },
-            { src: "/assets/brownsville/brownsville-6.webp", alt: "Brownsville campus photo" },
-            { src: "/assets/brownsville/brownsville-7.webp", alt: "Brownsville campus photo" },
-            { src: "/assets/brownsville/brownsville-8.webp", alt: "Brownsville campus photo" },
-            { src: "/assets/brownsville/brownsville-9.webp", alt: "Brownsville campus photo" },
-            { src: "/assets/brownsville/brownsville-10.webp", alt: "Brownsville campus photo" },
-            { src: "/assets/brownsville/brownsville-11.webp", alt: "Brownsville campus photo" },
-            { src: "/assets/brownsville/brownsville-12.webp", alt: "Brownsville campus photo" }
+            { src: "/assets/locations/brownsville/gallery/brownsville-1.webp", alt: "Brownsville campus photo" },
+            { src: "/assets/locations/brownsville/gallery/brownsville-2.webp", alt: "Brownsville campus photo" },
+            { src: "/assets/locations/brownsville/gallery/brownsville-3.webp", alt: "Brownsville campus photo" },
+            { src: "/assets/locations/brownsville/gallery/brownsville-4.webp", alt: "Brownsville campus photo" },
+            { src: "/assets/locations/brownsville/gallery/brownsville-5.webp", alt: "Brownsville campus photo" },
+            { src: "/assets/locations/brownsville/gallery/brownsville-6.webp", alt: "Brownsville campus photo" },
+            { src: "/assets/locations/brownsville/gallery/brownsville-7.webp", alt: "Brownsville campus photo" },
+            { src: "/assets/locations/brownsville/gallery/brownsville-8.webp", alt: "Brownsville campus photo" },
+            { src: "/assets/locations/brownsville/gallery/brownsville-9.webp", alt: "Brownsville campus photo" },
+            { src: "/assets/locations/brownsville/gallery/brownsville-10.webp", alt: "Brownsville campus photo" },
+            { src: "/assets/locations/brownsville/gallery/brownsville-11.webp", alt: "Brownsville campus photo" },
+            { src: "/assets/locations/brownsville/gallery/brownsville-12.webp", alt: "Brownsville campus photo" }
           ]} 
         />
       </section>
@@ -93,9 +95,13 @@ export default async function BrownsvillePage() {
             <p className="body-text mb-2">
               <strong>Email:</strong> admissions.brownsville@alpha.school
             </p>
-            <Button variant="default" className="mt-[var(--space-md)]" href="/application">
+            <CampusApplicationLink 
+              campusName="Brownsville" 
+              variant="default" 
+              className="mt-[var(--space-md)]"
+            >
               Apply Today!
-            </Button>
+            </CampusApplicationLink>
           </div>
           <div className="flex-1">
             <h2 className="heading-style-h2 mb-4">Quick Resources</h2>
@@ -156,37 +162,31 @@ export default async function BrownsvillePage() {
         <p className="body-text text-center mb-8 max-w-2xl mx-auto">
           Explore our showcases to tour the campus, and enjoy our camps and afterschool programs offering exciting, hands-on experiences for kids.
         </p>
-        <div className="flex flex-col md:flex-row flex-wrap gap-[var(--space-xl)] justify-center">
-          {events.filter(e => e.locationTag.toLowerCase().includes("brownsville")).map((event, idx) => (
-            <div className="max-w-md w-full" key={event.slug + idx}>
-              <EventCard {...event} url={`/events/${event.slug}`} />
-            </div>
-          ))}
-        </div>
-        <div className="text-center no-events-container" style={{ display: 'none' }}>
-          <Button variant="outline" href="/events">
-            View events
-          </Button>
-        </div>
+        {events.filter(e => 
+          e.locationTag.toLowerCase().includes("brownsville") || 
+          e.title.toLowerCase().includes("brownsville") || 
+          e.address.toLowerCase().includes("brownsville")
+        ).length > 0 ? (
+          <div className="flex flex-col md:flex-row flex-wrap gap-[var(--space-xl)] justify-center">
+            {events.filter(e => 
+              e.locationTag.toLowerCase().includes("brownsville") || 
+              e.title.toLowerCase().includes("brownsville") || 
+              e.address.toLowerCase().includes("brownsville")
+            ).map((event, idx) => (
+              <div className="max-w-md w-full" key={event.slug + idx}>
+                <EventCard {...event} url={`/events/${event.slug}`} />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center">
+            <p className="body-text mb-4">No events currently scheduled for Brownsville.</p>
+            <Button variant="outline" href="/events">
+              View all events
+            </Button>
+          </div>
+        )}
       </section>
-
-      <script dangerouslySetInnerHTML={{
-        __html: `
-          document.addEventListener('DOMContentLoaded', function() {
-            const events = ${JSON.stringify(events)};
-            const brownsvilleEvents = events.filter(e => e.locationTag.toLowerCase().includes("brownsville"));
-            const noEventsContainer = document.querySelector('.no-events-container');
-            const eventsContainer = document.querySelector('.flex.flex-col');
-            
-            if (brownsvilleEvents.length === 0) {
-              noEventsContainer.style.display = 'block';
-              eventsContainer.style.display = 'none';
-            }
-          });
-        `
-      }} />
-
-      {/* WhatsNextSection */}
       <WhatsNextSection />
     </main>
   )

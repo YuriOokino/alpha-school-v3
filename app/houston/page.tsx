@@ -1,11 +1,14 @@
-import MainHeading from "@/components/layout/main-heading"
-import WhatsNextSection from "@/components/sections/whats-next-section"
+import MainHeading from "@/components/layout/headings/main-heading"
+import WhatsNextSection from "@/components/layout/navigation/whats-next-section"
 import { Button } from "@/components/ui/button"
-import FeatureCard from "@/components/features/feature-card"
-import EventCard from "@/components/features/event-card"
-import { events } from "@/content/events/events"
+import FeatureCard from "@/components/features/content-blocks/feature-card"
+import EventCard from "@/components/features/cards/event-card"
+import { loadEvents } from "@/utils/content-loader.server"
+import { CampusApplicationLink } from "@/components/ui/campus-application-link"
 
 export default async function HoustonPage() {
+  const events = await loadEvents()
+  
   return (
     <main>
       {/* Main Title Section */}
@@ -55,9 +58,13 @@ export default async function HoustonPage() {
             <p className="body-text mb-2">
               <strong>Email:</strong> admissions.houston@alpha.school
             </p>
-            <Button variant="default" className="mt-[var(--space-md)]" href="/application">
-              Apply today!
-            </Button>
+            <CampusApplicationLink 
+              campusName="Houston" 
+              variant="default" 
+              className="mt-[var(--space-md)]"
+            >
+              Apply Today!
+            </CampusApplicationLink>
           </div>
           <div className="flex-1">
             <h2 className="heading-style-h2 mb-4">Quick Resources</h2>
@@ -125,35 +132,31 @@ export default async function HoustonPage() {
         <p className="body-text text-center mb-8 max-w-2xl mx-auto">
           Explore our showcases to tour the campus, and enjoy our camps and afterschool programs offering exciting, hands-on experiences for kids.
         </p>
-        <div className="flex flex-col md:flex-row flex-wrap gap-[var(--space-xl)] justify-center">
-          {events.filter(e => e.locationTag.toLowerCase().includes("houston")).map((event, idx) => (
-            <div className="max-w-md w-full" key={event.slug + idx}>
-              <EventCard {...event} url={`/events/${event.slug}`} />
-            </div>
-          ))}
-        </div>
-        <div className="text-center no-events-container" style={{ display: 'none' }}>
-          <Button variant="outline" href="/events">
-            View events
-          </Button>
-        </div>
+        {events.filter(e => 
+          e.locationTag.toLowerCase().includes("houston") || 
+          e.title.toLowerCase().includes("houston") || 
+          e.address.toLowerCase().includes("houston")
+        ).length > 0 ? (
+          <div className="flex flex-col md:flex-row flex-wrap gap-[var(--space-xl)] justify-center">
+            {events.filter(e => 
+              e.locationTag.toLowerCase().includes("houston") || 
+              e.title.toLowerCase().includes("houston") || 
+              e.address.toLowerCase().includes("houston")
+            ).map((event, idx) => (
+              <div className="max-w-md w-full" key={event.slug + idx}>
+                <EventCard {...event} url={`/events/${event.slug}`} />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center">
+            <p className="body-text mb-4">No events currently scheduled for Houston.</p>
+            <Button variant="outline" href="/events">
+              View all events
+            </Button>
+          </div>
+        )}
       </section>
-
-      <script dangerouslySetInnerHTML={{
-        __html: `
-          document.addEventListener('DOMContentLoaded', function() {
-            const events = ${JSON.stringify(events)};
-            const houstonEvents = events.filter(e => e.locationTag.toLowerCase().includes("houston"));
-            const noEventsContainer = document.querySelector('.no-events-container');
-            const eventsContainer = document.querySelector('.flex.flex-col');
-            
-            if (houstonEvents.length === 0) {
-              noEventsContainer.style.display = 'block';
-              eventsContainer.style.display = 'none';
-            }
-          });
-        `
-      }} />
 
       {/* WhatsNextSection */}
       <WhatsNextSection />

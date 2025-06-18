@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import { Inter, Work_Sans } from "next/font/google"
 import "../styles/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { Navbar } from "@/components/layout/navbar"
-import Footer from "@/components/layout/footer"
+import { Navbar } from "@/components/layout/navigation/navbar"
+import Footer from "@/components/layout/navigation/footer"
 
 const inter = Inter({ subsets: ["latin"] })
 const workSans = Work_Sans({ subsets: ["latin"] })

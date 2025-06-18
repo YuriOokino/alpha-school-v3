@@ -6,8 +6,8 @@ import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import SimpleCarousel from "@/components/features/simple-carousel"
-import WhatsNextSection from "@/components/sections/whats-next-section"
+import SimpleCarousel from "@/components/ui/simple-carousel"
+import WhatsNextSection from "@/components/layout/navigation/whats-next-section"
 
 export default function LearnMorePage() {
   // Contact form state

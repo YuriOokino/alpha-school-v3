@@ -156,16 +156,19 @@ interface Event {
   id: string
   title: string
   date: string
+  time: string
   locationTag: string
   category: string
-  location: string
   address: string
   image: {
     src: string
     alt?: string
   }
-  content: string
   slug: string
+  registrationType: 'internal' | 'external'
+  registrationUrl: string
+  descriptionTitle?: string
+  description?: string
 }
 
 export async function loadEvent(slug: string): Promise<Event | undefined> {
@@ -174,18 +177,14 @@ export async function loadEvent(slug: string): Promise<Event | undefined> {
 }
 
 export async function loadEvents(): Promise<Event[]> {
-  const eventsDirectory = path.join(process.cwd(), 'content/events')
-  const files = await fs.promises.readdir(eventsDirectory)
-  
-  const events = await Promise.all(
-    files
-      .filter(file => file.endsWith('.json'))
-      .map(async file => {
-        const filePath = path.join(eventsDirectory, file)
-        const fileContents = await fs.promises.readFile(filePath, 'utf8')
-        return JSON.parse(fileContents) as Event
-      })
-  )
-
-  return events.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  try {
+    const eventsFilePath = path.join(process.cwd(), 'content/events/events.json')
+    const fileContents = await fs.promises.readFile(eventsFilePath, 'utf8')
+    const data = JSON.parse(fileContents) as { events: Event[] }
+    
+    return data.events.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  } catch (error) {
+    console.error('Error loading events:', error)
+    return []
+  }
 } 

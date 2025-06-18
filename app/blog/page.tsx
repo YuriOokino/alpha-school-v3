@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import MainHeading from "@/components/layout/main-heading";
-import WhatsNextSection from "@/components/sections/whats-next-section";
-import ArticleCard from "@/components/features/article-card";
+import WhatsNextSection from "@/components/layout/navigation/whats-next-section";
+import ArticleCard from "@/components/features/cards/article-card";
 import Link from "next/link";
 
 interface BlogPost {

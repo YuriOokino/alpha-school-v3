@@ -91,13 +91,13 @@
     @apply font-semibold text-[40px] md:text-[48px] leading-[1.2];
   }
   .heading-style-h3 {
-    @apply font-semibold text-[24px] leading-[1.2];
+    @apply font-semibold text-[35px] leading-[1.2];
   }
   .heading-style-h4 {
-    @apply font-semibold text-[20px] leading-[1.4];
+    @apply font-semibold text-[26px] leading-[1.4];
   }
   .heading-style-h5 {
-    @apply font-semibold text-[16px] leading-[1.4];
+    @apply font-semibold text-[18px] leading-[1.4];
   }
   .heading-style-h6 {
     @apply font-semibold text-[14px] leading-[1.4];
@@ -184,11 +184,19 @@
   }
   
   .tag-blue {
-    @apply px-[var(--space-sm)] py-[var(--space-xs)] rounded-[var(--radius-xs)] bg-[var(--color-primary)] text-white text-xs font-medium inline-block;
+    @apply px-[var(--space-sm)] py-[var(--space-xs)] rounded-[var(--radius-xs)] bg-[var(--color-primary)] text-white text-xs font-medium inline-block uppercase;
   }
   
   .tag-pink {
-    @apply px-[var(--space-sm)] py-[var(--space-xs)] rounded-[var(--radius-xs)] bg-[var(--color-warm)] text-[var(--color-warm-dark)] text-xs font-medium inline-block;
+    @apply px-[var(--space-sm)] py-[var(--space-xs)] rounded-[var(--radius-xs)] bg-[var(--color-warm)] text-[var(--color-warm-dark)] text-xs font-medium inline-block uppercase;
+  }
+
+  .tag-maroon {
+    @apply px-[var(--space-sm)] py-[var(--space-xs)] rounded-[var(--radius-xs)] bg-[var(--color-warm-dark)] text-[var(--color-warm)] text-xs font-medium inline-block uppercase;
+  }
+
+  .tagline {
+    @apply px-[var(--space-sm)] py-[var(--space-xs)] rounded-[var(--radius-sm)] bg-[black] text-white text-sm font-medium inline-block uppercase;
   }
 
   /* Forms */

@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import MainHeading from "@/components/layout/main-heading";
-import WhatsNextSection from "@/components/sections/whats-next-section";
-import FeatureCard from "@/components/features/feature-card";
-import SimpleCarousel from "@/components/features/simple-carousel";
-import LocationCard from "@/components/features/location-card";
-import SectionHeading from "@/components/features/section-heading";
+import MainHeading from "@/components/layout/headings/main-heading";
+import WhatsNextSection from "@/components/layout/navigation/whats-next-section";
+import FeatureCard from "@/components/features/content-blocks/feature-card";
+import SimpleCarousel from "@/components/ui/simple-carousel";
+import LocationCard from "@/components/features/cards/location-card";
+import SectionHeading from "@/components/layout/headings/section-heading";
 import Link from "next/link";
 import React from "react";
 import {
@@ -54,46 +54,62 @@ function AutoPlayCarousel({
   };
 
   return (
-    <div className={`relative ${className}`}>
-      <div className="overflow-hidden">
-        <div
-          className="flex transition-transform duration-500"
-          style={{
-            width: `${items.length * cardWidth}%`,
-            transform: `translateX(-${activeIndex * cardWidth}%)`,
-          }}
-        >
-          {items.map((item, index) => (
-            <div
-              key={index}
-              style={{ width: `${cardWidth}%` }}
-              className="px-2"
-            >
-              {renderItem(item, index)}
-            </div>
-          ))}
+    <div className={`w-full relative ${className}`}>
+      <div className="relative flex items-center">
+        <div className="overflow-hidden w-full">
+          <div
+            className="flex transition-transform duration-500"
+            style={{
+              transform: `translateX(-${activeIndex * cardWidth}%)`,
+            }}
+          >
+            {items.map((item, idx) => (
+              <div
+                key={idx}
+                style={{ width: `${cardWidth}%` }}
+                className="px-2 flex-shrink-0"
+              >
+                {renderItem(item, idx)}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-      {showNavigation && items.length > visibleCards && (
-        <div className="flex justify-between mt-4">
-          <Button
-            variant="outline"
-            onClick={prevItem}
-            className="rounded-full p-2"
-          >
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M12 15L7 10L12 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </Button>
-          <Button
-            variant="outline"
-            onClick={nextItem}
-            className="rounded-full p-2"
-          >
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M8 5L13 10L8 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </Button>
+
+      {showNavigation && (
+        <div className="flex items-center justify-between mt-4">
+          {/* Dots */}
+          <div className="flex gap-2">
+            {items.map((_, index) => (
+              <button
+                key={index}
+                className={`w-3 h-3 rounded-full ${index === activeIndex ? 'bg-primary' : 'bg-gray-300'} transition-colors`}
+                onClick={() => setActiveIndex(index)}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+          {/* Arrows */}
+          <div className="flex gap-3">
+            <button
+              onClick={prevItem}
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--color-bg-muted)] hover:bg-[var(--color-bg-muted-hover)]"
+              aria-label="Previous"
+            >
+              <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
+                <path d="M13 15l-5-5 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+            <button
+              onClick={nextItem}
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--color-bg-muted)] hover:bg-[var(--color-bg-muted-hover)]"
+              aria-label="Next"
+            >
+              <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
+                <path d="M7 5l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+          </div>
         </div>
       )}
     </div>
@@ -110,7 +126,7 @@ const admissionsSteps = [
           Discover our unique learning approach and explore the environment that sets Alpha apart.
         </div>
         <div className="flex gap-3 mt-4">
-          <Button variant="default">Schedule Tour</Button>
+          <Button variant="default" href="mailto:admissions@alpha.school" target="_blank">Schedule Tour</Button>
           <Button variant="default" href="/events">View Showcase</Button>
         </div>
       </>
@@ -125,8 +141,7 @@ const admissionsSteps = [
           Complete our comprehensive application form with student information, academic history, and family details.
         </div>
         <div className="flex gap-3 mt-4">
-          <Button variant="default">Start Application</Button>
-          <Button variant="default">Download Form</Button>
+          <Button href="#" variant="default">Apply now</Button>
         </div>
       </>
     )
@@ -137,11 +152,56 @@ const admissionsSteps = [
     content: (
       <>
         <div className="text-sm text-gray-600">
-          Your child will spend a day with our students to experience our unique learning approach and see if Alpha School is the right fit.
+          After submitting an application and attending a showcase, tour, or having an individual conversation with admissions, you will be eligible to schedule your Shadow Day. This day will let your child experience Alpha firsthand. During their visit, students engage with our core skills AI applications and participate in life skills-focused afternoon workshops.
         </div>
-        <div className="flex gap-3 mt-4">
-          <Button variant="default">Book Shadow Day</Button>
-          <Button variant="default">Learn More</Button>
+        <div className="mt-4">
+          <h4 className="font-semibold mb-2">Required Documents to Submit Before Shadow Day or Student Observation:</h4>
+          <ul className="list-none space-y-2">
+            <li className="flex items-center gap-2">
+              <svg className="w-5 h-5" style={{ color: 'var(--color-primary)' }} viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+              Allergy or medication details
+            </li>
+            <li className="flex items-center gap-2">
+              <svg className="w-5 h-5" style={{ color: 'var(--color-primary)' }} viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+              Emergency contact information
+            </li>
+            <li className="flex items-center gap-2">
+              <svg className="w-5 h-5" style={{ color: 'var(--color-primary)' }} viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+              Current school records (grades 2-8)
+            </li>
+          </ul>
+        </div>
+        <div className="mt-4">
+          <h4 className="font-semibold mb-2">Required Documents to Sign:</h4>
+          <ul className="list-none space-y-2">
+            <li className="flex items-center gap-2">
+              <svg className="w-5 h-5" style={{ color: 'var(--color-primary)' }} viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+              Liability Waiver
+            </li>
+            <li className="flex items-center gap-2">
+              <svg className="w-5 h-5" style={{ color: 'var(--color-primary)' }} viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+              Photo/Video Consent Form
+            </li>
+            <li className="flex items-center gap-2">
+              <svg className="w-5 h-5" style={{ color: 'var(--color-primary)' }} viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+              Data Collection Consent Form
+            </li>
+          </ul>
+        </div>
+        <div className="mt-4 text-sm text-gray-600">
+          Your dedicated admissions counselor will work with you to schedule the ideal day for your student to visit.
         </div>
       </>
     )
@@ -155,11 +215,7 @@ const enrollmentSteps = [
     content: (
       <>
         <div className="text-sm text-gray-600">
-          Schedule a personal meeting with your dedicated admissions coordinator to discuss your family's needs and expectations.
-        </div>
-        <div className="flex gap-3 mt-4">
-          <Button variant="default">Schedule Meeting</Button>
-          <Button variant="default">Contact Team</Button>
+          During your meeting, we will review the MAP exam results, feedback from your child's Shadow Day or Observation, and discuss your academic goals. Our admissions team will also address any remaining questions to ensure your family is fully informed and confident in your decision.
         </div>
       </>
     )
@@ -170,11 +226,38 @@ const enrollmentSteps = [
     content: (
       <>
         <div className="text-sm text-gray-600">
-          Complete enrollment paperwork, submit required documents, and secure your child's spot at Alpha School.
+          Review admissions enrollment offer and complete the following:
         </div>
-        <div className="flex gap-3 mt-4">
-          <Button variant="default">Complete Enrollment</Button>
-          <Button variant="default">Upload Documents</Button>
+        <div className="mt-4">
+          <ul className="list-none space-y-2">
+            <li className="flex items-center gap-2">
+              <svg className="w-5 h-5" style={{ color: 'var(--color-primary)' }} viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+              Student Enrollment Form
+            </li>
+            <li className="flex items-center gap-2">
+              <svg className="w-5 h-5" style={{ color: 'var(--color-primary)' }} viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+              Tuition Agreement
+            </li>
+            <li className="flex items-center gap-2">
+              <svg className="w-5 h-5" style={{ color: 'var(--color-primary)' }} viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+              Submit a non-refundable $1,000 tuition deposit
+            </li>
+            <li className="flex items-center gap-2">
+              <svg className="w-5 h-5" style={{ color: 'var(--color-primary)' }} viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+              Complete the Family Medical and Financial sections
+            </li>
+          </ul>
+        </div>
+        <div className="mt-4 text-sm text-gray-600">
+          The deposit is refundable and is credited towards tuition once enrolled.
         </div>
       </>
     )
@@ -185,11 +268,30 @@ const enrollmentSteps = [
     content: (
       <>
         <div className="text-sm text-gray-600">
-          Join our community! Receive orientation materials, meet your child's guides, and prepare for the start of an amazing educational journey.
+          Congratulations on joining the Alpha community! We are thrilled to embark on this transformative journey of growth and opportunity together. We're excited to have you as part of our family!
         </div>
-        <div className="flex gap-3 mt-4">
-          <Button variant="default">Get Orientation</Button>
-          <Button variant="default">Meet Guides</Button>
+        <div className="mt-4">
+          <h4 className="font-semibold mb-2">What's next?</h4>
+          <ul className="list-none space-y-2">
+            <li className="flex items-center gap-2">
+              <svg className="w-5 h-5" style={{ color: 'var(--color-primary)' }} viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+              Connect with our Dean of Parents
+            </li>
+            <li className="flex items-center gap-2">
+              <svg className="w-5 h-5" style={{ color: 'var(--color-primary)' }} viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+              Set up and engage with ParentSquare
+            </li>
+            <li className="flex items-center gap-2">
+              <svg className="w-5 h-5" style={{ color: 'var(--color-primary)' }} viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+              Meet and connect with our vibrant Alpha parent community
+            </li>
+          </ul>
         </div>
       </>
     )
@@ -422,13 +524,12 @@ export default function AdmissionPage() {
           renderItem={(campus) => (
             <LocationCard
               key={campus.name}
-              image={campus.image}
-              title={campus.name}
+              heroImage={campus.heroImage}
+              name={campus.name}
               address={campus.address}
               tuition={campus.tuition}
-              buttonText={campus.buttonText}
+              applicationStatus={campus.applicationStatus}
               buttonHref={campus.buttonHref}
-              newsHeading={campus.newsHeading}
               className="h-full"
             />
           )}

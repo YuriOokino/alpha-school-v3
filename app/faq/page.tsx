@@ -2,7 +2,7 @@
 
 import React from "react";
 import MainHeading from "@/components/layout/main-heading";
-import WhatsNextSection from "@/components/sections/whats-next-section";
+import WhatsNextSection from "@/components/layout/navigation/whats-next-section";
 import {
   Accordion,
   AccordionItem,

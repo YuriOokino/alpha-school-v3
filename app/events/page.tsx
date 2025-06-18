@@ -1,14 +1,16 @@
 "use client"
 
 import { useState } from "react"
-import WhatsNextSection from "@/components/sections/whats-next-section"
-import EventCard from "@/components/features/event-card"
-import { events } from "@/content/events/events"
+import WhatsNextSection from "@/components/layout/navigation/whats-next-section"
+import EventCard from "@/components/features/cards/event-card"
+import eventsData from "@/content/events/events.json"
 
 export default function EventsPage() {
   const [school, setSchool] = useState("");
   const [eventType, setEventType] = useState("");
   const [search, setSearch] = useState("");
+
+  const events = eventsData.events
 
   // Get unique schools and event types
   const schools = Array.from(new Set(events.map(e => e.locationTag)));

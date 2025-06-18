@@ -1,0 +1,90 @@
+{
+  "events": [
+    {
+      "id": "experience-alpha-fort-worth",
+      "title": "Experience Alpha Fort Worth",
+      "date": "Jun 16, 2025",
+      "time": "6:30 - 8:00 PM",
+      "locationTag": "Alpha Fort Worth",
+      "category": "Info session",
+      "address": "CERA Ballroom 3300 Bryant Irvin Rd., Fort Worth, TX 76109",
+      "image": {
+        "src": "/images/events/open-house.jpg",
+        "alt": "Alpha Fort Worth Info session"
+      },
+      "slug": "experience-alpha-fort-worth",
+      "registrationType": "internal",
+      "registrationUrl": "/fort-worth#register",
+      "descriptionTitle": "Experience the Magic of Alpha in Fort Worth",
+      "description": "<p>Get an inside look at Alpha's groundbreaking learning model at this exclusive parent-only event.</p><p>Parents will experience the magic of Alpha with our team, be able to connect with other families, and discover how our students excel in core academics in just two hours a day.</p><p>Light appetizers and wine will be served.</p>"
+    },
+
+    {
+        "id": "austin-summer-camp",
+        "title": "Austin Summer Camp",
+        "date": "Jun 23, 2025",
+        "time": "9:30 AM",
+        "locationTag": "Alpha Austin",
+        "category": "Summer Camp",
+        "address": "1201 Spyglass Dr, Austin, TX 78746",
+        "image": {
+            "src": "/images/events/summer-camp.jpg",
+            "alt": "Austin Summer Camp"
+        },
+        "slug": "austin-summer-camp",
+        "registrationType": "external",
+        "registrationUrl": "https://campbtx.com/",
+        "descriptionTitle": "Join Us for an Exciting Summer at Alpha Austin",
+        "description": "<p>Experience the perfect blend of learning and fun at our summer camp.</p><p>Our summer camp combines engaging activities with educational experiences, giving your child a memorable and enriching summer break.</p><p>Snacks and lunch will be provided.</p>"
+    },
+
+    {
+      "id": "alpha-high-school-austin-showcase-july-21",
+      "title": "Alpha High School Austin Showcase | July 21",
+      "date": "Jul 21, 2025",
+      "time": "10:00 AM",
+      "locationTag": "Alpha High School",
+      "category": "Showcase",
+      "address": "201 Colorado St, Austin, TX 78701",
+      "image": {
+        "src": "/images/events/student-showcase.jpg",
+        "alt": "Student Showcase"
+      },
+      "slug": "alpha-high-school-austin-showcase-july-21",
+      "registrationType": "internal",
+      "registrationUrl": ""
+    },
+    {
+      "id": "alpha-high-school-austin-showcase-semptember-16",
+      "title": "Alpha High School Austin Showcase | Sept 16",
+      "date": "Sep 16, 2025",
+      "time": "9:30 AM",
+      "locationTag": "Alpha High School",
+      "category": "Showcase",
+      "address": "201 Colorado St, Austin, TX 78701",
+      "image": {
+        "src": "/images/events/student-showcase.jpg",
+        "alt": "Student Showcase"
+      },
+      "slug": "alpha-high-school-austin-showcase-semptember-16",
+      "registrationType": "internal",
+      "registrationUrl": ""
+    },
+    {
+      "id": "brownsville-space-camp",
+      "title": "Brownsville Space Camp",
+      "date": "Jul 13, 2025",
+      "time": "9:30 AM",
+      "locationTag": "Brownsville",
+      "category": "Summer Camp",
+      "address": "591 N Central Ave, Brownsville, TX 78521",
+      "image": {
+        "src": "/images/events/student-showcase.jpg",
+        "alt": "Student Showcase"
+      },
+      "slug": "brownsville-space-camp",
+      "registrationType": "external",
+      "registrationUrl": "https://campbtx.com/"
+    }
+  ]
+} 

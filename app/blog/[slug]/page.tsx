@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useState as useReactState } from "react";
 import ArticlePagination from "@/components/ui/ArticlePagination";
-import WhatsNextSection from "@/components/sections/whats-next-section";
+import WhatsNextSection from "@/components/layout/navigation/whats-next-section";
 
 export default function BlogPostPage() {
   const params = useParams();

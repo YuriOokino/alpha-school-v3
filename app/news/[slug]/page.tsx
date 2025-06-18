@@ -2,15 +2,15 @@
 
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
-import MainHeading from "@/components/layout/main-heading";
+import MainHeading from "@/components/layout/headings/main-heading";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { getArticleBySlug, getAllNewsArticles } from "@/utils/content-loader.client";
 import type { NewsArticle } from "@/utils/content-loader.client";
-import NewsListSidebar from '@/components/features/news-list-sidebar';
+import NewsListSidebar from '@/components/features/content-blocks/news-list-sidebar';
 import ArticlePagination from "@/components/ui/ArticlePagination";
-import WhatsNextSection from "@/components/sections/whats-next-section";
+import WhatsNextSection from "@/components/layout/navigation/whats-next-section";
 
 export default function NewsArticlePage() {
   const params = useParams();
