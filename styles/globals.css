@@ -251,73 +251,6 @@
   padding-right: 0 !important;
 }
 
-/* 
- * AI Management Notes:
- * 
- * 1. Typography System:
- *    - Hero Headline: 48-64px, 700 weight, 1.2 line height
- *    - Section Headline: 32px, 600 weight, 1.3 line height
- *    - Card Header: 24px, 600 weight, 1.4 line height
- *    - Body Text: 16px, 400 weight, 1.6 line height
- *    - Caption/Text Hint: 14px, 400 weight, 1.5 line height
- * 
- * 2. Spacing System:
- *    - xs (8px): Element-to-element nudges
- *    - sm (16px): Internal padding in cards, buttons
- *    - md (24px): Between titles, groups
- *    - lg (48px): Section content spacing
- *    - xl (64px): Section top/bottom margin/padding
- * 
- * 3. Border Radius System:
- *    - xs (8px): Small inputs, chips, or badges
- *    - sm (12px): Cards in structured layouts
- *    - md (16px): Image containers, info panels
- *    - lg (24px): Section blocks, modals
- *    - pill (9999px): All buttons, avatars, tags
- * 
- * 4. Color Schemes:
- *    Primary Scheme:
- *    - Primary: #0000ED (CTAs, links, highlights)
- *    - Secondary: #B9EDFF (Section backgrounds, cards, hover surfaces)
- *    - Accent: #FFFFFF (Text on dark, card fills)
- *    - Text Main: #111827 (Primary body and heading text)
- *    - Text Muted: #6B7280 (Captions, UI hints)
- *    - Surface: #F9FAFB (Light panels and contrast breaks)
- * 
- *    Warm Scheme:
- *    - Warm: #FCCFCF (Testimonial backgrounds, emotional callouts)
- *    - Warm Dark: #5C2727 (Headings, button fills, high contrast text)
- *    - Warm Accent: #FFFFFF (Text on warm buttons or backgrounds)
- *    - Warm Text: #5C2727 (Section headers or spotlight content)
- *    - Warm Text Muted: #6B7280 (Supporting copy, optional UI details)
- *    - Warm Surface: #FFFFFF (Default background for contrast balance)
- * 
- * 5. Layout:
- *    - Section Container: max-width: 1280px
- *    - Mobile Padding: 24px horizontal padding
- *    - Use "alpha-section" class for consistent section spacing
- * 
- * 6. Components: Use "alpha-card", "alpha-btn-primary", etc. for consistent styling
- * 7. Responsive: All utilities include responsive variants (sm:, md:, lg:, xl:)
- * 
- * 8. Button Color Schemes:
- *    - Color Scheme 1: Primary (blue), Secondary (light blue)
- *    - Color Scheme 2: Primary (pink), Secondary (maroon)
- *    - On light backgrounds: use black
- * 
- * Example Usage:
- * <section className="alpha-section">
- *   <h1 className="hero-headline">Main Title</h1>
- *   <h2 className="section-headline">Section Title</h2>
- *   <div className="alpha-card">
- *     <h3 className="card-header">Card Title</h3>
- *     <p className="body-text">Card content goes here</p>
- *     <span className="caption">Supporting information</span>
- *   </div>
- *   <button className="alpha-btn-primary">Call to Action</button>
- * </section>
- */
-
 .alpha-card.sidebar-variant {
   padding: 0 !important;
 }
@@ -345,6 +278,7 @@
   transform: rotate(180deg);
 }
 
+/* Forms */
 /* Ensure all form fields have a white background */
 input,
 select,
