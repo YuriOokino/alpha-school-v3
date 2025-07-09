@@ -61,7 +61,7 @@ const testimonials = [
   },
 ];
 return (
-  <section className="alpha-section bg-white">
+  <section className="alpha-section">
 
       <div className="two-column-flex mb-[var(--space-2xl)]">
         <h2>
@@ -144,7 +144,7 @@ return (
         </div>
       </div>
       
-      <div className="w-full bg-[var(--color-bg-muted)] rounded-[var(--radius-lg)] relative">
+      <div className="w-full bg-[var(--color-sky-blue)] py-[var(--space-lg)] rounded-[var(--radius-lg)] relative">
         <div className="relative flex items-center">
           <div className="overflow-hidden w-full">
             <div
@@ -152,6 +152,7 @@ return (
               style={{
                 width: `${testimonials.length * (100 / visibleCards)}%`,
                 transform: `translateX(-${activeIndex * (100 / visibleCards)}%)`,
+                marginLeft: 'var(--space-lg)',
               }}
             >
               {testimonials.map((testimonial, idx) => (
@@ -182,7 +183,7 @@ return (
           </div>
         </div>
         {/* Navigation below cards */}
-        <div className="flex items-center justify-between mt-[var(--space-lg)] px-2">
+        <div className="flex items-center justify-between mt-[var(--space-lg)] px-[var(--space-lg)]">
           {/* Dots - left */}
           <div className="flex gap-2">
             {testimonials.map((_, index) => (

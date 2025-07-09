@@ -5,7 +5,7 @@ export default function FeaturedLogos() {
   // Duplicate the logos for seamless infinite scroll
   const logos = pressLogos.concat(pressLogos);
   return (
-    <div className="relative w-[60%] mx-auto overflow-hidden">
+    <div className="relative w-[100%] mx-auto overflow-hidden">
       <div className="flex animate-scroll-infinite gap-[4rem] w-fit" style={{ animation: 'scroll 30s linear infinite' }}>
         {logos.map((logo, i) => (
           <a
@@ -20,7 +20,7 @@ export default function FeaturedLogos() {
               alt={logo.alt}
               width={logo.minWidth}
               height={40}
-              style={{ height: 40, width: 'auto', objectFit: 'contain' }}
+              style={{ height: 40, width: 'auto', objectFit: 'contain', filter: 'invert(1)', opacity: 0.5 }}
             />
           </a>
         ))}

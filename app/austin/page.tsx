@@ -5,6 +5,7 @@ import { loadEvents } from "@/utils/content-loader.server"
 import { CampusApplicationLink } from "@/components/ui/campus-application-link"
 import VideoPlayer from "@/components/ui/video-player"
 import EventsCarousel from "@/components/features/content-blocks/events-carousel"
+import Divider from "@/components/layout/divider"
 
 export default async function AustinPage() {
   const events = await loadEvents()
@@ -63,9 +64,7 @@ export default async function AustinPage() {
       </div>
       {/* Curve Divider */}
       <div className="bg-[var(--color-bg-muted)]">
-        <svg width="1440" height="83" viewBox="0 0 1440 83" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 83H1440C1440 83 1003.04 0 720 0C436.96 0 0 83 0 83Z" fill="white"/>
-        </svg>
+        <Divider direction="down" fill="white" />
       </div>
       {/* Campus & Resources Section */}
       <section className="alpha-section bg-white">

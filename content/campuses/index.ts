@@ -50,6 +50,20 @@ export const campuses = [
       buttonHref: "/fort-worth",
       applicationStatus: "Fall 2025 applications open"
     },
+
+    {
+      name: "Scottsdale",
+      stateCode: "TX",
+      status: "upcoming" as const,
+      address: "Location announced soon!",
+      tuition: "$40,000",
+      grades: "K-8th Grade",
+      email: "admissions.scottsdale@alpha.school",
+      heroImage: "/assets/locations/scottsdale/hero/scottsdale-hero.webp",
+      buttonHref: "/scottsdale",
+      applicationStatus: "Fall 2025 applications open"
+    },
+
     {
       name: "Brownsville",
       stateCode: "TX",
@@ -111,6 +125,214 @@ export const campuses = [
     heroImage: "/assets/locations/santa-barbara/hero/santa-barbara-hero.webp",
     buttonHref: "/santa-barbara",
     applicationStatus: "Applications Open"
+},
+
+{ 
+  name: "Orlando",
+  stateCode: "FL",
+  status: "upcoming" as const,
+  address: "Location announced soon!",
+  tuition: "$40,000",
+  grades: "K-8th Grade",
+  email: "admissions.orlando@alpha.school",
+  heroImage: "/assets/locations/orlando/hero/orlando-hero.webp",
+  buttonHref: "/orlando",
+  applicationStatus: "Applications Open"
+},
+
+{
+  name: "Nashville",
+  stateCode: "TN",
+  status: "upcoming" as const,
+  address: "Location to be announced soon",
+  tuition: "$40,000",
+  grades: "K-8th Grade",
+  email: "admissions.nashville@alpha.school",
+  heroImage: "/assets/locations/nashville/hero/nashville-hero.webp",
+  buttonHref: "/nashville",
+  applicationStatus: "Applications Open"
+},
+
+{
+  name: "Charlotte",
+  stateCode: "NC",
+  status: "upcoming" as const,
+  address: "Location to be announced soon",
+  tuition: "$40,000",
+  grades: "K-8th Grade",
+  email: "admissions.charlotte@alpha.school",
+  heroImage: "/assets/locations/charlotte/hero/charlotte-hero.webp",
+  buttonHref: "/charlotte",
+  applicationStatus: "Applications Open"
+},
+
+{
+  name: "Raleigh",
+  stateCode: "NC",
+  status: "upcoming" as const,
+  address: "Location to be announced soon",
+  tuition: "$40,000",
+  grades: "K-8th Grade",
+  email: "admissions.raleigh@alpha.school",
+  heroImage: "/assets/locations/raleigh/hero/raleigh-hero.webp",
+  buttonHref: "/raleigh",
+  applicationStatus: "Applications Open"
+},
+
+{
+  name: "Atlanta",
+  stateCode: "GA",
+  status: "upcoming" as const,
+  address: "Location to be announced soon",
+  tuition: "$40,000",
+  grades: "K-8th Grade",
+  email: "admissions.atlanta@alpha.school",
+  heroImage: "/assets/locations/atlanta/hero/atlanta-hero.webp",
+  buttonHref: "/atlanta",
+  applicationStatus: "Applications Open"
+},
+
+{
+  name: "Dallas",
+  stateCode: "TX",
+  status: "upcoming" as const,
+  address: "Location to be announced soon",
+  tuition: "$40,000",
+  grades: "K-8th Grade",
+  email: "admissions.dallas@alpha.school",
+  heroImage: "/assets/locations/dallas/hero/dallas-hero.webp",
+  buttonHref: "/dallas",
+  applicationStatus: "Applications Open"
+},
+
+{
+  name: "San Antonio",
+  stateCode: "TX",
+  status: "upcoming" as const,
+  address: "Location to be announced soon",
+  tuition: "$40,000",
+  grades: "K-8th Grade",
+  email: "admissions.sanantonio@alpha.school",
+  heroImage: "/assets/locations/san-antonio/hero/san-antonio-hero.webp",
+  buttonHref: "/san-antonio",
+  applicationStatus: "Applications Open"
+},
+
+{
+  name: "Phoenix",
+  stateCode: "AZ",
+  status: "upcoming" as const,
+  address: "Location to be announced soon",
+  tuition: "$40,000",
+  grades: "K-8th Grade",
+  email: "admissions.phoenix@alpha.school",
+  heroImage: "/assets/locations/phoenix/hero/phoenix-hero.webp",
+  buttonHref: "/phoenix",
+  applicationStatus: "Applications Open"
+},
+
+{
+  name: "Las Vegas",
+  stateCode: "NV",
+  status: "upcoming" as const,
+  address: "Location to be announced soon",
+  tuition: "$40,000",
+  grades: "K-8th Grade",
+  email: "admissions.lasvegas@alpha.school",
+  heroImage: "/assets/locations/las-vegas/hero/las-vegas-hero.webp",
+  buttonHref: "/las-vegas",
+  applicationStatus: "Applications Open"
+},
+
+{
+  name: "Denver",
+  stateCode: "CO",
+  status: "upcoming" as const,
+  address: "Location to be announced soon",
+  tuition: "$40,000",
+  grades: "K-8th Grade",
+  email: "admissions.denver@alpha.school",
+  heroImage: "/assets/locations/denver/hero/denver-hero.webp",
+  buttonHref: "/denver",
+  applicationStatus: "Applications Open"
+},
+
+{
+  name: "Salt Lake City",
+  stateCode: "UT",
+  status: "upcoming" as const,
+  address: "Location to be announced soon",
+  tuition: "$40,000",
+  grades: "K-8th Grade",
+  email: "admissions.saltlakecity@alpha.school",
+  heroImage: "/assets/locations/salt-lake-city/hero/salt-lake-city-hero.webp",
+  buttonHref: "/salt-lake-city",
+  applicationStatus: "Applications Open"
+},
+
+{
+  name: "Seattle",
+  stateCode: "WA",
+  status: "upcoming" as const,
+  address: "Location to be announced soon",
+  tuition: "$40,000",
+  grades: "K-8th Grade",
+  email: "admissions.seattle@alpha.school",
+  heroImage: "/assets/locations/seattle/hero/seattle-hero.webp",
+  buttonHref: "/seattle",
+  applicationStatus: "Applications Open"
+},
+
+{
+  name: "Portland",
+  stateCode: "OR",
+  status: "upcoming" as const,
+  address: "Location to be announced soon",
+  tuition: "$40,000",
+  grades: "K-8th Grade",
+  email: "admissions.portland@alpha.school",
+  heroImage: "/assets/locations/portland/hero/portland-hero.webp",
+  buttonHref: "/portland",
+  applicationStatus: "Applications Open"
+},
+
+{
+  name: "San Francisco",
+  stateCode: "CA",
+  status: "upcoming" as const,
+  address: "Location to be announced soon",
+  tuition: "$50,000",
+  grades: "K-8th Grade",
+  email: "admissions.sanfrancisco@alpha.school",
+  heroImage: "/assets/locations/san-francisco/hero/san-francisco-hero.webp",
+  buttonHref: "/san-francisco",
+  applicationStatus: "Applications Open"
+},
+
+{
+  name: "Los Angeles",
+  stateCode: "CA",
+  status: "upcoming" as const,
+  address: "Location to be announced soon",
+  tuition: "$50,000",
+  grades: "K-8th Grade",
+  email: "admissions.losangeles@alpha.school",
+  heroImage: "/assets/locations/los-angeles/hero/los-angeles-hero.webp",
+  buttonHref: "/los-angeles",
+  applicationStatus: "Applications Open"
+},
+
+{
+  name: "San Diego",
+  stateCode: "CA",
+  status: "upcoming" as const,
+  address: "Location to be announced soon",
+  tuition: "$50,000",
+  grades: "K-8th Grade",
+  email: "admissions.sandiego@alpha.school",
+  heroImage: "/assets/locations/san-diego/hero/san-diego-hero.webp",
+  buttonHref: "/san-diego",
+  applicationStatus: "Applications Open"
 }
 
   ]; 

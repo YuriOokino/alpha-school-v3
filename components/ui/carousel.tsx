@@ -54,10 +54,10 @@ export default function Carousel({
   };
 
   return (
-    <div className={`w-full rounded-[var(--radius-lg)] pt-[var(--space-xl)] pb-[var(--space-xl)] pl-[var(--space-xl)] relative ${className}`}>
-      <div className="pr-[var(--space-xl)]">
+    <div className={`w-full rounded-[var(--radius-lg)] pt-[var(--space-lg)] pb-[var(--space-lg)] relative ${className}`}>
+      <div className="pr-[var(--space-lg)]">
         {(title || buttonText) && (
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-[var(--space-lg)] gap-[var(--space-md)]">
+          <div className="ml-[var(--space-lg)] flex flex-col md:flex-row md:items-center md:justify-between mb-[var(--space-lg)] gap-[var(--space-md)]">
             {title && <h2 className={`${titleClassName}`}>{title}</h2>}
             {buttonText && buttonHref && (
               <Button variant={buttonVariant} className="gap-2" href={buttonHref}>
@@ -75,8 +75,9 @@ export default function Carousel({
           <div
             className="flex transition-transform duration-500"
             style={{
-              width: `${items.length * cardWidth}%`,
+              width: `${visibleCards * cardWidth}%`,
               transform: `translateX(-${activeIndex * cardWidth}%)`,
+              marginLeft: 'var(--space-lg)',
             }}
           >
             {items.map((item, idx) => (
@@ -91,7 +92,7 @@ export default function Carousel({
           </div>
         </div>
       </div>
-      <div className="pr-[var(--space-xl)]">
+      <div className="pr-[var(--space-xl)] pl-[var(--space-xl)]">
         {/* Navigation below cards */}
         <div className="flex items-center justify-between mt-[var(--space-lg)] px-2">
           {/* Dots - left */}

@@ -19,7 +19,7 @@ export default function LocationsCarouselSection() {
   }, []);
 
   return (
-    <section className="alpha-section">
+    <section className="alpha-section bg-white">
       <Carousel
         items={campuses}
         renderItem={(campus) => (

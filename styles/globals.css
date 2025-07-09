@@ -148,6 +148,10 @@ html, body {
     padding: var(--space-lg);
   }
 }
+
+.alpha-section.xl-width {
+  @apply md:px-0;
+}
   
   .alpha-container {
     @apply max-w-[1280px] mx-auto px-6 md:px-[var(--space-md)] pt-[var(--space-xl)];
@@ -224,7 +228,7 @@ html, body {
 
   /* Tags */
   .tag-default {
-    @apply px-[var(--space-sm)] py-[var(--space-xs)] rounded-[var(--radius-xs)] bg-[var(--color-bg-muted)] text-[var(--color-text-main)] text-xs font-medium inline-block;
+    @apply px-[var(--space-sm)] py-[var(--space-xs)] rounded-[var(--radius-xs)] bg-[var(--color-bg-muted)] text-xs font-medium inline-block uppercase;
   }
   
   .tag-primary {
@@ -356,6 +360,18 @@ input[type="checkbox"] {
 
 input[type="radio"] {
   accent-color: #000;
+}
+
+input[type="search"] {
+  border: none;
+  border-radius: 8px;
+  min-height: 60px;
+  padding: 10px;
+  outline: none;
+  background: transparent;
+  font-size: 1rem;
+  padding: 0;
+  margin: 0;
 }
 
 .centered-icon-text {

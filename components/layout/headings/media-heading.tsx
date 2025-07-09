@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react";
+import Divider from "@/components/layout/divider";
 
 interface MediaHeadingProps {
   children: React.ReactNode;
@@ -66,9 +67,7 @@ export default function MediaHeading({
           )}
         </div>
       </div>
-      <svg width="1440" height="83" viewBox="0 0 1440 83" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 0H1440C1440 0 1003.04 83 720 83C436.96 83 0 0 0 0Z" fill="#2A3C82"/>
-      </svg>
+      <Divider direction="up" fill="var(--color-navy-blue)" />
     </div>
   );
 } 

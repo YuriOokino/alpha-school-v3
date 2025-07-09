@@ -28,7 +28,7 @@ export function MegaMenu({ groups, sidebar, onLinkClick }: MegaMenuProps) {
   const gridClass = 'grid grid-cols-4 gap-8 p-8 mx-auto justify-items-stretch w-full';
 
   return (
-    <div className="absolute left-0 right-0 top-full mt-2 bg-white rounded-[var(--radius-lg)] z-50 border-t-2 border-gray-100 w-full">
+    <div className="absolute left-0 right-0 top-full bg-white rounded-b-[var(--radius-lg)] z-50 border-t-2 border-gray-100 w-full">
       <div className={gridClass}>
         {groupColumns.map((group, idx) => (
           <div key={idx} className="flex-1">

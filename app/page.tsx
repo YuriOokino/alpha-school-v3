@@ -15,6 +15,8 @@ import TestimonialsSection from "@/components/homepage-sections/testimonials-sec
 import AlphaGuidesSection from "@/components/homepage-sections/alpha-guides-section"
 import KidsNeedSection from "@/components/homepage-sections/kids-need-section"
 import VideoPlayer from "@/components/ui/video-player"
+import Divider from "@/components/layout/divider"
+import HeroSection from "@/components/homepage-sections/hero-section"
 
 export default function Home() {
   const [campuses, setCampuses] = useState<CampusMetadata[]>([]);
@@ -50,49 +52,20 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen">
-     
-
-        {/* Hero Content */}
-        <div className="relative z-10 container mx-auto px-4 py-10 text-center text-[var(--color-navy-blue)]">
-          <h1 className="section-headline mb-6 max-w-4xl mx-auto">
-          Crush academics. Build life skills. Love school.
-          </h1>
-          <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto drop-shadow-lg">
-            Campuses in Austin, Brownsville, and Miami—and seven new locations launching soon.
-          </p>
-          <Button variant="default" href="/learn-more">Learn More</Button>
-        </div>
-        
- {/* Hero */}
- <div className="pt-20 pb-16 rounded-b-[var(--radius-lg)] overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="top-0 left-0 w-full h-full object-cover z-0"
-          style={{ minHeight: '100%', minWidth: '100%' }}
-          src="https://s3.us-east-1.amazonaws.com/assets.gt.school/hero-video.mp4"
-        />
-        {/* Featured In Section */}
-        <div className="relative z-10 container mx-auto px-4 pt-4 pb-16">
-          <p className="text-center text-sm uppercase tracking-wider mb-8 text-[var(--color-muted)]">As Featured In</p>
-          <FeaturedLogos />
-        </div>
-  </div>
+    <main className="min-h-screen bg-[var(--color-bg-muted)]">
+      <HeroSection />
 
 
       <CommitmentsSection />
-
-      {/* Kids Need Section */}
+      <Divider fill="white" direction="up" />
       <KidsNeedSection />
-      { /* Stats section */}
+      <Divider fill="white" direction="down" />
 
       <StatsSection />
       <LocationsCarouselSection />
-
+      <Divider fill="white" direction="up" />
       <TestimonialsSection />
+      <Divider fill="white" direction="down" />
       <AlphaGuidesSection />
 
       {/* Events & Programs Section */}
