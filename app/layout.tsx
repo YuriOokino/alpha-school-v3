@@ -4,6 +4,7 @@ import "../styles/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Navbar } from "@/components/layout/navigation/navbar"
 import Footer from "@/components/layout/navigation/footer"
+import WhatsNextSection from "@/components/layout/navigation/whats-next-section"
 
 const inter = Inter({ subsets: ["latin"] })
 const workSans = Work_Sans({ subsets: ["latin"] })
@@ -20,6 +21,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet" />
+      </head>
       <body className={workSans.className}>
         <ThemeProvider
           attribute="class"
@@ -32,6 +39,8 @@ export default function RootLayout({
             <main className="flex-grow">
               {children}
             </main>
+            
+            <WhatsNextSection />
             <Footer />
           </div>
         </ThemeProvider>

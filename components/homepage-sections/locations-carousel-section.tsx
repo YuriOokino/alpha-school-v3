@@ -29,19 +29,18 @@ export default function LocationsCarouselSection() {
           />
         )}
         visibleCards={3.5}
-        className="w-full rounded-[var(--radius-lg)] p-[var(--space-xl)] relative bg-[var(--color-warm-dark)]"
+        className="w-full rounded-[var(--radius-lg)] p-[var(--space-xl)] relative bg-[var(--color-bg-muted)]"
         title="Alpha New Locations"
-        titleClassName="text-[var(--color-warm)]"
         buttonText="View all Locations"
         buttonHref="/locations"
-        buttonVariant="pink"
+        buttonVariant="default"
         navigationDotsColor={{
-          active: "bg-[var(--color-warm)]",
-          inactive: "bg-[var(--color-warm)] opacity-30"
+          active: "bg-[var(--color-primary)]",
+          inactive: "bg-[#000000] opacity-30"
         }}
         navigationArrowsColor={{
-          background: "bg-[var(--color-warm)]",
-          icon: "var(--color-warm-dark)"
+          background: "bg-[var(--color-primary)]",
+          icon: "#ffffff"
         }}
       />
     </section>

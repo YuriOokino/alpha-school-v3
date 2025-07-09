@@ -17,7 +17,7 @@ export default function NewsCarouselSidebar({ articles = [] }: NewsCarouselSideb
         <div className="flex items-center justify-between w-full mb-4">
           <h3 className="heading-style-h4">In the News</h3>
         </div>
-        <div className="flex-1 flex items-center justify-center text-center text-gray-500">
+        <div className="flex-1 flex items-center justify-center text-center">
           No news articles available at the moment.
         </div>
       </div>
@@ -35,7 +35,7 @@ export default function NewsCarouselSidebar({ articles = [] }: NewsCarouselSideb
   return (
     <div className="flex flex-col h-full scheme-pink bg-[var(--color-warm)] rounded-[var(--radius-lg)] p-[var(--space-md)]">
       <div className="flex items-center justify-between w-full mb-4">
-        <h3 className="heading-style-h4">In the News</h3>
+        <h3 className="heading-style-h5">In the News</h3>
         <div className="flex items-center rounded-full bg-[#6B3535] hover:bg-[var(--color-warm-dark)] transition-colors px-0.5 py-0.5 gap-1 cursor-pointer">
           <button
             onClick={prevItem}

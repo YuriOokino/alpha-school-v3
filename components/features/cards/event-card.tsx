@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Calendar, MapPin } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { Card } from "@/components/ui/card"
 
 export interface EventCardProps {
   url: string
@@ -16,6 +17,7 @@ export interface EventCardProps {
   category: string // e.g. "SHOWCASE"
   title: string
   address: string // e.g. "8000 SW 56th St, Miami, FL 33155"
+  className?: string
 }
 
 export default function EventCard({
@@ -26,39 +28,38 @@ export default function EventCard({
   category,
   title,
   address,
+  className = "",
 }: EventCardProps) {
   return (
-    <div className="bg-[var(--color-primary-light)] rounded-2xl flex flex-col overflow-hidden">
-      <div className="relative w-full aspect-[3/2]">
+    <Card className={`scheme-light rounded-[var(--radius-md)] p-[var(--space-md)] flex flex-col border-0 shadow-none max-w-[340px] flex-shrink-0 group ${className}`} style={{ height: 480, width: 340 }}>
+      <Link href={url} className="w-full h-[200px] rounded-[var(--radius-sm)] overflow-hidden mb-[var(--space-md)] block relative">
         <Image
           src={image.src}
           alt={image.alt || title}
           fill
-          className="object-cover"
+          className="object-cover transition-transform duration-300 scale-105 group-hover:scale-100"
         />
-      </div>
-      <div className="p-6 flex flex-col flex-1">
-        <div className="flex gap-2 mb-4">
-          <span className="tag-blue">{locationTag}</span>
-          <span className="tag-blue">{category}</span>
+      </Link>
+      <div className="flex-1 flex flex-col gap-y-2">
+        <div className="flex gap-2">
+          <span className="tag-primary">{locationTag}</span>
+          <span className="tag-outline">{category}</span>
         </div>
-        <Link href={url} className="group">
-          <h2 className="text-2xl font-bold mb-4">{title}</h2>
+        <Link href={url}>
+          <h3 className="heading-style-h5">{title}</h3>
         </Link>
-        <div className="flex items-center gap-2 mb-2 font-medium">
-          <Calendar className="h-5 w-5" />
+        <div className="text-[var(--color-primary)] text-sm flex items-center gap-1">
+          <Calendar className="h-4 w-4" />
           <span>{date}</span>
         </div>
-        <div className="flex items-center gap-2 mb-4 font-medium">
-          <MapPin className="h-5 w-5" />
+        <div className="text-[var(--color-primary)] text-sm flex items-top gap-1">
+          <MapPin className="h-4 w-4" />
           <span>{address}</span>
         </div>
-        <Link href={url} className="block">
-          <Button variant="primary" className="w-full">
-            Register now
-          </Button>
-        </Link>
       </div>
-    </div>
+      <Button href={url} className="centered-icon-text mt-4">
+        Register now<span className="material-icons-outlined">arrow_forward</span>
+      </Button>
+    </Card>
   )
 } 

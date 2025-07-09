@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import MainHeading from "@/components/layout/headings/main-heading";
-import WhatsNextSection from "@/components/layout/navigation/whats-next-section";
 import FeatureCard from "@/components/features/content-blocks/feature-card";
 import SimpleCarousel from "@/components/ui/simple-carousel";
 import LocationCard from "@/components/features/cards/location-card";
@@ -127,7 +126,7 @@ const admissionsSteps = [
         </div>
         <div className="flex gap-3 mt-4">
           <Button variant="default" href="mailto:admissions@alpha.school" target="_blank">Schedule Tour</Button>
-          <Button variant="default" href="/events">View Showcase</Button>
+          <Button variant="outline" href="/events">View Showcase</Button>
         </div>
       </>
     )
@@ -141,7 +140,7 @@ const admissionsSteps = [
           Complete our comprehensive application form with student information, academic history, and family details.
         </div>
         <div className="flex gap-3 mt-4">
-          <Button href="#" variant="default">Apply now</Button>
+          <Button href="/admission-forms" variant="default">Apply now</Button>
         </div>
       </>
     )
@@ -155,7 +154,7 @@ const admissionsSteps = [
           After submitting an application and attending a showcase, tour, or having an individual conversation with admissions, you will be eligible to schedule your Shadow Day. This day will let your child experience Alpha firsthand. During their visit, students engage with our core skills AI applications and participate in life skills-focused afternoon workshops.
         </div>
         <div className="mt-4">
-          <h4 className="font-semibold mb-2">Required Documents to Submit Before Shadow Day or Student Observation:</h4>
+          <h4 className="heading-style-h6 mb-2">Required Documents to Submit Before Shadow Day or Student Observation:</h4>
           <ul className="list-none space-y-2">
             <li className="flex items-center gap-2">
               <svg className="w-5 h-5" style={{ color: 'var(--color-primary)' }} viewBox="0 0 20 20" fill="currentColor">
@@ -178,7 +177,7 @@ const admissionsSteps = [
           </ul>
         </div>
         <div className="mt-4">
-          <h4 className="font-semibold mb-2">Required Documents to Sign:</h4>
+          <h4 className="heading-style-h6 mb-2">Required Documents to Sign:</h4>
           <ul className="list-none space-y-2">
             <li className="flex items-center gap-2">
               <svg className="w-5 h-5" style={{ color: 'var(--color-primary)' }} viewBox="0 0 20 20" fill="currentColor">
@@ -271,7 +270,7 @@ const enrollmentSteps = [
           Congratulations on joining the Alpha community! We are thrilled to embark on this transformative journey of growth and opportunity together. We're excited to have you as part of our family!
         </div>
         <div className="mt-4">
-          <h4 className="font-semibold mb-2">What's next?</h4>
+          <h4 className="heading-style-h6 mb-2">What's next?</h4>
           <ul className="list-none space-y-2">
             <li className="flex items-center gap-2">
               <svg className="w-5 h-5" style={{ color: 'var(--color-primary)' }} viewBox="0 0 20 20" fill="currentColor">
@@ -328,182 +327,198 @@ export default function AdmissionPage() {
   );
 
   const AdmissionsContent = () => (
-    <div>
-      <h2 className="text-3xl font-bold mb-4">Admissions Application</h2>
-      <p className="text-lg mb-8 text-gray-600">
-        Here's a step-by-step guide to making your application process smooth and simple.
-      </p>
-      <Accordion type="single" collapsible className="space-y-4">
-        {admissionsSteps.map((step) => (
-          <AccordionItem value={step.key} key={step.key}>
-            <AccordionTrigger>{step.title}</AccordionTrigger>
-            <AccordionContent>{step.content}</AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
-    </div>
+    <Accordion type="single" collapsible className="space-y-4">
+      {admissionsSteps.map((step) => (
+        <AccordionItem value={step.key} key={step.key}>
+          <AccordionTrigger>{step.title}</AccordionTrigger>
+          <AccordionContent>{step.content}</AccordionContent>
+        </AccordionItem>
+      ))}
+    </Accordion>
   );
 
   const EnrollmentContent = () => (
-    <div>
-      <h2 className="text-3xl font-bold mb-4">Enrollment Process</h2>
-      <p className="text-lg mb-8 text-gray-600">
-        Next step – finalizing your enrollment and preparing for an incredible educational journey with Alpha.
-      </p>
-      <Accordion type="single" collapsible className="space-y-4">
-        {enrollmentSteps.map((step) => (
-          <AccordionItem value={step.key} key={step.key}>
-            <AccordionTrigger>{step.title}</AccordionTrigger>
-            <AccordionContent>{step.content}</AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
-    </div>
-  );
-
-  const PlaceholderMedia = ({ title }: { title: string }) => (
-    <div className="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center text-gray-400">
-      <div className="text-center">
-        <div className="text-4xl mb-2">📋</div>
-        <div className="text-sm">{title} Media</div>
-        <div className="text-xs opacity-60">Placeholder</div>
-      </div>
-    </div>
+    <Accordion type="single" collapsible className="space-y-4">
+      {enrollmentSteps.map((step) => (
+        <AccordionItem value={step.key} key={step.key}>
+          <AccordionTrigger>{step.title}</AccordionTrigger>
+          <AccordionContent>{step.content}</AccordionContent>
+        </AccordionItem>
+      ))}
+    </Accordion>
   );
 
   return (
     <div>
       <MainHeading
-        variant="primary"
         description="Ready to get started? Here's everything you need to know about applying to Alpha School."
+        variant="blue"
+        tagline="Admission guide"
       >
         Applications are open!
       </MainHeading>
       
       <section className="alpha-section">
-        <div className="space-y-8">
-          
-          {/* Admissions Application FeatureCard */}
-          <FeatureCard 
-            media={<PlaceholderMedia title="Admissions" />}
-          >
-            <AdmissionsContent />
-          </FeatureCard>
+        <div className="space-y-16">
+          {/* Admissions Application Section */}
+          <div className="two-column-flex max-w-5xl mx-auto mb-24">
+            {/* Left: Heading and Description */}
+            <div className="flex-1">
+              <h2 className="heading-style-h4 mb-4">Admission Application</h2>
+              <p>
+                Here's a step-by-step guide to making your application process smooth and simple.
+              </p>
+            </div>
+            {/* Right: Accordion */}
+            <div className="flex-1">
+              <AdmissionsContent />
+            </div>
+          </div>
 
-          {/* Enrollment Process FeatureCard */}
-          <FeatureCard 
-            media={<PlaceholderMedia title="Enrollment" />}
-          >
-            <EnrollmentContent />
-          </FeatureCard>
-          
+          {/* Enrollment Process Section */}
+          <div className="two-column-flex max-w-5xl mx-auto">
+            {/* Left: Heading and Description */}
+            <div className="flex-1">
+              <h2 className="heading-style-h4 mb-4">Enrollment Process</h2>
+              <p>
+                Next step – finalizing your enrollment and preparing for an incredible educational journey with Alpha.
+              </p>
+            </div>
+            {/* Right: Accordion */}
+            <div className="flex-1">
+              <EnrollmentContent />
+            </div>
+          </div>
         </div>
       </section>
 
       {/* New Alpha Section with Colored Content Card */}
-      <section className="alpha-section">
-        <h2 className="section-headline text-center mb-8">Important details</h2>
-        <div className="section-content scheme-lightblue">
+      <section className="alpha-section pt-[100px]">
+        <SectionHeading
+          title="Important details"
+          description="We would be delighted to answer any questions you may have about the admissions and enrollment process."
+          buttonText="Contact Us"
+          buttonHref="mailto:admissions@alpha.school"
+        />
+        <div className="section-content bg-[var(--color-light-green)] max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Left Column - Important Details */}
             <div className="space-y-8">
               {/* Deposit Section */}
               <div>
-                <h3 className="text-2xl font-semibold leading-none tracking-tight mb-4 text-[var(--color-primary)]">Deposit</h3>
-                <p className="text-[var(--color-text-main)] mb-4">
+                <h3 className="heading-style-h5 text-[var(--color-dark-green)]">Deposit</h3>
+                <p className="mb-4">
                   Once admission is offered to a student, a $1,000 non-refundable deposit is required to secure your student's spot at Alpha. <strong>This deposit will be deducted from your overall tuition balance.</strong>
                 </p>
               </div>
 
               {/* Sibling Discounts Section */}
               <div>
-                <h3 className="text-2xl font-semibold leading-none tracking-tight mb-4 text-[var(--color-primary)]">Sibling Discounts</h3>
-                <p className="text-[var(--color-text-main)] mb-4">
+                <h3 className="heading-style-h5 text-[var(--color-dark-green)]">Sibling Discounts</h3>
+                <p className="mb-4">
                   We offer a 5% discount on tuition for the second child and beyond in families with two or more children enrolled at our school.
                 </p>
               </div>
 
               {/* Immunization Requirements Section */}
               <div>
-                <h3 className="text-2xl font-semibold leading-none tracking-tight mb-4 text-[var(--color-primary)] flex items-center gap-2">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[var(--color-primary)]">
-                    <path d="M10 0C4.477 0 0 4.477 0 10C0 15.523 4.477 20 10 20C15.523 20 20 15.523 20 10C20 4.477 15.523 0 10 0ZM10 18C5.589 18 2 14.411 2 10C2 5.589 5.589 2 10 2C14.411 2 18 5.589 18 10C18 14.411 14.411 18 10 18ZM9 5V11H11V5H9ZM9 13V15H11V13H9Z" fill="currentColor"/>
-                  </svg>
-                  Immunization Requirements
-                </h3>
+              <Button radius="small" className="uppercase font-normal bg-[var(--color-dark-green)] text-[var(--color-light-green)]">
+                Immunization Requirements
+                <span className="material-icons-outlined">info</span>
+              </Button>
               </div>
 
               {/* Admissions Downloads Section */}
               <div>
-                <h3 className="text-2xl font-semibold leading-none tracking-tight mb-4 text-[var(--color-primary)]">Admissions Downloads</h3>
-                <div className="space-y-2">
-                  <div>
-                    <a href="#" className="text-[var(--color-primary)] hover:underline transition-colors">
-                      Previous School Records
-                    </a>
-                  </div>
-                  <div>
-                    <a href="#" className="text-[var(--color-primary)] hover:underline transition-colors">
-                      Physical Exam Form
-                    </a>
-                  </div>
-                  <div>
-                    <a href="#" className="text-[var(--color-primary)] hover:underline transition-colors">
-                      Immunization Form
-                    </a>
-                  </div>
+                <h3 className="text-[var(--color-dark-green)] heading-style-h5 mb-4">Admissions Downloads</h3>
+                <div className="space-y-3">
+                  <Button variant="outline" radius="small" href="#" className="icon-text-center uppercase text-[var(--color-dark-green)] outline-[var(--color-dark-green)]">
+                      Previous School Records<span className="material-icons-outlined text-[20px]">file_download</span>
+                  </Button>
+                  <Button variant="outline" radius="small" href="#" className="icon-text-center uppercase text-[var(--color-dark-green)] outline-[var(--color-dark-green)]">
+                      Physical exam form<span className="material-icons-outlined text-[20px]">file_download</span>
+                  </Button>
+                  <Button variant="outline" radius="small" href="#" className="icon-text-center uppercase text-[var(--color-dark-green)] outline-[var(--color-dark-green)]">
+                      Immunization form<span className="material-icons-outlined text-[20px]">file_download</span>
+                  </Button>
                 </div>
               </div>
             </div>
 
             {/* Right Column - Contact Information */}
             <div>
-              <p className="text-[var(--color-text-main)] mb-8">
-                We would be delighted to answer any questions you may have about the admissions and enrollment process.
-              </p>
+             <h4 className="heading-style-h5 text-[var(--color-dark-green)] mb-6">Alpha School Contacts</h4>
               
               <div className="space-y-8">
                 {/* Alpha School Austin */}
-                <div className="flex items-start gap-4">
+                <div className="flex items-center gap-4">
                   <div className="w-16 h-16 rounded-full bg-gray-300 flex-shrink-0 overflow-hidden">
                     <div className="w-full h-full bg-gray-400"></div>
                   </div>
                   <div>
-                    <h4 className="text-xl font-semibold text-[var(--color-primary)] mb-1">Alpha School Austin</h4>
-                    <p className="text-[var(--color-text-main)]">Joanna Lovejoy | admissions@alpha.school</p>
+                    <h6 className="text-[var(--color-dark-green)] mb-1">Alpha School Austin</h6>
+                    <p className="centered-icon-text">
+                      <span className="material-icons-outlined">account_circle</span>
+                      Joanna Lovejoy
+                      </p>
+                    <p className="centered-icon-text">
+                      <span className="material-icons-outlined">mail_outline</span>
+                      <a href="mailto:admissions@alpha.school">admissions@alpha.school</a>
+                    </p>
                   </div>
                 </div>
 
                 {/* Alpha School Miami */}
-                <div className="flex items-start gap-4">
+                <div className="flex items-center gap-4">
                   <div className="w-16 h-16 rounded-full bg-gray-300 flex-shrink-0 overflow-hidden">
                     <div className="w-full h-full bg-gray-400"></div>
                   </div>
                   <div>
-                    <h4 className="text-xl font-semibold text-[var(--color-primary)] mb-1">Alpha School Miami</h4>
-                    <p className="text-[var(--color-text-main)]">Debby Lichtner | admissions.miami@alpha.school</p>
+                    <h6 className="text-[var(--color-dark-green)] mb-1">Alpha School Miami</h6>
+                    <p className="centered-icon-text">
+                      <span className="material-icons-outlined">account_circle</span>
+                      Debby Lichtner
+                    </p>
+                    <p className="centered-icon-text">
+                      <span className="material-icons-outlined">mail_outline</span>
+                      <a href="mailto:admissions.miami@alpha.school">admissions.miami@alpha.school</a>
+                    </p>
                   </div>
                 </div>
 
                 {/* Alpha School Brownsville */}
-                <div className="flex items-start gap-4">
+                <div className="flex items-center gap-4">
                   <div className="w-16 h-16 rounded-full bg-gray-300 flex-shrink-0 overflow-hidden">
                     <div className="w-full h-full bg-gray-400"></div>
                   </div>
                   <div>
-                    <h4 className="text-xl font-semibold text-[var(--color-primary)] mb-1">Alpha School Brownsville</h4>
-                    <p className="text-[var(--color-text-main)]">Kathrine Ledesma | admissions.brownsville@alpha.school</p>
+                    <h6 className="text-[var(--color-dark-green)] mb-1">Alpha School Brownsville</h6>
+                    <p className="centered-icon-text">
+                      <span className="material-icons-outlined">account_circle</span>
+                      Kathrine Ledesma
+                    </p>
+                    <p className="centered-icon-text">
+                      <span className="material-icons-outlined">mail_outline</span>
+                      <a href="mailto:admissions.brownsville@alpha.school">admissions.brownsville@alpha.school</a>
+                    </p>
                   </div>
                 </div>
 
                 {/* Alpha Expansion Schools */}
-                <div className="flex items-start gap-4">
+                <div className="flex items-center gap-4">
                   <div className="w-16 h-16 rounded-full bg-gray-300 flex-shrink-0 overflow-hidden">
                     <div className="w-full h-full bg-gray-400"></div>
                   </div>
                   <div>
-                    <h4 className="text-xl font-semibold text-[var(--color-primary)] mb-1">Alpha Expansion Schools</h4>
-                    <p className="text-[var(--color-text-main)]">Rachel Goodlad | rachel.goodlad@alpha.school</p>
+                    <h6 className="text-[var(--color-dark-green)] mb-1">Alpha Expansion Schools</h6>
+                    <p className="centered-icon-text">
+                      <span className="material-icons-outlined">account_circle</span>
+                      Rachel Goodlad
+                    </p>
+                    <p className="centered-icon-text">
+                      <span className="material-icons-outlined">mail_outline</span>
+                      <a href="mailto:rachel.goodlad@alpha.school">rachel.goodlad@alpha.school</a>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -538,7 +553,6 @@ export default function AdmissionPage() {
         />
       </section>
       
-      <WhatsNextSection />
     </div>
   );
 }

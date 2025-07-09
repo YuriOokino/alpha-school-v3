@@ -32,34 +32,34 @@ const LocationIcon = () => (
 
 export default function LocationCard({ heroImage, name, address, tuition, applicationStatus, buttonHref = "#", buttonClassName = "", className = "" }: LocationCardProps) {
   return (
-    <Card className={`scheme-pink rounded-[var(--radius-md)] p-[var(--space-md)] flex flex-col justify-between border-0 shadow-none max-w-[340px] flex-shrink-0 group ${className}`} style={{ height: 480, width: 340 }}>
+    <Card className={`bg-[var(--color-sky-blue)] rounded-[var(--radius-md)] p-[var(--space-md)] flex flex-col justify-between border-0 shadow-none max-w-[340px] flex-shrink-0 group ${className}`} style={{ height: 480, width: 340 }}>
       <Link href={buttonHref} className="w-full h-[200px] rounded-[var(--radius-sm)] overflow-hidden mb-[var(--space-md)] block relative">
         <Image src={heroImage} alt={name} fill className="object-cover transition-transform duration-300 scale-105 group-hover:scale-100" />
       </Link>
       {applicationStatus && (
         <div className="flex justify-start mb-[var(--space-sm)]">
-          <div className="tag-maroon">{applicationStatus}</div>
+          <div className="tag-primary">{applicationStatus}</div>
         </div>
       )}
       <div className="flex-1 flex flex-col gap-y-2">
         <Link href={buttonHref}>
-          <h3 className="font-bold text-[var(--color-warm-dark)]">{name}</h3>
+          <h3 className="heading-style-h5 text-[var(--color-navy-blue)]">{name}</h3>
         </Link>
         
-        <div className="text-[var(--color-warm-dark)] text-sm flex items-top gap-1">
+        <div className="text-[var(--color-navy-blue)] text-sm flex items-top gap-1">
           <LocationIcon />
           {address}
         </div>
         {tuition && (
-          <div className="text-[var(--color-warm-dark)] text-sm flex items-center gap-1">
+          <div className="text-[var(--color-navy-blue)] text-sm flex items-center gap-1">
             <Link href="/downloads/Alpha School - Tuition Overview.pdf" target="_blank" rel="noopener noreferrer">
               <InfoIcon />
             </Link>
-            <span className="font-bold">Tuition: {tuition}</span>
+            <span className="text-icon-centered">Tuition: {tuition}</span>
           </div>
         )}
       </div>
-      <Button href={buttonHref} variant="maroon" className={`w-full mt-[var(--space-sm)] ${buttonClassName}`}>Apply now</Button>
+      <Button href={buttonHref} className={`w-full mt-[var(--space-sm)] bg-[var(--color-navy-blue)] ${buttonClassName}`}>Apply now</Button>
     </Card>
   )
 } 

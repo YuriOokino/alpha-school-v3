@@ -3,6 +3,7 @@ import { campuses } from '../content/campuses'
 
 export interface CampusMetadata {
   name: string
+  stateCode: string
   status: 'current' | 'upcoming'
   address: string
   tuition: string

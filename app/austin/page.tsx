@@ -1,41 +1,76 @@
-import MainHeading from "@/components/layout/headings/main-heading"
-import WhatsNextSection from "@/components/layout/navigation/whats-next-section"
+import MediaHeading from "@/components/layout/headings/media-heading"
 import { Button } from "@/components/ui/button"
-import FeatureCard from "@/components/features/content-blocks/feature-card"
 import EventCard from "@/components/features/cards/event-card"
 import { loadEvents } from "@/utils/content-loader.server"
 import { CampusApplicationLink } from "@/components/ui/campus-application-link"
+import VideoPlayer from "@/components/ui/video-player"
+import EventsCarousel from "@/components/features/content-blocks/events-carousel"
 
 export default async function AustinPage() {
   const events = await loadEvents()
   
   return (
-    <main>
+    <main className="bg-[var(--color-bg-muted)]">
       {/* Main Title Section */}
-      <MainHeading>
-        Alpha School | Private School in Austin
-      </MainHeading>
+      <MediaHeading
+        variant="blue"
+        tagline="Alpha School"
+        media={<img src="assets/locations/austin/hero/austin-hero.webp" alt="Austin Campus" />}
+      >
+        Private School in Austin
+        <p className="font-semibold">PK4 - 6th Grade</p>
+        <p className="centered-icon-text mb-4"><span className="material-icons-outlined">location_on</span>1201 Spyglass Drive, Austin, Texas 78746</p>
+        
+        <p className="font-semibold">
+          7th - 8th Grade</p>
+        <p className="centered-icon-text mb-4"><span className="material-icons-outlined">location_on</span>201 Colorado Street, Austin, Texas 78701</p>
+        <p className="mb-2">
+          <strong>Email:</strong> admissions@alpha.school
+        </p>
+        <CampusApplicationLink 
+          campusName="Austin" 
+          className="centered-icon-text mt-[var(--space-md)] bg-[var(--color-sky-blue)] text-black hover:bg-[var(--color-sky-blue)]"
+        >
+          Apply Today<span className="material-icons-outlined">arrow_forward</span>
+        </CampusApplicationLink>
+      </MediaHeading>
 
       {/* Welcome Section */}
-      <section className="alpha-section">
-        <FeatureCard
-          className="scheme-lightblue"
-          media={{
-            video: "https://player.vimeo.com/video/941700697?color&autopause=0&loop=0&muted=0&title=1&portrait=1&byline=1#t=",
-            poster: "/assets/feature-video-overlays/austin-video-preview.webp"
-          }}
-        >
-          <h2 className="heading-style-h2 mb-4">Welcome to the Future of Education</h2>
-          <p className="mb-8">Imagine a school where students love to learn.</p>
-          <p className="mb-8">At Alpha Austin, our revolutionary 2 Hour Learning model combines cutting-edge technology with personalized, one-on-one academic instruction, empowering students to rank in the top 1-2% nationally.</p>
-          <p className="mb-8">Afternoons focus on life skills through hands-on workshops, preparing students to thrive beyond academics. With our guides, students receive tailored support to meet their unique potential. At Alpha Austin, we're not just preparing students for tests; we're preparing them for limitless futures.</p>
-          <p>Alpha Austin is open and enrolling. Come see how we're redefining education – join us for a showcase!</p>
-        </FeatureCard>
-      </section>
-
+      <div className="alpha-section">
+        <div className="grid grid-rows-2 md:grid-cols-2 gap-8 mb-[var(--space-2xl)]">
+          <div>
+            <h2 className="heading-style-h2 mb-4">Welcome to the Future of Education</h2>
+          </div>
+          <div></div>
+          <div>
+            <p className="mb-2">Imagine a school where students love to learn.</p>
+            <p className="mb-2">At Alpha Austin, our revolutionary 2 Hour Learning model combines cutting-edge technology with personalized, one-on-one academic instruction, empowering students to rank in the top 1-2% nationally.</p>
+          </div>
+          <div>
+            <p className="mb-2">Afternoons focus on life skills through hands-on workshops, preparing students to thrive beyond academics. With our guides, students receive tailored support to meet their unique potential. At Alpha Austin, we're not just preparing students for tests; we're preparing them for limitless futures.</p>
+            <p>Alpha Austin is open and enrolling. Come see how we're redefining education – join us for a showcase!</p>
+          </div>
+        </div>
+        <div className="flex justify-center">
+          <VideoPlayer
+            videoUrl="https://player.vimeo.com/video/941700697"
+            posterImage="/assets/feature-video-overlays/austin-video-preview.webp"
+            posterAlt="Austin Campus Video Preview"
+            width="100%"
+            height={600}
+            className="max-w-5xl rounded-[var(--radius-lg)]"
+          />
+        </div>
+      </div>
+      {/* Curve Divider */}
+      <div className="bg-[var(--color-bg-muted)]">
+        <svg width="1440" height="83" viewBox="0 0 1440 83" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 83H1440C1440 83 1003.04 0 720 0C436.96 0 0 83 0 83Z" fill="white"/>
+        </svg>
+      </div>
       {/* Campus & Resources Section */}
-      <section className="alpha-section">
-        <div className="scheme-pink w-full rounded-[var(--radius-lg)] p-[var(--space-xl)] flex flex-col md:flex-row gap-[var(--space-xl)] items-start bg-[var(--color-bg-muted)]">
+      <section className="alpha-section bg-white">
+        <div className="bg-[var(--color-light-green)] w-full rounded-[var(--radius-lg)] p-[var(--space-xl)] flex flex-col md:flex-row gap-[var(--space-xl)] items-start bg-[var(--color-bg-muted)]">
           <div className="flex-1">
             <h2 className="heading-style-h2 mb-4">Austin Campus</h2>
             <ul className="body-text mb-4">
@@ -80,58 +115,36 @@ export default async function AustinPage() {
               <strong>Email:</strong> admissions@alpha.school
             </p>
             <CampusApplicationLink 
-              campusName="Austin" 
-              variant="default" 
-              className="mt-[var(--space-md)]"
-            >
-              Apply Today!
-            </CampusApplicationLink>
+          campusName="Austin" 
+          className="centered-icon-text mt-[var(--space-md)] bg-[var(--color-dark-green)]"
+        >
+          Apply Today<span className="material-icons-outlined">arrow_forward</span>
+        </CampusApplicationLink>
           </div>
           <div className="flex-1">
-            <h2 className="heading-style-h2 mb-4">Quick Resources</h2>
-            <div className="flex flex-col gap-3 mb-4">
-              <Button variant="maroon" className="w-full flex justify-between items-center text-white" href="/admission">
+            <h2 className="heading-style-h5 mb-4">Quick Resources</h2>
+            <div className="space-y-2">
+              <Button radius="small" className="mr-4 bg-[var(--color-dark-green)] text-[var(--color-light-green)] uppercase" href="/admission">
                 Admission Guide
-                <span className="ml-2 flex-shrink-0" aria-hidden="true">
-                    <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5.293 12.793L6.707 14.207L13.414 7.49997L6.707 0.792969L5.293 2.20697L9.586 6.49997H0V8.49997H9.586L5.293 12.793Z" fill="currentColor"/>
-                    </svg>
-                </span>
               </Button>
-              <Button variant="maroon" className="w-full flex justify-between items-center text-white" href="/video-library">
-                Video Library
-                <span className="ml-2 flex-shrink-0" aria-hidden="true">
-                    <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5.293 12.793L6.707 14.207L13.414 7.49997L6.707 0.792969L5.293 2.20697L9.586 6.49997H0V8.49997H9.586L5.293 12.793Z" fill="currentColor"/>
-                    </svg>
-                </span>
+              <Button variant="outline" radius="small" className="icon-text-center outline-[var(--color-dark-green)] uppercase" href="/downloads/Alpha School - Sample School Schedule.pdf">
+                School schedule
+                <span className="material-icons-outlined">file_download</span>
               </Button>
-              <Button variant="outline" className="w-full flex justify-between items-center" href="/downloads/Alpha School - Tuition Overview.pdf" target="_blank">
+              <Button variant="outline" radius="small" className="uppercase outline-[var(--color-dark-green)]uppercase icon-text-center mr-4" href="/downloads/Alpha School - Tuition Overview.pdf" target="_blank">
                 Tuition Overview
-                <span className="ml-2 flex-shrink-0" aria-hidden="true">
-                  <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 9L11 5.25H8.75V0H7.25V5.25H5L8 9Z" fill="currentColor"/>
-                    <path d="M14 10.5H2V5.25H0.5V10.5C0.5 11.3273 1.17275 12 2 12H14C14.8273 12 15.5 11.3273 15.5 10.5V5.25H14V10.5Z" fill="currentColor"/>
-                  </svg>
-                </span>
+                <span className="material-icons-outlined">file_download</span>
               </Button>
-              <Button variant="outline" className="w-full flex justify-between items-center" href="/downloads/Alpha School - Sample School Schedule.pdf" target="_blank">
-                School Schedule
-                <span className="ml-2 flex-shrink-0" aria-hidden="true">
-                  <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 9L11 5.25H8.75V0H7.25V5.25H5L8 9Z" fill="currentColor"/>
-                    <path d="M14 10.5H2V5.25H0.5V10.5C0.5 11.3273 1.17275 12 2 12H14C14.8273 12 15.5 11.3273 15.5 10.5V5.25H14V10.5Z" fill="currentColor"/>
-                  </svg>
-                </span>
+              <Button radius="small"className="mr-4 bg-[var(--color-dark-green)] text-[var(--color-light-green)] uppercase" href="/video-library">
+                Video library
               </Button>
-              <Button variant="outline" className="w-full flex justify-between items-center" href="/downloads/Alpha School 25-26 Calendar.pdf" target="_blank">
+              <Button variant="outline" radius="small" className="mr-4 outline-[var(--color-dark-green)] icon-text-centered uppercase" href="/downloads/Alpha School 25-26 Calendar.pdf" target="_blank">
                 24/25 Calendar
-                <span className="ml-2 flex-shrink-0" aria-hidden="true">
-                  <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 9L11 5.25H8.75V0H7.25V5.25H5L8 9Z" fill="currentColor"/>
-                    <path d="M14 10.5H2V5.25H0.5V10.5C0.5 11.3273 1.17275 12 2 12H14C14.8273 12 15.5 11.3273 15.5 10.5V5.25H14V10.5Z" fill="currentColor"/>
-                  </svg>
-                </span>
+                <span className="material-icons-outlined">file_download</span>
+              </Button>
+              <Button variant="outline" radius="small" className="outline-[var(--color-dark-green)] icon-text-centered uppercase" href="#" target="_blank">
+                View brochure
+                <span className="material-icons-outlined">file_download</span>
               </Button>
             </div>
           </div>
@@ -139,8 +152,8 @@ export default async function AustinPage() {
       </section>
 
       {/* Events & Programs Section */}
-      <section className="alpha-section">
-        <h2 className="heading-style-h2 text-center mb-4">EVENTS & PROGRAMS</h2>
+      <section className="alpha-section bg-white">
+        <h2 className="heading-style-h2 text-center mb-4">Events & Programs</h2>
         <p className="body-text text-center mb-8 max-w-2xl mx-auto">
           Explore our showcases to tour the campus, and enjoy our camps and afterschool programs offering exciting, hands-on experiences for kids.
         </p>
@@ -149,17 +162,19 @@ export default async function AustinPage() {
           e.title.toLowerCase().includes("austin") || 
           e.address.toLowerCase().includes("austin")
         ).length > 0 ? (
-          <div className="flex flex-col md:flex-row flex-wrap gap-[var(--space-xl)] justify-center">
-            {events.filter(e => 
-              e.locationTag.toLowerCase().includes("austin") || 
-              e.title.toLowerCase().includes("austin") || 
-              e.address.toLowerCase().includes("austin")
-            ).map((event, idx) => (
-              <div className="max-w-md w-full" key={event.slug + idx}>
-                <EventCard {...event} url={`/events/${event.slug}`} />
-              </div>
-            ))}
-          </div>
+          <EventsCarousel 
+            events={events} 
+            locationFilter="austin" 
+            className="bg-[var(--color-bg-muted)]"
+            navigationDotsColor={{
+              active: "bg-[var(--color-navy-blue)]",
+              inactive: "bg-[#B0B0B0]"
+            }}
+            navigationArrowsColor={{
+              background: "bg-[var(--color-navy-blue)]",
+              icon: "white"
+            }}
+          />
         ) : (
           <div className="text-center">
             <p className="body-text mb-4">No events currently scheduled for Austin.</p>
@@ -169,9 +184,6 @@ export default async function AustinPage() {
           </div>
         )}
       </section>
-
-      {/* WhatsNextSection */}
-      <WhatsNextSection />
     </main>
   )
 } 

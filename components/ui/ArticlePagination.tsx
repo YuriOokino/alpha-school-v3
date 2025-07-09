@@ -17,7 +17,7 @@ const ArticlePagination: React.FC<ArticlePaginationProps> = ({ currentIndex, ite
         {currentIndex > 0 ? (
           <Link
             href={`${basePath}/${items[currentIndex - 1][idKey]}`}
-            className="heading-style-h4 text-[var(--color-text-main)] truncate"
+            className="heading-style-h6 text-[var(--color-text-main)] truncate"
             style={{ maxWidth: '100%' }}
           >
             {items[currentIndex - 1].title}
@@ -34,7 +34,7 @@ const ArticlePagination: React.FC<ArticlePaginationProps> = ({ currentIndex, ite
         {currentIndex < items.length - 1 ? (
           <Link
             href={`${basePath}/${items[currentIndex + 1][idKey]}`}
-            className="heading-style-h4 text-[var(--color-text-main)] truncate text-right"
+            className="heading-style-h6 text-[var(--color-text-main)] truncate text-right"
             style={{ maxWidth: '100%' }}
           >
             {items[currentIndex + 1].title}

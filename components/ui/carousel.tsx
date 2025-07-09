@@ -12,7 +12,7 @@ interface CarouselProps {
   titleClassName?: string;
   buttonText?: string;
   buttonHref?: string;
-  buttonVariant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | "lightBlue" | "maroon" | "pink" | "filter" | "filterOutline";
+  buttonVariant?: "default" | "outline" | "primary" | "link" | "lightBlue" | "maroon" | "pink" | "filter" | "filterOutline" | null | undefined;
   navigationDotsColor?: {
     active: string;
     inactive: string;
@@ -57,7 +57,7 @@ export default function Carousel({
     <div className={`w-full rounded-[var(--radius-lg)] p-[var(--space-xl)] relative ${className}`}>
       {(title || buttonText) && (
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-[var(--space-lg)] gap-[var(--space-md)]">
-          {title && <h3 className={`section-headline font-bold ${titleClassName}`}>{title}</h3>}
+          {title && <h2 className={`${titleClassName}`}>{title}</h2>}
           {buttonText && buttonHref && (
             <Button variant={buttonVariant} className="gap-2" href={buttonHref}>
               {buttonText}
@@ -96,7 +96,7 @@ export default function Carousel({
           {items.map((_, index) => (
             <button
               key={index}
-              className={`w-4 h-4 rounded-full ${index === activeIndex ? navigationDotsColor.active : navigationDotsColor.inactive} transition-colors`}
+              className={`w-2 h-2 rounded-full ${index === activeIndex ? navigationDotsColor.active : navigationDotsColor.inactive} transition-colors`}
               onClick={() => setActiveIndex(index)}
               aria-label={`Go to slide ${index + 1}`}
             />

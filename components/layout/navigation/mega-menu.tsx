@@ -1,7 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import LocationCard from './location-card';
-import ArticleCard from "@/components/features/cards/article-card";
 import NewsCarouselSidebar from '@/components/features/content-blocks/news-carousel-sidebar';
 
 interface MegaMenuItem {

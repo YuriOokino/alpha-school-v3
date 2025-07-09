@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import FeatureCard from "@/components/features/content-blocks/feature-card";
 import { useState } from "react";
 import MainHeading from "@/components/layout/headings/main-heading";
-import WhatsNextSection from "@/components/layout/navigation/whats-next-section";
+
 import Link from "next/link";
 
 export default function TheProgramPage() {
@@ -235,7 +235,6 @@ export default function TheProgramPage() {
           </ul>
         </FeatureCard>
       </section>
-      <WhatsNextSection />
     </>
   );
 } 

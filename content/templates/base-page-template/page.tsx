@@ -13,8 +13,8 @@ export default function BasePageTemplate() {
         description="Add your main page description here"
         actions={
           <>
-            <Button variant="default">Learn More</Button>
-            <Button variant="outline">Contact Us</Button>
+            <Button color="default">Learn More</Button>
+            <Button color="outline">Contact Us</Button>
           </>
         }
       >
@@ -54,7 +54,7 @@ export default function BasePageTemplate() {
           <p className="text-gray-700 mb-4">
             Add your feature description here. This is where you can explain the key benefits or highlights of this feature.
           </p>
-          <Button variant="default">Learn More</Button>
+          <Button color="default">Learn More</Button>
         </FeatureCard>
       </section>
       

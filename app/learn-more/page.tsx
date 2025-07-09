@@ -2,12 +2,18 @@
 // This is a copy of the learn-more page for design testing purposes
 
 import React, { useState } from "react"
-import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import SimpleCarousel from "@/components/ui/simple-carousel"
-import WhatsNextSection from "@/components/layout/navigation/whats-next-section"
+import MainHeading from "@/components/layout/headings/main-heading"
+
+const howDidYouHearOptions = [
+  "Google Search",
+  "Social Media",
+  "Friend/Family",
+  "Event",
+  "Other"
+];
 
 export default function LearnMorePage() {
   // Contact form state
@@ -55,150 +61,148 @@ export default function LearnMorePage() {
     console.log({ firstName, lastName, email, phone, street, city, state, zip, isParent, selectedSchools, howDidYouHear, additionalInfo, consent });
   };
 
-  // Prepare card data
-  const carouselCards = [
-    {
-      title: "Admissions",
-      description: "Select your campus, submit your application, and take the first step toward providing your child with an education built for the future.",
-      button: "Apply Now!"
-    },
-    {
-      title: "Bring Alpha to your City",
-      description: "Interested in our new locations, starting a Micro School, or looking to see Alpha in your area? Be part of our movement to redefine education by bringing Alpha to new communities.",
-      button: "Get in Touch"
-    },
-    {
-      title: "Careers",
-      description: "Thanks for your interest! All hiring is handled exclusively through Crossover. While we don't conduct casual interviews or respond directly to inquiries, we invite you to explore the exciting career opportunities available.",
-      button: "Discover Careers"
-    },
-    {
-      title: "Press",
-      description: "Interested in featuring Alpha School in your story or learning more about our innovative approach to education? We're happy to connect. <span class='font-bold'>Media inquiries welcome.</span>",
-      button: "Contact Press"
-    },
-    {
-      title: null,
-      description: "Need to <span class='font-bold'>request a transcript or test scores?</span><br/>Email <span class='font-bold'>registrar@alpha.school</span>",
-      button: null
-    }
-  ];
-
   return (
     <main>
       <section className="alpha-section">
-        <h1 className="section-headline text-center mb-[var(--space-md)]">Learn More</h1>
-        <p className="text-lg text-[#111827] text-center max-w-[60vw] mx-auto mb-[var(--space-lg)]">
-          Discover more about Alpha School, our philosophy, and how we empower students to thrive in a modern world.
-        </p>
+        <MainHeading
+          tagline="Learn more"
+          description="Discover more about Alpha School, our philosophy, and how we empower students to thrive in a modern world."
+        >
+          Get in touch
+        </MainHeading>
+        
         <div className="alpha-section">
-          <div className="max-w-[1200px] mx-auto">
-            <SimpleCarousel
-              items={carouselCards}
-              visibleCards={2}
-              className="mx-auto"
-              renderItem={(card, idx) => (
-                <div className="px-6">
-                  <Card key={idx} className="bg-[#FFD1D1] text-[#5C2727] rounded-3xl p-6 flex flex-col gap-4 shadow-none border-0 h-full">
-                    {card.title && <h2 className="text-2xl font-bold mb-2">{card.title}</h2>}
-                    <p className="mb-4 flex-grow" dangerouslySetInnerHTML={{ __html: card.description }} />
-                    {card.button && <Button variant="maroon">{card.button}</Button>}
-                  </Card>
+          <div className="alpha-form">
+            <form className="space-y-6" onSubmit={handleSubmit}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-8 mb-16">
+                <div>
+                  <div className="gap-4">
+                    <h2 className="heading-style-h5 mb-4">Admissions</h2>
+                    <p className="mb-4">Select your campus, submit your application, and take the first step toward providing your child with an education built for the future.</p>
+                    <Button size="small" href="/application">Apply Now<span className="ml-2 material-icons-outlined text-base">arrow_forward</span></Button>
+                  </div>
                 </div>
-              )}
-            />
-          </div>
-        </div>
-        {/* Contact Form below cards */}
-        <div className="alpha-section">
-          <div className="bg-[#B9EDFF] text-[#111827] rounded-[40px] p-16 flex flex-col gap-4 shadow-none border-0 mx-auto">
-            
-            <form className="space-y-4" onSubmit={handleSubmit}>
-              <div className="flex gap-4">
-                <div className="flex-1">
-                  <label htmlFor="firstName" className="block mb-1 font-medium">First Name</label>
+                <div>
+                  <div className="gap-4">
+                    <h2 className="heading-style-h5 mb-4">Bring Alpha to your City</h2>
+                    <p className="mb-4">Interested in our new locations, starting a Micro School, or looking to see Alpha in your area? Be part of our movement to redefine education by bringing Alpha to new communities.</p>
+                    <Button size="small" href="/bring-alpha-to-your-city">Get in Touch<span className="ml-2 material-icons-outlined text-base">arrow_forward</span></Button>
+                  </div>
+                </div>
+                <div>
+                  <div className="gap-4">
+                    <h2 className="heading-style-h5 mb-4">Careers</h2>
+                    <p className="mb-4">Thanks for your interest! All hiring is handled exclusively through Crossover. While we don't conduct casual interviews or respond directly to inquiries, we invite you to explore the exciting career opportunities available.</p>
+                    <Button size="small">Discover Careers<span className="ml-2 material-icons-outlined text-base">arrow_forward</span></Button>
+                  </div>
+                </div>
+                <div>
+                  <div className="gap-4">
+                    <h2 className="heading-style-h5 mb-4">Press</h2>
+                    <p className="mb-4">Interested in featuring Alpha School in your story or learning more about our innovative approach to education? We're happy to connect. <span className="font-bold">Media inquiries welcome.</span></p>
+                    <Button size="small">Contact Press<span className="ml-2 material-icons-outlined text-base">arrow_forward</span></Button>
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col md:flex-row gap-4">
+                <div className="field-wrapper">
+                  <label htmlFor="firstName" className="xs-label">First Name<span>*</span></label>
                   <Input
                     id="firstName"
                     type="text"
                     value={firstName}
                     onChange={e => setFirstName(e.target.value)}
                     required
+                    className="field-input"
                   />
                 </div>
-                <div className="flex-1">
-                  <label htmlFor="lastName" className="block mb-1 font-medium">Last Name</label>
+                <div className="field-wrapper">
+                  <label htmlFor="lastName" className="xs-label">Last Name<span>*</span></label>
                   <Input
                     id="lastName"
                     type="text"
                     value={lastName}
                     onChange={e => setLastName(e.target.value)}
                     required
+                    className="field-input"
                   />
                 </div>
               </div>
-              <div className="flex gap-4">
-                <div className="flex-1">
-                  <label htmlFor="email" className="block mb-1 font-medium">Email</label>
+              <div className="flex flex-col md:flex-row gap-4">
+                <div className="field-wrapper">
+                  <label htmlFor="email" className="xs-label">Email<span>*</span></label>
                   <Input
                     id="email"
                     type="email"
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     required
+                    className="field-input"
                   />
                 </div>
-                <div className="flex-1">
-                  <label htmlFor="phone" className="block mb-1 font-medium">Phone Number</label>
+                <div className="field-wrapper">
+                  <label htmlFor="phone" className="xs-label">Phone Number<span>*</span></label>
                   <Input
                     id="phone"
                     type="text"
                     value={phone}
                     onChange={e => setPhone(e.target.value)}
                     required
+                    className="field-input"
                   />
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="flex flex-col gap-6">
                 <div>
-                  <label className="block mb-1 font-medium">Street Address</label>
-                  <Input
-                    type="text"
-                    value={street}
-                    onChange={e => setStreet(e.target.value)}
-                  />
+                  <div className="field-wrapper">
+                    <label htmlFor="street" className="xs-label">Street Address<span>*</span></label>
+                    <Input id="street" value={street} onChange={e => setStreet(e.target.value)} required className="field-input" />
+                  </div>
                 </div>
-                <div>
-                  <label className="block mb-1 font-medium">State</label>
-                  <Input
-                    type="text"
-                    value={state}
-                    onChange={e => setState(e.target.value)}
-                    required
-                  />
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block mb-1 font-medium">City</label>
-                  <Input
-                    type="text"
-                    value={city}
-                    onChange={e => setCity(e.target.value)}
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block mb-1 font-medium">Zip</label>
-                  <Input
-                    type="text"
-                    value={zip}
-                    onChange={e => setZip(e.target.value)}
-                    required
-                  />
+                <div className="flex flex-col md:flex-row gap-4">
+                  <div className="flex-1">
+                    <div className="field-wrapper">
+                      <label htmlFor="city" className="xs-label">City<span>*</span></label>
+                      <Input
+                        id="city"
+                        value={city}
+                        onChange={e => setCity(e.target.value)}
+                        required
+                        className="field-input"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <div className="field-wrapper">
+                      <label htmlFor="state" className="xs-label">State<span>*</span></label>
+                      <Input
+                        id="state"
+                        value={state}
+                        onChange={e => setState(e.target.value)}
+                        required
+                        className="field-input"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <div className="field-wrapper">
+                      <label htmlFor="zip" className="xs-label">Zip Code<span>*</span></label>
+                      <Input
+                        id="zip"
+                        value={zip}
+                        onChange={e => setZip(e.target.value)}
+                        required
+                        className="field-input"
+                        type="text"
+                        pattern="^\d{5}(-\d{4})?$"
+                        maxLength={10}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
               <div>
-                <label className="block mb-1 font-medium">Are you a parent or guardian of a student?</label>
+                <label className="xs-label">Are you a parent or guardian of a student?</label>
                 <div className="flex gap-4">
                   <label className="flex items-center">
                     <input
@@ -223,7 +227,7 @@ export default function LearnMorePage() {
                 </div>
               </div>
               <div>
-                <label className="block mb-1 font-medium">Which Alpha School location are you interested in?</label>
+                <label className="xs-label">Which Alpha School location are you interested in?</label>
                 <div>
                   {schoolOptions.map((option) => (
                     <label key={option} className="flex items-center gap-2">
@@ -238,43 +242,46 @@ export default function LearnMorePage() {
                   ))}
                 </div>
               </div>
-              <div>
-                <label htmlFor="howDidYouHear" className="block mb-1 font-medium">How did you hear about us?</label>
-                <Input
-                  id="howDidYouHear"
-                  type="text"
-                  value={howDidYouHear}
-                  onChange={e => setHowDidYouHear(e.target.value)}
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="additionalInfo" className="block mb-1 font-medium">Additional Information/Questions?</label>
+              <div className="field-wrapper">
+              <label htmlFor="howDidYouHear" className="xs-label">How did you hear about us?<span>*</span></label>
+              <select
+                id="howDidYouHear"
+                value={howDidYouHear}
+                onChange={e => setHowDidYouHear(e.target.value)}
+                required
+                className="field-input"
+              >
+                <option value="" disabled>Please Select</option>
+                {howDidYouHearOptions.map((option) => (
+                  <option key={option} value={option}>{option}</option>
+                ))}
+              </select>
+            </div>
+              <div className="field-wrapper">
+                <label htmlFor="additionalInfo" className="xs-label">Additional Information/Questions?</label>
                 <Textarea
                   id="additionalInfo"
-                  className="min-h-[140px]"
                   value={additionalInfo}
                   onChange={e => setAdditionalInfo(e.target.value)}
+                  className="field-input"
                 />
               </div>
-              <div className="flex items-center">
+              <div className="flex items-start gap-2">
                 <input
-                  id="consent"
                   type="checkbox"
-                  className="mr-2"
+                  id="consent"
                   checked={consent}
                   onChange={e => setConsent(e.target.checked)}
                 />
                 <label htmlFor="consent" className="text-sm">
-                  I agree to receive SMS messages from 2 Hour Learning regarding inquiry follow-up, invitations to events, and personalized updates about applications and enrollments. Message & data rates may apply. Reply STOP to opt out.
+                  I agree to receive SMS messages from 2 Hour Learning regarding inquiry follow-up, invitations to events, and personalized updates about applications and enrollment. Messages & data rates may apply. Reply STOP to opt out.
                 </label>
               </div>
-              <Button type="submit" variant="default">Submit</Button>
+              <Button className="bg-[var(--color-navy-blue)]" type="submit">Submit</Button>
             </form>
           </div>
         </div>
       </section>
-      <WhatsNextSection />
     </main>
   )
 } 

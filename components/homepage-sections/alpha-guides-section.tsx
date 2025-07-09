@@ -11,7 +11,7 @@ import GuideCard from "@/components/features/cards/guide-card"
 const benefits = [
   {
     title: "GUIDANCE",
-    description: "Adults, whether teachers or parents, become 'Guides,' shifting the traditional teacher-student relationship to offer motivational and emotional support."
+    description: "Adults, whether teachers or parents, become 'Guides', shifting the traditional teacher-student relationship to offer motivational and emotional support."
   },
   {
     title: "SUPPORT",
@@ -33,14 +33,16 @@ type Guide = {
 export default function AlphaGuidesSection() {
   return (
     <section className="alpha-section bg-white">
-      <SectionHeading 
-        title="The Alpha Guides"
-        description="At Alpha School, teachers shift from traditional roles like grading and writing lesson plans, to supporting students' emotional and motivational needs and teaching life skills. This impactful transformation frees up teachers to mentor, motivate, and coach students to become self-driven learners."
-        buttonText="Explore our program"
-        buttonHref="/the-program"
-      />
+      <div className="two-column-flex mb-[var(--space-xl)]">
+        <div>
+        <h2 className="mb-4">More than Teachers: The Alpha Guides</h2>
+        <Button variant="default" className="max-w-[200px]">Explore our program</Button>
+      </div>
+      <div>
+        <p>At Alpha School, teachers shift from traditional roles like grading and writing lesson plans, to supporting students' emotional and motivational needs and teaching life skills. This impactful transformation frees up teachers to mentor, motivate, and coach students to become self-driven learners.</p>
+      </div>
+      </div>
       
-      {/* Light Blue Info Block - Commitments Style */}
       <BenefitCard 
         benefits={benefits}
         className="bg-[var(--color-primary-light)] mb-[var(--space-xl)] [&>div>div>span]:bg-[var(--color-primary)] [&>div>h3]:text-[var(--color-primary)] [&>div>p]:text-[var(--color-text-main)]"
@@ -49,22 +51,21 @@ export default function AlphaGuidesSection() {
       <Carousel
         items={guides}
         renderItem={(guide) => (
-          <GuideCard {...guide} className="px-2 max-w-[340px] flex-shrink-0 group text-black" />
+          <GuideCard {...guide} className="px-2 max-w-[340px] flex-shrink-0 group" />
         )}
         visibleCards={3.5}
-        className="w-full rounded-[var(--radius-lg)] p-[var(--space-xl)] relative bg-[var(--color-primary)]"
+        className="w-full rounded-[var(--radius-lg)] p-[var(--space-xl)] relative bg-[var(--color-bg-muted)]"
         title="Meet our Guides"
-        titleClassName="text-[var(--color-primary-light)]"
         buttonText="View all Guides"
         buttonHref="/guides"
-        buttonVariant="lightBlue"
+        buttonVariant="default"
         navigationDotsColor={{
-          active: "bg-[var(--color-primary-light)]",
-          inactive: "bg-[var(--color-primary-light)] opacity-30"
+          active: "bg-[var(--color-primary)]",
+          inactive: "bg-[var(--color-primary)] opacity-30"
         }}
         navigationArrowsColor={{
-          background: "bg-[var(--color-primary-light)]",
-          icon: "var(--color-primary)"
+          background: "bg-[var(--color-primary)]",
+          icon: "#ffffff"
         }}
       />
     </section>

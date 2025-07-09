@@ -115,7 +115,7 @@ export default function NewsArticlePage() {
             
             <div className="mt-8 mb-8">
               <Link href="#">
-                <Button className="alpha-btn-primary">Read More</Button>
+                <Button variant="default">Read More</Button>
               </Link>
             </div>
             

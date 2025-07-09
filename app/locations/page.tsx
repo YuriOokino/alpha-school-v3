@@ -2,7 +2,7 @@ import React from "react";
 import { getCurrentCampuses, getUpcomingCampuses } from "@/utils/campuses";
 import LocationCard from "@/components/features/cards/location-card";
 import MainHeading from "@/components/layout/headings/main-heading";
-import WhatsNextSection from "@/components/layout/navigation/whats-next-section";
+
 
 export default async function LocationsPage() {
   const currentCampuses = await getCurrentCampuses();
@@ -29,9 +29,8 @@ Please select your desired campus location to find out more details."
           {upcomingCampuses.map((campus) => (
             <LocationCard key={campus.name} {...campus} />
           ))}
-        </div>
-      </div>
-        <WhatsNextSection />
-    </main>
-  );
+              </div>
+    </div>
+  </main>
+);
 } 

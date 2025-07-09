@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import MainHeading from "@/components/layout/headings/main-heading";
-import WhatsNextSection from "@/components/layout/navigation/whats-next-section";
 
 const howDidYouHearOptions = [
   "Google Search",
@@ -21,7 +20,7 @@ export default function BringAlphaToYourCity() {
     lastName: "",
     email: "",
     city: "",
-    country: "",
+    state: "",
     zip: "",
     isParent: "",
     phone: "",
@@ -65,33 +64,39 @@ export default function BringAlphaToYourCity() {
       </MainHeading>
 
       <section className="alpha-section">
-        <div className="bg-[var(--color-primary-light)] text-black rounded-[var(--radius-lg)] p-16 flex flex-col gap-4 shadow-none border-0 mx-auto max-w-[1200px]">
+        <div className="bg-[var(--color-sky-blue)] text-black rounded-[var(--radius-lg)] p-16 flex flex-col gap-4 shadow-none border-0 mx-auto max-w-[1200px]">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="flex gap-4">
               <div className="flex-1">
-                <label htmlFor="firstName" className="block mb-1 font-medium">First name<span className="text-red-500">*</span></label>
-                <Input
-                  id="firstName"
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                  required
-                />
+                <div className="field-wrapper">
+                  <label htmlFor="firstName" className="xs-label">First name<span>*</span></label>
+                  <Input
+                    id="firstName"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    required
+                    className="field-input"
+                  />
+                </div>
               </div>
               <div className="flex-1">
-                <label htmlFor="lastName" className="block mb-1 font-medium">Last name<span className="text-red-500">*</span></label>
-                <Input
-                  id="lastName"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                  required
-                />
+                <div className="field-wrapper">
+                  <label htmlFor="lastName" className="xs-label">Last name<span>*</span></label>
+                  <Input
+                    id="lastName"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    required
+                    className="field-input"
+                  />
+                </div>
               </div>
             </div>
 
-            <div>
-              <label htmlFor="email" className="block mb-1 font-medium">Email<span className="text-red-500">*</span></label>
+            <div className="field-wrapper">
+              <label htmlFor="email" className="xs-label">Email<span>*</span></label>
               <Input
                 id="email"
                 name="email"
@@ -99,44 +104,69 @@ export default function BringAlphaToYourCity() {
                 value={formData.email}
                 onChange={handleChange}
                 required
+                className="field-input"
               />
             </div>
 
             <div className="flex gap-4">
               <div className="flex-1">
-                <label htmlFor="city" className="block mb-1 font-medium">City<span className="text-red-500">*</span></label>
-                <Input
-                  id="city"
-                  name="city"
-                  value={formData.city}
-                  onChange={handleChange}
-                  required
-                />
+                <div className="field-wrapper">
+                  <label htmlFor="city" className="xs-label">City<span>*</span></label>
+                  <Input
+                    id="city"
+                    name="city"
+                    value={formData.city}
+                    onChange={handleChange}
+                    required
+                    className="field-input"
+                  />
+                </div>
               </div>
               <div className="flex-1">
-                <label htmlFor="country" className="block mb-1 font-medium">Country<span className="text-red-500">*</span></label>
-                <Input
-                  id="country"
-                  name="country"
-                  value={formData.country}
-                  onChange={handleChange}
-                  required
-                />
+                <div className="field-wrapper">
+                  <label htmlFor="state" className="xs-label">State<span>*</span></label>
+                  <Input 
+                      id="state" 
+                      name="state" 
+                      value={formData.state} 
+                      onChange={handleChange} 
+                      required 
+                      className="field-input"
+                      onKeyPress={(e) => {
+                        const char = String.fromCharCode(e.which);
+                        if (/\d/.test(char)) {
+                          e.preventDefault();
+                        }
+                      }}
+                    />
+                </div>
               </div>
               <div className="flex-1">
-                <label htmlFor="zip" className="block mb-1 font-medium">Zip Code<span className="text-red-500">*</span></label>
-                <Input
-                  id="zip"
-                  name="zip"
-                  value={formData.zip}
-                  onChange={handleChange}
-                  required
-                />
+                <div className="field-wrapper">
+                  <label htmlFor="zip" className="xs-label">Zip Code<span>*</span></label>
+                  <Input 
+                      id="zip" 
+                      name="zip" 
+                      value={formData.zip} 
+                      onChange={handleChange} 
+                      required 
+                      className="field-input"
+                      type="text"
+                      pattern="^\d{5}(-\d{4})?$"
+                      maxLength={10}
+                      onKeyPress={(e) => {
+                        const char = String.fromCharCode(e.which);
+                        if (!/\d/.test(char) && e.which !== 8 && e.which !== 45) {
+                          e.preventDefault();
+                        }
+                      }}
+                    />
+                </div>
               </div>
             </div>
 
             <div>
-              <label className="block mb-1 font-medium">Are you the parent or guardian of a student?<span className="text-red-500">*</span></label>
+              <label className="xs-label">Are you the parent or guardian of a student?<span>*</span></label>
               <div className="flex gap-8 mt-2">
                 <label className="flex items-center gap-2">
                   <input
@@ -163,26 +193,27 @@ export default function BringAlphaToYourCity() {
               </div>
             </div>
 
-            <div>
-              <label htmlFor="phone" className="block mb-1 font-medium">Phone number<span className="text-red-500">*</span></label>
+            <div className="field-wrapper">
+              <label htmlFor="phone" className="xs-label">Phone number<span>*</span></label>
               <Input
                 id="phone"
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
                 required
+                className="field-input"
               />
             </div>
 
-            <div>
-              <label htmlFor="howDidYouHear" className="block mb-1 font-medium">How did you hear about us?<span className="text-red-500">*</span></label>
+            <div className="field-wrapper">
+              <label htmlFor="howDidYouHear" className="xs-label">How did you hear about us?<span>*</span></label>
               <select
                 id="howDidYouHear"
                 name="howDidYouHear"
                 value={formData.howDidYouHear}
                 onChange={handleChange}
                 required
-                className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="field-input"
               >
                 <option value="" disabled>Please Select</option>
                 {howDidYouHearOptions.map((option) => (
@@ -191,36 +222,36 @@ export default function BringAlphaToYourCity() {
               </select>
             </div>
 
-            <div>
-              <label htmlFor="message" className="block mb-1 font-medium">Message</label>
+            <div className="field-wrapper">
+              <label htmlFor="message" className="xs-label">Message</label>
               <Textarea
                 id="message"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                className="min-h-[100px]"
+                className="field-input min-h-[100px]"
               />
             </div>
 
             <div>
-              <label className="flex items-start gap-2">
+              <div className="flex items-start gap-2">
                 <input
                   type="checkbox"
+                  id="smsConsent"
                   name="smsConsent"
                   checked={formData.smsConsent}
                   onChange={handleChange}
                 />
-                <span className="text-sm">
+                <label htmlFor="smsConsent" className="text-sm">
                   I agree to receive SMS messages from 2 Hour Learning regarding inquiry follow-up, invitations to events, and personalized updates about applications and enrollments. Message & data rates may apply. Reply STOP to opt out.
-                </span>
-              </label>
+                </label>
+              </div>
             </div>
 
             <Button type="submit">Submit</Button>
           </form>
         </div>
       </section>
-      <WhatsNextSection />
     </>
   );
 } 

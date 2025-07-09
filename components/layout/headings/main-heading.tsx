@@ -7,8 +7,8 @@ interface MainHeadingProps {
   description?: React.ReactNode;
   actions?: React.ReactNode;
   className?: string;
-  variant?: 'default' | 'primary' | 'light' | 'warm' | 'maroon';
   tagline?: React.ReactNode;
+  variant?: "default" | "blue";
 }
 
 export default function MainHeading({ 
@@ -16,53 +16,47 @@ export default function MainHeading({
   description, 
   actions, 
   className = "",
-  variant = 'default',
-  tagline
+  tagline,
+  variant = "default"
 }: MainHeadingProps) {
-  const getVariantClasses = () => {
-    if (variant === 'primary') {
-      return 'scheme-blue';
-    }
-    if (variant === 'light') {
-      return 'scheme-lightblue';
-    }
-    if (variant === 'warm') {
-      return 'scheme-pink';
-    }
-    if (variant === 'maroon') {
-      return 'scheme-maroon';
-    }
-    return '';
-  };
-
-  const variantClasses = getVariantClasses();
-  const hasBackground = variant !== 'default';
-
+  const variantClass =
+    variant === "blue"
+      ? "bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)]"
+      : "";
   return (
-    <div className={`${hasBackground ? 'w-full' : ''} ${variantClasses} ${hasBackground ? 'rounded-b-[var(--radius-lg)]' : ''}`}>
-      <div className="alpha-container pb-[var(--space-lg)]">
+    <div className="w-screen min-h-[400px]">
+      <div className={`${variantClass} py-[var(--space-3xl)] text-[var(--color-sky-blue)]`}>
         {tagline && (
-          <div className="flex justify-center">
-            <p className="tagline mb-4">{tagline}</p>
+          <div className="flex justify-center mb-4">
+            <p className={`tagline ${
+              variant === "blue"
+                ? "bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)] px-4 py-1 rounded-[var(--radius-pill)] inline-block"
+                : ""
+            }`}>
+              {tagline}
+            </p>
           </div>
         )}
         <h1
-          className={`hero-heading text-center max-w-[60vw] mx-auto mb-6 ${className}`.trim()}
+          className={`text-center max-w-[60vw] mx-auto mb-4 ${className}`.trim()}
           tabIndex={-1}
         >
           {children}
         </h1>
         {description && (
-          <div className="text-lg text-center max-w-[60vw] mx-auto mb-6 space-y-4">
+          <div className="text-center max-w-[60vw] mx-auto">
             {description}
           </div>
         )}
         {actions && (
-          <div className="flex flex-wrap justify-center gap-4 mt-6">
+          <div className="flex flex-wrap justify-center gap-4">
             {actions}
           </div>
         )}
       </div>
+      <svg width="1440" height="83" viewBox="0 0 1440 83" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 0H1440C1440 0 1003.04 83 720 83C436.96 83 0 0 0 0Z" fill="#2A3C82"/>
+</svg>
     </div>
   );
 } 

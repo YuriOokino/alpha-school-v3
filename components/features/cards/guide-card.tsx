@@ -31,8 +31,8 @@ export default function GuideCard({ image, name, role, bio, className = "" }: Gu
           className="transition-colors duration-500 ease-in-out rounded-[var(--radius-md)] p-4 m-4 cursor-pointer bg-[var(--color-primary-light)]"
         >
           <div className={"transition-all duration-300 ease-in-out flex flex-col gap-2 items-start " + (hovered ? 'opacity-0 h-0 overflow-hidden' : 'opacity-100 h-auto overflow-visible')}>
-            <span className="tag-blue">{role}</span>
-            <h3 className="font-light uppercase text-lg leading-tight text-black">{name}</h3>
+            <span className="tag-primary">{role}</span>
+            <h5>{name}</h5>
           </div>
           <p className={"text-sm leading-snug transition-all duration-300 ease-in-out m-0 " + (hovered ? 'opacity-100 h-auto overflow-visible' : 'opacity-0 h-0 overflow-hidden')}>{bio}</p>
         </div>

@@ -7,8 +7,8 @@ interface CampusApplicationLinkProps {
   grade?: string;
   children?: React.ReactNode;
   className?: string;
-  variant?: 'default' | 'destructive' | 'outline' | 'primary' | 'lightBlue' | 'maroon' | 'pink' | 'filter' | 'filterOutline' | 'link';
-  size?: 'default' | 'sm' | 'lg' | 'icon';
+  variant?: 'default' | 'outline' | 'primary' | 'lightBlue' | 'maroon' | 'pink' | 'filter' | 'filterOutline' | 'link';
+  size?: 'default' | 'sm' | 'fullWidth' | 'icon';
 }
 
 export function CampusApplicationLink({

@@ -19,12 +19,10 @@ export default function TestimonialsSection() {
 
   return (
     <section className="alpha-section bg-white">
-      <SectionHeading 
-        title="From Our Students"
-        description="Hear from our students about their experience at Alpha School and how it has transformed their learning journey."
-        buttonText="Read more testimonials"
-        buttonHref="/testimonials"
-      />
+      <div className="two-column-flex mb-[var(--space-xl)]">
+        <div><h2>From Our Students</h2></div>
+        <div><p>Hear from our students about their experience at Alpha School and how it has transformed their learning journey.</p></div>
+      </div>
       
       <div className="w-full bg-[var(--color-bg-muted)] rounded-[var(--radius-lg)] p-[var(--space-xl)] relative">
         <div className="relative flex items-center">
@@ -51,7 +49,7 @@ export default function TestimonialsSection() {
                           className="w-12 h-12 rounded-full object-cover"
                         />
                         <div>
-                          <h3 className="font-bold text-[var(--color-text-main)]">{testimonial.name}</h3>
+                          <h5 className="text-[var(--color-text-main)] font-bold">{testimonial.name}</h5>
                           <p className="text-[var(--color-text-muted)] text-sm">{testimonial.grade}, {testimonial.age}</p>
                         </div>
                       </div>
