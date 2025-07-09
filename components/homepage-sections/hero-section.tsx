@@ -7,14 +7,18 @@ export default function HeroSection() {
   return (
     <>
       {/* Hero Content Block */}
-      <div className="text-[var(--color-navy-blue)] py-20">
+      <div className="bg-white text-[var(--color-navy-blue)] py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="section-headline mb-6 max-w-4xl mx-auto">
           Crush academics. Build life skills. Love school.          </h1>
           <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto">
             Campuses in Austin, Brownsville, and Miami—and seven new locations launching soon.
           </p>
-          <Button variant="default" href="/learn-more">Learn More</Button>
+          <div className="flex justify-center gap-4">
+          <Button className="bg-[var(--color-navy-blue)]" href="/the-program">Alpha Program</Button>
+          <Button className="bg-[var(--color-navy-blue)]" href="/locations">Alpha Campusese</Button>
+          <Button className="bg-[var(--color-navy-blue)]" href="/events">Alpha Events</Button>
+          </div>
         </div>
       </div>
 

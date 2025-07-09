@@ -34,7 +34,7 @@ export default function CommitmentsSection() {
           {commitments.map((commitment, index) => (
             <div key={index} className="flex flex-col items-start bg-[var(--color-sky-blue)] rounded-[var(--radius-lg)] p-6 w-full">
               <div className="w-full flex justify-end mb-2">
-                <Button size="icon" className="block bg-[var(--color-navy-blue)]" style={{ transform: 'rotate(-45deg)' }}>
+                <Button href={commitment.link} size="icon" className="block bg-[var(--color-navy-blue)]" style={{ transform: 'rotate(-45deg)' }}>
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5.293 12.293L6.707 13.707L13.414 6.99997L6.707 0.292969L5.293 1.70697L9.586 5.99997H0V7.99997H9.586L5.293 12.293Z" fill="currentColor"/>
                   </svg>

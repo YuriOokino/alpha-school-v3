@@ -70,7 +70,7 @@ export default function Home() {
 
       {/* Events & Programs Section */}
       {events.length > 0 && (
-        <section className="alpha-section">
+        <section className="alpha-section bg-white">
           <Carousel
             items={events}
             renderItem={(event) => (
