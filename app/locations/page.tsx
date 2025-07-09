@@ -2,6 +2,7 @@ import React from "react";
 import { getCurrentCampuses, getUpcomingCampuses } from "@/utils/campuses";
 import LocationCard from "@/components/features/cards/location-card";
 import MainHeading from "@/components/layout/headings/main-heading";
+import CampusMap from "@/components/features/content-blocks/CampusMap";
 
 
 export default async function LocationsPage() {
@@ -11,6 +12,7 @@ export default async function LocationsPage() {
   return (
     <main className="min-h-screen">
       <MainHeading
+      tagline="Locations"
       description="Alpha School tuition ranges from $40,000 upwards (Excluding Brownsville).
 Please select your desired campus location to find out more details."
       >Alpha School Campuses
@@ -31,6 +33,7 @@ Please select your desired campus location to find out more details."
           ))}
               </div>
     </div>
+    <CampusMap />
   </main>
 );
 } 

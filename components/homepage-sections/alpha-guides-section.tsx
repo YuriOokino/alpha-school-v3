@@ -51,21 +51,21 @@ export default function AlphaGuidesSection() {
       <Carousel
         items={guides}
         renderItem={(guide) => (
-          <GuideCard {...guide} className="px-2 max-w-[340px] flex-shrink-0 group" />
+          <GuideCard {...guide} className="flex-shrink-0 group" />
         )}
-        visibleCards={3.5}
-        className="w-full rounded-[var(--radius-lg)] p-[var(--space-xl)] relative bg-[var(--color-bg-muted)]"
+        visibleCards={3.9}
+        className="bg-[var(--color-bg-muted)]"
         title="Meet our Guides"
         buttonText="View all Guides"
         buttonHref="/guides"
         buttonVariant="default"
         navigationDotsColor={{
-          active: "bg-[var(--color-primary)]",
-          inactive: "bg-[var(--color-primary)] opacity-30"
+          active: "bg-[var(--color-navy-blue)]",
+          inactive: "bg-[var(--color-navy-blue)] opacity-30"
         }}
         navigationArrowsColor={{
-          background: "bg-[var(--color-primary)]",
-          icon: "#ffffff"
+          background: "bg-[var(--color-navy-blue)]",
+          icon: "var(--color-sky-blue)"
         }}
       />
     </section>

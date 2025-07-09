@@ -20,7 +20,7 @@ export default function GuideCard({ image, name, role, bio, className = "" }: Gu
   const [hovered, setHovered] = useState(false);
   return (
     <div
-      className={`relative h-full rounded-[var(--radius-md)] overflow-hidden bg-white flex flex-col justify-end group ${className}`}
+      className={`relative h-full w-[320px] rounded-[var(--radius-md)] overflow-hidden bg-white flex flex-col justify-end group ${className}`}
       style={{ minHeight: 400 }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}

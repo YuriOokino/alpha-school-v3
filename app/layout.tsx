@@ -27,7 +27,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet" />
       </head>
-      <body className={workSans.className}>
+      <body className={workSans.className + " overflow-x-hidden"}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

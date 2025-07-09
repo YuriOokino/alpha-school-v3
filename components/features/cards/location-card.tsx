@@ -32,7 +32,7 @@ const LocationIcon = () => (
 
 export default function LocationCard({ heroImage, name, address, tuition, applicationStatus, buttonHref = "#", buttonClassName = "", className = "" }: LocationCardProps) {
   return (
-    <Card className={`bg-[var(--color-sky-blue)] rounded-[var(--radius-md)] p-[var(--space-md)] flex flex-col justify-between border-0 shadow-none max-w-[340px] flex-shrink-0 group ${className}`} style={{ height: 480, width: 340 }}>
+    <Card className={`bg-[var(--color-sky-blue)] rounded-[var(--radius-md)] p-[var(--space-md)] flex flex-col justify-between border-0 shadow-none max-w-[320px] flex-shrink-0 group ${className}`} style={{ height: 480, width: 340 }}>
       <Link href={buttonHref} className="w-full h-[200px] rounded-[var(--radius-sm)] overflow-hidden mb-[var(--space-md)] block relative">
         <Image src={heroImage} alt={name} fill className="object-cover transition-transform duration-300 scale-105 group-hover:scale-100" />
       </Link>

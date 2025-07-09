@@ -56,8 +56,7 @@ export default async function AustinPage() {
             videoUrl="https://player.vimeo.com/video/941700697"
             posterImage="/assets/feature-video-overlays/austin-video-preview.webp"
             posterAlt="Austin Campus Video Preview"
-            width="100%"
-            height={600}
+            aspectRatio="16/9"
             className="max-w-5xl rounded-[var(--radius-lg)]"
           />
         </div>

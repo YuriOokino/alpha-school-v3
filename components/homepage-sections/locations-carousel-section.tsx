@@ -25,22 +25,22 @@ export default function LocationsCarouselSection() {
         renderItem={(campus) => (
           <LocationCard
             {...campus}
-            className="max-w-[340px] flex-shrink-0 group text-black"
+            className="flex-shrink-0 group text-black"
           />
         )}
         visibleCards={3.5}
-        className="w-full rounded-[var(--radius-lg)] p-[var(--space-xl)] relative bg-[var(--color-bg-muted)]"
+        className="bg-[var(--color-bg-muted)]"
         title="Alpha New Locations"
         buttonText="View all Locations"
         buttonHref="/locations"
         buttonVariant="default"
         navigationDotsColor={{
-          active: "bg-[var(--color-primary)]",
-          inactive: "bg-[#000000] opacity-30"
+          active: "bg-[var(--color-navy-blue)]",
+          inactive: "bg-[var(--color-navy-blue)] opacity-30"
         }}
         navigationArrowsColor={{
-          background: "bg-[var(--color-primary)]",
-          icon: "#ffffff"
+          background: "bg-[var(--color-navy-blue)]",
+          icon: "var(--color-sky-blue)"
         }}
       />
     </section>
