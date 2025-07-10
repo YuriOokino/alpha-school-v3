@@ -9,7 +9,9 @@ export const campuses = [
       email: "admissions.austin@alpha.school",
       heroImage: "/assets/locations/austin/hero/austin-hero.webp",
       buttonHref: "/austin",
-      applicationStatus: "Applications Open"
+      applicationStatus: "Applications Open",
+      hasStarseeds: false,
+      hasGallery: false,
     },
 
     {
@@ -35,7 +37,9 @@ export const campuses = [
       email: "admissions.houston@alpha.school",
       heroImage: "/assets/locations/houston/hero/houston-hero.webp",
       buttonHref: "/houston",
-      applicationStatus: "Fall 2025 applications open"
+      applicationStatus: "Fall 2025 applications open",
+      hasStarseeds: true,
+      hasGallery: true,
     },
 
     {

@@ -60,6 +60,45 @@ const testimonials = [
     name: "Marshall"
   },
 ];
+
+const progressBarRef = React.useRef<HTMLDivElement>(null);
+const DOT_SIZE = 32; // px
+const MARGIN = 4; // px
+const handleDotDown = (e: React.MouseEvent) => {
+  setIsDragging(true);
+  e.preventDefault();
+};
+const [isDragging, setIsDragging] = React.useState(false);
+const handleMouseDown = (e: React.MouseEvent) => {
+  setIsDragging(true);
+  handleDrag(e);
+};
+const handleClick = (e: React.MouseEvent) => {
+  handleDrag(e);
+};
+const handleDrag = (e: React.MouseEvent | MouseEvent) => {
+  if (!progressBarRef.current) return;
+  const rect = progressBarRef.current.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const min = MARGIN + DOT_SIZE / 2;
+  const max = rect.width - MARGIN - DOT_SIZE / 2;
+  const clamped = Math.max(min, Math.min(x, max));
+  const percent = (clamped - min) / (max - min);
+  const newIndex = Math.round(percent * (testimonials.length - 1));
+  setActiveIndex(Math.max(0, Math.min(newIndex, testimonials.length - 1)));
+};
+React.useEffect(() => {
+  if (!isDragging) return;
+  const handleMove = (e: MouseEvent) => handleDrag(e);
+  const handleUp = () => setIsDragging(false);
+  document.addEventListener('mousemove', handleMove);
+  document.addEventListener('mouseup', handleUp);
+  return () => {
+    document.removeEventListener('mousemove', handleMove);
+    document.removeEventListener('mouseup', handleUp);
+  };
+}, [isDragging]);
+
 return (
   <section className="alpha-section">
 
@@ -82,11 +121,11 @@ return (
             <Button size="small" className="bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)] centered-icon-text mb-4" onClick={() => setOpenVideo(true)}>
               <span className="material-icons-outlined">play_arrow</span> Watch
             </Button>
-            <div className="testimonial-video-image-wrapper flex justify-center">
+            <div className="testimonial-video-image-wrapper flex justify-center group overflow-hidden w-full h-[180px] md:h-[200px] rounded-xl">
               <img
                 src={testimonials[0].imageSrc}
                 alt={testimonials[0].imageAlt}
-                className="testimonial-video-image w-full h-[180px] md:h-[200px] rounded-xl object-cover"
+                className="testimonial-video-image w-full h-full object-cover transition-transform duration-300 scale-105 group-hover:scale-100"
               />
             </div>
           </div>
@@ -98,11 +137,11 @@ return (
             <Button size="small" className="bg-[var(--color-dark-green)] text-[var(--color-light-green)] centered-icon-text mb-4" onClick={() => setOpenVideo(true)}>
               <span className="material-icons-outlined">play_arrow</span> Watch
             </Button>
-            <div className="testimonial-video-image-wrapper flex justify-center">
+            <div className="testimonial-video-image-wrapper flex justify-center group overflow-hidden w-full h-[180px] md:h-[400px] rounded-xl">
               <img
                 src={testimonials[2].imageSrc}
                 alt={testimonials[2].imageAlt}
-                className="testimonial-video-image w-full h-[180px] md:h-[400px] rounded-xl object-cover"
+                className="testimonial-video-image w-full h-full object-cover transition-transform duration-300 scale-105 group-hover:scale-100"
               />
             </div>
           </div>
@@ -117,11 +156,11 @@ return (
             <Button size="small" className="bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)] centered-icon-text mb-4" onClick={() => setOpenVideo(true)}>
               <span className="material-icons-outlined">play_arrow</span> Watch
             </Button>
-            <div className="testimonial-video-image-wrapper flex justify-center">
+            <div className="testimonial-video-image-wrapper flex justify-center group overflow-hidden w-full h-[180px] md:h-[300px] rounded-xl">
               <img
                 src={testimonials[1].imageSrc}
                 alt={testimonials[1].imageAlt}
-                className="testimonial-video-image w-full h-[180px] md:h-[300px] rounded-xl object-cover"
+                className="testimonial-video-image w-full h-full object-cover transition-transform duration-300 scale-105 group-hover:scale-100"
               />
             </div>
           </div>
@@ -133,11 +172,11 @@ return (
             <Button size="small" className="bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)] centered-icon-text mb-4" onClick={() => setOpenVideo(true)}>
               <span className="material-icons-outlined">play_arrow</span> Watch
             </Button>
-            <div className="testimonial-video-image-wrapper flex justify-center">
+            <div className="testimonial-video-image-wrapper flex justify-center group overflow-hidden w-full h-[180px] md:h-[250px] rounded-xl">
               <img
                 src={testimonials[3].imageSrc}
                 alt={testimonials[3].imageAlt}
-                className="testimonial-video-image w-full h-[180px] md:h-[250px] rounded-xl object-cover"
+                className="testimonial-video-image w-full h-full object-cover transition-transform duration-300 scale-105 group-hover:scale-100"
               />
             </div>
           </div>
@@ -184,16 +223,22 @@ return (
         </div>
         {/* Navigation below cards */}
         <div className="flex items-center justify-between mt-[var(--space-lg)] px-[var(--space-lg)]">
-          {/* Dots - left */}
-          <div className="flex gap-2">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                className={`w-3 h-3 rounded-full ${index === activeIndex ? 'bg-[var(--color-warm-dark)]' : 'bg-[#B0B0B0]'} transition-colors`}
-                onClick={() => setActiveIndex(index)}
-                aria-label={`Go to slide ${index + 1}`}
+          {/* Switch-style slider navigation - left */}
+          <div className="w-[200px]">
+            <div
+              ref={progressBarRef}
+              className="w-full bg-gray-200 rounded-full h-10 cursor-pointer relative"
+              onMouseDown={handleMouseDown}
+              onClick={handleClick}
+            >
+              <div
+                className="absolute top-1 w-8 h-8 bg-white rounded-full cursor-grab active:cursor-grabbing transition-all duration-300 ease-out"
+                style={{
+                  left: `calc(4px + ${(testimonials.length === 1 ? 0 : activeIndex / (testimonials.length - 1))} * (100% - 40px))`
+                }}
+                onMouseDown={handleDotDown}
               />
-            ))}
+            </div>
           </div>
           {/* Arrows - right */}
           <div className="flex gap-3">

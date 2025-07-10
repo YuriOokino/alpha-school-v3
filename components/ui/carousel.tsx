@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 
 interface CarouselProps {
@@ -12,7 +12,8 @@ interface CarouselProps {
   titleClassName?: string;
   buttonText?: string;
   buttonHref?: string;
-  buttonVariant?: "default" | "outline" | "primary" | "link" | "lightBlue" | "maroon" | "pink" | "filter" | "filterOutline" | null | undefined;
+  buttonVariant?: "default" | "outline" | "primary" | "link" | "lightBlue" | "navyBlue" | "filter" | "filterOutline" | null | undefined;
+
   navigationDotsColor?: {
     active: string;
     inactive: string;
@@ -33,6 +34,7 @@ export default function Carousel({
   buttonText,
   buttonHref,
   buttonVariant,
+
   navigationDotsColor = {
     active: "bg-white",
     inactive: "bg-[#B0B0B0]"
@@ -43,6 +45,8 @@ export default function Carousel({
   }
 }: CarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const progressBarRef = useRef<HTMLDivElement>(null);
   const cardWidth = 100 / visibleCards;
 
   const nextItem = () => {
@@ -52,6 +56,65 @@ export default function Carousel({
   const prevItem = () => {
     setActiveIndex((prev) => (prev - 1 + items.length) % items.length);
   };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    handleDrag(e);
+  };
+
+  const handleMouseMove = (e: MouseEvent) => {
+    if (isDragging) {
+      handleDrag(e);
+    }
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleClick = (e: React.MouseEvent) => {
+    if (!progressBarRef.current) return;
+    const rect = progressBarRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const min = 4 + 16; // 4px margin + 16px dot width
+    const max = rect.width - 4 - 16; // track width - 4px margin - 16px dot width
+    const clamped = Math.max(min, Math.min(x, max));
+    const percent = (clamped - min) / (max - min);
+    const newIndex = Math.round(percent * (items.length - 1));
+    setActiveIndex(Math.max(0, Math.min(newIndex, items.length - 1)));
+  };
+
+  const handleDotDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    handleDrag(e);
+  };
+
+  const DOT_SIZE = 32; // px
+  const MARGIN = 4; // px
+
+  const handleDrag = (e: React.MouseEvent | MouseEvent) => {
+    if (!progressBarRef.current) return;
+    const rect = progressBarRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const min = MARGIN + DOT_SIZE / 2;
+    const max = rect.width - MARGIN - DOT_SIZE / 2;
+    const clamped = Math.max(min, Math.min(x, max));
+    const percent = (clamped - min) / (max - min);
+    const newIndex = Math.round(percent * (items.length - 1));
+    setActiveIndex(Math.max(0, Math.min(newIndex, items.length - 1)));
+  };
+
+  useEffect(() => {
+    if (isDragging) {
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
+      
+      return () => {
+        document.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mouseup', handleMouseUp);
+      };
+    }
+  }, [isDragging]);
 
   return (
     <div className={`w-full rounded-[var(--radius-lg)] pt-[var(--space-lg)] pb-[var(--space-lg)] relative ${className}`}>
@@ -94,17 +157,27 @@ export default function Carousel({
       </div>
       <div className="pr-[var(--space-xl)] pl-[var(--space-xl)]">
         {/* Navigation below cards */}
-        <div className="flex items-center justify-between mt-[var(--space-lg)] px-2">
-          {/* Dots - left */}
+        <div className="flex items-center justify-between mt-[var(--space-lg)]">
+          {/* Navigation Indicators - left */}
           <div className="flex gap-2">
-            {items.map((_, index) => (
-              <button
-                key={index}
-                className={`w-2 h-2 rounded-full ${index === activeIndex ? navigationDotsColor.active : navigationDotsColor.inactive} transition-colors`}
-                onClick={() => setActiveIndex(index)}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
+            <div className="flex-1 min-w-[200px]">
+              <div
+                ref={progressBarRef}
+                className="w-full bg-[#EDEDF4] rounded-full h-10 cursor-pointer relative"
+                onMouseDown={handleMouseDown}
+                onClick={handleClick} // optional: allow click-to-jump
+              >
+                {/* Switch-style draggable dot */}
+                <div
+                  className="absolute top-1 w-8 h-8 bg-[var(--color-navy-blue)] rounded-full cursor-grab active:cursor-grabbing transition-all duration-300 ease-out"
+                  style={{
+                    left: `calc(4px + ${(items.length === 1 ? 0 : activeIndex / (items.length - 1))} * (100% - 40px))`
+                  }}
+                  onMouseDown={handleDotDown}
+                />
+              </div>
+              
+            </div>
           </div>
           {/* Arrows - right */}
           <div className="flex gap-3">

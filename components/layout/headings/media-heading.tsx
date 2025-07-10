@@ -28,9 +28,9 @@ export default function MediaHeading({
       : "";
   return (
     <div className="w-screen min-h-[400px]">
-      <div className={`${variantClass} py-[var(--space-3xl)] text-[var(--color-sky-blue)]`}>
-        <div className="flex flex-col md:flex-row max-w-[90vw] mx-auto items-center gap-8">
-          <div className="flex-1 min-w-0">
+      <div className={`media-heading-content ${variantClass} text-[var(--color-sky-blue)] ${className}`}>
+        <div className="flex flex-col md:flex-row w-full max-w-6xl mx-auto items-center gap-8">
+          <div className="flex-1 min-w-0 w-full">
             {tagline && (
               <div className="flex justify-center md:justify-start mb-4">
                 <p className={`tagline ${
@@ -43,14 +43,14 @@ export default function MediaHeading({
               </div>
             )}
             <h1
-              className={`heading-style-h2 text-center md:text-left max-w-[60vw] mx-auto md:mx-0 mb-4 ${className}`.trim()}
+              className={`heading-style-h2 text-center md:text-left w-full max-w-4xl mx-auto md:mx-0 mb-4 ${className}`.trim()}
               tabIndex={-1}
             >
               {Array.isArray(children) ? children[0] : children}
             </h1>
             {Array.isArray(children) ? children.slice(1) : null}
             {description && (
-              <div className="text-center md:text-left max-w-[60vw] mx-auto md:mx-0 mb-4">
+              <div className="text-center md:text-left w-full max-w-4xl mx-auto md:mx-0 mb-4">
                 {description}
               </div>
             )}

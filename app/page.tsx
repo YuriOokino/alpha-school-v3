@@ -74,14 +74,14 @@ export default function Home() {
           <Carousel
             items={events}
             renderItem={(event) => (
-              <EventCard {...event} url={`/events/${event.slug}`} className="max-w-[340px] flex-shrink-0 group" />
+              <EventCard {...event} url={`/events/${event.slug}`} className="max-w-[340px] flex-shrink-0 group" variant="scheme1" />
             )}
             title="Events & programs"
             visibleCards={4.5}
             className= "bg-[var(--color-bg-muted)]"
             buttonText="View all Events"
             buttonHref="/events"
-            buttonVariant="default"
+
             navigationDotsColor={{
               active: "bg-[#000000]",
               inactive: "bg-[#000000] opacity-30"

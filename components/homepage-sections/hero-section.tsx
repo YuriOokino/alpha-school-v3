@@ -7,7 +7,7 @@ export default function HeroSection() {
   return (
     <>
       {/* Hero Content Block */}
-      <div className="bg-white text-[var(--color-navy-blue)] py-20">
+      <div className="bg-white text-[var(--color-navy-blue)] pt-20 pb-12">
         <div className="container mx-auto px-4 text-center">
           <h1 className="section-headline mb-6 max-w-4xl mx-auto">
           Crush academics. Build life skills. Love school.          </h1>

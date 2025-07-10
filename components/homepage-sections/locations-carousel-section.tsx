@@ -25,7 +25,7 @@ export default function LocationsCarouselSection() {
         renderItem={(campus) => (
           <LocationCard
             {...campus}
-            className="flex-shrink-0 group text-black"
+            variant="scheme1"
           />
         )}
         visibleCards={3.5}

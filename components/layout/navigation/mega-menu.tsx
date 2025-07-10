@@ -6,6 +6,7 @@ interface MegaMenuItem {
   title: string;
   href: string;
   description?: string;
+  style?: string;
 }
 
 interface MegaMenuGroup {
@@ -33,7 +34,7 @@ export function MegaMenu({ groups, sidebar, onLinkClick }: MegaMenuProps) {
         {groupColumns.map((group, idx) => (
           <div key={idx} className="flex-1">
             {group.label && (
-              <span className="inline-block mb-4 px-3 py-1 rounded bg-[var(--color-warm)] text-[var(--color-warm-dark)] font-semibold text-xs uppercase tracking-wide">
+              <span className="inline-block mb-4 px-3 py-1 rounded bg-[var(--color-light-green)] text-[var(--color-dark-green] font-semibold text-xs uppercase tracking-wide">
                 {group.label}
               </span>
             )}
@@ -41,11 +42,11 @@ export function MegaMenu({ groups, sidebar, onLinkClick }: MegaMenuProps) {
               {group.items.map((item: MegaMenuItem) => (
                 <li key={item.title}>
                   <Link href={item.href} className="flex flex-col group transition-colors" onClick={onLinkClick}>
-                    <span className="font-medium flex items-center">
+                    <span className={`font-medium flex items-center ${item.style === 'underline' ? 'underline underline-offset-4' : ''}`}>
                       {item.title}
                     </span>
                     {item.description && (
-                      <span className="text-sm text-gray-600">{item.description}</span>
+                      <span className={`text-sm text-gray-600 ${item.style === 'underline' ? 'underline underline-offset-4' : ''}`}>{item.description}</span>
                     )}
                   </Link>
                 </li>

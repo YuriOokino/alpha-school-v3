@@ -15,6 +15,7 @@ interface DropdownItem {
   title: string
   href: string
   description?: string
+  style?: string
 }
 
 interface NavItem {
@@ -196,20 +197,23 @@ export const navItems: NavItem[] = [
           { title: "Brownsville", href: "/brownsville", description: "PK 8" },
           { title: "Houston", href: "/houston", description: "Opening August 2025" },
           { title: "Fort Worth", href: "/fort-worth", description: "Opening August 2025" },
+          { title: "", href: "/locations", description: "More →", style: "underline" },
         ],
       },
       {
         label: "FLORIDA",
-        items: [
-          { title: "Miami", href: "/miami", description: "K 10" },
-          { title: "Orlando", href: "#", description: "Opening August 2025" },
-          { title: "Tampa", href: "#", description: "Opening August 2025" },
-          { title: "Palm Beach", href: "#", description: "Opening August 2025" },
+        items: [          
+          { title: "Miami", href: "/miami", description: "K 10"},
+          { title: "Orlando", href: "/orlando", description: "Opening August 2025" },
+          { title: "Tampa", href: "/tampa", description: "Opening August 2025" },
+          { title: "Palm Beach", href: "/palm-beach", description: "Opening August 2025" },
+          { title: "", href: "/locations", description: "More →" , style: "underline" },
         ],
       },
       {
         label: "MORE LOCATIONS",
         items: [
+          { title: "", href: "/locations", description: "See all new locations →", style: "underline"  },
           { title: "New York City, New York", href: "#", description: "Opening August 2025" },
           { title: "Santa Barbara, Arizona", href: "#", description: "Opening August 2025" },
           { title: "Scottsdale, California", href: "#", description: "Opening August 2025" },

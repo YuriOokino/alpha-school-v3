@@ -10,14 +10,16 @@ export default function Divider({ fill = "white", className = "", direction = "d
     : "M0 0H1440C1440 0 1003.04 83 720 83C436.96 83 0 0 0 0Z";
 
   return (
-    <svg 
-      className={`w-full h-[83px] block ${className}`}
-      viewBox="0 0 1440 83" 
-      fill="none" 
-      xmlns="http://www.w3.org/2000/svg"
-      preserveAspectRatio="none"
-    >
-      <path d={path} fill={fill}/>
-    </svg>
+    <div className={`relative w-full ${className}`} style={{ aspectRatio: '1440/83' }}>
+      <svg 
+        className="absolute inset-0 w-full h-full"
+        viewBox="0 0 1440 83" 
+        fill="none" 
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="xMidYMid meet"
+      >
+        <path d={path} fill={fill}/>
+      </svg>
+    </div>
   );
 } 

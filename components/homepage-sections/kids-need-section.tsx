@@ -4,18 +4,18 @@ import VideoPlayer from "../ui/video-player";
 export default function KidsNeedSection() {
   return (
     <section className="alpha-section bg-[var(--color-bg-muted)]">
-      <h2 className="section-headline mb-[var(--space-lg)]">YOUR KIDS NEED TWO THINGS TO LEARN</h2>
-      <div className="flex flex-col md:flex-row gap-6 mb-[var(--space-xl)] justify-center">
-        <div className="alpha-card w-full min-w-0 bg-[#D6E4FF] rounded-2xl p-6 max-w-[500px]">
-          <h3 className="mb-4 text-[var(--color-navy-blue)] heading-style-h4">ACADEMICS AT THE RIGHT LEVEL AND PACE</h3>
+      <h2 className="section-headline mx-[200px] mb-[var(--space-xl)]">YOUR KIDS NEED TWO THINGS TO LEARN</h2>
+      <div className="flex flex-col md:flex-row gap-6 mb-[var(--space-4xl)] justify-center">
+        <div className="alpha-card w-full min-w-0 bg-[var(--color-sky-blue)] rounded-2xl p-6 max-w-[500px]">
+          <h3 className="mb-4 text-[var(--color-navy-blue)] heading-style-h5">ACADEMICS AT THE RIGHT LEVEL AND PACE</h3>
           <p className="text-[var(--color-navy-blue)]">Our AI tutor gives students 1:1 personalized education, providing coursework at their individual pace and the appropriate level. Students progress with concept-based mastery and without any knowledge gaps.</p>
         </div>
         <div className="alpha-card w-full min-w-0 bg-[var(--color-navy-blue)] rounded-2xl p-6 max-w-[500px]">
-          <h3 className="mb-4 text-[var(--color-sky-blue)] heading-style-h4">MOTIVATION WITH THE RIGHT REWARD</h3>
+          <h3 className="mb-4 text-[var(--color-sky-blue)] heading-style-h5">MOTIVATION WITH THE RIGHT REWARD</h3>
           <p className="text-[var(--color-sky-blue)]">We motivate kids by giving them the gift of time to pursue the things they want to do and develop life skills. Adults in the room support motivated students to foster a growth mindset and independent learning.</p>
         </div>
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center mt-16">
         <VideoPlayer
           videoUrl="https://www.youtube.com/embed/ENdAWT6N0V4"
           posterImage="/assets/feature-video-overlays/how-alpha-works.webp"

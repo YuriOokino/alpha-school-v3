@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react";
+import Divider from "../divider";
 
 interface MainHeadingProps {
   children: React.ReactNode;
@@ -25,9 +26,9 @@ export default function MainHeading({
       : "";
   return (
     <div className="w-full">
-      <div className={`${variantClass} pt-[var(--space-3xl)] pb-[var(--space-md)] text-[var(--color-navy-blue)] ${className}`}>
-        <div className="flex flex-col max-w-[90vw] mx-auto items-center">
-          <div className="flex-1 min-w-0">
+      <div className={`main-heading-content ${variantClass} text-[var(--color-navy-blue)] ${className}`}>
+        <div className="flex flex-col w-full max-w-6xl mx-auto items-center">
+          <div className="flex-1 min-w-0 w-full">
             {tagline && (
               <div className="flex justify-center mb-4">
                 <p className={`tagline ${
@@ -40,14 +41,14 @@ export default function MainHeading({
               </div>
             )}
             <h1
-              className={`heading-style-h2 text-center max-w-[60vw] mx-auto mb-4 ${className}`.trim()}
+              className={`heading-style-h2 text-center w-full max-w-4xl mx-auto mb-4 ${className}`.trim()}
               tabIndex={-1}
             >
               {Array.isArray(children) ? children[0] : children}
             </h1>
             {Array.isArray(children) ? children.slice(1) : null}
             {description && (
-              <div className="text-center max-w-[60vw] mx-auto mb-4">
+              <div className="text-center w-full max-w-4xl mx-auto mb-4">
                 {description}
               </div>
             )}
@@ -60,19 +61,7 @@ export default function MainHeading({
         </div>
       </div>
       {variant !== "default" && (
-        <div className="w-full">
-          <svg
-            width="100%"
-            height="83"
-            viewBox="0 0 1440 83"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-            style={{ display: "block" }}
-          >
-            <path d="M0 0H1440C1440 0 1003.04 83 720 83C436.96 83 0 0 0 0Z" fill="#2A3C82"/>
-          </svg>
-        </div>
+        <Divider fill="var(--color-navy-blue)" direction="up" />
       )}
     </div>
   );

@@ -4,20 +4,19 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-base disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center px-5 py-2 gap-2 whitespace-nowrap disabled:pointer-events-none",
   {
     variants: {
       variant: {
-        default: "px-5 py-2 bg-black text-white hover:opacity-70",
-        outline: "px-5 py-1.5 text-black outline outline-black hover:opacity-50",
-        primary: "bg-[var(--color-primary)] text-white hover:opacity-70",
+        default: "bg-black text-white hover:opacity-70",
+        outline: "text-black outline outline-black hover:opacity-70",
         link: "font-semibold",
-        lightBlue: "bg-[var(--color-primary-light)] text-[var(--color-primary)] hover:opacity-70",
-        maroon: "bg-[var(--color-warm-dark)] text-white hover:opacity-70",
-        pink: "bg-[var(--color-warm)] text-[var(--color-warm0dar)] hover:opacity-70",
+        lightBlue: "bg-[var(--color-sky-light)] text-[var(--color-navy-blue)] hover:opacity-80",
+        navyBlue: "bg-[var(--color-navy-blue)] text-white hover:opacity-80",
         filter: "bg-[black] text-white rounded-full px-4 py-2 font-semibold shadow-none border-0",
         filterOutline: "bg-transparent text-[black] border border-[black] rounded-full px-4 py-2 font-semibold shadow-none focus:ring-2 focus:ring-[#60a5fa]",
-        square: "rounded-[2px]"
+        square: "rounded-[2px]",
+        underline: "underline"
       },
       size: {
         small: "rounded-full px-5 py-1.5 text-xs uppercase font-medium",

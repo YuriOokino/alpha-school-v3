@@ -30,7 +30,7 @@ export default async function AustinPage() {
         </p>
         <CampusApplicationLink 
           campusName="Austin" 
-          className="centered-icon-text mt-[var(--space-md)] bg-[var(--color-sky-blue)] text-black hover:bg-[var(--color-sky-blue)]"
+          className="centered-icon-text mt-[var(--space-md)] bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)]"
         >
           Apply Today<span className="material-icons-outlined">arrow_forward</span>
         </CampusApplicationLink>
@@ -38,15 +38,15 @@ export default async function AustinPage() {
 
       {/* Welcome Section */}
       <div className="alpha-section">
-        <div className="grid grid-rows-2 md:grid-cols-2 gap-8 mb-[var(--space-2xl)]">
+        
           <div>
-            <h2 className="heading-style-h2 mb-4">Welcome to the Future of Education</h2>
+            <h2 className="section-headline-left heading-style-h2 mb-8">Welcome to the Future of Education</h2>
           </div>
-          <div></div>
-          <div>
+          <div className="two-column-flex mb-16">
+            <div>
             <p className="mb-2">Imagine a school where students love to learn.</p>
             <p className="mb-2">At Alpha Austin, our revolutionary 2 Hour Learning model combines cutting-edge technology with personalized, one-on-one academic instruction, empowering students to rank in the top 1-2% nationally.</p>
-          </div>
+            </div>
           <div>
             <p className="mb-2">Afternoons focus on life skills through hands-on workshops, preparing students to thrive beyond academics. With our guides, students receive tailored support to meet their unique potential. At Alpha Austin, we're not just preparing students for tests; we're preparing them for limitless futures.</p>
             <p>Alpha Austin is open and enrolling. Come see how we're redefining education – join us for a showcase!</p>

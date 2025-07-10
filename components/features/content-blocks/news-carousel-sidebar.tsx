@@ -13,7 +13,7 @@ export default function NewsCarouselSidebar({ articles = [] }: NewsCarouselSideb
   // If no articles, show a message
   if (!articles || articles.length === 0) {
     return (
-      <div className="flex flex-col h-full scheme-pink bg-[var(--color-warm)] rounded-[var(--radius-lg)] p-[var(--space-md)]">
+      <div className="flex flex-col h-full bg-[var(--color-sky-blue)] rounded-[var(--radius-lg)] p-[var(--space-md)]">
         <div className="flex items-center justify-between w-full mb-4">
           <h3 className="heading-style-h4">In the News</h3>
         </div>
@@ -33,10 +33,10 @@ export default function NewsCarouselSidebar({ articles = [] }: NewsCarouselSideb
   };
 
   return (
-    <div className="flex flex-col h-full scheme-pink bg-[var(--color-warm)] rounded-[var(--radius-lg)] p-[var(--space-md)]">
+    <div className="flex flex-col h-full bg-[var(--color-sky-blue)] rounded-[var(--radius-lg)] p-[var(--space-md)]">
       <div className="flex items-center justify-between w-full mb-4">
         <h3 className="heading-style-h5">In the News</h3>
-        <div className="flex items-center rounded-full bg-[#6B3535] hover:bg-[var(--color-warm-dark)] transition-colors px-0.5 py-0.5 gap-1 cursor-pointer">
+        <div className="flex items-center rounded-full bg-[var(--color-navy-blue)] hover:bg-[var(--color-navy-blue)] transition-colors px-0.5 py-0.5 gap-1 cursor-pointer">
           <button
             onClick={prevItem}
             className="w-5 h-5 flex items-center justify-center rounded-full focus:outline-none"
@@ -71,7 +71,7 @@ export default function NewsCarouselSidebar({ articles = [] }: NewsCarouselSideb
             href={`/news/${item.id}`}
             titleClassName="heading-style-uppercase"
             variant="sidebar"
-            buttonClassName="bg-[var(--color-warm-dark)] text-white hover:bg-[#7a3535]"
+            buttonClassName="bg-[var(--color-navy-blue)] text-white"
           />
         )}
         visibleCards={1}

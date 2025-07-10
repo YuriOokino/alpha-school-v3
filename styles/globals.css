@@ -68,7 +68,10 @@ html, body {
     @apply bg-[var(--background)] text-[var(--text)];
   }
 
-  a, a:hover, a:active {
+  /* Only apply inherit color to non-button links */
+  a:not([class*="bg-"]):not([class*="Button"]), 
+  a:not([class*="bg-"]):not([class*="Button"]):hover, 
+  a:not([class*="bg-"]):not([class*="Button"]):active {
     color: inherit;
   }
 }
@@ -94,7 +97,11 @@ html, body {
 @layer base {
 
   .section-headline {
-    @apply text-center max-w-[70vw] mx-auto font-medium text-[40px] md:text-[48px] leading-[1.2] uppercase;
+    @apply text-center max-w-[70vw] mx-auto mb-8 font-medium text-[40px] md:text-[48px] leading-[1.2] uppercase;
+  }
+
+  .section-headline-left {
+    @apply text-left max-w-[70vw] mx-0 mb-8 font-medium text-[40px] md:text-[48px] leading-[1.2] uppercase;
   }
 
   .card-header {
@@ -152,9 +159,35 @@ html, body {
 .alpha-section.xl-width {
   @apply md:px-0;
 }
+
+.main-heading-content {
+  @apply px-6 md:px-[var(--space-4xl)] pt-[var(--space-3xl)] pb-[var(--space-md)];
+}
+
+.media-heading-content {
+  @apply px-6 md:px-[var(--space-4xl)] py-[var(--space-3xl)];
+}
   
   .alpha-container {
     @apply max-w-[1280px] mx-auto px-6 md:px-[var(--space-md)] pt-[var(--space-xl)];
+  }
+
+  .campus-info {
+    @apply bg-[var(--color-light-green)] w-[95%] min-h-[400px] m-auto rounded-[var(--radius-lg)] p-[var(--space-lg)] flex flex-col md:flex-row gap-[var(--space-xl)] items-start;
+  }
+}
+
+/* Main Heading Responsive Padding */
+@media (max-width: 1239px) {
+  .main-heading-content {
+    padding: var(--space-lg);
+  }
+}
+
+/* Media Heading Responsive Padding */
+@media (max-width: 1239px) {
+  .media-heading-content {
+    padding: var(--space-lg);
   }
 }
 
@@ -219,28 +252,14 @@ html, body {
     @apply flex flex-col flex-1;
   }
   
-  /* Buttons */
-
-  
-  .alpha-btn-warm {
-    @apply bg-[var(--color-warm)] text-[var(--color-warm-dark)] hover:bg-[#F5B5B5] rounded-[var(--radius-pill)] px-[var(--space-lg)] py-[var(--space-sm)] font-semibold transition-colors;
-  }
 
   /* Tags */
-  .tag-default {
-    @apply px-[var(--space-sm)] py-[var(--space-xs)] rounded-[var(--radius-xs)] bg-[var(--color-bg-muted)] text-xs font-medium inline-block uppercase;
-  }
-  
-  .tag-primary {
-    @apply px-[var(--space-sm)] py-[var(--space-xs)] rounded-[4px] bg-[var(--color-navy-blue)] text-white text-xs font-medium inline-block uppercase;
-  }
-
-  .tag-light-green {
-    @apply px-[var(--space-sm)] py-[var(--space-xs)] rounded-[var(--radius-xs)] bg-[var(--color-light-green)] text-[var(--color-dark-green)] text-xs font-medium inline-block uppercase;
+  .tag-filled {
+    @apply px-[var(--space-sm)] py-[var(--space-xs)] rounded-[4px] bg-[var(--color-bg-muted)] text-xs font-medium inline-block uppercase overflow-hidden text-ellipsis whitespace-nowrap;
   }
 
   .tag-outline {
-    @apply px-[var(--space-sm)] py-[var(--space-xs)] rounded-[4px] border border-[var(--color-primary)] text-[var(--color-primary)] text-xs font-medium inline-block uppercase;
+    @apply px-[var(--space-sm)] py-[var(--space-xs)] rounded-[4px] border text-xs font-medium inline-block uppercase overflow-hidden text-ellipsis whitespace-nowrap;
   }
   
   .tag-pink {
@@ -362,17 +381,6 @@ input[type="radio"] {
   accent-color: #000;
 }
 
-input[type="search"] {
-  border: none;
-  border-radius: 8px;
-  min-height: 60px;
-  padding: 10px;
-  outline: none;
-  background: transparent;
-  font-size: 1rem;
-  padding: 0;
-  margin: 0;
-}
 
 .centered-icon-text {
   display: flex;
