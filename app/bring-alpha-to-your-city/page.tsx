@@ -56,6 +56,7 @@ export default function BringAlphaToYourCity() {
   return (
     <>
       <MainHeading
+      variant="blue"
         description={
           "To get started with an Alpha Expansion School in your area, we are looking for interested families just like you.\nReady to lead this educational revolution in your city? Let's begin! Fill out this form and let's meet for further discussion!"
         }
@@ -64,7 +65,7 @@ export default function BringAlphaToYourCity() {
       </MainHeading>
 
       <section className="alpha-section">
-        <div className="bg-[var(--color-sky-blue)] text-black rounded-[var(--radius-lg)] p-16 flex flex-col gap-4 shadow-none border-0 mx-auto max-w-[1200px]">
+        <div className="alpha-form">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="flex gap-4">
               <div className="flex-1">
@@ -202,6 +203,14 @@ export default function BringAlphaToYourCity() {
                 onChange={handleChange}
                 required
                 className="field-input"
+                type="tel"
+                pattern="[0-9]*"
+                onKeyPress={(e) => {
+                  const char = String.fromCharCode(e.which);
+                  if (!/\d/.test(char) && e.which !== 8) {
+                    e.preventDefault();
+                  }
+                }}
               />
             </div>
 

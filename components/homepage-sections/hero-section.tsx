@@ -12,7 +12,7 @@ export default function HeroSection() {
           <h1 className="section-headline mb-6 max-w-4xl mx-auto">
           Crush academics. Build life skills. Love school.          </h1>
           <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto">
-            Campuses in Austin, Brownsville, and Miami—and seven new locations launching soon.
+            Campuses in Austin, Brownsville, and Miami—and many more new locations launching soon.
           </p>
           <div className="flex justify-center gap-4">
           <Button className="bg-[var(--color-navy-blue)]" href="/the-program">Alpha Program</Button>

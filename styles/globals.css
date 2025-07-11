@@ -156,6 +156,7 @@ html, body {
   }
 }
 
+
 .alpha-section.xl-width {
   @apply md:px-0;
 }
@@ -191,45 +192,6 @@ html, body {
   }
 }
 
-/* Color Scheme Utilities */
-@layer utilities {
-  /* Primary Color Scheme */
-  .scheme-blue {
-    @apply bg-[var(--color-primary)] text-[var(--color-text-light)];
-  }
-  .scheme-blue h1, .scheme-blue h2, .scheme-blue h3 {
-    @apply text-[var(--color-primary-light)];
-  }
-
-  /* Light Color Scheme */
-  .scheme-light {
-    @apply bg-[var(--color-primary-light)] text-[var(--color-primary)];
-  }
-  
-  /* Light Blue Scheme */
-  .scheme-lightblue {
-    @apply bg-[var(--color-primary-light)] text-[var(--color-text-main)];
-  }
-  .scheme-lightblue h1, .scheme-lightblue h2, .scheme-lightblue h3 {
-    @apply text-[var(--color-primary)];
-  }
-  
-  /* Warm Color Scheme */
-  .scheme-pink {
-    @apply bg-[var(--color-warm)] text-[var(--color-warm-dark)];
-  }
-  .scheme-pink h1, .scheme-pink h2, .scheme-pink h3 {
-    @apply text-[var(--color-warm-dark)];
-  }
-  
-  /* Maroon Color Scheme */
-  .scheme-maroon {
-    @apply bg-[var(--color-warm-dark)] text-[var(--color-text-light)];
-  }
-  .scheme-maroon h1, .scheme-maroon h2, .scheme-maroon h3 {
-    @apply text-[var(--color-warm)];
-  }
-}
 
 /* Component Utilities */
 @layer utilities {
@@ -261,14 +223,7 @@ html, body {
   .tag-outline {
     @apply px-[var(--space-sm)] py-[var(--space-xs)] rounded-[4px] border text-xs font-medium inline-block uppercase overflow-hidden text-ellipsis whitespace-nowrap;
   }
-  
-  .tag-pink {
-    @apply px-[var(--space-sm)] py-[var(--space-xs)] rounded-[var(--radius-xs)] bg-[var(--color-warm)] text-[var(--color-warm-dark)] text-xs font-medium inline-block uppercase;
-  }
 
-  .tag-maroon {
-    @apply px-[var(--space-sm)] py-[var(--space-xs)] rounded-[var(--radius-xs)] bg-[var(--color-warm-dark)] text-[var(--color-warm)] text-xs font-medium inline-block uppercase;
-  }
 
   .tagline {
     @apply px-[var(--space-sm)] py-[var(--space-xs)] rounded-[4px] text-xs font-medium inline-block uppercase;
@@ -276,7 +231,70 @@ html, body {
 
   /* Forms */
   .alpha-form {
-    @apply bg-[var(--color-primary-light)] rounded-[var(--radius-md)] p-16 flex flex-col gap-4 shadow-none border-0 mx-auto;
+    background-color: var(--color-primary-light);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-shadow: none;
+    border: 0;
+    margin: 0 auto;
+  }
+  
+  @media (min-width: 768px) {
+    .alpha-form {
+      padding: 3rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .alpha-form {
+      padding: 4rem;
+    }
+  }
+  
+  /* Auto-style form rows within alpha-form */
+  .alpha-form .flex {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .alpha-form .flex {
+      flex-direction: row;
+    }
+  }
+  
+  .alpha-form .flex > div {
+    flex: 1;
+  }
+  
+  /* Keep radio button rows horizontal on all screen sizes */
+  .alpha-form .flex:has(input[type="radio"]) {
+    flex-direction: row;
+  }
+  
+  .alpha-form .flex:has(input[type="radio"]) > div {
+    flex: 0 0 auto;
+  }
+  
+  /* Form Layout Utilities (for manual override if needed) */
+  .form-row {
+    @apply flex flex-col md:flex-row gap-4;
+  }
+  
+  .form-row-2 {
+    @apply flex flex-col md:flex-row gap-4;
+  }
+  
+  .form-row-3 {
+    @apply flex flex-col md:flex-row lg:flex-row gap-4;
+  }
+  
+  .form-field {
+    @apply flex-1;
   }
 }
 
@@ -396,6 +414,58 @@ input[type="search"] {
 input[type="search"]:focus,
 input[type="search"]:focus-visible {
   outline: none;
+}
+
+/* Phone number validation - only allow numbers */
+input[name="phone"],
+input[id="phone"],
+input[type="tel"] {
+  -webkit-text-security: none;
+}
+
+/* Prevent non-numeric input for phone fields */
+input[name="phone"]:invalid,
+input[id="phone"]:invalid,
+input[type="tel"]:invalid {
+  border-color: #ef4444;
+}
+
+/* Global phone number input styling */
+input[name="phone"],
+input[id="phone"],
+input[type="tel"] {
+  -moz-appearance: textfield;
+}
+
+input[name="phone"]::-webkit-outer-spin-button,
+input[name="phone"]::-webkit-inner-spin-button,
+input[id="phone"]::-webkit-outer-spin-button,
+input[id="phone"]::-webkit-inner-spin-button,
+input[type="tel"]::-webkit-outer-spin-button,
+input[type="tel"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Email validation error styles */
+.field-wrapper.error {
+  border: 1px solid #ef4444;
+  background-color: #fef2f2;
+}
+
+.field-wrapper.error input {
+  color: #dc2626;
+}
+
+.field-wrapper.error .xs-label {
+  color: #dc2626;
+}
+
+.email-error {
+  color: #dc2626;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  font-weight: 500;
 }
 
 .centered-icon-text {

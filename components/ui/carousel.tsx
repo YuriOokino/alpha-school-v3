@@ -12,7 +12,7 @@ interface CarouselProps {
   titleClassName?: string;
   buttonText?: string;
   buttonHref?: string;
-  buttonVariant?: "default" | "outline" | "primary" | "link" | "lightBlue" | "navyBlue" | "filter" | "filterOutline" | null | undefined;
+  buttonVariant?: "default" | "outline" | "link" | "lightBlue" | "navyBlue" | "filter" | "filterOutline" | "square" | "underline" | null | undefined;
 
   navigationDotsColor?: {
     active: string;
@@ -22,6 +22,8 @@ interface CarouselProps {
     background: string;
     icon: string;
   };
+  sliderButtonColor?: string;
+  progressBarBackgroundColor?: string;
 }
 
 export default function Carousel({
@@ -42,7 +44,9 @@ export default function Carousel({
   navigationArrowsColor = {
     background: "bg-white",
     icon: "#111827"
-  }
+  },
+  sliderButtonColor = "bg-[var(--color-navy-blue)]",
+  progressBarBackgroundColor = "bg-[#EDEDF4]"
 }: CarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -163,13 +167,13 @@ export default function Carousel({
             <div className="flex-1 min-w-[200px]">
               <div
                 ref={progressBarRef}
-                className="w-full bg-[#EDEDF4] rounded-full h-10 cursor-pointer relative"
+                className={`w-full ${progressBarBackgroundColor} rounded-full h-10 cursor-pointer relative`}
                 onMouseDown={handleMouseDown}
                 onClick={handleClick} // optional: allow click-to-jump
               >
                 {/* Switch-style draggable dot */}
                 <div
-                  className="absolute top-1 w-8 h-8 bg-[var(--color-navy-blue)] rounded-full cursor-grab active:cursor-grabbing transition-all duration-300 ease-out"
+                  className={`absolute top-1 w-8 h-8 ${sliderButtonColor} rounded-full cursor-grab active:cursor-grabbing transition-all duration-300 ease-out`}
                   style={{
                     left: `calc(4px + ${(items.length === 1 ? 0 : activeIndex / (items.length - 1))} * (100% - 40px))`
                   }}
