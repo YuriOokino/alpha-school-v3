@@ -44,9 +44,15 @@ export default function FeatureCard({ media, children, className, ...rest }: Fea
     ) : (
       <div className="absolute inset-0">
         <iframe
-          src={video.includes("vimeo.com") 
-            ? video.replace("player.vimeo.com/video/", "player.vimeo.com/video/").replace(/\?.*$/, "?autoplay=1&controls=1&background=0&transparent=1")
-            : video.replace("youtu.be/", "www.youtube.com/embed/")}
+          src={
+            video.includes("youtube.com") 
+              ? video.replace("watch?v=", "embed/") + "?autoplay=1&muted=0&controls=1"
+              : video.includes("youtu.be")
+                ? video.replace("youtu.be/", "www.youtube.com/embed/") + "?autoplay=1&muted=0&controls=1"
+                : video.includes("vimeo.com")
+                  ? video.replace("vimeo.com/", "player.vimeo.com/video/") + "?autoplay=1&muted=0&controls=1&background=0&transparent=1"
+                  : video
+          }
           title="Video"
           className="w-full h-full rounded-[var(--radius-md)]"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

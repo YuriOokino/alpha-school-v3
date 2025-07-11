@@ -58,4 +58,17 @@ export function parseCampusFromUrl(param: string | null): CampusMetadata | null 
 
 export function getCampusByApplicationParam(param: string): CampusMetadata | null {
   return parseCampusFromUrl(param)
+}
+
+// Utility function to check if an address should have a Google Maps link
+export function shouldShowGoogleMapsLink(address: string): boolean {
+  const placeholderKeywords = ['location', 'announced', 'soon', 'tba', 'tbd']
+  const lowerAddress = address.toLowerCase()
+  return !placeholderKeywords.some(keyword => lowerAddress.includes(keyword))
+}
+
+// Utility function to generate Google Maps URL for an address
+export function getGoogleMapsUrl(address: string): string {
+  const encodedAddress = encodeURIComponent(address)
+  return `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`
 } 

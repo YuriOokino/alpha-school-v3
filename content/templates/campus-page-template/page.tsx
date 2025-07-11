@@ -9,6 +9,7 @@ import Divider from "@/components/layout/divider"
 import StarseedsCard from "@/components/features/content-blocks/starseeds-card"
 import CampusGallerySection from "@/components/features/content-blocks/campus-gallery-section"
 import WelcomeSection from "@/components/features/content-blocks/welcome-section"
+import { shouldShowGoogleMapsLink, getGoogleMapsUrl } from "@/utils/campuses"
 
 export default async function CampusPageTemplate() {
   const events = await loadEvents()
@@ -122,11 +123,25 @@ export default async function CampusPageTemplate() {
             <h2 className="heading-style-h2 mb-4">[CITY NAME] Campus</h2>
             <ul className="body-text mb-4">
               <li>
-                <a 
-                  href="https://www.google.com/maps/search/?api=1&query=[FULL ADDRESS]" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                >
+                {/* Only show Google Maps link if address is not a placeholder */}
+                {shouldShowGoogleMapsLink("[FULL ADDRESS]") ? (
+                  <a 
+                    href={getGoogleMapsUrl("[FULL ADDRESS]")}
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    <div className="flex flex-col gap-1">
+                      <div className="flex items-center gap-2">
+                        <svg width="16" height="21" viewBox="0 0 16 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M8.00006 12.3335C10.2061 12.3335 12.0001 10.5395 12.0001 8.3335C12.0001 6.1275 10.2061 4.3335 8.00006 4.3335C5.79406 4.3335 4.00006 6.1275 4.00006 8.3335C4.00006 10.5395 5.79406 12.3335 8.00006 12.3335ZM8.00006 6.3335C9.10306 6.3335 10.0001 7.2305 10.0001 8.3335C10.0001 9.4365 9.10306 10.3335 8.00006 10.3335C6.89706 10.3335 6.00006 9.4365 6.00006 8.3335C6.00006 7.2305 6.89706 6.3335 8.00006 6.3335Z" fill="currentColor"/>
+                          <path d="M7.42009 20.1475C7.58934 20.2684 7.79211 20.3333 8.00009 20.3333C8.20806 20.3333 8.41084 20.2684 8.58009 20.1475C8.88409 19.9325 16.0291 14.7735 16.0001 8.3335C16.0001 3.9225 12.4111 0.333496 8.00009 0.333496C3.58909 0.333496 8.80377e-05 3.9225 8.80377e-05 8.3285C-0.028912 14.7735 7.11609 19.9325 7.42009 20.1475ZM8.00009 2.3335C11.3091 2.3335 14.0001 5.0245 14.0001 8.3385C14.0211 12.7765 9.61209 16.7615 8.00009 18.0685C6.38909 16.7605 1.97909 12.7745 2.00009 8.3335C2.00009 5.0245 4.69109 2.3335 8.00009 2.3335Z" fill="currentColor"/>
+                        </svg>
+                        <strong>PK - 8th Grade</strong>
+                      </div>
+                      [FULL ADDRESS]
+                    </div>
+                  </a>
+                ) : (
                   <div className="flex flex-col gap-1">
                     <div className="flex items-center gap-2">
                       <svg width="16" height="21" viewBox="0 0 16 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -137,7 +152,7 @@ export default async function CampusPageTemplate() {
                     </div>
                     [FULL ADDRESS]
                   </div>
-                </a>
+                )}
               </li>
             </ul>
             <p className="body-text mb-2">

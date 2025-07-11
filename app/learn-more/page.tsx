@@ -63,15 +63,16 @@ export default function LearnMorePage() {
 
   return (
     <main>
-      <section className="alpha-section">
+      
         <MainHeading
           tagline="Learn more"
+          variant="blue"
           description="Discover more about Alpha School, our philosophy, and how we empower students to thrive in a modern world."
         >
           Get in touch
         </MainHeading>
         
-        <div className="alpha-section">
+        <section className="alpha-section">
           <div className="alpha-form">
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-8 mb-16">
@@ -280,7 +281,7 @@ export default function LearnMorePage() {
               <Button className="bg-[var(--color-navy-blue)]" type="submit">Submit</Button>
             </form>
           </div>
-        </div>
+       
       </section>
     </main>
   )

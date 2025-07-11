@@ -214,9 +214,9 @@ export const navItems: NavItem[] = [
         label: "MORE LOCATIONS",
         items: [
           { title: "", href: "/locations", description: "See all new locations →", style: "underline"  },
-          { title: "New York City, New York", href: "#", description: "Opening August 2025" },
-          { title: "Santa Barbara, Arizona", href: "#", description: "Opening August 2025" },
-          { title: "Scottsdale, California", href: "#", description: "Opening August 2025" },
+          { title: "New York City, New York", href: "/new-york-city", description: "Opening August 2025" },
+          { title: "Santa Barbara, Arizona", href: "/santa-barbara", description: "Opening August 2025" },
+          { title: "Scottsdale, California", href: "/scottsdale", description: "Opening August 2025" },
         ],
       },
     ],

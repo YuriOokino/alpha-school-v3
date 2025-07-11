@@ -381,6 +381,22 @@ input[type="radio"] {
   accent-color: #000;
 }
 
+/* Remove focus ring from search inputs */
+input[type="search"]:focus,
+input[type="search"]:focus-visible {
+  outline: none !important;
+
+}
+
+/* Ensure search input text is black */
+input[type="search"] {
+  color: #000000 !important;
+}
+
+input[type="search"]:focus,
+input[type="search"]:focus-visible {
+  outline: none;
+}
 
 .centered-icon-text {
   display: flex;

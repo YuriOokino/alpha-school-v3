@@ -75,7 +75,7 @@ export default function EventPage() {
 
   return (
     <main>
-      <MainHeading variant="light">
+      <MainHeading variant="blue" tagline="Events">
         {eventData?.title || "Event"}
       </MainHeading>
       <section className="alpha-section">
@@ -115,12 +115,12 @@ export default function EventPage() {
             </div>
             {eventData?.registrationType === 'external' ? (
               <a href={eventData.registrationUrl} target="_blank" rel="noopener noreferrer">
-                <Button variant="maroon" className="mb-4">
+                <Button className="mb-4">
                   Register
                 </Button>
               </a>
             ) : (
-              <Button href="#register" variant="maroon" className="mb-4">Register</Button>
+              <Button href="#register" className="mb-4">Register</Button>
             )}
             <p className="text-sm mt-2">Due to high demand, please only RSVP if you are certain you can attend. If you are unable to participate due to illness, please notify us as soon as possible.</p>
           </div>

@@ -2,7 +2,6 @@
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import MainHeading from "@/components/layout/headings/main-heading";
-import WhatsNextSection from "@/components/layout/navigation/whats-next-section";
 import Link from "next/link";
 import React from "react";
 import VideoCard from "@/components/ui/video-card";
@@ -31,15 +30,18 @@ export default function VideoLibrary() {
 
   return (
     <>
-      <MainHeading description="Select a category to learn more about Alpha School!">
-        Video Library
+      <MainHeading description="Select a category to learn more about Alpha School!"
+      tagline="video library"
+      variant="blue">
+        Alpha in action
       </MainHeading>
       <section className="alpha-section">
         <div className="container">
           {/* Filter buttons */}
-          <div className="flex flex-wrap gap-4 mb-8">
+          <div className="flex flex-wrap gap-4 mb-8 justify-center">
             <Button 
               variant={selectedKey === null ? "filter" : "filterOutline"}
+              radius="small"
               onClick={() => setSelectedKey(null)}
             >
               All
@@ -48,6 +50,7 @@ export default function VideoLibrary() {
               <Button
                 key={key}
                 variant={selectedKey === key ? "filter" : "filterOutline"}
+                radius="small"
                 onClick={() => setSelectedKey(key)}
               >
                 {keyLabels[key] || key}
@@ -85,16 +88,23 @@ export default function VideoLibrary() {
               &times;
             </button>
             <iframe
-              src={openVideo.replace("watch?v=", "embed/") + "?autoplay=1"}
+              src={
+                openVideo.includes("youtube.com") 
+                  ? openVideo.replace("watch?v=", "embed/") + "?autoplay=1&muted=0&controls=1"
+                  : openVideo.includes("youtu.be")
+                    ? openVideo.replace("youtu.be/", "www.youtube.com/embed/") + "?autoplay=1&muted=0&controls=1"
+                  : openVideo.includes("vimeo.com") 
+                    ? openVideo.replace("vimeo.com/", "player.vimeo.com/video/") + "?autoplay=1&muted=0&controls=1&badge=0&autopause=0&player_id=0&app_id=58479"
+                    : openVideo
+              }
               title="Video"
-              allow="autoplay; fullscreen"
+              allow="autoplay; fullscreen; picture-in-picture"
               allowFullScreen
               className="w-full h-full rounded-lg border-0"
             />
           </div>
         </div>
       )}
-      <WhatsNextSection />
     </>
   );
 }

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import MainHeading from "@/components/layout/headings/main-heading";
 import FeatureCard from "@/components/features/content-blocks/feature-card";
-import SimpleCarousel from "@/components/ui/simple-carousel";
+import Carousel from "@/components/ui/carousel";
 import LocationCard from "@/components/features/cards/location-card";
 import SectionHeading from "@/components/layout/headings/section-heading";
 import Link from "next/link";
@@ -18,102 +18,7 @@ import {
 import { getAllCampuses } from "@/utils/campuses";
 import type { CampusMetadata } from "@/utils/campuses";
 
-// Auto-play carousel component based on SimpleCarousel
-function AutoPlayCarousel({
-  items,
-  renderItem,
-  visibleCards = 3,
-  className = "",
-  showNavigation = true
-}: {
-  items: any[];
-  renderItem: (item: any, index: number) => React.ReactNode;
-  visibleCards?: number;
-  className?: string;
-  showNavigation?: boolean;
-}) {
-  const [activeIndex, setActiveIndex] = React.useState(0);
-  const cardWidth = 100 / visibleCards;
 
-  // Auto-play functionality
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % items.length);
-    }, 3000); // Change slide every 3 seconds
-
-    return () => clearInterval(interval);
-  }, [items.length]);
-
-  const nextItem = () => {
-    setActiveIndex((prev) => (prev + 1) % items.length);
-  };
-
-  const prevItem = () => {
-    setActiveIndex((prev) => (prev - 1 + items.length) % items.length);
-  };
-
-  return (
-    <div className={`w-full relative ${className}`}>
-      <div className="relative flex items-center">
-        <div className="overflow-hidden w-full">
-          <div
-            className="flex transition-transform duration-500"
-            style={{
-              transform: `translateX(-${activeIndex * cardWidth}%)`,
-            }}
-          >
-            {items.map((item, idx) => (
-              <div
-                key={idx}
-                style={{ width: `${cardWidth}%` }}
-                className="px-2 flex-shrink-0"
-              >
-                {renderItem(item, idx)}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {showNavigation && (
-        <div className="flex items-center justify-between mt-4">
-          {/* Dots */}
-          <div className="flex gap-2">
-            {items.map((_, index) => (
-              <button
-                key={index}
-                className={`w-3 h-3 rounded-full ${index === activeIndex ? 'bg-primary' : 'bg-gray-300'} transition-colors`}
-                onClick={() => setActiveIndex(index)}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
-          {/* Arrows */}
-          <div className="flex gap-3">
-            <button
-              onClick={prevItem}
-              className="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--color-bg-muted)] hover:bg-[var(--color-bg-muted-hover)]"
-              aria-label="Previous"
-            >
-              <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
-                <path d="M13 15l-5-5 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-            <button
-              onClick={nextItem}
-              className="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--color-bg-muted)] hover:bg-[var(--color-bg-muted-hover)]"
-              aria-label="Next"
-            >
-              <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
-                <path d="M7 5l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
 
 const admissionsSteps = [
   {
@@ -534,9 +439,9 @@ export default function AdmissionPage() {
           description="Alpha School tuition ranges from $40,000 upwards (Excluding Brownsville). Please select your desired campus location to find out more details."
         />
         
-        <AutoPlayCarousel
+        <Carousel
           items={campuses}
-          renderItem={(campus) => (
+          renderItem={(campus: CampusMetadata) => (
             <LocationCard
               key={campus.name}
               heroImage={campus.heroImage}
@@ -545,11 +450,20 @@ export default function AdmissionPage() {
               tuition={campus.tuition}
               applicationStatus={campus.applicationStatus}
               buttonHref={campus.buttonHref}
+              tuitionClassName=""
               className="h-full"
             />
           )}
           visibleCards={3.25}
           className="mb-8"
+          navigationDotsColor={{
+            active: "bg-[#000000]",
+            inactive: "bg-[#000000] opacity-30"
+          }}
+          navigationArrowsColor={{
+            background: "bg-[var(--color-navy-blue)]",
+            icon: "white"
+          }}
         />
       </section>
       

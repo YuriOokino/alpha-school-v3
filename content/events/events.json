@@ -52,7 +52,9 @@
       },
       "slug": "alpha-high-school-austin-showcase-july-21",
       "registrationType": "internal",
-      "registrationUrl": ""
+      "registrationUrl": "",
+      "descriptionTitle": "Alpha High School Austin Showcase",
+      "description": "<p>Join us for an exciting showcase of our high school students' achievements and projects.</p>"
     },
     {
       "id": "alpha-high-school-austin-showcase-semptember-16",
@@ -68,7 +70,9 @@
       },
       "slug": "alpha-high-school-austin-showcase-semptember-16",
       "registrationType": "internal",
-      "registrationUrl": ""
+      "registrationUrl": "",
+      "descriptionTitle": "Alpha High School Austin Showcase",
+      "description": "<p>Join us for an exciting showcase of our high school students' achievements and projects.</p>"
     },
     {
       "id": "brownsville-space-camp",

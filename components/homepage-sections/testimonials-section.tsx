@@ -11,7 +11,7 @@ export default function TestimonialsSection() {
   const visibleCards = 2.5;
   const cardWidth = 430; // Reduced from 480px to 430px
 
-  const testimonialVideoUrl = "https://player.vimeo.com/video/1033250050?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1";
+  const testimonialVideoUrl = "https://player.vimeo.com/video/1033250050?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=0&controls=1";
 
   const prevTestimonial = () => {
     setActiveIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));

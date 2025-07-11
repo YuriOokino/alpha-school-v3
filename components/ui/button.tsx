@@ -13,8 +13,8 @@ const buttonVariants = cva(
         link: "font-semibold",
         lightBlue: "bg-[var(--color-sky-light)] text-[var(--color-navy-blue)] hover:opacity-80",
         navyBlue: "bg-[var(--color-navy-blue)] text-white hover:opacity-80",
-        filter: "bg-[black] text-white rounded-full px-4 py-2 font-semibold shadow-none border-0",
-        filterOutline: "bg-transparent text-[black] border border-[black] rounded-full px-4 py-2 font-semibold shadow-none focus:ring-2 focus:ring-[#60a5fa]",
+        filter: "uppercase py-1.5 bg-[var(--color-light-green)] text-sm text-[var(--color-dark-green)]",
+        filterOutline: "uppercase py-1.5  bg-transparent text-sm text-[var(--color-dark-green)] border border-[var(--color-dark-green)]",
         square: "rounded-[2px]",
         underline: "underline"
       },

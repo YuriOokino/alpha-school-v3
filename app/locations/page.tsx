@@ -40,13 +40,14 @@ export default function LocationsPage() {
       description="Alpha School tuition ranges from $40,000 upwards (Excluding Brownsville).
       Please select your desired campus location to find out more details."
       actions={
-        <div className="field-wrapper mt-8 w-[400px]">
+        <div className="field-wrapper mt-8 !w-[600px]">
           <label className="xs-label">Find a campus near you</label>
           <input 
             type="search" 
             placeholder="Enter your city or state" 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            className="!text-black"
           />
         </div>
       }

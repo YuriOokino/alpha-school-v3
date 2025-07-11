@@ -24,6 +24,18 @@ export function VideoPlayer({
   }
 
   const isVimeo = videoUrl.includes("vimeo.com");
+  
+  // Convert Vimeo URLs to proper embed format
+  const getEmbedUrl = (url: string) => {
+    if (url.includes("youtube.com")) {
+      return url.replace("watch?v=", "embed/") + "?autoplay=1&muted=0&controls=1";
+    } else if (url.includes("youtu.be")) {
+      return url.replace("youtu.be/", "www.youtube.com/embed/") + "?autoplay=1&muted=0&controls=1";
+    } else if (url.includes("vimeo.com")) {
+      return url.replace("vimeo.com/", "player.vimeo.com/video/") + "?autoplay=1&muted=0&controls=1&badge=0&autopause=0&player_id=0&app_id=58479";
+    }
+    return url + "?autoplay=1&muted=0&controls=1";
+  };
 
   const aspectRatioClasses = {
     "16/9": "aspect-video",
@@ -50,27 +62,14 @@ export function VideoPlayer({
           </div>
         </div>
       ) : (
-        isVimeo ? (
-          <div className="w-full h-full bg-black">
-            <iframe
-              src={`${videoUrl}?autoplay=1&muted=0`}
-              className="w-full h-full"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-              title={posterAlt}
-            />
-          </div>
-        ) : (
-          <iframe
-            src={`${videoUrl}?autoplay=1&muted=0`}
-            className="w-full h-full"
-            frameBorder="0"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
-            title={posterAlt}
-          />
-        )
+        <iframe
+          src={getEmbedUrl(videoUrl)}
+          className="w-full h-full"
+          frameBorder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+          title={posterAlt}
+        />
       )}
     </div>
   )
