@@ -153,53 +153,43 @@ export default function LearnMorePage() {
                   />
                 </div>
               </div>
-              <div className="flex flex-col gap-6">
-                <div>
-                  <div className="field-wrapper">
-                    <label htmlFor="street" className="xs-label">Street Address<span>*</span></label>
-                    <Input id="street" value={street} onChange={e => setStreet(e.target.value)} required className="field-input" />
-                  </div>
+              <div className="field-wrapper">
+                <label htmlFor="street" className="xs-label">Street Address<span>*</span></label>
+                <Input id="street" value={street} onChange={e => setStreet(e.target.value)} required className="field-input" />
+              </div>
+              <div className="flex gap-4">
+                <div className="field-wrapper flex-1">
+                  <label htmlFor="city" className="xs-label">City<span>*</span></label>
+                  <Input
+                    id="city"
+                    value={city}
+                    onChange={e => setCity(e.target.value)}
+                    required
+                    className="field-input"
+                  />
                 </div>
-                <div className="flex flex-col md:flex-row gap-4">
-                  <div className="flex-1">
-                    <div className="field-wrapper">
-                      <label htmlFor="city" className="xs-label">City<span>*</span></label>
-                      <Input
-                        id="city"
-                        value={city}
-                        onChange={e => setCity(e.target.value)}
-                        required
-                        className="field-input"
-                      />
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <div className="field-wrapper">
-                      <label htmlFor="state" className="xs-label">State<span>*</span></label>
-                      <Input
-                        id="state"
-                        value={state}
-                        onChange={e => setState(e.target.value)}
-                        required
-                        className="field-input"
-                      />
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <div className="field-wrapper">
-                      <label htmlFor="zip" className="xs-label">Zip Code<span>*</span></label>
-                      <Input
-                        id="zip"
-                        value={zip}
-                        onChange={e => setZip(e.target.value)}
-                        required
-                        className="field-input"
-                        type="text"
-                        pattern="^\d{5}(-\d{4})?$"
-                        maxLength={10}
-                      />
-                    </div>
-                  </div>
+                <div className="field-wrapper flex-1">
+                  <label htmlFor="state" className="xs-label">State<span>*</span></label>
+                  <Input
+                    id="state"
+                    value={state}
+                    onChange={e => setState(e.target.value)}
+                    required
+                    className="field-input"
+                  />
+                </div>
+                <div className="field-wrapper flex-1">
+                  <label htmlFor="zip" className="xs-label">Zip Code<span>*</span></label>
+                  <Input
+                    id="zip"
+                    value={zip}
+                    onChange={e => setZip(e.target.value)}
+                    required
+                    className="field-input"
+                    type="text"
+                    pattern="^\d{5}(-\d{4})?$"
+                    maxLength={10}
+                  />
                 </div>
               </div>
               <div>

@@ -12,6 +12,9 @@
         "src": "/images/events/open-house.jpg",
         "alt": "Alpha Fort Worth Info session"
       },
+      "media": {
+        "src": "https://go.alpha.school/hubfs/Videos/Website/Alpha%20AI%20Camp%202025.mp4"
+      },
       "slug": "experience-alpha-fort-worth",
       "registrationType": "internal",
       "registrationUrl": "/fort-worth#register",
@@ -22,43 +25,78 @@
     {
         "id": "austin-summer-camp",
         "title": "Austin Summer Camp",
-        "date": "Jun 23, 2025",
-        "time": "9:30 AM",
         "locationTag": "Alpha Austin",
         "category": "Summer Camp",
         "address": "1201 Spyglass Dr, Austin, TX 78746",
         "image": {
-            "src": "/images/events/summer-camp.jpg",
-            "alt": "Austin Summer Camp"
+          "src": "https://go.alpha.school/hubfs/Videos/Website/Alpha%20AI%20Camp%202025.mp4",
+          "alt": "Austin Summer Camp"
+      },
+        "media": {
+            "src": "https://go.alpha.school/hubfs/Videos/Website/Alpha%20AI%20Camp%202025.mp4"
         },
         "slug": "austin-summer-camp",
         "registrationType": "external",
         "registrationUrl": "https://campbtx.com/",
         "descriptionTitle": "Join Us for an Exciting Summer at Alpha Austin",
-        "description": "<p>Experience the perfect blend of learning and fun at our summer camp.</p><p>Our summer camp combines engaging activities with educational experiences, giving your child a memorable and enriching summer break.</p><p>Snacks and lunch will be provided.</p>"
+        "description": "<p>Experience the perfect blend of learning and fun at our summer camp.</p><p>Our summer camp combines engaging activities with educational experiences, giving your child a memorable and enriching summer break.</p><p>Snacks and lunch will be provided.</p>",
+        "contact": "xlearning@2hourlearning.com",
+        "multipleDates": true,
+        "dates": [
+            {
+                "id": "camp-1",
+                "title": "Camp 1",
+                "date": "Jun 23 - Jun 27, 2025",
+                "time": "9:00 AM - 3:00 PM",
+                "ageRange": "Ages 6-12",
+                "price": "$599 per week",
+                "soldOut": true,
+                "description": "Kick off summer with our first session featuring robotics, coding, and outdoor activities."
+            },
+            {
+                "id": "camp-2", 
+                "title": "Camp 2",
+                "date": "Jul 7 - Jul 11, 2025",
+                "time": "9:00 AM - 3:00 PM",
+                "ageRange": "Ages 6-12",
+                "price": "$599 per week",
+                "soldOut": true,
+                "description": "Explore AI, creative arts, and team-building challenges in our second session."
+            },
+            {
+                "id": "camp-3",
+                "title": "Camp 3",
+                "date": "Jul 21 - Jul 25, 2025", 
+                "time": "9:00 AM - 3:00 PM",
+                "ageRange": "Ages 6-12",
+                "price": "$599 per week",
+                "soldOut": false,
+                "description": "Wrap up summer with advanced projects, science experiments, and fun competitions."
+            }
+        ]
     },
 
     {
       "id": "alpha-high-school-austin-showcase-july-21",
-      "title": "Alpha High School Austin Showcase | July 21",
+      "title": "Alpha High School Austin Showcase",
       "date": "Jul 21, 2025",
       "time": "10:00 AM",
       "locationTag": "Alpha High School",
       "category": "Showcase",
       "address": "201 Colorado St, Austin, TX 78701",
       "image": {
-        "src": "/images/events/student-showcase.jpg",
+        "src": "/assets/locations/austin/hero/austin-hero.webp",
         "alt": "Student Showcase"
       },
       "slug": "alpha-high-school-austin-showcase-july-21",
       "registrationType": "internal",
       "registrationUrl": "",
-      "descriptionTitle": "Alpha High School Austin Showcase",
+      "descriptionTitle": "Get an inside look at Alpha’s groundbreaking learning model!",
       "description": "<p>Join us for an exciting showcase of our high school students' achievements and projects.</p>"
     },
     {
       "id": "alpha-high-school-austin-showcase-semptember-16",
-      "title": "Alpha High School Austin Showcase | Sept 16",
+      "title": "Alpha High School Austin Showcase",
       "date": "Sep 16, 2025",
       "time": "9:30 AM",
       "locationTag": "Alpha High School",

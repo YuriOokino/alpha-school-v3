@@ -68,7 +68,7 @@ export default async function AustinPage() {
       </div>
       {/* Campus & Resources Section */}
       <section className="alpha-section bg-white">
-        <div className="bg-[var(--color-light-green)] w-full rounded-[var(--radius-lg)] p-[var(--space-xl)] flex flex-col md:flex-row gap-[var(--space-xl)] items-start bg-[var(--color-bg-muted)]">
+        <div className="campus-info">
           <div className="flex-1">
             <h2 className="heading-style-h2 mb-4">Austin Campus</h2>
             <ul className="body-text mb-4">

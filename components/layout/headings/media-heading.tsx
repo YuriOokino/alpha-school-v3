@@ -29,7 +29,7 @@ export default function MediaHeading({
   return (
     <div className="w-screen min-h-[400px]">
       <div className={`media-heading-content ${variantClass} text-[var(--color-sky-blue)] ${className}`}>
-        <div className="flex flex-col md:flex-row w-full max-w-6xl mx-auto items-center gap-8">
+        <div className="flex flex-col md:flex-row w-full max-w-6xl mx-auto items-start gap-[var(--space-2xl)]">
           <div className="flex-1 min-w-0 w-full">
             {tagline && (
               <div className="flex justify-center md:justify-start mb-4">

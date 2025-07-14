@@ -34,9 +34,9 @@ export function MegaMenu({ groups, sidebar, onLinkClick }: MegaMenuProps) {
         {groupColumns.map((group, idx) => (
           <div key={idx} className="flex-1">
             {group.label && (
-              <span className="inline-block mb-4 px-3 py-1 rounded bg-[var(--color-light-green)] text-[var(--color-dark-green] font-semibold text-xs uppercase tracking-wide">
+              <div className="tagline bg-[var(--color-light-green)] text-[var(--color-dark-green)] mb-4">
                 {group.label}
-              </span>
+              </div>
             )}
             <ul className="space-y-4">
               {group.items.map((item: MegaMenuItem) => (

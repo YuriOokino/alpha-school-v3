@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { ChevronRight, ChevronDown } from 'lucide-react'
+import { ChevronRight, ChevronDown, Menu, X, ChevronLeft } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useState, useRef, useEffect } from 'react'
 import React from 'react'
@@ -10,6 +10,9 @@ import { MegaMenu } from '@/components/layout/navigation/mega-menu'
 import NewsCarouselSidebar from '@/components/features/content-blocks/news-carousel-sidebar'
 import { getAllNewsArticles } from '@/utils/content-loader.client'
 import type { NewsArticle } from '@/utils/content-loader.client'
+import LinkCard from '@/components/features/cards/link-card'
+import { useIsMobile } from '@/hooks/use-mobile'
+import { useRouter } from 'next/navigation'
 
 interface DropdownItem {
   title: string
@@ -37,6 +40,10 @@ export function Navbar() {
   const [isNavHovered, setIsNavHovered] = useState(false)
   const [newsArticles, setNewsArticles] = useState<NewsArticle[]>([])
   const closeTimeout = useRef<NodeJS.Timeout | null>(null)
+  const isMobile = useIsMobile();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeMobileDropdown, setActiveMobileDropdown] = useState<string | null>(null);
+  const router = useRouter();
 
   // Fetch news articles
   useEffect(() => {
@@ -85,6 +92,138 @@ export function Navbar() {
     }, 120)
   }
   const handleMegaMenuClose = () => setActiveDropdown(null);
+
+  // Mobile menu rendering
+  if (isMobile) {
+    // Overlay for main menu or dropdown
+    const showDropdown = !!activeMobileDropdown;
+    const navList = showDropdown
+      ? navItems.find(item => item.title === activeMobileDropdown)?.megaMenu || []
+      : navItems;
+    return (
+      <header className="w-full bg-white z-50">
+        <div className="container mx-auto flex items-center justify-between h-20 px-6 relative">
+          {/* Logo */}
+          <div className="flex items-center h-full">
+            <Link href="/" className="flex items-center h-full">
+              <Image
+                src="/assets/logo-black.svg"
+                alt="Alpha School Logo"
+                width={150}
+                height={50}
+                className="h-10 w-auto"
+                priority
+              />
+            </Link>
+          </div>
+          {/* Hamburger or close icon */}
+          <div className="flex items-center">
+            {!isMobileMenuOpen ? (
+              <button onClick={() => setIsMobileMenuOpen(true)} aria-label="Open menu">
+                <Menu className="h-8 w-8" />
+              </button>
+            ) : null}
+          </div>
+        </div>
+        {/* Mobile menu overlay */}
+        {isMobileMenuOpen && (
+          <div className="fixed inset-0 bg-white z-[100] flex flex-col">
+            {/* Top bar with logo and close/back icon */}
+            <div className="flex items-center justify-between h-20 px-6 border-b border-gray-200 bg-white">
+              <Link href="/" className="flex items-center h-full">
+                <Image
+                  src="/assets/logo-black.svg"
+                  alt="Alpha School Logo"
+                  width={120}
+                  height={40}
+                  className="h-8 w-auto"
+                  priority
+                />
+              </Link>
+              <div>
+                {showDropdown ? (
+                  <button onClick={() => setActiveMobileDropdown(null)} aria-label="Back">
+                    <ChevronLeft className="h-8 w-8" />
+                  </button>
+                ) : (
+                  <button onClick={() => setIsMobileMenuOpen(false)} aria-label="Close menu">
+                    <X className="h-8 w-8" />
+                  </button>
+                )}
+              </div>
+            </div>
+            {/* Main nav or dropdown links */}
+            <div className="flex-1 overflow-y-auto px-4 py-6 flex flex-col gap-1">
+              {showDropdown ? (
+                <>
+                  {(navList as { label: string; items: DropdownItem[] }[]).map((group, idx) => (
+                    <div key={group.label || idx} className="mb-8">
+                      {group.label && (
+                        <div className="tagline bg-[var(--color-light-green)] text-[var(--color-dark-green)] mb-4">
+                          {group.label}
+                        </div>
+                      )}
+                      <ul className="space-y-4">
+                        {group.items.map((item) => (
+                          <li key={item.title}>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                router.push(item.href);
+                                setIsMobileMenuOpen(false);
+                              }}
+                              className="flex flex-col group transition-colors w-full text-left"
+                            >
+                              <span className={`font-medium flex items-center ${item.style === 'underline' ? 'underline underline-offset-4' : ''}`}>{item.title}</span>
+                              {item.description && (
+                                <span className={`text-sm text-gray-600 ${item.style === 'underline' ? 'underline underline-offset-4' : ''}`}>{item.description}</span>
+                              )}
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                  <div className="mt-4">
+                    <NewsCarouselSidebar articles={newsArticles} />
+                  </div>
+                </>
+              ) : (
+                <>
+                  {navItems.map((item) => (
+                    <div key={item.title} className="w-full">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (item.megaMenu && item.megaMenu.length > 0) {
+                            setActiveMobileDropdown(item.title);
+                          } else {
+                            router.push(item.href);
+                            setIsMobileMenuOpen(false);
+                          }
+                        }}
+                        className="w-full flex flex-row items-center justify-between bg-[var(--color-light-green)] text-[var(--color-dark-green)] p-6 rounded-[var(--radius-md)] mb-4 hover:opacity-90 transition"
+                      >
+                        <span className="heading-style-h6">{item.title}</span>
+                        <span className="w-8 h-8 flex items-center justify-center bg-[var(--color-dark-green)] text-white rounded-full">
+                          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 5L13 10L7 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+                  ))}
+                  <div className="mt-4">
+                    <NewsCarouselSidebar articles={newsArticles} />
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        )}
+      </header>
+    );
+  }
 
   return (
     <header className="w-full bg-white z-50">
@@ -137,7 +276,7 @@ export function Navbar() {
         </nav>
         {/* CTA Button */}
         <div className="hidden md:block ml-8">
-            <Button variant="default" href="/learn-more">Learn more</Button>
+            <Button variant="navyBlue" href="/learn-more">Learn more</Button>
         </div>
         {/* MegaMenu rendered as sibling, not inside nav or li */}
         {activeNavItem && megaMenuGroups && (
@@ -237,6 +376,7 @@ export const navItems: NavItem[] = [
         items: [
           { title: "Video Library", href: "/video-library", description: "Dive into Alpha School" },
           { title: "Our Guides", href: "/guides", description: "Meet the amazing people at Alpha" },
+          { title: "Admission Forms", href: "/admission-forms", description: "Apply to one of our campuses" },
         ],
       },
     ],

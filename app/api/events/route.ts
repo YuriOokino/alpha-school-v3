@@ -3,16 +3,10 @@ import { loadEvents } from '@/utils/content-loader.server';
 
 export async function GET() {
   try {
-    console.log('API: Starting events request');
+    console.log('API: Starting all events request');
     const events = await loadEvents();
-    console.log('API: Found events:', events.length);
     
-    if (events.length === 0) {
-      console.log('API: No events found');
-      return NextResponse.json([]);
-    }
-    
-    console.log('API: Returning events:', events);
+    console.log('API: Returning events:', events.length);
     return NextResponse.json(events);
   } catch (error) {
     console.error('API: Error fetching events:', error);

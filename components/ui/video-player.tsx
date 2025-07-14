@@ -8,6 +8,7 @@ interface VideoPlayerProps {
   posterAlt?: string
   className?: string
   aspectRatio?: "16/9" | "4/3" | "1/1" | "21/9"
+  overlayImage?: string
 }
 
 export function VideoPlayer({ 
@@ -15,7 +16,8 @@ export function VideoPlayer({
   posterImage, 
   posterAlt = "Video preview", 
   className = "",
-  aspectRatio = "16/9"
+  aspectRatio = "16/9",
+  overlayImage
 }: VideoPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false)
 
@@ -25,16 +27,28 @@ export function VideoPlayer({
 
   const isVimeo = videoUrl.includes("vimeo.com");
   
-  // Convert Vimeo URLs to proper embed format
+  // Convert Vimeo/YouTube URLs to proper embed format and always enforce autoplay=1&muted=0
   const getEmbedUrl = (url: string) => {
+    let embedUrl = url;
     if (url.includes("youtube.com")) {
-      return url.replace("watch?v=", "embed/") + "?autoplay=1&muted=0&controls=1";
+      embedUrl = url.replace("watch?v=", "embed/");
     } else if (url.includes("youtu.be")) {
-      return url.replace("youtu.be/", "www.youtube.com/embed/") + "?autoplay=1&muted=0&controls=1";
+      embedUrl = url.replace("youtu.be/", "www.youtube.com/embed/");
     } else if (url.includes("vimeo.com")) {
-      return url.replace("vimeo.com/", "player.vimeo.com/video/") + "?autoplay=1&muted=0&controls=1&badge=0&autopause=0&player_id=0&app_id=58479";
+      embedUrl = url.replace("vimeo.com/", "player.vimeo.com/video/");
     }
-    return url + "?autoplay=1&muted=0&controls=1";
+    // Remove any existing autoplay or muted params, then append ours
+    embedUrl = embedUrl.replace(/([?&])(autoplay|muted|controls|badge|autopause|player_id|app_id)=[^&]*/g, "");
+    // Remove trailing ? or & if present
+    embedUrl = embedUrl.replace(/[?&]$/, "");
+    // Add our params
+    const joinChar = embedUrl.includes("?") ? "&" : "?";
+    if (embedUrl.includes("vimeo.com")) {
+      return (
+        embedUrl + joinChar + "autoplay=1&muted=0&controls=1&badge=0&autopause=0&player_id=0&app_id=58479"
+      );
+    }
+    return embedUrl + joinChar + "autoplay=1&muted=0&controls=1";
   };
 
   const aspectRatioClasses = {
@@ -53,8 +67,19 @@ export function VideoPlayer({
             alt={posterAlt}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition-colors">
-            <div className="w-16 h-16 md:w-20 md:h-20 bg-white/80 rounded-full flex items-center justify-center hover:bg-white transition-colors">
+          {/* Additional black overlay for better contrast */}
+          <div className="absolute inset-0 bg-black/50"></div>
+          {/* Custom overlay image */}
+          {overlayImage && (
+            <img
+              src={overlayImage}
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          )}
+          {/* Play button overlay */}
+          <div className="absolute inset-0 flex items-center justify-center hover:bg-black/10 transition-colors">
+            <div className="w-16 h-16 md:w-20 md:h-20 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-lg">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="text-gray-800 ml-1 md:w-8 md:h-8">
                 <path d="M8 5v14l11-7z"/>
               </svg>

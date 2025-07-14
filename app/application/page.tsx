@@ -109,264 +109,145 @@ function ApplicationForm() {
             <input type="hidden" name="campus" value={formData.campus} />
             
             {/* Parent 1 & 2 Info */}
-            <div className="flex flex-col gap-6">
-              <h6>Parent \ Guardian Information</h6>
-              <div className="flex flex-col md:flex-row gap-4">
-                <div className="flex-1">
-                  <div className="field-wrapper">
-                    <label htmlFor="parent1FirstName" className="xs-label">Parent #1 First Name<span>*</span></label>
-                    <Input id="parent1FirstName" name="parent1FirstName" value={formData.parent1FirstName} onChange={handleChange} required className="field-input" />
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <div className="field-wrapper">
-                    <label htmlFor="parent1LastName" className="xs-label">Parent #1 Last Name<span>*</span></label>
-                    <Input id="parent1LastName" name="parent1LastName" value={formData.parent1LastName} onChange={handleChange} required className="field-input" />
-                  </div>
-                </div>
+            <h6>Parent \ Guardian Information</h6>
+            <div className="flex gap-4">
+              <div className="field-wrapper flex-1">
+                <label htmlFor="parent1FirstName" className="xs-label">Parent #1 First Name<span>*</span></label>
+                <Input id="parent1FirstName" name="parent1FirstName" value={formData.parent1FirstName} onChange={handleChange} required className="field-input" />
               </div>
-              <div className="flex flex-col md:flex-row gap-4">
-                <div className="flex-1">
-                  <div className="field-wrapper">
-                    <label htmlFor="parent1Email" className="xs-label">Parent #1 Email<span>*</span></label>
-                    <Input id="parent1Email" name="parent1Email" type="email" value={formData.parent1Email} onChange={handleChange} required className="field-input" />
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <div className="field-wrapper">
-                    <label htmlFor="parent1Phone" className="xs-label">Parent #1 Phone<span>*</span></label>
-                    <Input id="parent1Phone" name="parent1Phone" type="tel" value={formData.parent1Phone} onChange={handleChange} required className="field-input" />
-                  </div>
-                </div>
-              </div>
-              <div className="flex-1">
-                <div className="field-wrapper">
-                  <label className="xs-label">Parent #1 Relationship to Student<span>*</span></label>
-                  <select name="parent1Relationship" value={formData.parent1Relationship} onChange={handleChange} required className="field-input">
-                    <option value="">Please Select</option>
-                    {relationshipOptions.map((opt) => (
-                      <option key={opt} value={opt}>{opt}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-              <div className="flex flex-col md:flex-row gap-4">
-                <div className="flex-1">
-                  <div className="field-wrapper">
-                    <label className="xs-label">Parent #2 First Name</label>
-                    <Input name="parent2FirstName" value={formData.parent2FirstName} onChange={handleChange} className="field-input" />
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <div className="field-wrapper">
-                    <label className="xs-label">Parent #2 Last Name</label>
-                    <Input name="parent2LastName" value={formData.parent2LastName} onChange={handleChange} className="field-input"/>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-col md:flex-row gap-4">
-                <div className="flex-1">
-                  <div className="field-wrapper">
-                    <label className="xs-label">Parent #2 Email</label>
-                    <Input name="parent2Email" type="email" value={formData.parent2Email} onChange={handleChange} className="field-input" />
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <div className="field-wrapper">
-                    <label className="xs-label">Parent #2 Phone</label>
-                    <Input name="parent2Phone" type="tel" value={formData.parent2Phone} onChange={handleChange} className="field-input" />
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-col md:flex-row gap-4">
-                <div className="flex-1">
-                  <div className="field-wrapper">
-                    <label className="xs-label">Parent #2 Relationship to Student</label>
-                    <select name="parent2Relationship" value={formData.parent2Relationship} onChange={handleChange} className="field-input">
-                      <option value="">Please Select</option>
-                      {relationshipOptions.map((opt) => (
-                      <option key={opt} value={opt}>{opt}</option>
-                        ))}
-                    </select>
-                  </div>
-                </div>
+              <div className="field-wrapper flex-1">
+                <label htmlFor="parent1LastName" className="xs-label">Parent #1 Last Name<span>*</span></label>
+                <Input id="parent1LastName" name="parent1LastName" value={formData.parent1LastName} onChange={handleChange} required className="field-input" />
               </div>
             </div>
-
+            <div className="flex gap-4">
+              <div className="field-wrapper flex-1">
+                <label htmlFor="parent1Email" className="xs-label">Parent #1 Email<span>*</span></label>
+                <Input id="parent1Email" name="parent1Email" type="email" value={formData.parent1Email} onChange={handleChange} required className="field-input" />
+              </div>
+              <div className="field-wrapper flex-1">
+                <label htmlFor="parent1Phone" className="xs-label">Parent #1 Phone<span>*</span></label>
+                <Input id="parent1Phone" name="parent1Phone" type="tel" value={formData.parent1Phone} onChange={handleChange} required className="field-input" />
+              </div>
+            </div>
+            <div className="field-wrapper">
+              <label className="xs-label">Parent #1 Relationship to Student<span>*</span></label>
+              <select name="parent1Relationship" value={formData.parent1Relationship} onChange={handleChange} required className="field-input">
+                <option value="">Please Select</option>
+                {relationshipOptions.map((opt) => (
+                  <option key={opt} value={opt}>{opt}</option>
+                ))}
+              </select>
+            </div>
+            <div className="flex gap-4">
+              <div className="field-wrapper flex-1">
+                <label className="xs-label">Parent #2 First Name</label>
+                <Input name="parent2FirstName" value={formData.parent2FirstName} onChange={handleChange} className="field-input" />
+              </div>
+              <div className="field-wrapper flex-1">
+                <label className="xs-label">Parent #2 Last Name</label>
+                <Input name="parent2LastName" value={formData.parent2LastName} onChange={handleChange} className="field-input"/>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="field-wrapper flex-1">
+                <label className="xs-label">Parent #2 Email</label>
+                <Input name="parent2Email" type="email" value={formData.parent2Email} onChange={handleChange} className="field-input" />
+              </div>
+              <div className="field-wrapper flex-1">
+                <label className="xs-label">Parent #2 Phone</label>
+                <Input name="parent2Phone" type="tel" value={formData.parent2Phone} onChange={handleChange} className="field-input" />
+              </div>
+            </div>
+            <div className="field-wrapper">
+              <label className="xs-label">Parent #2 Relationship to Student</label>
+              <select name="parent2Relationship" value={formData.parent2Relationship} onChange={handleChange} className="field-input">
+                <option value="">Please Select</option>
+                {relationshipOptions.map((opt) => (
+                  <option key={opt} value={opt}>{opt}</option>
+                ))}
+              </select>
+            </div>
             {/* Address */}
-            <div className="flex flex-col gap-6">
             <h6>Address Information</h6>
-              <div>
-                <div className="field-wrapper">
-                  <label htmlFor="address" className="xs-label">Street Address<span>*</span></label>
-                  <Input id="address" name="address" value={formData.address} onChange={handleChange} required className="field-input" />
-                </div>
+            <div className="field-wrapper">
+              <label htmlFor="address" className="xs-label">Street Address<span>*</span></label>
+              <Input id="address" name="address" value={formData.address} onChange={handleChange} required className="field-input" />
+            </div>
+            <div className="flex gap-4">
+              <div className="field-wrapper flex-1">
+                <label htmlFor="city" className="xs-label">City<span>*</span></label>
+                <Input id="city" name="city" value={formData.city} onChange={handleChange} required className="field-input" onKeyPress={(e) => { const char = String.fromCharCode(e.which); if (/\d/.test(char)) { e.preventDefault(); } }} />
               </div>
-              <div className="flex flex-col md:flex-row gap-4">
-                <div className="flex-1">
-                  <div className="field-wrapper">
-                    <label htmlFor="city" className="xs-label">City<span>*</span></label>
-                    <Input 
-                      id="city" 
-                      name="city" 
-                      value={formData.city} 
-                      onChange={handleChange} 
-                      required 
-                      className="field-input"
-                      onKeyPress={(e) => {
-                        const char = String.fromCharCode(e.which);
-                        if (/\d/.test(char)) {
-                          e.preventDefault();
-                        }
-                      }}
-                    />
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <div className="field-wrapper">
-                    <label htmlFor="state" className="xs-label">State<span>*</span></label>
-                    <Input 
-                      id="state" 
-                      name="state" 
-                      value={formData.state} 
-                      onChange={handleChange} 
-                      required 
-                      className="field-input"
-                      onKeyPress={(e) => {
-                        const char = String.fromCharCode(e.which);
-                        if (/\d/.test(char)) {
-                          e.preventDefault();
-                        }
-                      }}
-                    />
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <div className="field-wrapper">
-                    <label htmlFor="zip" className="xs-label">Zip Code<span>*</span></label>
-                    <Input 
-                      id="zip" 
-                      name="zip" 
-                      value={formData.zip} 
-                      onChange={handleChange} 
-                      required 
-                      className="field-input"
-                      type="text"
-                      pattern="^\d{5}(-\d{4})?$"
-                      maxLength={10}
-                      onKeyPress={(e) => {
-                        const char = String.fromCharCode(e.which);
-                        if (!/\d/.test(char) && e.which !== 8 && e.which !== 45) {
-                          e.preventDefault();
-                        }
-                      }}
-                    />
-                  </div>
-                </div>
+              <div className="field-wrapper flex-1">
+                <label htmlFor="state" className="xs-label">State<span>*</span></label>
+                <Input id="state" name="state" value={formData.state} onChange={handleChange} required className="field-input" onKeyPress={(e) => { const char = String.fromCharCode(e.which); if (/\d/.test(char)) { e.preventDefault(); } }} />
+              </div>
+              <div className="field-wrapper flex-1">
+                <label htmlFor="zip" className="xs-label">Zip Code<span>*</span></label>
+                <Input id="zip" name="zip" value={formData.zip} onChange={handleChange} required className="field-input" type="text" pattern="^\d{5}(-\d{4})?$" maxLength={10} onKeyPress={(e) => { const char = String.fromCharCode(e.which); if (!/\d/.test(char) && e.which !== 8 && e.which !== 45) { e.preventDefault(); } }} />
               </div>
             </div>
-
             {/* Student Info */}
-            <div className="flex flex-col gap-6">
             <h6>Student Information</h6>
-              <div className="flex flex-col md:flex-row gap-4">
-                <div className="flex-1">
-                  <div className="field-wrapper">
-                    <label htmlFor="childFirstName" className="xs-label">Child's First Name<span>*</span></label>
-                    <Input id="childFirstName" name="childFirstName" value={formData.childFirstName} onChange={handleChange} required className="field-input" />
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <div className="field-wrapper">
-                    <label htmlFor="childLastName" className="xs-label">Child's Last Name<span>*</span></label>
-                    <Input id="childLastName" name="childLastName" value={formData.childLastName} onChange={handleChange} required className="field-input" />
-                  </div>
-                </div>
+            <div className="flex gap-4">
+              <div className="field-wrapper flex-1">
+                <label htmlFor="childFirstName" className="xs-label">Child's First Name<span>*</span></label>
+                <Input id="childFirstName" name="childFirstName" value={formData.childFirstName} onChange={handleChange} required className="field-input" />
               </div>
-              <div className="flex flex-col md:flex-row gap-4">
-                <div className="flex-1">
-                  <div className="field-wrapper">
-                    <label htmlFor="childDOB" className="xs-label">Child's Date of Birth<span>*</span></label>
-                    <Input 
-                      id="childDOB" 
-                      name="childDOB" 
-                      type="date" 
-                      value={formData.childDOB} 
-                      onChange={handleChange} 
-                      required 
-                      className="field-input cursor-pointer" 
-                      onClick={(e) => {
-                        const target = e.target as HTMLInputElement;
-                        target.showPicker?.();
-                      }}
-                    />
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <div className="field-wrapper">
-                    <label htmlFor="childGrade" className="xs-label">Child's Current Grade Level<span>*</span></label>
-                    <select id="childGrade" name="childGrade" value={formData.childGrade} onChange={handleChange} required className="field-input">
-                      <option value="">Please Select</option>
-                      {gradeOptions.map((opt) => (
-                        <option key={opt} value={opt}>{opt}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div className="field-wrapper">
-                  <label htmlFor="childCurrentSchool" className="xs-label">Child's Current School (if applicable)</label>
-                  <Input id="childCurrentSchool" name="childCurrentSchool" value={formData.childCurrentSchool} onChange={handleChange} className="field-input" />
-                </div>
-              </div>
-              <div>
-                <div className="field-wrapper">
-                  <label htmlFor="childEnrollmentDate" className="xs-label">Child's Desired Enrollment Date<span>*</span></label>
-                  <Input 
-                    id="childEnrollmentDate" 
-                    name="childEnrollmentDate" 
-                    type="date" 
-                    value={formData.childEnrollmentDate} 
-                    onChange={handleChange} 
-                    required 
-                    className="field-input cursor-pointer" 
-                    onClick={(e) => {
-                      const target = e.target as HTMLInputElement;
-                      target.showPicker?.();
-                    }}
-                  />
-                </div>
+              <div className="field-wrapper flex-1">
+                <label htmlFor="childLastName" className="xs-label">Child's Last Name<span>*</span></label>
+                <Input id="childLastName" name="childLastName" value={formData.childLastName} onChange={handleChange} required className="field-input" />
               </div>
             </div>
-
+            <div className="flex gap-4">
+              <div className="field-wrapper flex-1">
+                <label htmlFor="childDOB" className="xs-label">Child's Date of Birth<span>*</span></label>
+                <Input id="childDOB" name="childDOB" type="date" value={formData.childDOB} onChange={handleChange} required className="field-input cursor-pointer" onClick={(e) => { const target = e.target as HTMLInputElement; target.showPicker?.(); }} />
+              </div>
+              <div className="field-wrapper flex-1">
+                <label htmlFor="childGrade" className="xs-label">Child's Current Grade Level<span>*</span></label>
+                <select id="childGrade" name="childGrade" value={formData.childGrade} onChange={handleChange} required className="field-input">
+                  <option value="">Please Select</option>
+                  {gradeOptions.map((opt) => (
+                    <option key={opt} value={opt}>{opt}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="field-wrapper flex-1">
+                <label htmlFor="childCurrentSchool" className="xs-label">Child's Current School (if applicable)</label>
+                <Input id="childCurrentSchool" name="childCurrentSchool" value={formData.childCurrentSchool} onChange={handleChange} className="field-input" />
+              </div>
+              <div className="field-wrapper flex-1">
+                <label htmlFor="childEnrollmentDate" className="xs-label">Child's Desired Enrollment Date<span>*</span></label>
+                <Input id="childEnrollmentDate" name="childEnrollmentDate" type="date" value={formData.childEnrollmentDate} onChange={handleChange} required className="field-input cursor-pointer" onClick={(e) => { const target = e.target as HTMLInputElement; target.showPicker?.(); }} />
+              </div>
+            </div>
             {/* Open text areas */}
-            <div className="flex flex-col gap-6">
-              <h6>Additional Information</h6>
-              <div>
-                <div className="field-wrapper">
-                  <label htmlFor="aboutChild" className="xs-label max-w-[50%] leading-mediumI wan">Please share anything about your child or your family you would like us to know<span>*</span></label>
-                  <Textarea id="aboutChild" name="aboutChild" value={formData.aboutChild} onChange={handleChange} rows={3} required className="field-input" />
-                </div>
+            <h6>Additional Information</h6>
+            <div className="flex gap-4">
+              <div className="field-wrapper flex-1">
+                <label htmlFor="aboutChild" className="xs-label max-w-[50%] leading-medium">Please share anything about your child or your family you would like us to know<span>*</span></label>
+                <Textarea id="aboutChild" name="aboutChild" value={formData.aboutChild} onChange={handleChange} rows={3} required className="field-input" />
               </div>
-              <div>
-                <div className="field-wrapper">
-                  <label htmlFor="accommodations" className="xs-label max-w-[50%] leading-medium">Are there any special accommodations or challenges your student(s) might have that you can share in order to help us place them in the best environment?<span>*</span></label>
-                  <Textarea id="accommodations" name="accommodations" value={formData.accommodations} onChange={handleChange} rows={3} required className="field-input" />
-                </div>
+              <div className="field-wrapper flex-1">
+                <label htmlFor="accommodations" className="xs-label max-w-[50%] leading-medium">Are there any special accommodations or challenges your student(s) might have that you can share in order to help us place them in the best environment?<span>*</span></label>
+                <Textarea id="accommodations" name="accommodations" value={formData.accommodations} onChange={handleChange} rows={3} required className="field-input" />
               </div>
-              <div>
-                <div className="field-wrapper">
-                  <label htmlFor="referralSource" className="xs-label">How did you hear about us?<span>*</span></label>
-                  <select id="referralSource" name="referralSource" value={formData.referralSource} onChange={handleChange} required className="field-input">
-                    <option value="">Please Select</option>
-                    {referralOptions.map((opt) => (
-                      <option key={opt} value={opt}>{opt}</option>
-                    ))}
-                  </select>
-                </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="field-wrapper flex-1">
+                <label htmlFor="referralSource" className="xs-label">How did you hear about us?<span>*</span></label>
+                <select id="referralSource" name="referralSource" value={formData.referralSource} onChange={handleChange} required className="field-input">
+                  <option value="">Please Select</option>
+                  {referralOptions.map((opt) => (
+                    <option key={opt} value={opt}>{opt}</option>
+                  ))}
+                </select>
               </div>
-              <div className="flex items-start gap-2">
+              <div className="flex items-start gap-2 flex-1 pt-6">
                 <input type="checkbox" name="smsConsent" id="smsConsent" checked={formData.smsConsent} onChange={handleChange} />
                 <label htmlFor="smsConsent" className="text-sm">
                   I agree to receive SMS messages from 2 Hour Learning regarding inquiry follow-up, invitations to events, and personalized updates about applications and enrollment. Messages & data rates may apply. Reply STOP to opt out.
@@ -376,11 +257,9 @@ function ApplicationForm() {
             <div className="text-sm">
               <strong>Please note your registration is only complete once you've completed your payment successfully below.</strong>
             </div>
-            
-              <Button type="submit">
-                Continue to Payment
-              </Button>
-           
+            <Button type="submit">
+              Continue to Payment
+            </Button>
           </form>
         </div>
       </section>

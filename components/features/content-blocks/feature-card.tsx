@@ -5,6 +5,7 @@ interface FeatureCardProps extends React.HTMLAttributes<HTMLDivElement> {
   media: ReactNode | { video: string; poster: string };
   children: ReactNode;
   className?: string;
+
 }
 
 export default function FeatureCard({ media, children, className, ...rest }: FeatureCardProps) {
@@ -65,7 +66,7 @@ export default function FeatureCard({ media, children, className, ...rest }: Fea
   }
 
   return (
-    <div {...rest} className={`w-full rounded-[var(--radius-lg)] p-[var(--space-xl)] flex flex-col md:flex-row gap-[var(--space-xl)] items-stretch ${className || ''}`}>
+    <div {...rest} className={`rounded-[var(--radius-lg)] p-[var(--space-xl)] flex flex-col md:flex-row gap-[var(--space-xl)] items-stretch ${className || ''}`}>
       <div className="flex-1 flex flex-col justify-top">
         {children}
       </div>

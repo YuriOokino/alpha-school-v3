@@ -24,9 +24,9 @@ html, body {
     --color-warm: #FCCFCF;         /* Warm pink - Testimonial backgrounds */
     --color-warm-dark: #5C2727;    /* Warm maroon - Headings, buttons */
     --color-light-green: #D8FFB7;
-    --color-dark-green: #355D12;
-    --color-navy-blue: #2A3C82;
-    --color-sky-blue: #D3E4FF;
+    --color-dark-green: #385116;
+    --color-navy-blue: #213BA1;
+    --color-sky-blue: #E1E4FF;
     
     /* Text Colors */
     --color-text-main: #111827;    /* Primary text */
@@ -142,6 +142,7 @@ html, body {
   .heading-style-uppercase {
     @apply font-normal text-[16px] uppercase;
   }
+  
 }
 
 /* Layout Utilities */
@@ -207,7 +208,7 @@ html, body {
   
   /* Two Column Flex Container */
   .two-column-flex {
-    @apply flex flex-col md:flex-row gap-[var(--space-xl)];
+    @apply flex flex-col md:flex-row gap-[var(--space-2xl)];
   }
   
   .two-column-flex > * {
@@ -349,6 +350,10 @@ textarea {
   background-color: #fff !important;
 }
 
+input::placeholder {
+  opacity: 0.5;
+}
+
 /* Floating label styles */
 
 .field-wrapper {
@@ -474,4 +479,8 @@ input[type="tel"]::-webkit-inner-spin-button {
 }
 .material-icons-outlined {
   margin-right: 0.5em; /* or adjust as needed */
+}
+
+.down-45 {
+  transform: rotate(45deg);
 }

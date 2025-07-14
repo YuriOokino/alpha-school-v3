@@ -9,7 +9,7 @@ import CampusMap from "@/components/features/content-blocks/CampusMap";
 import Carousel from "@/components/ui/carousel";
 import Divider from "@/components/layout/divider";
 import { Button } from "@/components/ui/button";
-import ApplicationCard from "@/components/features/cards/application-card";
+import ApplicationCard from "@/components/features/cards/link-card";
 
 
 export default function LocationsPage() {

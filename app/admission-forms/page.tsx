@@ -1,9 +1,10 @@
 import MainHeading from "@/components/layout/headings/main-heading"
 import WhatsNextSection from "@/components/layout/navigation/whats-next-section"
 import { Button } from "@/components/ui/button"
-import ApplicationCard from "@/components/features/cards/application-card"
+import ApplicationCard from "@/components/features/cards/link-card"
 import { getCampusApplicationUrl } from "@/utils/campuses"
 import { campuses } from "@/content/campuses"
+import LinkCard from "@/components/features/cards/link-card"
 
 // SVGs
 const arrowSvg = (
@@ -18,6 +19,9 @@ export default function AdmissionFormsPage() {
     <>
       {/* Main Title Section */}
       <MainHeading 
+      tagline="Admissions"
+      taglineVariant="green"
+    
         description={
           <>
             Please select the campus you'd like to apply to below.
@@ -26,18 +30,20 @@ export default function AdmissionFormsPage() {
             </>
         }
       >
-        Admission Applications
+        Apply to one of our campuses
       </MainHeading>
       {/* Campus Card Grid Section */}
       <section className="alpha-section">
         <div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {campuses.map(campus => (
-              <ApplicationCard
+              <LinkCard
+                variant="lightBlue"
+                size="lg"
                 key={campus.name}
                 arrowSvg={arrowSvg}
-                campusName={campus.name}
-                stateCode={campus.stateCode}
+                title={campus.stateCode}
+                subtitle={campus.name}
                 href={getCampusApplicationUrl(campus.name)}
               />
             ))}
@@ -45,7 +51,7 @@ export default function AdmissionFormsPage() {
               <div className="alpha-card bg-[var(--color-light-green)] max-w-2xl mt-[var(--space-xl)]">
                 <h2 className="heading-style-h5 mb-2">Placeholder Heading</h2>
                 <p className="mb-4">This is a placeholder paragraph for the Bring Alpha to your City card. Add your custom message here.</p>
-                <Button href="/bring-alpha-to-your-city" className="bg-[var(--color-dark-green)]">Bring Alpha to your City</Button>
+                <Button href="/bring-alpha-to-your-city" variant="darkGreen">Bring Alpha to your City</Button>
               </div>
             </div>
           </div>

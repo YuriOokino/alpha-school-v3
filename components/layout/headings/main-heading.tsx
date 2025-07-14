@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react";
+import { cn } from "@/lib/utils";
 import Divider from "../divider";
 
 interface MainHeadingProps {
@@ -10,6 +11,8 @@ interface MainHeadingProps {
   className?: string;
   tagline?: React.ReactNode;
   variant?: "default" | "blue";
+  taglineVariant?: "default" | "blue" | "green";
+  taglineClassName?: string;
 }
 
 export default function MainHeading({ 
@@ -18,7 +21,9 @@ export default function MainHeading({
   actions, 
   className = "",
   tagline,
-  variant = "default"
+  variant = "default",
+  taglineVariant = "default",
+  taglineClassName = ""
 }: MainHeadingProps) {
   const variantClass =
     variant === "blue"
@@ -26,16 +31,18 @@ export default function MainHeading({
       : "";
   return (
     <div className="w-full">
-      <div className={`main-heading-content ${variantClass} text-[var(--color-navy-blue)] ${className}`}>
+      <div className={`main-heading-content ${variantClass} ${className}`}>
         <div className="flex flex-col w-full max-w-6xl mx-auto items-center">
           <div className="flex-1 min-w-0 w-full">
             {tagline && (
               <div className="flex justify-center mb-4">
-                <p className={`tagline ${
-                  variant === "blue"
-                    ? "bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)] px-4 py-1 rounded-[var(--radius-pill)] inline-block"
-                    : "bg-[var(--color-light-green)] px-4 py-1 rounded-[var(--radius-pill)] inline-block"
-                }`}>
+                <p className={cn(
+                  "tagline px-4 py-1 rounded-[var(--radius-pill)] inline-block",
+                  taglineVariant === "blue" && "bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)]",
+                  taglineVariant === "green" && "bg-[var(--color-light-green)] text-[var(--color-dark-green)]",
+                  taglineVariant === "default" && "bg-black text-white",
+                  taglineClassName
+                )}>
                   {tagline}
                 </p>
               </div>
