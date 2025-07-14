@@ -115,28 +115,7 @@ export async function getAllArticlesWithSlugs<T extends BaseContent & { type: 'n
 
 // Specific functions for blog and news
 export async function getAllNewsArticles(): Promise<ContentWithSlug<NewsArticle>[]> {
-  console.log('Server: Loading all news articles');
-  const projectRoot = path.resolve(process.cwd());
-  const contentPath = path.join(projectRoot, 'content', 'news');
-  
-  try {
-    const files = fs.readdirSync(contentPath)
-      .filter(file => file.endsWith('.json'));
-    
-    const articles = files.map(file => {
-      const content = JSON.parse(fs.readFileSync(path.join(contentPath, file), 'utf-8')) as NewsArticle;
-      return {
-        ...content,
-        slug: content.id
-      };
-    });
-
-    console.log('Server: Loaded articles:', articles.length);
-    return articles;
-  } catch (error) {
-    console.error('Server: Error loading news articles:', error);
-    return [];
-  }
+  return getAllArticlesWithSlugs<NewsArticle>('news');
 }
 
 export async function getAllBlogPosts(): Promise<ContentWithSlug<BlogPost>[]> {

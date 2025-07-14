@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 interface ArticleCardProps {
@@ -7,31 +6,34 @@ interface ArticleCardProps {
   imageAlt: string;
   title: string;
   date: string;
+  category: string;
   href: string;
   className?: string;
   titleClassName?: string;
   variant?: 'default' | 'sidebar';
-  buttonClassName?: string;
 }
 
-export default function ArticleCard({ imageSrc, imageAlt, title, date, href, className, titleClassName, variant = 'default', buttonClassName }: ArticleCardProps) {
-  // Determine card classes based on variant
-  const baseCardClass = 'alpha-card flex flex-col h-full';
-  const variantClass = variant === 'sidebar' ? 'sidebar-variant p-0 bg-transparent shadow-none' : '';
-  const cardClass = `${baseCardClass}${className ? ` ${className}` : ''}${variantClass ? ` ${variantClass}` : ''}`;
+export default function ArticleCard({ imageSrc, imageAlt, title, date, category, href, className, titleClassName, variant = 'default' }: ArticleCardProps) {
+  // Use CSS variables/globals for styling
+  const contentClass = "flex flex-col gap-4 p-[var(--space-md)] h-full bg-[var(--color-light-green)] rounded-[var(--radius-md)]";
+  const imageClass = "w-full aspect-[3/2] object-cover rounded-[var(--radius-md)]";
 
   return (
-    <div className={cardClass}>
+    <div className="flex flex-col gap-[var(--space-sm)]">
       <Link href={href}>
-        <img src={imageSrc} alt={imageAlt} className="w-full mb-4 rounded-[var(--radius-sm)]" />
+        <img src={imageSrc} alt={imageAlt} className={imageClass} />
       </Link>
-      <Link href={href}>
-        <h2 className={`heading-style-h3 mb-2${titleClassName ? ` ${titleClassName}` : ''}`}>{title}</h2>
-      </Link>
-      <p className="text-[var(--color-text-muted)] mb-4">{date}</p>
-      <div className="mt-auto">
-        <Button href={href} className={buttonClassName}>Read More</Button>
-      </div>
-    </div>
+        
+        <div className={contentClass}>
+        <div className="flex gap-2">
+          <div className="tag-filled !bg-[var(--color-dark-green)] !text-[var(--color-light-green)]">{date}</div>
+          <div className="tag-outline !border-[var(--color-dark-green)] !text-[var(--color-dark-green)]">{category}</div>
+        </div>
+        <Link href={href}>
+          <h6>{title}</h6>
+        </Link>
+        </div>
+        </div>
+
   );
 } 

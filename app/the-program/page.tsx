@@ -81,7 +81,7 @@ export default function TheProgramPage() {
           <div className="flex flex-col md:flex-row gap-8 items-start">
             {/* Left column: text */}
             <div className="flex-1">
-              <ul className="list-disc pl-6 space-y-3 my-4">
+              <ul className="list-disc pl-6 space-y-3">
                 <li>
                   <strong>Student centered approach:</strong> Our students are captains of their educational journey. Regular surveys and 1:1 guide interactions ensure their voices are heard and needs are met.
                 </li>
@@ -129,7 +129,7 @@ export default function TheProgramPage() {
     {/* Right column: text */}
     <div className="flex-1">
       <p></p>
-      <ul className="list-disc pl-6 space-y-3 my-4">
+      <ul className="list-disc pl-6 space-y-3">
         <li>
           <strong>2.6x Growth:</strong> On average, Alpha students grow 2.6 times faster than peers on nationally normed MAP tests.
         </li>
@@ -162,7 +162,7 @@ export default function TheProgramPage() {
           <div className="flex flex-col md:flex-row gap-8 items-start">
             {/* Left column: text */}
             <div className="flex-1">
-              <ul className="list-disc pl-6 space-y-3 my-4">
+              <ul className="list-disc pl-6 space-y-3">
                 <li>
                   <strong>Workshops with purpose:</strong> Every session includes innovative workshops focusing on our 24 Life Skills. From public speaking to coding, entrepreneurship, and outdoor education, these experiences build grit, creativity, and adaptability.
                 </li>

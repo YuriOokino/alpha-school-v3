@@ -6,18 +6,30 @@ import MainHeading from "@/components/layout/headings/main-heading";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import { getArticleBySlug, getAllNewsArticles } from "@/utils/content-loader.client";
-import type { NewsArticle } from "@/utils/content-loader.client";
+import articlesData from '@/content/articles.json';
 import NewsListSidebar from '@/components/features/content-blocks/news-list-sidebar';
 import ArticlePagination from "@/components/ui/ArticlePagination";
-import WhatsNextSection from "@/components/layout/navigation/whats-next-section";
+
+interface Article {
+  id: string;
+  type: 'blog' | 'news';
+  title: string;
+  date: string;
+  authorName: string;
+  authorRole?: string;
+  authorBio?: string;
+  summary: string;
+  image: string;
+  content: string;
+  slug: string;
+}
 
 export default function NewsArticlePage() {
   const params = useParams();
   const slug = params?.slug as string;
-  const [article, setArticle] = useState<NewsArticle | null>(null);
-  const [allArticles, setAllArticles] = useState<NewsArticle[]>([]);
-  const [otherArticles, setOtherArticles] = useState<NewsArticle[]>([]);
+  const [article, setArticle] = useState<Article | null>(null);
+  const [allArticles, setAllArticles] = useState<Article[]>([]);
+  const [otherArticles, setOtherArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -25,50 +37,49 @@ export default function NewsArticlePage() {
   useEffect(() => {
     if (!slug) return;
 
-    const loadArticle = async () => {
-      try {
-        setLoading(true);
-        const fetchedArticle = await getArticleBySlug(slug, 'news');
-        
-        // Type guard to ensure we have a NewsArticle
-        if (!fetchedArticle || fetchedArticle.type !== 'news') {
-          setError('Article not found');
-          return;
-        }
-        
-        setArticle(fetchedArticle as NewsArticle);
-        
-        const allArticlesData = await getAllNewsArticles();
-        setAllArticles(allArticlesData);
-        setOtherArticles(allArticlesData.filter(a => a.id !== fetchedArticle.id));
-        
-        // Find the current article's index
-        const currentArticleIndex = allArticlesData.findIndex(a => a.id === fetchedArticle.id);
-        setCurrentIndex(currentArticleIndex);
-        
-        setError(null);
-      } catch (err) {
-        console.error('Error loading article:', err);
-        setError(err instanceof Error ? err.message : 'An error occurred');
-      } finally {
-        setLoading(false);
+    try {
+      setLoading(true);
+      
+      // Find the article by slug from the articles data
+      const foundArticle = (articlesData as Article[]).find((article: Article) => article.slug === slug && article.type === 'news');
+      
+      if (!foundArticle) {
+        setError('Article not found');
+        return;
       }
-    };
-    loadArticle();
+      
+      setArticle(foundArticle);
+      
+      // Get all news articles
+      const allNewsArticles = (articlesData as Article[]).filter((article: Article) => article.type === 'news');
+      setAllArticles(allNewsArticles);
+      setOtherArticles(allNewsArticles.filter((a: Article) => a.id !== foundArticle.id));
+      
+      // Find the current article's index
+      const currentArticleIndex = allNewsArticles.findIndex((a: Article) => a.id === foundArticle.id);
+      setCurrentIndex(currentArticleIndex);
+      
+      setError(null);
+    } catch (err) {
+      console.error('Error loading article:', err);
+      setError(err instanceof Error ? err.message : 'An error occurred');
+    } finally {
+      setLoading(false);
+    }
   }, [slug]);
 
   // Navigation functions
   const goToNextArticle = () => {
     if (currentIndex < otherArticles.length - 1) {
       const nextArticle = otherArticles[currentIndex + 1];
-      window.location.href = `/news/${nextArticle.id}`;
+      window.location.href = `/news/${nextArticle.slug}`;
     }
   };
 
   const goToPreviousArticle = () => {
     if (currentIndex > 0) {
       const prevArticle = otherArticles[currentIndex - 1];
-      window.location.href = `/news/${prevArticle.id}`;
+      window.location.href = `/news/${prevArticle.slug}`;
     }
   };
 
@@ -159,11 +170,10 @@ export default function NewsArticlePage() {
                 </a>
               </div>
             </div>
-            <NewsListSidebar articles={otherArticles} />
+            <NewsListSidebar articles={otherArticles as any} />
           </div>
         </div>
       </div>
-      <WhatsNextSection />
     </>
   );
 } 

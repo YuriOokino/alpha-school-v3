@@ -92,6 +92,7 @@ function ApplicationForm() {
     <main>
       <MainHeading 
         tagline={selectedCampus?.name}
+        taglineVariant="green"
         description={
           <>
             <p>We are actively enrolling, offering an all-inclusive, revolutionary educational experience. If you have any questions about the admissions process, feel free to reach out to us at <a href="mailto:admissions@alpha.school">admissions@alpha.school</a>.</p>
@@ -227,37 +228,33 @@ function ApplicationForm() {
             </div>
             {/* Open text areas */}
             <h6>Additional Information</h6>
-            <div className="flex gap-4">
-              <div className="field-wrapper flex-1">
-                <label htmlFor="aboutChild" className="xs-label max-w-[50%] leading-medium">Please share anything about your child or your family you would like us to know<span>*</span></label>
-                <Textarea id="aboutChild" name="aboutChild" value={formData.aboutChild} onChange={handleChange} rows={3} required className="field-input" />
-              </div>
-              <div className="field-wrapper flex-1">
-                <label htmlFor="accommodations" className="xs-label max-w-[50%] leading-medium">Are there any special accommodations or challenges your student(s) might have that you can share in order to help us place them in the best environment?<span>*</span></label>
-                <Textarea id="accommodations" name="accommodations" value={formData.accommodations} onChange={handleChange} rows={3} required className="field-input" />
-              </div>
+            <div className="field-wrapper">
+              <label htmlFor="aboutChild" className="xs-label">Please share anything about your child or your family you would like us to know<span>*</span></label>
+              <Textarea id="aboutChild" name="aboutChild" value={formData.aboutChild} onChange={handleChange} rows={3} required className="field-input" />
             </div>
-            <div className="flex gap-4">
-              <div className="field-wrapper flex-1">
-                <label htmlFor="referralSource" className="xs-label">How did you hear about us?<span>*</span></label>
-                <select id="referralSource" name="referralSource" value={formData.referralSource} onChange={handleChange} required className="field-input">
-                  <option value="">Please Select</option>
-                  {referralOptions.map((opt) => (
-                    <option key={opt} value={opt}>{opt}</option>
-                  ))}
-                </select>
-              </div>
-              <div className="flex items-start gap-2 flex-1 pt-6">
-                <input type="checkbox" name="smsConsent" id="smsConsent" checked={formData.smsConsent} onChange={handleChange} />
-                <label htmlFor="smsConsent" className="text-sm">
-                  I agree to receive SMS messages from 2 Hour Learning regarding inquiry follow-up, invitations to events, and personalized updates about applications and enrollment. Messages & data rates may apply. Reply STOP to opt out.
-                </label>
-              </div>
+            <div className="field-wrapper">
+              <label htmlFor="accommodations" className="xs-label">Are there any special accommodations or challenges your student(s) might have that you can share in order to help us place them in the best environment?<span>*</span></label>
+              <Textarea id="accommodations" name="accommodations" value={formData.accommodations} onChange={handleChange} rows={3} required className="field-input" />
+            </div>
+            <div className="field-wrapper">
+              <label htmlFor="referralSource" className="xs-label">How did you hear about us?<span>*</span></label>
+              <select id="referralSource" name="referralSource" value={formData.referralSource} onChange={handleChange} required className="field-input">
+                <option value="">Please Select</option>
+                {referralOptions.map((opt) => (
+                  <option key={opt} value={opt}>{opt}</option>
+                ))}
+              </select>
+            </div>
+            <div className="flex items-start gap-2">
+              <input type="checkbox" name="smsConsent" id="smsConsent" checked={formData.smsConsent} onChange={handleChange} />
+              <label htmlFor="smsConsent" className="text-sm">
+                I agree to receive SMS messages from 2 Hour Learning regarding inquiry follow-up, invitations to events, and personalized updates about applications and enrollment. Messages & data rates may apply. Reply STOP to opt out.
+              </label>
             </div>
             <div className="text-sm">
               <strong>Please note your registration is only complete once you've completed your payment successfully below.</strong>
             </div>
-            <Button type="submit">
+            <Button type="submit" variant="navyBlue">
               Continue to Payment
             </Button>
           </form>

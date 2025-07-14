@@ -7,46 +7,60 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useState as useReactState } from "react";
 import ArticlePagination from "@/components/ui/ArticlePagination";
-import WhatsNextSection from "@/components/layout/navigation/whats-next-section";
+import articlesData from '@/content/articles.json';
+
+interface Article {
+  id: string;
+  type: 'blog' | 'news';
+  title: string;
+  date: string;
+  authorName: string;
+  authorRole?: string;
+  authorBio?: string;
+  summary: string;
+  image: string;
+  content: string;
+  slug: string;
+}
 
 export default function BlogPostPage() {
   const params = useParams();
   const slug = params?.slug as string;
-  const [post, setPost] = useState<any>(null);
+  const [post, setPost] = useState<Article | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [allPosts, setAllPosts] = useState<any[]>([]);
-  const [sidebarPosts, setSidebarPosts] = useState<any[]>([]);
+  const [allPosts, setAllPosts] = useState<Article[]>([]);
+  const [sidebarPosts, setSidebarPosts] = useState<Article[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   useEffect(() => {
     if (!slug) return;
-    const fetchPost = async () => {
-      try {
-        setLoading(true);
-        const res = await fetch(`/api/blog/${slug}`);
-        if (!res.ok) throw new Error("Blog post not found");
-        const data = await res.json();
-        setPost(data);
-        setError(null);
-        // Fetch all blog posts
-        const allRes = await fetch('/api/blog');
-        if (allRes.ok) {
-          const allPostsData = await allRes.json();
-          setAllPosts(allPostsData);
-          // Find the current post's index in allPosts
-          const idx = allPostsData.findIndex((p: any) => p.slug === slug);
-          setCurrentIndex(idx);
-          // For sidebar, filter out the current post
-          setSidebarPosts(allPostsData.filter((p: any) => p.slug !== slug));
-        }
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "An error occurred");
-      } finally {
-        setLoading(false);
+    
+    try {
+      setLoading(true);
+      
+      // Find the post by slug from the articles data
+      const foundPost = (articlesData as Article[]).find((article: Article) => article.slug === slug);
+      if (!foundPost) {
+        throw new Error("Blog post not found");
       }
-    };
-    fetchPost();
+      
+      setPost(foundPost);
+      setError(null);
+      
+      // Set all posts and find current index
+      const allArticles = articlesData as Article[];
+      setAllPosts(allArticles);
+      const idx = allArticles.findIndex((p: Article) => p.slug === slug);
+      setCurrentIndex(idx);
+      
+      // For sidebar, filter out the current post
+      setSidebarPosts(allArticles.filter((p: Article) => p.slug !== slug));
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+    } finally {
+      setLoading(false);
+    }
   }, [slug]);
 
   if (loading) return <div className="alpha-section">Loading article...</div>;
@@ -73,7 +87,7 @@ export default function BlogPostPage() {
             <div className="prose max-w-none space-y-[var(--space-md)]" dangerouslySetInnerHTML={{ __html: post.content }} />
 
             {/* Author Bio Section */}
-            <div className="alpha-card bg-[var(--color-bg-muted)] mt-[var(--space-lg)] mb-[var(--space-lg)]">
+            <div className="alpha-card bg-[var(--color-light-green)] mt-[var(--space-lg)] mb-[var(--space-lg)]">
               <div className="heading-style-h4 mb-2">{post.authorName}</div>
               <div className="body-text max-w-3xl">{post.authorBio}</div>
             </div>
@@ -150,7 +164,6 @@ export default function BlogPostPage() {
           </div>
         </div>
       </div>
-      <WhatsNextSection />
     </>
   );
 } 

@@ -10,14 +10,19 @@ import { videoLibrary } from "@/content/video-library";
 export default function VideoLibrary() {
   const [selectedKey, setSelectedKey] = useState<string | null>(null);
   const [openVideo, setOpenVideo] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
   
   // Get unique keys for filtering
   const uniqueKeys = Array.from(new Set(videoLibrary.map(video => video.key)));
   
-  // Filter videos based on selected key
-  const filteredVideos = selectedKey 
-    ? videoLibrary.filter(video => video.key === selectedKey)
-    : videoLibrary;
+  // Filter videos based on selected key and search query
+  const filteredVideos = videoLibrary.filter(video => {
+    const matchesKey = !selectedKey || video.key === selectedKey;
+    const matchesSearch = !searchQuery || 
+      video.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      video.key.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesKey && matchesSearch;
+  });
 
   const keyLabels: Record<string, string> = {
     "introduction": "Introduction",
@@ -32,11 +37,14 @@ export default function VideoLibrary() {
     <>
       <MainHeading description="Select a category to learn more about Alpha School!"
       tagline="video library"
+      taglineVariant="blue"
       variant="blue">
         Alpha in action
       </MainHeading>
       <section className="alpha-section">
         <div className="container">
+        
+          
           {/* Filter buttons */}
           <div className="flex flex-wrap gap-4 mb-8 justify-center">
             <Button 

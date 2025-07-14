@@ -1,10 +1,24 @@
 import React, { useState } from "react";
+import Link from "next/link";
 import ArticleCard from "@/components/features/cards/article-card";
 import SimpleCarousel from "@/components/ui/simple-carousel";
-import type { NewsArticle } from "@/utils/content-loader.client";
+
+interface Article {
+  id: string;
+  type: 'blog' | 'news';
+  title: string;
+  date: string;
+  authorName: string;
+  authorRole?: string;
+  authorBio?: string;
+  summary: string;
+  image: string;
+  content: string;
+  slug: string;
+}
 
 interface NewsCarouselSidebarProps {
-  articles: NewsArticle[];
+  articles: Article[];
 }
 
 export default function NewsCarouselSidebar({ articles = [] }: NewsCarouselSidebarProps) {
@@ -62,17 +76,18 @@ export default function NewsCarouselSidebar({ articles = [] }: NewsCarouselSideb
       <SimpleCarousel
         items={articles}
         renderItem={(item) => (
-          <ArticleCard
-            key={item.id}
-            imageSrc={item.image}
-            imageAlt={item.title}
-            title={item.title}
-            date={item.date}
-            href={`/news/${item.id}`}
-            titleClassName="heading-style-uppercase"
-            variant="sidebar"
-            buttonClassName="bg-[var(--color-navy-blue)] text-white"
-          />
+          <div key={item.id} className="flex flex-col gap-[var(--space-sm)]">
+            <Link href={`/${item.type}/${item.slug}`}>
+              <img src={item.image} alt={item.title} className="w-full aspect-[3/2] object-cover rounded-[var(--radius-md)]" />
+            </Link>
+            <div className="flex gap-2">
+              <div className="tag-filled">{item.date}</div>
+              <div className="tag-outline">{item.type === "news" ? "News" : "Blog"}</div>
+            </div>
+            <Link href={`/${item.type}/${item.slug}`}>
+              <h6 className="heading-style-uppercase">{item.title}</h6>
+            </Link>
+          </div>
         )}
         visibleCards={1}
         className="flex-1"

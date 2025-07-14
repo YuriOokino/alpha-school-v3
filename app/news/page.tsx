@@ -5,56 +5,43 @@ import MainHeading from "@/components/layout/headings/main-heading"
 import WhatsNextSection from "@/components/layout/navigation/whats-next-section"
 import ArticleCard from "@/components/features/cards/article-card"
 import Link from "next/link"
-import type { NewsArticle } from "@/utils/content-loader.server"
+import articlesData from '@/content/articles.json'
+
+interface Article {
+  id: string;
+  type: 'blog' | 'news';
+  title: string;
+  date: string;
+  authorName: string;
+  authorRole?: string;
+  authorBio?: string;
+  summary: string;
+  image: string;
+  content: string;
+  slug: string;
+}
 
 export default function NewsPage() {
-  const [articles, setArticles] = useState<(NewsArticle & { slug: string })[]>([]);
+  const [articles, setArticles] = useState<Article[]>([]);
   const [selectedCategory] = useState<string>("all")
   const [searchQuery, setSearchQuery] = useState<string>("")
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    async function loadArticles() {
-      try {
-        setIsLoading(true);
-        console.log('Fetching articles from /api/news');
-        
-        // Use absolute URL to ensure proper routing
-        const response = await fetch(`${window.location.origin}/api/news`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-        
-        console.log('Response status:', response.status);
-        console.log('Response headers:', Object.fromEntries(response.headers.entries()));
-        
-        if (!response.ok) {
-          const errorData = await response.json().catch(() => ({}));
-          console.error('API Error:', errorData);
-          throw new Error(errorData.error || 'Failed to load news articles');
-        }
-        
-        const newsArticles = await response.json();
-        console.log('Received articles:', newsArticles);
-        
-        if (!Array.isArray(newsArticles)) {
-          console.error('Invalid response format:', newsArticles);
-          throw new Error('Invalid response format from server');
-        }
-        
-        setArticles(newsArticles);
-        setError(null);
-      } catch (err) {
-        console.error('Error loading articles:', err);
-        setError(err instanceof Error ? err.message : 'Failed to load news articles');
-      } finally {
-        setIsLoading(false);
-      }
+    try {
+      setIsLoading(true);
+      
+      // Filter only news articles from the merged data
+      const newsArticles = (articlesData as Article[]).filter(article => article.type === 'news');
+      setArticles(newsArticles);
+      setError(null);
+    } catch (err) {
+      console.error('Error loading articles:', err);
+      setError(err instanceof Error ? err.message : 'Failed to load news articles');
+    } finally {
+      setIsLoading(false);
     }
-    loadArticles();
   }, []);
 
   // Filter news items based on search query
@@ -104,6 +91,7 @@ export default function NewsPage() {
                   imageAlt={item.title}
                   title={item.title}
                   date={item.date}
+                  category="News"
                   href={`/news/${item.slug}`}
                 />
               </Link>

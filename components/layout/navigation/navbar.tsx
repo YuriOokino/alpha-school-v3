@@ -8,8 +8,21 @@ import { useState, useRef, useEffect } from 'react'
 import React from 'react'
 import { MegaMenu } from '@/components/layout/navigation/mega-menu'
 import NewsCarouselSidebar from '@/components/features/content-blocks/news-carousel-sidebar'
-import { getAllNewsArticles } from '@/utils/content-loader.client'
-import type { NewsArticle } from '@/utils/content-loader.client'
+import articlesData from '@/content/articles.json'
+
+interface Article {
+  id: string;
+  type: 'blog' | 'news';
+  title: string;
+  date: string;
+  authorName: string;
+  authorRole?: string;
+  authorBio?: string;
+  summary: string;
+  image: string;
+  content: string;
+  slug: string;
+}
 import LinkCard from '@/components/features/cards/link-card'
 import { useIsMobile } from '@/hooks/use-mobile'
 import { useRouter } from 'next/navigation'
@@ -38,24 +51,22 @@ export function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [isMenuHovered, setIsMenuHovered] = useState(false)
   const [isNavHovered, setIsNavHovered] = useState(false)
-  const [newsArticles, setNewsArticles] = useState<NewsArticle[]>([])
+  const [newsArticles, setNewsArticles] = useState<Article[]>([])
   const closeTimeout = useRef<NodeJS.Timeout | null>(null)
   const isMobile = useIsMobile();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeMobileDropdown, setActiveMobileDropdown] = useState<string | null>(null);
   const router = useRouter();
 
-  // Fetch news articles
+  // Load all articles from merged data
   useEffect(() => {
-    const loadArticles = async () => {
-      try {
-        const articles = await getAllNewsArticles();
-        setNewsArticles(articles);
-      } catch (error) {
-        console.error('Error loading news articles:', error);
-      }
-    };
-    loadArticles();
+    try {
+      // Get all articles from the merged data
+      const allArticles = articlesData as Article[];
+      setNewsArticles(allArticles);
+    } catch (error) {
+      console.error('Error loading articles:', error);
+    }
   }, []);
 
   let megaMenuGroups = null;
@@ -383,23 +394,15 @@ export const navItems: NavItem[] = [
     hasNewsSidebar: true,
   },
   {
-    title: "Insights",
-    href: "#",
-    megaMenu: [
-      {
-        label: "Insights",
-        items: [
-          { title: "Blog", href: "/blog", description: "Blog articles" },
-          { title: "In the News", href: "/news", description: "Media coverage and press" },
-        ],
-      },
-    ],
-    hasNewsSidebar: true,
+    title: "Blog",
+    href: "/blog",
+    megaMenu: [],
+    hasNewsSidebar: false,
   },
 ];
 
 // Update navItems to use a function that returns the sidebar component
-const createNavItems = (articles: NewsArticle[]): NavItem[] => [
+const createNavItems = (articles: Article[]): NavItem[] => [
   {
     title: "The Program",
     href: "/the-program",
@@ -481,20 +484,12 @@ const createNavItems = (articles: NewsArticle[]): NavItem[] => [
     hasNewsSidebar: true,
   },
   {
-    title: "Insights",
-    href: "#",
-    megaMenu: [
-      {
-        label: "Insights",
-        items: [
-          { title: "Blog", href: "/blog", description: "Blog articles" },
-          { title: "In the News", href: "/news", description: "Media coverage and press" },
-        ],
-      },
-    ],
-    hasNewsSidebar: true,
+    title: "Blog",
+    href: "/blog",
+    megaMenu: [],
+    hasNewsSidebar: false,
   },
 ];
 
 // Export a function to get nav items with articles
-export const getNavItems = (articles: NewsArticle[]) => createNavItems(articles); 
+export const getNavItems = (articles: Article[]) => createNavItems(articles); 
