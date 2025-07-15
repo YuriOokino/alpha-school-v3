@@ -7,7 +7,7 @@ export async function GET(
 ) {
   try {
     console.log('API: Starting single blog post request for slug:', params.slug);
-    const article = await getArticleBySlug(params.slug, 'blog');
+    const article = await getArticleBySlug(params.slug);
     
     if (!article) {
       console.log('API: Blog post not found');

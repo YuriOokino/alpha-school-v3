@@ -2,7 +2,6 @@
 
 import React from "react";
 import MainHeading from "@/components/layout/headings/main-heading";
-import WhatsNextSection from "@/components/layout/navigation/whats-next-section";
 import {
   Accordion,
   AccordionItem,
@@ -49,7 +48,18 @@ export default function FAQPage() {
   return (
     <>
       <MainHeading 
-      variant="light">
+      tagline="FAQ"
+      taglineVariant="blue"
+      variant="blue"
+        description={
+          <>
+            If you need further support, email us at{" "}
+            <a href="mailto:admissions@alpha.school" className="underline hover:opacity-80">
+              admissions@alpha.school
+            </a>
+          </>
+        }
+      >
         Frequently Asked Questions
       </MainHeading>
 
@@ -68,7 +78,6 @@ export default function FAQPage() {
         </div>
       </section>
 
-      <WhatsNextSection />
     </>
   );
 } 

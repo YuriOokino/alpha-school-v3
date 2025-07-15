@@ -7,7 +7,6 @@ import type { CampusMetadata } from "@/utils/campuses"
 import StatsSection from "@/components/homepage-sections/stats-section"
 import CommitmentsSection from "@/components/homepage-sections/commitments-section"
 import EventCard from "@/components/features/cards/event-card"
-import eventsData from "@/content/events/events.json"
 import Carousel from "@/components/ui/carousel"
 import FeaturedLogos from "@/components/features/content-blocks/FeaturedLogos"
 import LocationsCarouselSection from "@/components/homepage-sections/locations-carousel-section"
@@ -17,17 +16,32 @@ import KidsNeedSection from "@/components/homepage-sections/kids-need-section"
 import VideoPlayer from "@/components/ui/video-player"
 import Divider from "@/components/layout/divider"
 import HeroSection from "@/components/homepage-sections/hero-section"
+import SectionHeading from "@/components/layout/headings/section-heading"
 
 export default function Home() {
   const [campuses, setCampuses] = useState<CampusMetadata[]>([]);
-  const events = eventsData.events;
+  const [events, setEvents] = useState<any[]>([]);
 
   useEffect(() => {
     const loadCampuses = async () => {
       const upcomingCampuses = await getUpcomingCampuses();
       setCampuses(upcomingCampuses);
     };
+    
+    const loadEvents = async () => {
+      try {
+        const response = await fetch('/api/events');
+        if (response.ok) {
+          const data = await response.json();
+          setEvents(data);
+        }
+      } catch (error) {
+        console.error('Error loading events:', error);
+      }
+    };
+    
     loadCampuses();
+    loadEvents();
   }, []);
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -67,6 +81,25 @@ export default function Home() {
       <TestimonialsSection />
       <Divider fill="white" direction="down" />
       <AlphaGuidesSection />
+      <Divider fill="white" direction="up" />
+      <section id="demo" className="alpha-section my-8">
+        <div className="flex flex-col items-center justify-center">
+          <SectionHeading
+          title="Alpha in action"
+          description="From student-led businesses to science challenges and news broadcasts, every day at Alpha is packed with purpose, energy, and real-world learning."
+          buttonText="More videos"
+          buttonHref="/videos"
+          >
+          </SectionHeading>
+          </div>
+<div className="flex justify-center"><VideoPlayer 
+videoUrl=""
+posterImage="/assets/feature-video-overlays/demo.png"
+aspectRatio="16/9"
+/></div>
+      </section>
+      <Divider fill="white" direction="down" />
+
 
       {/* Events & Programs Section */}
       {events.length > 0 && (
@@ -74,7 +107,7 @@ export default function Home() {
           <Carousel
             items={events}
             renderItem={(event) => (
-              <EventCard {...event} url={`/events/${event.slug}`} className="max-w-[340px] flex-shrink-0 group" variant="scheme1" />
+              <EventCard {...event} url={`/events/${event.slug}`} className="flex-shrink-0 group" variant="scheme1" />
             )}
             title="Events & programs"
             visibleCards={4.5}

@@ -215,7 +215,7 @@ export function Navbar() {
                         }}
                         className="w-full flex flex-row items-center justify-between bg-[var(--color-light-green)] text-[var(--color-dark-green)] p-6 rounded-[var(--radius-md)] mb-4 hover:opacity-90 transition"
                       >
-                        <span className="heading-style-h6">{item.title}</span>
+                        <span className="display-headline !text-[25px]">{item.title}</span>
                         <span className="w-8 h-8 flex items-center justify-center bg-[var(--color-dark-green)] text-white rounded-full">
                           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7 5L13 10L7 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -383,22 +383,24 @@ export const navItems: NavItem[] = [
     href: "#",
     megaMenu: [
       {
-        label: "Resources",
+        label: "Info",
         items: [
           { title: "Video Library", href: "/video-library", description: "Dive into Alpha School" },
           { title: "Our Guides", href: "/guides", description: "Meet the amazing people at Alpha" },
           { title: "Admission Forms", href: "/admission-forms", description: "Apply to one of our campuses" },
         ],
       },
+
+      {
+        label: "Readings",
+        items: [
+          { title: "Blog and articles", href: "/blog", description: "Inspiring readings and articles from Alpha" },
+        ],
+      },
     ],
     hasNewsSidebar: true,
   },
-  {
-    title: "Blog",
-    href: "/blog",
-    megaMenu: [],
-    hasNewsSidebar: false,
-  },
+ 
 ];
 
 // Update navItems to use a function that returns the sidebar component

@@ -68,7 +68,7 @@ export function VideoPlayer({
             className="w-full h-full object-cover"
           />
           {/* Additional black overlay for better contrast */}
-          <div className="absolute inset-0 bg-black/50"></div>
+          <div className="absolute inset-0 bg-black/30"></div>
           {/* Custom overlay image */}
           {overlayImage && (
             <img
@@ -79,7 +79,7 @@ export function VideoPlayer({
           )}
           {/* Play button overlay */}
           <div className="absolute inset-0 flex items-center justify-center hover:bg-black/10 transition-colors">
-            <div className="w-16 h-16 md:w-20 md:h-20 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-lg">
+            <div className="w-16 h-16 md:w-20 md:h-20 bg-white/80 rounded-full flex items-center justify-center hover:bg-white transition-colors">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="text-gray-800 ml-1 md:w-8 md:h-8">
                 <path d="M8 5v14l11-7z"/>
               </svg>

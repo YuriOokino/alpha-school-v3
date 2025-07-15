@@ -33,10 +33,9 @@ const sizes = {
   },
   lg: {
     padding: "p-8",
-    aspectRatio: "aspect-square", 
     flexDirection: "flex-col",
     titleSize: "text-9xl",
-    subtitleSize: "heading-style-h4",
+    subtitleSize: "heading-style-h5",
     gap: "gap-y-2",
     arrowSize: "w-6 h-6",
     borderRadius: "rounded-[var(--radius-lg)]",
@@ -58,7 +57,6 @@ export default function LinkCard({
       href={href}
       className={cn(
         "w-full flex duration-200 relative",
-        size === "lg" ? sizes[size].aspectRatio : "",
         sizes[size].flexDirection,
         sizes[size].justifyContent,
         variants[variant],

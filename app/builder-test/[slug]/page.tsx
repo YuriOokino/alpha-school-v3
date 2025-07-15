@@ -101,7 +101,7 @@ export default function BuilderEventPage() {
 
   return (
     <main>
-      <MainHeading variant="light">
+      <MainHeading>
         {eventData.title}
       </MainHeading>
       <section className="alpha-section">
@@ -163,12 +163,12 @@ export default function BuilderEventPage() {
             </div>
             {eventData.registrationType === 'external' ? (
               <a href={eventData.registrationUrl} target="_blank" rel="noopener noreferrer">
-                <Button variant="maroon" className="mb-4">
+                <Button className="mb-4">
                   Register
                 </Button>
               </a>
             ) : (
-              <Button href="#register" variant="maroon" className="mb-4">Register</Button>
+              <Button href="#register" className="mb-4">Register</Button>
             )}
             <p className="text-sm mt-2">Due to high demand, please only RSVP if you are certain you can attend. If you are unable to participate due to illness, please notify us as soon as possible.</p>
           </div>
@@ -326,7 +326,7 @@ export default function BuilderEventPage() {
                   I consent to receive communications from Alpha School regarding this event and future opportunities.<span>*</span>
                 </label>
               </div>
-              <Button type="submit" variant="default">
+              <Button type="submit">
                 Register for Event
               </Button>
             </form>

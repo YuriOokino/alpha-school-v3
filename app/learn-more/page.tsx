@@ -66,10 +66,10 @@ export default function LearnMorePage() {
       
         <MainHeading
           tagline="Learn more"
-          variant="blue"
+          taglineVariant="green"
           description="Discover more about Alpha School, our philosophy, and how we empower students to thrive in a modern world."
         >
-          Get in touch
+          We're happy to hear from you
         </MainHeading>
         
         <section className="alpha-section">
@@ -268,7 +268,7 @@ export default function LearnMorePage() {
                   I agree to receive SMS messages from 2 Hour Learning regarding inquiry follow-up, invitations to events, and personalized updates about applications and enrollment. Messages & data rates may apply. Reply STOP to opt out.
                 </label>
               </div>
-              <Button className="bg-[var(--color-navy-blue)]" type="submit">Submit</Button>
+              <Button type="submit">Submit</Button>
             </form>
           </div>
        

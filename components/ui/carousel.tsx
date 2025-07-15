@@ -150,7 +150,7 @@ export default function Carousel({
             {items.map((item, idx) => (
               <div
                 key={idx}
-                style={{ flex: `0 0 ${100 / visibleCards}%` }}
+                style={{ flex: `0 0 340px` }}
                 className="px-2 flex-shrink-0"
               >
                 {renderItem(item, idx)}

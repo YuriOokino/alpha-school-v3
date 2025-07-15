@@ -29,18 +29,16 @@ export async function getAllBlogPosts(): Promise<ContentWithSlug<BlogPost>[]> {
 
 // Client-side function to get a single article by slug
 export async function getArticleBySlug<T extends BaseContent>(
-  slug: string,
-  type: 'news' | 'blog'
+  slug: string
 ): Promise<ContentWithSlug<T> | null> {
-  const article = (articlesData as Article[]).find(article => article.slug === slug && article.type === type);
+  const article = (articlesData as Article[]).find(article => article.slug === slug);
   return article ? (article as unknown as ContentWithSlug<T>) : null;
 }
 
 // Client-side function to get a single article by ID
 export async function getContentById<T extends BaseContent>(
-  id: string,
-  type: 'news' | 'blog'
+  id: string
 ): Promise<ContentWithSlug<T> | null> {
-  const article = (articlesData as Article[]).find(article => article.id === id && article.type === type);
+  const article = (articlesData as Article[]).find(article => article.id === id);
   return article ? (article as unknown as ContentWithSlug<T>) : null;
 } 

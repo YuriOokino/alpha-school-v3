@@ -9,17 +9,17 @@ export default function WhatsNextSection() {
     <section className="pb-16 bg-[var(--color-bg-muted)] text-[var(--color-text-main)]">
       <Divider fill="white" direction="up" />
       <div className="container mx-auto px-4 text-center">
-        <h2 className="my-12">What's next?</h2>
+        <h2 className="my-12 display-headline text-[var(--color-navy-blue)]">What's next?</h2>
 
         <div className="flex flex-wrap justify-center gap-4">
           <Link href="/learn-more">
-            <Button variant="default">Learn More</Button>
+            <Button variant="navyBlue">Learn More</Button>
           </Link>
           <Link href="/events">
-            <Button variant="default">View Events</Button>
+            <Button variant="navyBlue">View Events</Button>
           </Link>
           <Link href="/video-library">
-            <Button variant="default">Watch Videos</Button>
+            <Button variant="navyBlue">Watch Videos</Button>
           </Link>
         </div>
       </div>

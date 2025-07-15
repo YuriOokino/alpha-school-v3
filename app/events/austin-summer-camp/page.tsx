@@ -458,7 +458,7 @@ export default function AustinSummerCampPage() {
                   I agree to receive SMS messages from 2 Hour Learning regarding inquiry follow-up, invitations to events, and personalized updates about applications and enrollments. Message & data rates may apply. Reply STOP to opt out.
                 </label>
               </div>
-              <Button type="submit" variant="default" disabled={selectedSessions.length === 0}>
+              <Button type="submit" disabled={selectedSessions.length === 0}>
                 Continue to payment
               </Button>
             </form>

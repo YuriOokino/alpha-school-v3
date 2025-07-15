@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import ArticleCard from "@/components/features/cards/article-card";
 import SimpleCarousel from "@/components/ui/simple-carousel";
+import { Button } from "@/components/ui/button";
 
 interface Article {
   id: string;
@@ -77,16 +78,21 @@ export default function NewsCarouselSidebar({ articles = [] }: NewsCarouselSideb
         items={articles}
         renderItem={(item) => (
           <div key={item.id} className="flex flex-col gap-[var(--space-sm)]">
-            <Link href={`/${item.type}/${item.slug}`}>
+            <Link href={`/blog/${item.slug}`}>
               <img src={item.image} alt={item.title} className="w-full aspect-[3/2] object-cover rounded-[var(--radius-md)]" />
             </Link>
             <div className="flex gap-2">
-              <div className="tag-filled">{item.date}</div>
-              <div className="tag-outline">{item.type === "news" ? "News" : "Blog"}</div>
+              <div className="tag-filled !bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)]">{item.date}</div>
+              <div className="tag-outline !border-[var(--color-navy-blue)] !text-[var(--color-navy-blue)]">{item.type === "news" ? "News" : "Blog"}</div>
             </div>
-            <Link href={`/${item.type}/${item.slug}`}>
+            <Link href={`/blog/${item.slug}`}>
               <h6 className="heading-style-uppercase">{item.title}</h6>
             </Link>
+            <div className="centered-text-icon">
+              <Link href={`/blog/${item.slug}`}>
+                <Button variant="link">Read More<span className="material-icons-outlined">arrow_forward</span></Button>
+              </Link>
+            </div>
           </div>
         )}
         visibleCards={1}

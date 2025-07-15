@@ -25,3 +25,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Large video files
+public/assets/videos/a-day-at-alpha.mp4

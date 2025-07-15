@@ -13,10 +13,10 @@ interface SectionHeadingProps {
 export default function SectionHeading({ title, description, buttonText, buttonHref }: SectionHeadingProps) {
   return (
     <div className="text-center max-w-[50rem] mx-auto mb-[var(--space-xl)]">
-      <h2 className="section-headline mb-4">{title}</h2>
+      <h2 className="section-headline mb-4 text-[var(--color-navy-blue)]">{title}</h2>
       <p className="mb-4">{description}</p>
       {buttonText && buttonHref && (
-        <Button href={buttonHref} className="mx-auto">
+        <Button href={buttonHref} size="small" className="mx-auto bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)]">
           {buttonText}
         </Button>
       )}

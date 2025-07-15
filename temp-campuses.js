@@ -1,4 +1,5 @@
-export const campuses = [
+
+      export const campuses = [
     {
       name: "Austin",
       stateCode: "TX",
@@ -340,3 +341,5 @@ export const campuses = [
 }
 
   ]; 
+      module.exports = { campuses };
+    

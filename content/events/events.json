@@ -25,11 +25,13 @@
     {
         "id": "austin-summer-camp",
         "title": "Austin Summer Camp",
+        "date": "Jul 21 - Jul 25, 2025",
+        "time": "9:00 AM - 3:00 PM",
         "locationTag": "Alpha Austin",
         "category": "Summer Camp",
         "address": "1201 Spyglass Dr, Austin, TX 78746",
         "image": {
-          "src": "https://go.alpha.school/hubfs/Videos/Website/Alpha%20AI%20Camp%202025.mp4",
+          "src": "/assets/events/austin-summer-camp/summer-camp-hero-overlay.png",
           "alt": "Austin Summer Camp"
       },
         "media": {
@@ -91,7 +93,7 @@
       "slug": "alpha-high-school-austin-showcase-july-21",
       "registrationType": "internal",
       "registrationUrl": "",
-      "descriptionTitle": "Get an inside look at Alpha’s groundbreaking learning model!",
+      "descriptionTitle": "Get an inside look at Alpha's groundbreaking learning model!",
       "description": "<p>Join us for an exciting showcase of our high school students' achievements and projects.</p>"
     },
     {
@@ -103,7 +105,7 @@
       "category": "Showcase",
       "address": "201 Colorado St, Austin, TX 78701",
       "image": {
-        "src": "/images/events/student-showcase.jpg",
+        "src": "/assets/locations/austin/hero/austin-hero.webp",
         "alt": "Student Showcase"
       },
       "slug": "alpha-high-school-austin-showcase-semptember-16",

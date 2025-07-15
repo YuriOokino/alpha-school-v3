@@ -10,9 +10,9 @@ const buttonVariants = cva(
       variant: {
         default: "bg-black text-white hover:opacity-70",
         outline: "text-black outline outline-black hover:opacity-70",
-        link: "font-semibold",
+        link: "font-medium p-0",
         lightBlue: "bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)] hover:opacity-80",
-        navyBlue: "bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)] hover:opacity-80",
+        navyBlue: "bg-[var(--color-navy-blue)] text-white hover:opacity-80",
         darkGreen: "bg-[var(--color-dark-green)] text-[var(--color-light-green)] hover:opacity-80",
         filter: "uppercase py-1.5 bg-[var(--color-light-green)] text-sm text-[var(--color-dark-green)]",
         filterOutline: "uppercase py-1.5  bg-transparent text-sm text-[var(--color-dark-green)] border border-[var(--color-dark-green)]",

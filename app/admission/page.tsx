@@ -258,6 +258,7 @@ export default function AdmissionPage() {
       <MainHeading
         description="Ready to get started? Here's everything you need to know about applying to Alpha School."
         variant="blue"
+        taglineVariant="blue"
         tagline="Admission guide"
       >
         Applications are open!

@@ -65,8 +65,13 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/faq">
-                  FAQs
+                <Link href="/guides">
+                  Alpha Guides
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog">
+                  Blog
                 </Link>
               </li>
             </ul>
@@ -74,21 +79,19 @@ export default function Footer() {
 
           {/* Insights */}
           <div className="md:col-span-1">
-            <h3 className="text-base font-medium mb-2 pb-0">Insights</h3>
+            <h3 className="text-base font-medium mb-2 pb-0">Useful info</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/blog">
-                  Blog
+                <Link href="/admission">
+                  Admission Guide
                 </Link>
               </li>
               <li>
-                <Link href="/news">
-                  In the News
-                </Link>
+                <Link href="/admission-forms">Admission Forms</Link>
               </li>
               <li>
-                <Link href="#">
-                  AI
+                <Link href="/faq">
+                  FAQs
                 </Link>
               </li>
             </ul>

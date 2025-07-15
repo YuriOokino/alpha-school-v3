@@ -299,7 +299,7 @@ export default function EventPage() {
                 I consent to Alpha School contacting me about this event and future communications.<span>*</span>
               </label>
             </div>
-            <Button type="submit" variant="default">
+            <Button type="submit">
               Register
             </Button>
           </form>

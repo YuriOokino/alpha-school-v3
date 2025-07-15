@@ -20,16 +20,20 @@ export default function LocationsPage() {
   
   // State code to full name mapping
   const stateNames: { [key: string]: string } = {
-    'TX': 'Texas',
-    'FL': 'Florida',
-    'NY': 'New York',
-    'CA': 'California',
-    'TN': 'Tennessee',
-    'NC': 'North Carolina',
-    'GA': 'Georgia',
-    'AZ': 'Arizona',
-    'NV': 'Nevada'
-  };
+  'TX': 'Texas',
+  'FL': 'Florida',
+  'NY': 'New York',
+  'CA': 'California',
+  'TN': 'Tennessee',
+  'NC': 'North Carolina',
+  'GA': 'Georgia',
+  'AZ': 'Arizona',
+  'NV': 'Nevada',
+  'CO': 'Colorado',
+  'UT': 'Utah',
+  'WA': 'Washington',
+  'OR': 'Oregon'
+};
   
   // Get all unique campuses and states for suggestions
   const allSuggestions = React.useMemo(() => {
@@ -104,6 +108,7 @@ export default function LocationsPage() {
       <MainHeading
       variant="blue"
       tagline="Locations"
+      taglineVariant="blue"
       description="Alpha School tuition ranges from $40,000 upwards (Excluding Brownsville).
       Please select your desired campus location to find out more details."
      
@@ -111,7 +116,7 @@ export default function LocationsPage() {
       </MainHeading>
       <div className="alpha-section">
         <div className="flex justify-center mb-16">
-          <div className="field-wrapper mt-8 !w-[600px] relative">
+          <div className="field-wrapper mt-8 !w-[600px] relative !border !border-grey-400">
             <label className="xs-label">Find a campus near you</label>
             <input 
               type="search" 
@@ -205,7 +210,7 @@ export default function LocationsPage() {
                       <LocationCard
                         key={campus.name}
                         {...campus}
-                        className="w-[320px] bg-[var(--color-sky-blue)] flex-shrink-0 group text-black"
+                        className="w-[340px] bg-[var(--color-sky-blue)] flex-shrink-0 group text-black"
                         tagClassName="!bg-[var(--color-navy-blue)] !text-white"
                         tuitionClassName=""
                       />
@@ -249,12 +254,12 @@ export default function LocationsPage() {
       </div>
       <div className="alpha-section bg-white">
         <h2 className="heading-style-h3 mb-[var(--space-lg)] col-span-full">Current Locations</h2>
-        <div className="grid gap-4 mb-[var(--space-xl)] mx-auto" style={{ gridTemplateColumns: 'repeat(auto-fit, 320px)' }}>
+        <div className="grid gap-4 mb-[var(--space-xl)] mx-auto" style={{ gridTemplateColumns: 'repeat(auto-fit, 340px)' }}>
             {currentCampuses.map((campus) => (
               <LocationCard
                 key={campus.name}
                 {...campus}
-                className="w-[320px] bg-[var(--color-sky-blue)] flex-shrink-0 group text-black"
+                className="w-[340px] bg-[var(--color-sky-blue)] flex-shrink-0 group text-black"
                 tagClassName="!bg-[var(--color-navy-blue)] !text-white"
                 tuitionClassName=""
               />
@@ -262,13 +267,13 @@ export default function LocationsPage() {
         </div>
         <div className="alpha-section bg-white">
           <h2 className="heading-style-h3 mb-[var(--space-lg)] col-span-full">Upcoming Locations</h2>
-          <div className="grid gap-4 mx-auto" style={{ gridTemplateColumns: 'repeat(auto-fit, 320px)' }}>
+          <div className="grid gap-4 mx-auto" style={{ gridTemplateColumns: 'repeat(auto-fit, 340px)' }}>
             {upcomingCampuses.map((campus) => (
               <LocationCard
                 key={campus.name}
                 {...campus}
                 buttonClassName="bg-[var(--color-dark-green)]"
-                className="w-[320px] bg-[var(--color-light-green)] flex-shrink-0 group text-black"
+                className="w-[340px] bg-[var(--color-light-green)] flex-shrink-0 group text-black"
                 tagClassName="!bg-[var(--color-dark-green)] text-white"
                 tuitionClassName=""
               />

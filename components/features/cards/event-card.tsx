@@ -1,7 +1,6 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Calendar, MapPin } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { Card } from "@/components/ui/card"
@@ -12,7 +11,17 @@ export interface EventCardProps {
     src: string
     alt?: string
   }
-  date: string // e.g. "Oct 16, 2025 at 9:30 AM"
+  date?: string // e.g. "Oct 16, 2025 at 9:30 AM"
+  dates?: Array<{
+    id: string
+    title: string
+    date: string
+    time: string
+    ageRange?: string
+    price?: string
+    soldOut?: boolean
+    description?: string
+  }>
   locationTag: string // e.g. "ALPHA MIAMI"
   category: string // e.g. "SHOWCASE"
   title: string
@@ -26,6 +35,7 @@ export default function EventCard({
   url,
   image,
   date,
+  dates,
   locationTag,
   category,
   title,
@@ -66,7 +76,7 @@ export default function EventCard({
   const styles = variantStyles[variant]
 
   return (
-    <Card className={`${styles.card} rounded-[var(--radius-md)] p-[var(--space-md)] flex flex-col justify-between border-0 shadow-none w-full max-w-[320px] group ${className}`}>
+    <Card className={`${styles.card} rounded-[var(--radius-md)] p-[var(--space-md)] flex flex-col justify-between border-0 shadow-none w-full max-w-[340px] group ${className}`}>
       <Link href={url} className="w-full h-[200px] rounded-[var(--radius-sm)] overflow-hidden mb-[var(--space-md)] block relative">
         <Image
           src={image.src}
@@ -75,7 +85,7 @@ export default function EventCard({
           className="object-cover transition-transform duration-300 scale-105 group-hover:scale-100"
         />
       </Link>
-      <div className="flex-1 flex flex-col gap-y-2">
+      <div className="flex-1 flex flex-col gap-y-2 min-h-[180px]">
         <div className="flex gap-2">
           <span className={`tag-filled ${styles.filledTagBg} ${styles.filledTagText}`}>{locationTag}</span>
           <span className={`tag-outline ${styles.outlineTagBg} ${styles.outlineTagText} ${styles.outlineTagBorder}`}>{category}</span>
@@ -83,16 +93,29 @@ export default function EventCard({
         <Link href={url}>
           <h3 className={`heading-style-h5 ${styles.title}`}>{title}</h3>
         </Link>
-        <div className={`${styles.text} text-sm flex items-center gap-1`}>
-          <Calendar className="h-4 w-4" />
-          <span>{date}</span>
-        </div>
+        {dates && dates.length > 0 ? (
+          // Show multiple dates - only available ones
+          <div className={`${styles.text} text-sm space-y-1`}>
+            {dates.filter(dateInfo => !dateInfo.soldOut).map((dateInfo, index) => (
+              <div key={dateInfo.id} className="flex items-center gap-1">
+                <span className="material-icons-outlined">event</span>
+                <span>{dateInfo.date}</span>
+              </div>
+            ))}
+          </div>
+        ) : (
+          // Show single date
+          <div className={`${styles.text} text-sm flex items-center gap-1`}>
+            <span className="material-icons-outlined">event</span>
+            <span>{date}</span>
+          </div>
+        )}
         <div className={`${styles.text} text-sm flex items-top gap-1`}>
-          <MapPin className="h-4 w-4" />
+          <span className="material-icons-outlined">location_on</span>
           <span>{address}</span>
         </div>
       </div>
-      <Button href={url} className={`w-full mt-[var(--space-sm)] ${styles.button} ${styles.buttonText} ${buttonClassName}`}>
+      <Button href={url} className={`centered-text-icon w-full mt-[var(--space-sm)] ${styles.button} ${styles.buttonText} ${buttonClassName}`}>
         Register now<span className="material-icons-outlined">arrow_forward</span>
       </Button>
     </Card>

@@ -14,10 +14,12 @@ export interface BaseContent {
 
 export interface BlogPost extends BaseContent {
   type: 'blog';
+  slug: string;
 }
 
 export interface NewsArticle extends BaseContent {
   type: 'news';
+  slug: string;
 }
 
 export type ContentWithSlug<T extends BaseContent> = T & { slug: string };
@@ -46,41 +48,31 @@ export function getArticleFiles(directory: 'news' | 'blog'): string[] {
 }
 
 // Function to get a single article by slug
-export async function getArticleBySlug<T extends BaseContent & { type: 'news' | 'blog' }>(
-  slug: string,
-  type: 'news' | 'blog'
+export async function getArticleBySlug<T extends BaseContent & { type: 'news' | 'blog'; slug: string }>(
+  slug: string
 ): Promise<ContentWithSlug<T> | null> {
-  console.log('Server: Loading article by slug:', slug, 'type:', type);
+  console.log('Server: Loading article by slug:', slug);
   const projectRoot = path.resolve(process.cwd());
-  const contentPath = path.join(projectRoot, 'content', type);
   
   try {
-    // First try direct file name match
-    let filePath = path.join(contentPath, `${slug}.json`);
-    if (!fs.existsSync(filePath)) {
-      // If not found, try to find by ID
-      const files = fs.readdirSync(contentPath)
-        .filter(file => file.endsWith('.json'));
-      
-      for (const file of files) {
-        const content = JSON.parse(fs.readFileSync(path.join(contentPath, file), 'utf-8')) as T;
-        if (content.id === slug) {
-          filePath = path.join(contentPath, file);
-          break;
-        }
-      }
+    // Load all articles from the JSON file
+    const articlesPath = path.join(projectRoot, 'content', 'articles.json');
+    if (!fs.existsSync(articlesPath)) {
+      console.log('Server: Articles file not found');
+      return null;
     }
 
-    if (!fs.existsSync(filePath)) {
+    const articlesData = JSON.parse(fs.readFileSync(articlesPath, 'utf-8')) as T[];
+    const article = articlesData.find((article: T) => article.slug === slug);
+
+    if (!article) {
       console.log('Server: Article not found:', slug);
       return null;
     }
 
-    const content = JSON.parse(fs.readFileSync(filePath, 'utf-8')) as T;
-    console.log('Server: Article loaded successfully:', content.id);
+    console.log('Server: Article loaded successfully:', article.id);
     return {
-      ...content,
-      type,
+      ...article,
       slug
     };
   } catch (error) {
@@ -90,7 +82,7 @@ export async function getArticleBySlug<T extends BaseContent & { type: 'news' | 
 }
 
 // Function to get all articles with their slugs
-export async function getAllArticlesWithSlugs<T extends BaseContent & { type: 'news' | 'blog' }>(
+export async function getAllArticlesWithSlugs<T extends BaseContent & { type: 'news' | 'blog'; slug: string }>(
   type: 'news' | 'blog'
 ): Promise<ContentWithSlug<T>[]> {
   const slugs = getArticleFiles(type);
@@ -99,7 +91,7 @@ export async function getAllArticlesWithSlugs<T extends BaseContent & { type: 'n
   const articles: ContentWithSlug<T>[] = [];
   
   for (const slug of slugs) {
-    const article = await getArticleBySlug<T>(slug, type);
+    const article = await getArticleBySlug<T>(slug);
     if (article) {
       articles.push(article);
     }
@@ -123,7 +115,7 @@ export async function getAllBlogPosts(): Promise<ContentWithSlug<BlogPost>[]> {
 }
 
 // Function to get a single article by ID
-export async function getContentById<T extends BaseContent & { type: 'news' | 'blog' }>(
+export async function getContentById<T extends BaseContent & { type: 'news' | 'blog'; slug: string }>(
   id: string,
   type: 'news' | 'blog'
 ): Promise<ContentWithSlug<T> | null> {
@@ -148,6 +140,17 @@ interface Event {
   registrationUrl: string
   descriptionTitle?: string
   description?: string
+  multipleDates?: boolean
+  dates?: Array<{
+    id: string
+    title: string
+    date: string
+    time: string
+    ageRange?: string
+    price?: string
+    soldOut?: boolean
+    description?: string
+  }>
 }
 
 export async function loadEvent(slug: string): Promise<Event | undefined> {
@@ -161,7 +164,39 @@ export async function loadEvents(): Promise<Event[]> {
     const fileContents = await fs.promises.readFile(eventsFilePath, 'utf8')
     const data = JSON.parse(fileContents) as { events: Event[] }
     
-    return data.events.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    const processedEvents: Event[] = []
+    
+    for (const event of data.events) {
+      // Handle Austin summer camp with multiple dates
+      if (event.id === 'austin-summer-camp' && event.multipleDates && event.dates) {
+        // Pass the original event with all dates - let the card handle displaying them
+        // Make sure to use the original slug
+        const originalEvent = {
+          ...event,
+          slug: 'austin-summer-camp' // Ensure it uses the original slug
+        }
+        processedEvents.push(originalEvent)
+      } else {
+        // Regular events with single dates
+        processedEvents.push(event)
+      }
+    }
+    
+    const sortedEvents = processedEvents.sort((a, b) => {
+      // Handle date ranges by using the start date
+      const getStartDate = (dateStr: string) => {
+        if (!dateStr) return '9999-12-31' // Put events without dates at the end
+        if (dateStr.includes(' - ')) {
+          return dateStr.split(' - ')[0] + ', 2025'
+        }
+        return dateStr
+      }
+      const dateA = new Date(getStartDate(a.date)).getTime()
+      const dateB = new Date(getStartDate(b.date)).getTime()
+      return dateB - dateA
+    })
+
+    return sortedEvents
   } catch (error) {
     console.error('Error loading events:', error)
     return []

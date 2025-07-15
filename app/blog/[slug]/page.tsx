@@ -42,7 +42,7 @@ export default function BlogPostPage() {
       // Find the post by slug from the articles data
       const foundPost = (articlesData as Article[]).find((article: Article) => article.slug === slug);
       if (!foundPost) {
-        throw new Error("Blog post not found");
+        throw new Error("Article not found");
       }
       
       setPost(foundPost);
@@ -71,7 +71,8 @@ export default function BlogPostPage() {
       <div className="alpha-section">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-[var(--space-xl)]">
           <div className="md:col-span-2">
-            <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
+            <Button variant="link" className="mb-4 text-gray-500 font-normal"><span className="material-icons-outlined">arrow_back</span> All posts</Button>
+            <h1 className="heading-style-h3 mb-4">{post.title}</h1>
             <div className="mb-4">
               <div className="text-gray-600">
                 By {post.authorName}
@@ -79,17 +80,17 @@ export default function BlogPostPage() {
                   <span className="ml-2">&mdash; {post.authorRole}</span>
                 )}
               </div>
-              <div className="text-gray-500 text-sm mt-1">{post.date}</div>
+              <div className="text-gray-500 mt-1">{post.date}</div>
             </div>
             {post.image && (
-              <img src={post.image} alt={post.title} className="w-full h-100 object-cover mb-4 rounded-[var(--radius-md)]" />
+              <img src={post.image} alt={post.title} className="w-full h-100 object-cover mb-16 rounded-[var(--radius-md)]" />
             )}
             <div className="prose max-w-none space-y-[var(--space-md)]" dangerouslySetInnerHTML={{ __html: post.content }} />
 
             {/* Author Bio Section */}
             <div className="alpha-card bg-[var(--color-light-green)] mt-[var(--space-lg)] mb-[var(--space-lg)]">
-              <div className="heading-style-h4 mb-2">{post.authorName}</div>
-              <div className="body-text max-w-3xl">{post.authorBio}</div>
+              <div className="heading-style-h4 mb-2 text-[var(--color-dark-green)]">{post.authorName}</div>
+              <div className="body-text max-w-3xl text-[var(--color-dark-green)]">{post.authorBio}</div>
             </div>
 
             <div className="mt-8 mb-8">
@@ -104,7 +105,7 @@ export default function BlogPostPage() {
           <div className="md:col-span-1">
             {/* Share on Social Media Widget */}
             <div className="mb-8">
-              <div className="font-semibold mb-2">Share this article</div>
+              <div className="mb-2">Share this article</div>
               <div className="flex gap-3">
                 {/* Facebook */}
                 <a
@@ -140,7 +141,7 @@ export default function BlogPostPage() {
             </div>
             {/* Blog List Sidebar */}
             <aside>
-              <h3 className="font-bold text-lg mb-4">More Posts</h3>
+              <h3 className="heading-style-h6 mb-4">More Posts</h3>
               <ul className="space-y-4">
                 {sidebarPosts.map(article => (
                   <li key={article.id || article.slug} className="flex items-start space-x-3">
@@ -152,10 +153,10 @@ export default function BlogPostPage() {
                       />
                     </Link>
                     <div className="flex-1">
-                      <Link href={`/blog/${article.slug}`} className="block font-semibold text-sm leading-tight text-gray-900 mb-1">
+                      <Link href={`/blog/${article.slug}`} className="block text-sm leading-tight text-gray-900 mb-1">
                         {article.title.length > 60 ? article.title.slice(0, 57) + '...' : article.title}
                       </Link>
-                      <Link href={`/blog/${article.slug}`} className="text-xs font-bold">Read More</Link>
+                      <Link href={`/blog/${article.slug}`} className="text-xs">Read More</Link>
                     </div>
                   </li>
                 ))}

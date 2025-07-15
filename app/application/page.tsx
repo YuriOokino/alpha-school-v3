@@ -254,7 +254,7 @@ function ApplicationForm() {
             <div className="text-sm">
               <strong>Please note your registration is only complete once you've completed your payment successfully below.</strong>
             </div>
-            <Button type="submit" variant="navyBlue">
+            <Button type="submit">
               Continue to Payment
             </Button>
           </form>

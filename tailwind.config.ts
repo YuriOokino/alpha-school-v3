@@ -63,11 +63,13 @@ const config = {
       },
       fontFamily: {
         sans: ['var(--font-work-sans)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        bagel: ['Bagel Fat One', 'cursive'],
       },
       animation: {
         scroll: 'scroll 40s linear infinite',
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "unlock": "unlock 0.5s ease-in-out",
       },
       keyframes: {
         scroll: {
@@ -81,6 +83,11 @@ const config = {
         "accordion-up": {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
+        },
+        "unlock": {
+          '0%': { transform: 'translateX(0)' },
+          '50%': { transform: 'translateX(-20px)' },
+          '100%': { transform: 'translateX(0)' },
         },
       },
     },

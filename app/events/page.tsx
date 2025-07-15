@@ -1,17 +1,31 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 import EventCard from "@/components/features/cards/event-card"
-import eventsData from "@/content/events/events.json"
 import MainHeading from "@/components/layout/headings/main-heading"
 
 export default function EventsPage() {
   const [school, setSchool] = useState("");
   const [eventType, setEventType] = useState("");
   const [search, setSearch] = useState("");
+  const [events, setEvents] = useState<any[]>([]);
 
-  const events = eventsData.events
+  useEffect(() => {
+    const loadEvents = async () => {
+      try {
+        const response = await fetch('/api/events');
+        if (response.ok) {
+          const data = await response.json();
+          setEvents(data);
+        }
+      } catch (error) {
+        console.error('Error loading events:', error);
+      }
+    };
+    
+    loadEvents();
+  }, []);
 
   // Get unique schools and event types
   const schools = Array.from(new Set(events.map(e => e.locationTag)));

@@ -32,15 +32,10 @@ type Guide = {
 export default function AlphaGuidesSection() {
   return (
     <section className="alpha-section bg-white">
-      <div className="two-column-flex mb-[var(--space-xl)]">
-        <div>
-        <h2 className="mb-4">More than Teachers: The Alpha Guides</h2>
-        <Button className="centered-icon-text max-w-[280px] bg-[var(--color-navy-blue)] text-white">Explore our program<span className="material-icons-outlined">arrow_forward</span></Button>
-      </div>
-      <div>
-        <p>At Alpha School, teachers shift from traditional roles like grading and writing lesson plans, to supporting students' emotional and motivational needs and teaching life skills. This impactful transformation frees up teachers to mentor, motivate, and coach students to become self-driven learners.</p>
-      </div>
-      </div>
+      <SectionHeading title="More than Teachers: The Alpha Guides" description="At Alpha School, teachers shift from traditional roles like grading and writing lesson plans, to supporting students' emotional and motivational needs and teaching life skills. This impactful transformation frees up teachers to mentor, motivate, and coach students to become self-driven learners." 
+      buttonText="Explore our program"
+      buttonHref="/the-program"/>
+    
       
       <div className="flex flex-col md:flex-row gap-[var(--space-lg)] mb-[var(--space-xl)] items-stretch">
         {/* Guidance Card */}
@@ -52,7 +47,7 @@ export default function AlphaGuidesSection() {
                 <circle cx="36" cy="36.1881" r="5.08901" fill="var(--color-navy-blue)"/>
               </svg>
             </div>
-            <h3 className="mb-2 text-[var(--color-navy-blue)]">{benefits[0].title}</h3>
+            <h3 className="display-headline !text-[45px] mb-2 text-[var(--color-navy-blue)]">{benefits[0].title}</h3>
             <p className="mb-4 h-full">{benefits[0].description}</p>
         
         </div>
@@ -66,7 +61,7 @@ export default function AlphaGuidesSection() {
                 <path d="M31.8857 0C49.4953 0.000225772 63.7712 14.2762 63.7715 31.8857C63.7715 49.4955 49.4955 63.7713 31.8857 63.7715C26.9894 63.7714 22.3517 62.6655 18.2061 60.6934C18.1994 60.6972 18.1931 60.7032 18.1865 60.707C17.8391 60.9014 17.3127 61.2633 16.4531 61.6572C15.5876 62.0539 14.3743 62.4887 12.6094 62.8564C8.90001 63.6292 4.61364 63.1241 1.67285 62.3008C1.2926 62.1943 1.08065 61.884 1.0498 61.5547C1.01947 61.2286 1.16494 60.8783 1.48828 60.6719C3.77196 59.2141 5.18255 57.8648 6.11914 56.5742C7.03142 55.3169 7.5005 54.105 7.88867 52.8799C2.97782 47.271 0 39.9264 0 31.8857C0.000296296 14.2762 14.2761 0.00014381 31.8857 0ZM31.6084 43.6045C30.4992 43.6045 29.5916 43.9981 28.8857 44.7852C28.2135 45.5329 27.877 46.5365 27.877 47.7959C27.877 49.0553 28.2135 50.0589 28.8857 50.8066C29.5916 51.5544 30.4991 51.9287 31.6084 51.9287C32.7512 51.9287 33.6588 51.5544 34.3311 50.8066C35.0369 50.0589 35.3896 49.0553 35.3896 47.7959C35.3896 46.5365 35.0369 45.5329 34.3311 44.7852C33.6588 43.9981 32.7512 43.6045 31.6084 43.6045ZM32.2637 11.8438C29.9444 11.8438 27.9272 12.2767 26.2129 13.1426C24.4988 14.0084 23.1039 15.2085 22.0283 16.7432C21.2817 17.8086 20.7054 18.9977 20.2988 20.3096C19.971 21.3676 20.5233 22.4688 21.501 22.9893C23.0999 23.8402 25.025 22.7489 25.8291 21.126C26.1636 20.4508 26.5775 19.8554 27.0703 19.3408C28.314 18.0421 29.928 17.3926 31.9111 17.3926C33.3227 17.3926 34.4821 17.6294 35.3896 18.1016C36.3308 18.5345 37.02 19.2033 37.457 20.1084C37.9276 20.9742 38.1631 22.0173 38.1631 23.2373C38.1631 24.4967 37.8943 25.5792 37.3564 26.4844C36.8186 27.3502 35.894 28.0786 34.583 28.6689C33.9061 28.9737 33.0857 29.2464 32.1221 29.4883C30.3705 29.9279 29.0372 31.4226 29.0371 33.2285V36.3701C29.0371 37.8223 30.2139 38.9998 31.666 39C33.0923 39 34.2588 37.8624 34.2949 36.4365L34.3105 35.8174C34.3513 34.2152 35.5672 32.9221 37.0918 32.4277C37.8168 32.1927 38.5103 31.9038 39.1719 31.5615C40.6171 30.7744 41.7603 29.6331 42.6006 28.1377C43.4745 26.6028 43.9111 24.6736 43.9111 22.3516C43.9111 20.1084 43.4068 18.2194 42.3984 16.6846C41.4236 15.1103 40.0624 13.9095 38.3145 13.083C36.6001 12.2565 34.583 11.8438 32.2637 11.8438Z" fill="var(--color-dark-green)"/>
               </svg>
             </div>
-            <h3 className="mb-2 text-[var(--color-dark-green)]">{benefits[1].title}</h3>
+            <h3 className="display-headline !text-[45px] mb-2 text-[var(--color-dark-green)]">{benefits[1].title}</h3>
             <p className="mb-4 h-full">{benefits[1].description}</p>
         </div>
 
@@ -79,7 +74,7 @@ export default function AlphaGuidesSection() {
                 <path d="M43.8156 64.0607C45.232 65.0357 47.137 63.887 46.9359 62.1793L44.854 44.504C44.6863 43.0799 43.1186 42.2898 41.8741 43.0022L28.9912 50.3767C27.7127 51.1085 27.6373 52.9246 28.8508 53.7599L43.8156 64.0607Z" fill="var(--color-sky-blue)"/>
               </svg>
             </div>
-            <h3 className="mb-2 text-[var(--color-sky-blue)]">{benefits[2].title}</h3>
+            <h3 className="display-headline !text-[45px] mb-2 text-[var(--color-sky-blue)]">{benefits[2].title}</h3>
             <p className="mb-4 h-full text-[var(--color-sky-blue)]">{benefits[2].description}</p>
         </div>
       </div>

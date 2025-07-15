@@ -71,7 +71,7 @@ export default function CommitmentsSection() {
                   </>
                 )}
               </div>
-              <h3 className="text-[var(--color-navy-blue)] heading-style-h4 max-[1239px]:heading-style-h6 mb-4">{commitment.title}</h3>
+              <h3 className="text-[var(--color-navy-blue)] display-headline mb-4 !text-[30px]">{commitment.title}</h3>
               <p className="text-[var(--color-navy-blue)] mb-4">{commitment.description}</p>
             </div>
           ))}

@@ -176,7 +176,7 @@ export default function BlogPage() {
                             <p>{getArticleExcerpt(featuredArticle.content)}</p>
                           </div>
                           <div>
-                            <Link href={`/${featuredArticle.type}/${featuredArticle.slug}`}>
+                            <Link href={`/blog/${featuredArticle.slug}`}>
                               <Button variant="navyBlue"className="centered-text-icon">Read More<span className="material-icons-outlined">arrow_forward</span></Button>
                             </Link>
                           </div>
@@ -191,14 +191,14 @@ export default function BlogPage() {
                       </div>
                     )}
             {filteredArticles.map((item) => (
-              <Link key={item.slug} href={`/${item.type}/${item.slug}`}>
+              <Link key={item.slug} href={`/blog/${item.slug}`}>
                 <ArticleCard
                   imageSrc={item.image}
                   imageAlt={item.title}
                   title={item.title}
                   date={item.date}
                   category={item.type === "news" ? "News" : "Blog"}
-                  href={`/${item.type}/${item.slug}`}
+                  href={`/blog/${item.slug}`}
                 />
               </Link>
             ))}
