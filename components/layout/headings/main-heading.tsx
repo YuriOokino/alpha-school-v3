@@ -27,7 +27,7 @@ export default function MainHeading({
 }: MainHeadingProps) {
   const variantClass =
     variant === "blue"
-      ? "bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)]"
+      ? "bg-[var(--color-primary)] text-white"
       : "";
   return (
     <div className="w-full">
@@ -69,7 +69,7 @@ export default function MainHeading({
         </div>
       </div>
       {variant !== "default" && (
-        <Divider fill="var(--color-navy-blue)" direction="up" />
+        <Divider fill="var(--color-primary)" direction="up" />
       )}
     </div>
   );

@@ -9,7 +9,7 @@ import { campuses } from "@/content/campuses"
 
 // Material Icons arrow_forward - Regular variant
 const regularArrowSvg = (
-  <Button className="rounded-full px-3 py-3">
+  <Button className="rounded-full px-3 py-3 bg-[var(--color-navy-blue)] text-white">
     <span className="material-icons-outlined !m-0 ml-2">
       arrow_forward
     </span>

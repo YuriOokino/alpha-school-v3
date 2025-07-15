@@ -39,7 +39,7 @@ export default function TheProgramPage() {
       <section className="alpha-section">
         {/* Intro Section: horizontal layout, no card, no background */}
         <div className={`${isMobile ? 'flex flex-col gap-6' : 'two-column-flex'} mb-[var(--space-2xl)]`}>
-          <h2 className={`heading-style-h3 ${isMobile ? 'text-2xl leading-tight' : ''}`}>
+          <h2 className={`heading-style-h3 text-[var(--color-navy-blue)] ${isMobile ? 'text-2xl leading-tight' : ''}`}>
             What if your child could crush academics in just 2 hours?
           </h2>
           <div className={isMobile ? 'space-y-4' : ''}>
@@ -69,8 +69,8 @@ export default function TheProgramPage() {
 
 
       <section className="alpha-section bg-white">
-        <div id="love-school" className="alpha-card bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)] mb-16">
-          <div className={`flex flex-col gap-2 mb-8 text-center align-center max-w-xl mx-auto ${isMobile ? 'mb-4' : ''}`}>
+        <div id="love-school" className="alpha-card !p-[var(--space-lg)] bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)] mb-16">
+          <div className={`flex flex-col gap-2 mb-16 text-center align-center max-w-xl mx-auto ${isMobile ? 'mb-4' : ''}`}>
             <div className="tagline bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)] mx-auto">
               Commitment #1
             </div>
@@ -107,8 +107,8 @@ export default function TheProgramPage() {
         </div>
 
 
-<div id="learn-2x" className="alpha-card bg-[var(--color-light-green)] text-[var(--color-dark-green)] mb-16">
-  <div className={`flex flex-col gap-2 mb-8 text-center align-center max-w-xl mx-auto ${isMobile ? 'mb-8' : ''}`}>
+<div id="learn-2x" className="alpha-card !p-[var(--space-lg)] bg-[var(--color-light-green)] text-[var(--color-dark-green)] mb-16">
+  <div className={`flex flex-col gap-2 mb-16 text-center align-center max-w-xl mx-auto ${isMobile ? 'mb-8' : ''}`}>
     <div className="tagline bg-[var(--color-dark-green)] text-[var(--color-light-green)] mx-auto">
       Commitment #2
     </div>
@@ -150,8 +150,8 @@ export default function TheProgramPage() {
 </div>
 
 
-<div id="lifeskills-workshops" className="alpha-card bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)] mb-16">
-          <div className={`flex flex-col gap-2 mb-8 text-center align-center max-w-xl mx-auto ${isMobile ? 'mb-8' : ''}`}>
+<div id="lifeskills-workshops" className="alpha-card !p-[var(--space-lg)] bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)] mb-16">
+          <div className={`flex flex-col gap-2 mb-16 text-center align-center max-w-xl mx-auto ${isMobile ? 'mb-8' : ''}`}>
             <div className="tagline bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)] mx-auto">
               Commitment #3
             </div>

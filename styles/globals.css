@@ -20,9 +20,7 @@ html, body {
     --background: #FFFFFF;     /* Default background color */
     --text: #000000;          /* Default text color */
     --color-primary: #4368FF;      /* Main brand color - CTAs, links, highlights */
-    --color-primary-light: #CCDFFF; /* Light blue - Section backgrounds, cards */
-    --color-warm: #FCCFCF;         /* Warm pink - Testimonial backgrounds */
-    --color-warm-dark: #5C2727;    /* Warm maroon - Headings, buttons */
+    --color-primary-light: #CCDFFF; /* Light blue - Section backgrounds, cards */  /* Warm maroon - Headings, buttons */
     --color-light-green: #D8FFB7;
     --color-dark-green: #385116;
     --color-navy-blue: #213BA1;

@@ -7,7 +7,7 @@ export default function HeroSection() {
   return (
     <>
       {/* Hero Content Block */}
-      <div className="bg-white text-[var(--color-navy-blue)] pt-20 pb-12">
+      <div className="bg-white text-[var(--color-primary)] pt-20 pb-12">
         <div className="container mx-auto px-4 text-center">
           <h1 className="section-headline mb-6 max-w-4xl mx-auto">
           Crush academics. Build life skills. Love school.          </h1>
@@ -15,9 +15,9 @@ export default function HeroSection() {
             Campuses in Austin, Brownsville, and Miami—and many more new locations launching soon.
           </p>
           <div className="flex justify-center gap-4">
-          <Button className="bg-[var(--color-navy-blue)]" href="/the-program">Alpha Program</Button>
-          <Button className="bg-[var(--color-navy-blue)]" href="/locations">Alpha Campusese</Button>
-          <Button className="bg-[var(--color-navy-blue)]" href="/events">Alpha Events</Button>
+          <Button className="bg-[var(--color-primary)]" href="/the-program">Alpha Program</Button>
+          <Button className="bg-[var(--color-primary)]" href="/locations">Alpha Campusese</Button>
+          <Button className="bg-[var(--color-primary)]" href="/events">Alpha Events</Button>
           </div>
         </div>
       </div>

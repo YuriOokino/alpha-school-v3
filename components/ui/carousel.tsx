@@ -12,7 +12,7 @@ interface CarouselProps {
   titleClassName?: string;
   buttonText?: string;
   buttonHref?: string;
-  buttonVariant?: "default" | "outline" | "link" | "lightBlue" | "navyBlue" | "filter" | "filterOutline" | "square" | "underline" | null | undefined;
+  buttonVariant?: "default" | "outline" | "link" | "lightBlue" | "navyBlue" | "darkGreen" | "filter" | "filterOutline" | "square" | "underline" | null | undefined;
 
   navigationDotsColor?: {
     active: string;
@@ -46,7 +46,7 @@ export default function Carousel({
     icon: "#111827"
   },
   sliderButtonColor = "bg-[var(--color-navy-blue)]",
-  progressBarBackgroundColor = "bg-[#EDEDF4]"
+  progressBarBackgroundColor = "bg-[#E3E1EC]"
 }: CarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);

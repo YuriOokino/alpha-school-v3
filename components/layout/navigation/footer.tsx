@@ -5,12 +5,12 @@ import Link from "next/link"
 
 export default function Footer() {
   return (
-    <footer className="bg-[var(--color-bg-muted)] text-[var(--color-text-main)]">
+    <footer className="bg-[var(--color-primary)] text-white">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
           {/* Logo and Contact */}
-          <div className="md:col-span-1">
-            <Link href="/" className="inline-block mb-4">
+          <div className="md:col-span-1 flex flex-col gap-4">
+            <Link href="/" className="inline-block">
               <Image 
                 src="/assets/logo-white.svg" 
                 alt="Alpha School Logo" 
@@ -20,13 +20,21 @@ export default function Footer() {
                 style={{ filter: 'invert(1)' }}
               />
             </Link>
-            <p className="mb-4">admissions@alpha.school</p>
+            <a href="mailto:admissions@alpha.school">admissions@alpha.school</a>
+            <div className="w-16"><a href="https://home.cognia.org/#/registry" target="blank"><img src="/assets/cognia-logo.png"></img></a></div>
+
           </div>
 
-          {/* About */}
+
+          {/* About Alpha */}
           <div className="md:col-span-1">
-            <h3 className="text-base font-medium mb-2 pb-0">About</h3>
+            <h3 className="text-base font-medium mb-2 pb-0">About Alpha</h3>
             <ul className="space-y-2">
+              <li>
+                <Link href="/the-program">
+                  The Program
+                </Link>
+              </li>
               <li>
                 <Link href="/the-program#love-school">
                   Love School
@@ -45,6 +53,33 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* For Parents */}
+          <div className="md:col-span-1">
+            <h3 className="text-base font-medium mb-2 pb-0">For Parents</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/admission">
+                  Admission Guide
+                </Link>
+              </li>
+              <li>
+                <Link href="/admission-forms">
+                  Apply Now
+                </Link>
+              </li>
+              <li>
+                <Link href="/learn-more">
+                  Learn More
+                </Link>
+              </li>
+              <li>
+                <Link href="/guides">
+                  Meet Our Guides
+                </Link>
+              </li>
+            </ul>
+          </div>
+
           {/* Resources */}
           <div className="md:col-span-1">
             <h3 className="text-base font-medium mb-2 pb-0">Resources</h3>
@@ -55,51 +90,26 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/locations">
-                  Locations
-                </Link>
-              </li>
-              <li>
-                <Link href="/bring-alpha-to-your-city">
-                  Alpha Micro Schools
-                </Link>
-              </li>
-              <li>
-                <Link href="/guides">
-                  Alpha Guides
-                </Link>
-              </li>
-              <li>
                 <Link href="/blog">
-                  Blog
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Insights */}
-          <div className="md:col-span-1">
-            <h3 className="text-base font-medium mb-2 pb-0">Useful info</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/admission">
-                  Admission Guide
+                  Blog & News
                 </Link>
               </li>
               <li>
-                <Link href="/admission-forms">Admission Forms</Link>
+                <Link href="/events">
+                  Events & Programs
+                </Link>
               </li>
               <li>
                 <Link href="/faq">
-                  FAQs
+                  FAQ
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Other Schools */}
+          {/* Partner Schools */}
           <div className="md:col-span-1">
-            <h3 className="text-base font-medium mb-2 pb-0">Other Schools</h3>
+            <h3 className="text-base font-medium mb-2 pb-0">Partner Schools</h3>
             <ul className="space-y-2">
               <li>
                 <Link href="#">
@@ -132,7 +142,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Footer */}
-     
+      <div className="border-t border-gray-300">
         <div className="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
           <div>
             <Link href="/privacy-policy">
@@ -141,7 +151,7 @@ export default function Footer() {
           </div>
           <div className="text-sm">Copyright 2025 © All Right Reserved Alpha School</div>
         </div>
-      
+      </div>
     </footer>
   )
 }

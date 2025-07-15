@@ -34,7 +34,7 @@ export default function EventsCarousel({
         e.address?.toLowerCase().includes(locationFilter.toLowerCase())
       )
     : events
-
+  
   return (
     <Carousel
       items={filteredEvents}

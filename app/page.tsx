@@ -68,13 +68,10 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[var(--color-bg-muted)]">
       <HeroSection />
-
-
       <CommitmentsSection />
       <Divider fill="white" direction="up" />
       <KidsNeedSection />
       <Divider fill="white" direction="down" />
-
       <StatsSection />
       <LocationsCarouselSection />
       <Divider fill="white" direction="up" />
