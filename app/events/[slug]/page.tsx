@@ -8,7 +8,8 @@ import React, { useState, useEffect } from "react"
 import SectionHeading from "@/components/layout/headings/section-heading"
 import { useParams } from "next/navigation"
 import Divider from "@/components/layout/divider"
-import EventsCarousel from "@/components/features/content-blocks/events-carousel"
+import Carousel from "@/components/ui/carousel"
+import EventCard from "@/components/features/cards/event-card"
 
 interface Event {
   id: string
@@ -156,8 +157,12 @@ export default function EventPage() {
         </div>
         </section>
         <section className="alpha-section bg-white">
-        <SectionHeading title="Register Today" description="Due to high demand, please only RSVP if you are certain you can attend. If you are unable to participate due to illness, please notify us as soon as possible." /> 
         <div className="alpha-form" id="register">
+        <div className="m-auto flex !flex-col text-center !gap-0.5 mb-8 max-w-[800px]">
+
+          <h4>Register today</h4>
+          <p>Due to high demand, please only RSVP if you are certain you can attend. If you are unable to participate due to illness, please notify us as soon as possible.</p>
+          </div>
           <form className="space-y-6" onSubmit={handleSubmit}>
             <h6>Parent/guardian #1 Information</h6>
             <div className="flex gap-4">
@@ -304,18 +309,23 @@ export default function EventPage() {
             </Button>
           </form>
         </div>
-      </section>
 
-{ /* Events carousel */}
-
-      <section className="alpha-section bg-white">
         <SectionHeading 
           title="More events" 
           description="Learn more about how Alpha works. Attend a virtual info session, drop by a school tour, or join one of our educational summer camps."
           buttonText="View all events"
           buttonHref="/events"
+          buttonVariant="darkGreen"
+          className="mt-[var(--space-4xl)] text-[var(--color-dark-green)]"
         />
-       <EventsCarousel className="bg-[var(--color-navy-blue)]" events={allEvents.filter(event => event.slug !== slug)} />
+        <Carousel
+          items={allEvents.filter(event => event.slug !== slug)}
+          renderItem={(event) => (
+            <EventCard {...event} url={`/events/${event.slug}`} className="flex-shrink-0 group" variant="scheme2" />
+          )}
+          visibleCards={3.75}
+          variant="scheme3"
+        />
       </section>
     </main>
   );

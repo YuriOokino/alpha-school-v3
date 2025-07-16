@@ -15,13 +15,13 @@ interface ArticleCardProps {
 
 export default function ArticleCard({ imageSrc, imageAlt, title, date, category, href, className, titleClassName, variant = 'default' }: ArticleCardProps) {
   // Use CSS variables/globals for styling
-  const contentClass = "flex flex-col gap-4 p-[var(--space-md)] h-full bg-[var(--color-light-green)] rounded-[var(--radius-md)]";
+  const contentClass = "flex flex-col gap-4 p-[var(--space-md)] h-[160px] bg-[var(--color-light-green)] rounded-[var(--radius-md)]";
   const imageClass = "w-full aspect-[3/2] object-cover rounded-[var(--radius-md)]";
 
   return (
-    <div className="flex flex-col gap-[var(--space-sm)]">
-      <Link href={href}>
-        <img src={imageSrc} alt={imageAlt} className={imageClass} />
+    <div className="flex flex-col gap-[var(--space-sm)] group">
+      <Link href={href} className="overflow-hidden rounded-[var(--radius-md)]">
+        <img src={imageSrc} alt={imageAlt} className={`${imageClass} transition-transform duration-300 scale-105 group-hover:scale-100`} />
       </Link>
         
         <div className={contentClass}>
@@ -30,7 +30,7 @@ export default function ArticleCard({ imageSrc, imageAlt, title, date, category,
           <div className="tag-outline !border-[var(--color-dark-green)] !text-[var(--color-dark-green)]">{category}</div>
         </div>
         <Link href={href}>
-          <h6>{title}</h6>
+          <h6 className="line-clamp-2 overflow-hidden text-[var(--color-dark-green)]">{title}</h6>
         </Link>
         </div>
         </div>

@@ -28,7 +28,7 @@ export interface EventCardProps {
   address: string // e.g. "8000 SW 56th St, Miami, FL 33155"
   className?: string
   buttonClassName?: string
-  variant?: 'scheme1' | 'scheme2'
+  variant?: 'scheme1' | 'scheme2' | 'scheme3'
 }
 
 export default function EventCard({
@@ -65,18 +65,31 @@ export default function EventCard({
       text: 'text-[var(--color-dark-green)]',
       button: 'bg-[var(--color-dark-green)]',
       buttonText: 'text-[var(--color-light-green)]',
-      filledTagBg: 'bg-[var(--color-dark-green)]',
-      filledTagText: 'text-[var(--color-light-green)]',
+      filledTagBg: '!bg-[var(--color-dark-green)]',
+      filledTagText: '!text-[var(--color-light-green)]',
       outlineTagBg: 'bg-transparent',
       outlineTagText: 'text-[var(--color-dark-green)]',
       outlineTagBorder: 'border-[var(--color-dark-green)]'
+    },
+    scheme3: {
+      card: 'bg-[var(--color-sky-blue)]',
+      title: 'text-[var(--color-primary)]',
+      text: 'text-[var(--color-primary)]',
+      button: 'bg-[var(--color-primary)]',
+      buttonText: 'text-white',
+      filledTagBg: '!bg-[var(--color-primary)]',
+      filledTagText: '!text-white',
+      outlineTagBg: 'bg-transparent',
+      outlineTagText: 'text-[var(--color-primary)]',
+      outlineTagBorder: 'border-[var(--color-primary)]'
     }
   }
 
   const styles = variantStyles[variant]
 
   return (
-    <Card className={`${styles.card} rounded-[var(--radius-md)] p-[var(--space-md)] flex flex-col justify-between border-0 shadow-none w-full max-w-[340px] group ${className}`}>
+    <Card className={`${styles.card} rounded-[var(--radius-md)] p-[var(--space-md)] flex flex-col border-0 shadow-none w-full max-w-[340px] h-[500px] group ${className}`}>
+      {/* 1. Image */}
       <Link href={url} className="w-full h-[200px] rounded-[var(--radius-sm)] overflow-hidden mb-[var(--space-md)] block relative">
         <Image
           src={image.src}
@@ -85,8 +98,10 @@ export default function EventCard({
           className="object-cover transition-transform duration-300 scale-105 group-hover:scale-100"
         />
       </Link>
-      <div className="flex-1 flex flex-col gap-y-2 min-h-[180px]">
-        <div className="flex gap-2">
+      
+      {/* 2. Content wrapper */}
+      <div className="flex-1 flex flex-col gap-y-2 h-full">
+        <div className="flex gap-2 mb-2">
           <span className={`tag-filled ${styles.filledTagBg} ${styles.filledTagText}`}>{locationTag}</span>
           <span className={`tag-outline ${styles.outlineTagBg} ${styles.outlineTagText} ${styles.outlineTagBorder}`}>{category}</span>
         </div>
@@ -115,6 +130,8 @@ export default function EventCard({
           <span>{address}</span>
         </div>
       </div>
+      
+      {/* 3. Button */}
       <Button href={url} className={`centered-text-icon w-full mt-[var(--space-sm)] ${styles.button} ${styles.buttonText} ${buttonClassName}`}>
         Register now<span className="material-icons-outlined">arrow_forward</span>
       </Button>

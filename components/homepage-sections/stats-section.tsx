@@ -4,7 +4,7 @@ export default function StatsSection() {
   return (
     <section className="alpha-section bg-white">
       <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-[var(--space-xl)] gap-[var(--space-lg)]">
-        <h2 className="m-0">REAL RESULTS FOR REAL LIFE SKILLS</h2>
+        <h2 className="m-0 text-[var(--color-navy-blue)]">REAL RESULTS FOR REAL LIFE SKILLS</h2>
         <p className="max-w-xl body-text m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
         </p>

@@ -71,7 +71,7 @@ export default function BlogPostPage() {
       <div className="alpha-section">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-[var(--space-xl)]">
           <div className="md:col-span-2">
-            <Button variant="link" className="mb-4 text-gray-500 font-normal"><span className="material-icons-outlined">arrow_back</span> All posts</Button>
+            <Button variant="link" className="mb-4 text-gray-500 font-normal" href="/blog"><span className="material-icons-outlined">arrow_back</span> All posts</Button>
             <h1 className="heading-style-h3 mb-4">{post.title}</h1>
             <div className="mb-4">
               <div className="text-gray-600">
@@ -89,7 +89,7 @@ export default function BlogPostPage() {
 
             {/* Author Bio Section */}
             <div className="alpha-card bg-[var(--color-light-green)] mt-[var(--space-lg)] mb-[var(--space-lg)]">
-              <div className="heading-style-h4 mb-2 text-[var(--color-dark-green)]">{post.authorName}</div>
+              <div className="heading-style-h5 mb-2 text-[var(--color-dark-green)]">About the Author</div>
               <div className="body-text max-w-3xl text-[var(--color-dark-green)]">{post.authorBio}</div>
             </div>
 

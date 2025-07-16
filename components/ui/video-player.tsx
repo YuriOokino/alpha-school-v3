@@ -9,6 +9,7 @@ interface VideoPlayerProps {
   className?: string
   aspectRatio?: "16/9" | "4/3" | "1/1" | "21/9"
   overlayImage?: string
+  textOverlay?: string
 }
 
 export function VideoPlayer({ 
@@ -17,7 +18,8 @@ export function VideoPlayer({
   posterAlt = "Video preview", 
   className = "",
   aspectRatio = "16/9",
-  overlayImage
+  overlayImage,
+  textOverlay
 }: VideoPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false)
 
@@ -70,16 +72,22 @@ export function VideoPlayer({
           {/* Additional black overlay for better contrast */}
           <div className="absolute inset-0 bg-black/30"></div>
           {/* Custom overlay image */}
-          {overlayImage && (
+          {overlayImage && !textOverlay && (
             <img
               src={overlayImage}
               alt=""
               className="absolute inset-0 w-full h-full object-cover"
             />
           )}
+          {/* Text overlay */}
+          {textOverlay && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <h2 className="display-headline text-white text-center px-4">{textOverlay}</h2>
+            </div>
+          )}
           {/* Play button overlay */}
           <div className="absolute inset-0 flex items-center justify-center hover:bg-black/10 transition-colors">
-            <div className="w-16 h-16 md:w-20 md:h-20 bg-white/80 rounded-full flex items-center justify-center hover:bg-white transition-colors">
+            <div className="w-16 h-16 md:w-20 md:h-20 bg-white/70 rounded-full flex items-center justify-center hover:bg-white transition-colors">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="text-gray-800 ml-1 md:w-8 md:h-8">
                 <path d="M8 5v14l11-7z"/>
               </svg>

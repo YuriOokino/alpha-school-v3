@@ -128,14 +128,14 @@ export default function AustinSummerCampPage() {
         }
       >
         {event.title}
-        <p className="centered-icon-text mb-4"><span className="material-icons-outlined">location_on</span>{event.address}</p>
-        <p className="centered-icon-text mb-4"><span className="material-icons-outlined">email</span>{event.contact}</p>
+        <p className="centered-icon-text mb-4"><span className="material-icons-outlined mr-2">location_on</span>{event.address}</p>
+        <p className="centered-icon-text mb-4"><span className="material-icons-outlined mr-2">email</span>{event.contact}</p>
       </MediaHeading>
       <section className="alpha-section bg-white">
-        <div className="two-column-flex mb-[var(--space-2xl)]">
+        <div className="two-column-flex">
           {/* Left Column: Description */}
           <div className="flex-1">
-            <h2 className="heading-style-h4 mb-4">{event.descriptionTitle}</h2>
+            <h2 className="heading-style-h4 mb-4 text-[var(--color-navy-blue)]">{event.descriptionTitle}</h2>
             <div dangerouslySetInnerHTML={{ __html: event.description }} />
           </div>
           {/* Right Column: Session Dropdowns */}
@@ -156,19 +156,32 @@ export default function AustinSummerCampPage() {
                   <AccordionContent>
                     <div className="space-y-3">
                       <div className="centered-icon-text">
-                        <span className="material-icons-outlined">schedule</span>
+                        <span className="material-icons-outlined mr-2">schedule</span>
                         <span>{session.time}</span>
                       </div>
                       <div className="centered-icon-text">
-                        <span className="material-icons-outlined">face</span>
+                        <span className="material-icons-outlined mr-2">face</span>
                         <span>{session.ageRange}</span>
                       </div>
                       <div className="centered-icon-text">
-                        <span className="material-icons-outlined">payments</span>
+                        <span className="material-icons-outlined mr-2">payments</span>
                         <span>{session.price}</span>
                       </div>
-                      <Button className="mt-4" href={event.registrationUrl} target="_blank" disabled={session.soldOut}>
-                        Register
+                      <Button 
+                        className="mt-4" 
+                        disabled={session.soldOut}
+                        onClick={() => {
+                          if (!session.soldOut) {
+                            // Automatically select this session
+                            if (!selectedSessions.includes(session.id)) {
+                              setSelectedSessions([...selectedSessions, session.id]);
+                            }
+                            // Scroll to form section
+                            document.getElementById('form-section')?.scrollIntoView({ behavior: 'smooth' });
+                          }
+                        }}
+                      >
+                        Sign up
                       </Button>
                     </div>
                   </AccordionContent>
@@ -178,26 +191,14 @@ export default function AustinSummerCampPage() {
           </div>
           
         </div>
-        <div className="alpha-card bg-[var(--color-light-green)] p-[var(--space-lg)] m-auto max-w-[800px]">
-          <h3 className="heading-style-h4 mb-4">What do kids do at Alpha Camp?</h3>
-
-              <h6>Engaging Activities</h6>
-              <p className="mb-4">Your child will participate in a variety of fun and educational activities designed to keep them engaged and learning throughout the summer.</p>
-              <h6>Expert Guidance</h6>
-              <p className="mb-4">Our experienced staff will ensure your child has a safe and enriching experience while making new friends and learning new skills.</p>
-
-            <h6>Convenient Location</h6>
-              <p>Located at our Austin campus, the camp provides a familiar and comfortable environment for your child to learn and play.</p>
-
-
-        </div>
+        
         </section>
 
         <Divider fill="white" direction="up"/>
 
          {/* Videos */}
         <section className="alpha-section">
-          <SectionHeading title="See what's awaiting you" description="Take a look at last year's workshop activities to know what's in store." />
+          <SectionHeading title="See what's awaiting you" description="Take a look at last year's workshop activities to know what's in store." className="text-[var(--color-primary)]" />
           <div className="two-column-flex">
             <div className="relative cursor-pointer group" onClick={() => openVideoModal("https://player.vimeo.com/video/839894581?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=0&controls=1")}>
               <img 
@@ -231,6 +232,21 @@ export default function AustinSummerCampPage() {
             </div>
             
           </div>
+          <div className="alpha-card w-full flex gap-8 bg-[var(--color-light-green)] !p-[var(--space-lg)] m-auto text-[var(--color-dark-green)] mt-[var(--space-3xl)]">
+     
+
+              <div className="flex-1 gap-3"><h6 className="display-headline !text-[25px] mb-4">Groove generator</h6>
+              <p className="mb-4">Create your own hit songs using AI technology and platforms.</p>
+              </div>
+              <div className="flex-1"><h6 className="display-headline !text-[25px] mb-4">Future fashion factory</h6>
+              <p className="mb-4">Design tees via AI prompts and receive them post-camp.</p></div>
+              <div className="flex-1 gap-3"><h6 className="display-headline !text-[25px] mb-4">Pokemon AR-venture</h6>
+              <p>Participate in a thrilling scavenger hunt that brings Pokemon to life through augmented reality.</p>
+              </div>
+              <div className="flex-1 gap-3"><h6 className="display-headline !text-[25px] mb-4">Art-ificial intellignce</h6>
+              <p>Craft with AI for a virtual reality gallery showcase and get a printed masterpiece to take home.</p>
+              </div>
+</div>
         </section>
 
         {/* Video Modal */}
@@ -265,7 +281,7 @@ export default function AustinSummerCampPage() {
       <section className="alpha-section bg-white" id="form-section">
           
           <div className="alpha-form">
-          <div className="m-auto flex !flex-col text-center !gap-0.5 mb-4 max-w-[400px]">
+          <div className="form-top-content">
                 <h3 className="heading-style-h4">Book your spot!</h3>
                 <p className="mb-8">Unlock a summer of innovation! Secure your spot today, limited spots available.</p>
               </div>

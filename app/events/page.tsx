@@ -49,7 +49,7 @@ export default function EventsPage() {
 
   return (
     <main>
-      <MainHeading variant="blue" tagline="Events" description="View all our upcoming events, summer camps and afterschool programs below!">
+      <MainHeading variant="blue" tagline="Events" taglineVariant="blue"description="View all our upcoming events, summer camps and afterschool programs below!">
         Programs and Events
       </MainHeading>
       <section className="alpha-section">

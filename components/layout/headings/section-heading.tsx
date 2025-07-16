@@ -8,17 +8,19 @@ interface SectionHeadingProps {
   description: string
   buttonText?: string
   buttonHref?: string
+  className?: string
+  buttonVariant?: 'default' | 'outline' | 'link' | 'primary' | 'lightBlue' | 'navyBlue' | 'darkGreen' | 'filter' | 'filterOutline' | 'alternate' | 'underline' | 'disabled'
 }
 
-export default function SectionHeading({ title, description, buttonText, buttonHref }: SectionHeadingProps) {
+export default function SectionHeading({ title, description, buttonText, buttonHref, className, buttonVariant }: SectionHeadingProps) {
   return (
-    <div className="text-center max-w-[50rem] mx-auto mb-[var(--space-xl)]">
-      <h2 className="section-headline mb-4 text-[var(--color-navy-blue)]">{title}</h2>
-      <p className="mb-4">{description}</p>
+    <div className={`text-center max-w-[50rem] mx-auto mb-[var(--space-xl)] ${className || ''}`}>
+      <h2 className={'section-headline mb-4'}>{title}</h2>
+      <p className="mb-4 text-black">{description}</p>
       {buttonText && buttonHref && (
-        <Button href={buttonHref} size="small" className="mx-auto bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)]">
+        <Button href={buttonHref} size="small" variant={buttonVariant} className="mx-auto centered-icon-text">
           {buttonText}
-        </Button>
+          <span className="material-icons-outlined ml-1">arrow_circle_right</span></Button>
       )}
     </div>
   )

@@ -17,7 +17,6 @@ export default function Footer() {
                 width={150} 
                 height={50} 
                 className="h-10 w-auto" 
-                style={{ filter: 'invert(1)' }}
               />
             </Link>
             <a href="mailto:admissions@alpha.school">admissions@alpha.school</a>

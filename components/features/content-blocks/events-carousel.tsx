@@ -9,6 +9,7 @@ interface EventsCarouselProps {
   locationFilter?: string
   title?: string
   className?: string
+  variant?: 'scheme1' | 'scheme2' | 'scheme3' | 'scheme4'
   navigationDotsColor?: {
     active: string
     inactive: string
@@ -24,6 +25,7 @@ export default function EventsCarousel({
   locationFilter, 
   title,
   className = "bg-transparent p-0",
+  variant = "scheme1",
   navigationDotsColor,
   navigationArrowsColor
 }: EventsCarouselProps) {
@@ -44,6 +46,7 @@ export default function EventsCarousel({
       visibleCards={3.75}
       className={className}
       title={title}
+      variant={variant}
       navigationDotsColor={navigationDotsColor}
       navigationArrowsColor={navigationArrowsColor}
     />

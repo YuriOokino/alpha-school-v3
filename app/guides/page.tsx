@@ -18,6 +18,7 @@ export default function GuidesPage() {
       
       >Meet Our Guides</MainHeading>
       <section className="alpha-section">
+        <div className="flex flex-col gap-[var(--space-4xl)]">
        
         <Carousel
           items={austinGuides}
@@ -35,17 +36,8 @@ export default function GuidesPage() {
           title="Austin"
           buttonText="Discover Alpha Austin"
           buttonHref="/austin"
-          buttonVariant="navyBlue"
           visibleCards={3.9}
-          className="bg-[var(--color-bg-muted)] mb-[var(--space-2xl)]"
-          navigationDotsColor={{
-            active: "bg-[var(--color-navy-blue)]",
-            inactive: "bg-[var(--color-navy-blue)] opacity-30"
-          }}
-          navigationArrowsColor={{
-            background: "bg-[var(--color-navy-blue)]",
-            icon: "var(--color-sky-blue)"
-          }}
+          variant="scheme2"
         />
 
         <Carousel
@@ -61,22 +53,15 @@ export default function GuidesPage() {
               variant="green"
             />
           )}
+          variant="scheme3"
           title="Brownsville"
           buttonText="Discover Alpha Brownsville"
           buttonHref="/brownsville"
-          buttonVariant="darkGreen"
+          
           visibleCards={3.9}
-          className="bg-[var(--color-bg-muted)]"
-          navigationDotsColor={{
-            active: "bg-[var(--color-dark-green)]",
-            inactive: "bg-[var(--color-dark-green)] opacity-30"
-          }}
-          navigationArrowsColor={{
-            background: "bg-[var(--color-dark-green)]",
-            icon: "var(--color-sky-blue)"
-          }}
-          sliderButtonColor="bg-[var(--color-dark-green)]"
+          
         />
+        </div>
       </section>
     </main>
   )

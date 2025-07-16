@@ -30,8 +30,8 @@ const admissionsSteps = [
           Discover our unique learning approach and explore the environment that sets Alpha apart.
         </div>
         <div className="flex gap-3 mt-4">
-          <Button variant="default" href="mailto:admissions@alpha.school" target="_blank">Schedule Tour</Button>
-          <Button variant="outline" href="/events">View Showcase</Button>
+          <Button variant="primary" href="mailto:admissions@alpha.school" target="_blank">Schedule Tour</Button>
+          <Button variant="outline" className="outline-[var(--color-primary)] !text-[var(--color-primary)]" href="/events">View Showcase</Button>
         </div>
       </>
     )
@@ -45,7 +45,7 @@ const admissionsSteps = [
           Complete our comprehensive application form with student information, academic history, and family details.
         </div>
         <div className="flex gap-3 mt-4">
-          <Button href="/admission-forms" variant="default">Apply now</Button>
+          <Button href="/admission-forms" variant="primary">Apply now</Button>
         </div>
       </>
     )
@@ -305,6 +305,8 @@ export default function AdmissionPage() {
           description="We would be delighted to answer any questions you may have about the admissions and enrollment process."
           buttonText="Contact Us"
           buttonHref="mailto:admissions@alpha.school"
+          buttonVariant="darkGreen"
+          className="text-[var(--color-dark-green)]"
         />
         <div className="section-content bg-[var(--color-light-green)] max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12">
@@ -326,30 +328,53 @@ export default function AdmissionPage() {
                 </p>
               </div>
 
-              {/* Immunization Requirements Section */}
-              <div>
-              <Button radius="small" className="uppercase font-normal bg-[var(--color-dark-green)] text-[var(--color-light-green)]">
-                Immunization Requirements
-                <span className="material-icons-outlined">info</span>
-              </Button>
-              </div>
-
               {/* Admissions Downloads Section */}
               <div>
                 <h3 className="text-[var(--color-dark-green)] heading-style-h5 mb-4">Admissions Downloads</h3>
                 <div className="space-y-3">
-                  <Button variant="outline" radius="small" href="#" className="icon-text-center uppercase text-[var(--color-dark-green)] outline-[var(--color-dark-green)]">
+                  <Button variant="outline" radius="small" href="https://docs.google.com/document/d/1KUh840CMAaCN3XNEJeoXvUclzel0y9Ub/edit?tab=t.0" className="icon-text-center uppercase text-[var(--color-dark-green)] outline-[var(--color-dark-green)]">
                       Previous School Records<span className="material-icons-outlined text-[20px]">file_download</span>
                   </Button>
-                  <Button variant="outline" radius="small" href="#" className="icon-text-center uppercase text-[var(--color-dark-green)] outline-[var(--color-dark-green)]">
+                  <Button variant="darkGreen" radius="small" href="https://drive.google.com/file/d/1Qll3MKJwUUzkryhhNC8kp5PR14Sagfx1/view?usp=sharing" className="icon-text-center uppercase text-[var(--color-dark-green)] outline-[var(--color-dark-green)]">
                       Physical exam form<span className="material-icons-outlined text-[20px]">file_download</span>
                   </Button>
-                  <Button variant="outline" radius="small" href="#" className="icon-text-center uppercase text-[var(--color-dark-green)] outline-[var(--color-dark-green)]">
+                  <Button variant="outline" radius="small" href="https://drive.google.com/file/d/1QK_fclEeSDZ_hPNUp1Ca6pI9E4rpo79L/view?usp=sharing" className="icon-text-center uppercase text-[var(--color-dark-green)] outline-[var(--color-dark-green)]">
                       Immunization form<span className="material-icons-outlined text-[20px]">file_download</span>
                   </Button>
                 </div>
               </div>
-            </div>
+
+              {/* Immunization Requirements Section */}
+              
+                <div>
+                  <button
+                    onClick={() => toggleSection('immunization-requirements')}
+                    className="w-full text-left flex items-center justify-between"
+                  >
+                    <h4 className="heading-style-h6 text-[var(--color-dark-green)] centered-icon-text"><span className="material-icons-outlined mr-1">info</span>Immunization Requirements</h4>
+                    <span className={`material-icons-outlined transition-transform duration-200 text-[var(--color-dark-green)] ${expandedSection === 'immunization-requirements' ? 'rotate-180' : ''}`}>
+                      expand_more
+                    </span>
+                  </button>
+                  {expandedSection === 'immunization-requirements' && (
+                    <div>
+                      <div className="space-y-3 pt-4">
+                        <div className="space-y-2">
+                          <div className="flex flex-col items-start gap-2">
+                            <p>Alpha School requires all students to comply with immunization requirements mandated by their respective state Departments of Health. Each student must provide the appropriate immunization certification or an approved exemption before enrollment. Exemptions, where permissible, must adhere to state-specific guidelines, which may vary by location.</p>
+                         <p><strong>For more information on the required immunizations please visit the following:</strong></p> 
+                          <div className="centered-icon-text indent-2"><span className="material-icons-outlined">file_download</span><a href="https://www.dshs.texas.gov/sites/default/files/LIDS-Immunizations/pdf/pdf_stock/6-14.pdf" target="_blank" rel="noopener noreferrer">Texas</a></div>
+                          <div className="centered-icon-text indent-2"><span className="material-icons-outlined">file_download</span><a href="https://www.floridahealth.gov/programs-and-services/immunization/children-and-adolescents/school-immunization-requirements/index.html" target="_blank" rel="noopener noreferrer">Florida</a></div>
+
+                          <div className="centered-icon-text indent-2"><span className="material-icons-outlined">file_download</span><a href="https://cdphe.colorado.gov/schoolrequiredvaccines" target="_blank" rel="noopener noreferrer">Colorado</a></div>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+             </div>
 
             {/* Right Column - Contact Information */}
             <div>
@@ -358,17 +383,19 @@ export default function AdmissionPage() {
               <div className="space-y-8">
                 {/* Alpha School Austin */}
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-full bg-gray-300 flex-shrink-0 overflow-hidden">
-                    <div className="w-full h-full bg-gray-400"></div>
+                  <div 
+                    className="w-16 h-16 rounded-full bg-cover bg-center flex-shrink-0 overflow-hidden"
+                    style={{ backgroundImage: "url('/assets/school-contacts/austin-contact.webp')" }}
+                  >
                   </div>
                   <div>
                     <h6 className="text-[var(--color-dark-green)] mb-1">Alpha School Austin</h6>
                     <p className="centered-icon-text">
-                      <span className="material-icons-outlined">account_circle</span>
+                      <span className="material-icons-outlined mr-1">account_circle</span>
                       Joanna Lovejoy
                       </p>
                     <p className="centered-icon-text">
-                      <span className="material-icons-outlined">mail_outline</span>
+                      <span className="material-icons-outlined mr-1">mail_outline</span>
                       <a href="mailto:admissions@alpha.school">admissions@alpha.school</a>
                     </p>
                   </div>
@@ -376,17 +403,19 @@ export default function AdmissionPage() {
 
                 {/* Alpha School Miami */}
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-full bg-gray-300 flex-shrink-0 overflow-hidden">
-                    <div className="w-full h-full bg-gray-400"></div>
+                  <div 
+                    className="w-16 h-16 rounded-full bg-cover bg-center flex-shrink-0 overflow-hidden"
+                    style={{ backgroundImage: "url('/assets/school-contacts/miami-contact.webp')" }}
+                  >
                   </div>
                   <div>
                     <h6 className="text-[var(--color-dark-green)] mb-1">Alpha School Miami</h6>
                     <p className="centered-icon-text">
-                      <span className="material-icons-outlined">account_circle</span>
+                      <span className="material-icons-outlined mr-1">account_circle</span>
                       Debby Lichtner
                     </p>
                     <p className="centered-icon-text">
-                      <span className="material-icons-outlined">mail_outline</span>
+                      <span className="material-icons-outlined mr-1">mail_outline</span>
                       <a href="mailto:admissions.miami@alpha.school">admissions.miami@alpha.school</a>
                     </p>
                   </div>
@@ -394,17 +423,19 @@ export default function AdmissionPage() {
 
                 {/* Alpha School Brownsville */}
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-full bg-gray-300 flex-shrink-0 overflow-hidden">
-                    <div className="w-full h-full bg-gray-400"></div>
+                  <div 
+                    className="w-16 h-16 rounded-full bg-cover bg-center flex-shrink-0 overflow-hidden"
+                    style={{ backgroundImage: "url('/assets/school-contacts/brownsville-contact.webp')" }}
+                  >
                   </div>
                   <div>
                     <h6 className="text-[var(--color-dark-green)] mb-1">Alpha School Brownsville</h6>
                     <p className="centered-icon-text">
-                      <span className="material-icons-outlined">account_circle</span>
+                      <span className="material-icons-outlined mr-1">account_circle</span>
                       Kathrine Ledesma
                     </p>
                     <p className="centered-icon-text">
-                      <span className="material-icons-outlined">mail_outline</span>
+                      <span className="material-icons-outlined mr-1">mail_outline</span>
                       <a href="mailto:admissions.brownsville@alpha.school">admissions.brownsville@alpha.school</a>
                     </p>
                   </div>
@@ -412,17 +443,19 @@ export default function AdmissionPage() {
 
                 {/* Alpha Expansion Schools */}
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-full bg-gray-300 flex-shrink-0 overflow-hidden">
-                    <div className="w-full h-full bg-gray-400"></div>
+                  <div 
+                    className="w-16 h-16 rounded-full bg-cover bg-center flex-shrink-0 overflow-hidden"
+                    style={{ backgroundImage: "url('/assets/school-contacts/expansion-contact.webp')" }}
+                  >
                   </div>
                   <div>
                     <h6 className="text-[var(--color-dark-green)] mb-1">Alpha Expansion Schools</h6>
                     <p className="centered-icon-text">
-                      <span className="material-icons-outlined">account_circle</span>
+                      <span className="material-icons-outlined mr-1">account_circle</span>
                       Rachel Goodlad
                     </p>
                     <p className="centered-icon-text">
-                      <span className="material-icons-outlined">mail_outline</span>
+                      <span className="material-icons-outlined mr-1">mail_outline</span>
                       <a href="mailto:rachel.goodlad@alpha.school">rachel.goodlad@alpha.school</a>
                     </p>
                   </div>
@@ -438,10 +471,15 @@ export default function AdmissionPage() {
         <SectionHeading
           title="Alpha School Campuses"
           description="Alpha School tuition ranges from $40,000 upwards (Excluding Brownsville). Please select your desired campus location to find out more details."
+          className="text-[var(--color-navy-blue)]"
+          buttonText="View all campuses"
+          buttonHref="/locations"
+          buttonVariant="navyBlue"
         />
         
         <Carousel
           items={campuses}
+          variant="scheme2"
           renderItem={(campus: CampusMetadata) => (
             <LocationCard
               key={campus.name}
@@ -456,15 +494,7 @@ export default function AdmissionPage() {
             />
           )}
           visibleCards={3.25}
-          className="mb-8"
-          navigationDotsColor={{
-            active: "bg-[#000000]",
-            inactive: "bg-[#000000] opacity-30"
-          }}
-          navigationArrowsColor={{
-            background: "bg-[var(--color-navy-blue)]",
-            icon: "white"
-          }}
+         
         />
       </section>
       

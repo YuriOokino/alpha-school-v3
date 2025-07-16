@@ -287,7 +287,7 @@ export function Navbar() {
         </nav>
         {/* CTA Button */}
         <div className="hidden md:block ml-8">
-            <Button variant="navyBlue" href="/learn-more">Learn more</Button>
+            <Button variant="primary" href="/learn-more">Learn more</Button>
         </div>
         {/* MegaMenu rendered as sibling, not inside nav or li */}
         {activeNavItem && megaMenuGroups && (
@@ -383,7 +383,7 @@ export const navItems: NavItem[] = [
     href: "#",
     megaMenu: [
       {
-        label: "Info",
+        label: "Resources",
         items: [
           { title: "Video Library", href: "/video-library", description: "Dive into Alpha School" },
           { title: "Our Guides", href: "/guides", description: "Meet the amazing people at Alpha" },
@@ -392,9 +392,9 @@ export const navItems: NavItem[] = [
       },
 
       {
-        label: "Readings",
+        label: "Articles",
         items: [
-          { title: "Blog and articles", href: "/blog", description: "Inspiring readings and articles from Alpha" },
+          { title: "Blog and news", href: "/blog", description: "Inspiring posts and articles from Alpha" },
         ],
       },
     ],

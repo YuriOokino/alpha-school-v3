@@ -65,8 +65,9 @@ export default function LearnMorePage() {
     <main>
       
         <MainHeading
+
           tagline="Learn more"
-          taglineVariant="green"
+          taglineVariant="blue"
           description="Discover more about Alpha School, our philosophy, and how we empower students to thrive in a modern world."
         >
           We're happy to hear from you
@@ -75,33 +76,33 @@ export default function LearnMorePage() {
         <section className="alpha-section">
           <div className="alpha-form">
             <form className="space-y-6" onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-8 mb-16">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
                 <div>
                   <div className="gap-4">
                     <h2 className="heading-style-h5 mb-4">Admissions</h2>
                     <p className="mb-4">Select your campus, submit your application, and take the first step toward providing your child with an education built for the future.</p>
-                    <Button size="small" href="/application">Apply Now<span className="ml-2 material-icons-outlined text-base">arrow_forward</span></Button>
+                    <Button size="small" href="/application">Apply Now<span className="ml-2 material-icons-outlined text-base">arrow_circle_right</span></Button>
                   </div>
                 </div>
                 <div>
                   <div className="gap-4">
                     <h2 className="heading-style-h5 mb-4">Bring Alpha to your City</h2>
                     <p className="mb-4">Interested in our new locations, starting a Micro School, or looking to see Alpha in your area? Be part of our movement to redefine education by bringing Alpha to new communities.</p>
-                    <Button size="small" href="/bring-alpha-to-your-city">Get in Touch<span className="ml-2 material-icons-outlined text-base">arrow_forward</span></Button>
+                    <Button size="small" href="/bring-alpha-to-your-city">Get in Touch<span className="ml-2 material-icons-outlined text-base">arrow_circle_right</span></Button>
                   </div>
                 </div>
                 <div>
                   <div className="gap-4">
                     <h2 className="heading-style-h5 mb-4">Careers</h2>
                     <p className="mb-4">Thanks for your interest! All hiring is handled exclusively through Crossover. While we don't conduct casual interviews or respond directly to inquiries, we invite you to explore the exciting career opportunities available.</p>
-                    <Button size="small">Discover Careers<span className="ml-2 material-icons-outlined text-base">arrow_forward</span></Button>
+                    <Button size="small">Discover Careers<span className="ml-2 material-icons-outlined text-base">arrow_circle_right</span></Button>
                   </div>
                 </div>
                 <div>
                   <div className="gap-4">
                     <h2 className="heading-style-h5 mb-4">Press</h2>
                     <p className="mb-4">Interested in featuring Alpha School in your story or learning more about our innovative approach to education? We're happy to connect. <span className="font-bold">Media inquiries welcome.</span></p>
-                    <Button size="small">Contact Press<span className="ml-2 material-icons-outlined text-base">arrow_forward</span></Button>
+                    <Button size="small">Contact Press<span className="ml-2 material-icons-outlined text-base">arrow_circle_right</span></Button>
                   </div>
                 </div>
               </div>

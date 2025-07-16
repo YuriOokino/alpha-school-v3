@@ -25,23 +25,14 @@ export default function LocationsCarouselSection() {
         renderItem={(campus) => (
           <LocationCard
             {...campus}
-            variant="scheme1"
+            variant="scheme2"
           />
         )}
         visibleCards={3.5}
-        className="bg-[var(--color-bg-muted)]"
         title="Alpha New Locations"
         buttonText="View all Locations"
         buttonHref="/locations"
-        buttonVariant="default"
-        navigationDotsColor={{
-          active: "bg-[var(--color-navy-blue)]",
-          inactive: "bg-[var(--color-navy-blue)] opacity-30"
-        }}
-        navigationArrowsColor={{
-          background: "bg-[var(--color-navy-blue)]",
-          icon: "var(--color-sky-blue)"
-        }}
+        variant="scheme3" // Change this to switch carousel color schemes: 'scheme1', 'scheme2', or 'scheme3'
       />
     </section>
   )

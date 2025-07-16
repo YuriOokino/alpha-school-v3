@@ -24,7 +24,7 @@ export default function MediaHeading({
 }: MediaHeadingProps) {
   const variantClass =
     variant === "blue"
-      ? "bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)]"
+      ? "bg-[var(--color-primary)] text-white"
       : "";
   return (
     <div className="w-screen min-h-[400px]">
@@ -67,7 +67,7 @@ export default function MediaHeading({
           )}
         </div>
       </div>
-      <Divider direction="up" fill="var(--color-navy-blue)" />
+      <Divider direction="up" fill="var(--color-primary)" />
     </div>
   );
 } 

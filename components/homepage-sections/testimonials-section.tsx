@@ -21,10 +21,45 @@ export default function TestimonialsSection() {
     setActiveIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
   };
 
+  // Variant styles for carousel
+  const carouselVariantStyles = {
+    scheme1: {
+      background: 'bg-[var(--color-primary)]',
+      button: 'bg-white',
+      buttonText: 'text-[var(--color-primary)]',
+      sliderDot: 'bg-[var(--color-primary)]',
+      sliderTrack: 'bg-gray-200'
+    },
+    scheme2: {
+      background: 'bg-[var(--color-sky-blue)]',
+      button: 'bg-white',
+      buttonText: 'text-[var(--color-navy-blue)]',
+      sliderDot: 'bg-white',
+      sliderTrack: 'bg-[#E3E1EC]'
+    },
+    scheme3: {
+      background: 'bg-[var(--color-light-green)]',
+      button: 'bg-[var(--color-dark-green)]',
+      buttonText: 'text-[var(--color-light-green)]',
+      sliderDot: 'bg-[var(--color-dark-green)]',
+      sliderTrack: 'bg-gray-200'
+    },
+    scheme4: {
+      background: 'bg-[var(--color-bg-muted)]',
+      button: 'bg-white',
+      buttonText: 'text-[var(--color-primary)]',
+      sliderDot: 'bg-[var(--color-primary)]',
+      sliderTrack: 'bg-gray-200'
+  }
+}
+
+  // Choose your carousel variant here
+  const carouselVariant = 'scheme2'; // Change this to switch schemes
+  const styles = carouselVariantStyles[carouselVariant];
 
 const testimonials = [
   {
-    quote: "I love Alpha because I can learn at my own pace whether I’m ahead or behind the class.",
+    quote: "I love Alpha because I can learn at my own pace whether I'm ahead or behind the class.",
     imageAlt: "Student 1",
     imageSrc: "/assets/students/chloe.webp",
     variant: "variant-blue",
@@ -42,7 +77,7 @@ const testimonials = [
     name: "Lulu"
   },
   {
-    quote: "What I love about Alpha is the freedom we get here that isn’t like another school.",
+    quote: "What I love about Alpha is the freedom we get here that isn't like another school.",
     imageAlt: "Student 3",
     imageSrc: "/assets/students/rosie.webp",
     variant: "variant-green",
@@ -51,7 +86,7 @@ const testimonials = [
     name: "Rosie"
   },
   {
-    quote: "There’s no hand holding, and I get to learn at my own pace.",
+    quote: "There's no hand holding, and I get to learn at my own pace.",
     imageAlt: "Student 4",
     imageSrc: "/assets/students/marshall.webp",
     variant: "variant-blue",
@@ -103,7 +138,7 @@ return (
   <section className="alpha-section">
 
       <div className="two-column-flex mb-[var(--space-2xl)]">
-        <h2>
+        <h2 className="text-[var(--color-navy-blue)]">
           Their voices speak of their success
         </h2>
         <p>
@@ -114,12 +149,12 @@ return (
         {/* Left column */}
         <div className="flex flex-col gap-y-6 md:gap-y-8 md:pb-[200px] items-end md:items-end w-full md:w-[500px]">
           {/* Top left card */}
-          <div className="alpha-card bg-[var(--color-navy-blue)] w-full md:w-[340px] p-6">
+          <div className="alpha-card bg-[#8B9BFF] w-full md:w-[340px] p-6">
             <h6 className="text-white mb-4">
-              “{testimonials[0].quote}”
+              "{testimonials[0].quote}"
             </h6>
-            <Button size="small" className="bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)] centered-icon-text mb-4" onClick={() => setOpenVideo(true)}>
-              <span className="material-icons-outlined">play_arrow</span> Watch
+            <Button size="small" className="text-[#8B9BFF] bg-white centered-icon-text mb-4" onClick={() => setOpenVideo(true)}>
+              <span className="material-icons-outlined">play_circle</span> Watch
             </Button>
             <div className="testimonial-video-image-wrapper flex justify-center group overflow-hidden w-full h-[180px] md:h-[200px] rounded-xl">
               <img
@@ -130,12 +165,12 @@ return (
             </div>
           </div>
           {/* Bottom left card */}
-          <div className="alpha-card bg-[var(--color-light-green)] w-full p-6">
-            <h6 className="text-[var(--color-dark-green)] mb-4">
-              “{testimonials[2].quote}”
+          <div className="alpha-card bg-[#CBD1FF] w-full p-6">
+            <h6 className="text-[var(--color-navy-blue)] mb-4">
+              "{testimonials[2].quote}"
             </h6>
-            <Button size="small" className="bg-[var(--color-dark-green)] text-[var(--color-light-green)] centered-icon-text mb-4" onClick={() => setOpenVideo(true)}>
-              <span className="material-icons-outlined">play_arrow</span> Watch
+            <Button size="small" className="bg-[var(--color-navy-blue)] text-[#CBD1FF] centered-icon-text mb-4" onClick={() => setOpenVideo(true)}>
+              <span className="material-icons-outlined">play_circle</span> Watch
             </Button>
             <div className="testimonial-video-image-wrapper flex justify-center group overflow-hidden w-full h-[180px] md:h-[400px] rounded-xl">
               <img
@@ -151,10 +186,10 @@ return (
           {/* Top right card */}
           <div className="alpha-card bg-[var(--color-sky-blue)] w-full p-6">
             <h6 className="text-[var(--color-navy-blue)] mb-4">
-              “{testimonials[1].quote}”
+              "{testimonials[1].quote}"
             </h6>
             <Button size="small" className="bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)] centered-icon-text mb-4" onClick={() => setOpenVideo(true)}>
-              <span className="material-icons-outlined">play_arrow</span> Watch
+              <span className="material-icons-outlined">play_circle</span> Watch
             </Button>
             <div className="testimonial-video-image-wrapper flex justify-center group overflow-hidden w-full h-[180px] md:h-[300px] rounded-xl">
               <img
@@ -167,10 +202,10 @@ return (
           {/* Bottom right card */}
           <div className="alpha-card bg-[var(--color-navy-blue)] w-full md:w-[380px] p-6">
             <h6 className="text-white mb-4">
-              “{testimonials[3].quote}”
+              "{testimonials[3].quote}"
             </h6>
             <Button size="small" className="bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)] centered-icon-text mb-4" onClick={() => setOpenVideo(true)}>
-              <span className="material-icons-outlined">play_arrow</span> Watch
+              <span className="material-icons-outlined">play_circle</span> Watch
             </Button>
             <div className="testimonial-video-image-wrapper flex justify-center group overflow-hidden w-full h-[180px] md:h-[250px] rounded-xl">
               <img
@@ -183,7 +218,7 @@ return (
         </div>
       </div>
       
-      <div className="w-full bg-[var(--color-sky-blue)] py-[var(--space-lg)] rounded-[var(--radius-lg)] relative">
+      <div className={`w-full ${styles.background} py-[var(--space-lg)] rounded-[var(--radius-lg)] relative`}>
         <div className="relative flex items-center">
           <div className="overflow-hidden w-full">
             <div
@@ -227,12 +262,12 @@ return (
           <div className="w-[200px]">
             <div
               ref={progressBarRef}
-              className="w-full bg-gray-200 rounded-full h-10 cursor-pointer relative"
+              className={`w-full ${styles.sliderTrack} rounded-full h-10 cursor-pointer relative`}
               onMouseDown={handleMouseDown}
               onClick={handleClick}
             >
               <div
-                className="absolute top-1 w-8 h-8 bg-white rounded-full cursor-grab active:cursor-grabbing transition-all duration-300 ease-out"
+                className={`absolute top-1 w-8 h-8 ${styles.sliderDot} rounded-full cursor-grab active:cursor-grabbing transition-all duration-300 ease-out`}
                 style={{
                   left: `calc(4px + ${(testimonials.length === 1 ? 0 : activeIndex / (testimonials.length - 1))} * (100% - 40px))`
                 }}
@@ -245,7 +280,7 @@ return (
             <button
               onClick={prevTestimonial}
               disabled={activeIndex === 0}
-              className="w-10 h-10 flex items-center justify-center rounded-full bg-white disabled:opacity-50"
+              className={`w-10 h-10 flex items-center justify-center rounded-full ${styles.button} disabled:opacity-50`}
               aria-label="Previous"
             >
               <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M13 15l-5-5 5-5" stroke="#111827" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -253,7 +288,7 @@ return (
             <button
               onClick={nextTestimonial}
               disabled={activeIndex === testimonials.length - 1}
-              className="w-10 h-10 flex items-center justify-center rounded-full bg-white disabled:opacity-50"
+              className={`w-10 h-10 flex items-center justify-center rounded-full ${styles.button} disabled:opacity-50`}
               aria-label="Next"
             >
               <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M7 5l5 5-5 5" stroke="#111827" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>

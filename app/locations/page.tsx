@@ -10,6 +10,7 @@ import Carousel from "@/components/ui/carousel";
 import Divider from "@/components/layout/divider";
 import { Button } from "@/components/ui/button";
 import ApplicationCard from "@/components/features/cards/link-card";
+import SectionHeading from "@/components/layout/headings/section-heading";
 
 
 export default function LocationsPage() {
@@ -17,6 +18,10 @@ export default function LocationsPage() {
   const [upcomingCampuses, setUpcomingCampuses] = React.useState<CampusMetadata[]>([]);
   const [searchQuery, setSearchQuery] = React.useState("");
   const [showSuggestions, setShowSuggestions] = React.useState(false);
+  const [currentCampusesToShow, setCurrentCampusesToShow] = React.useState<CampusMetadata[]>([]);
+  const [upcomingCampusesToShow, setUpcomingCampusesToShow] = React.useState<CampusMetadata[]>([]);
+  const [showLoadMoreCurrent, setShowLoadMoreCurrent] = React.useState(false);
+  const [showLoadMoreUpcoming, setShowLoadMoreUpcoming] = React.useState(false);
   
   // State code to full name mapping
   const stateNames: { [key: string]: string } = {
@@ -95,13 +100,47 @@ export default function LocationsPage() {
 
   React.useEffect(() => {
     const loadCampuses = async () => {
-      const current = await getCurrentCampuses();
-      const upcoming = await getUpcomingCampuses();
-      setCurrentCampuses(current);
-      setUpcomingCampuses(upcoming);
+      try {
+        const current = await getCurrentCampuses();
+        const upcoming = await getUpcomingCampuses();
+        
+        console.log('Loaded campuses:', { current: current.length, upcoming: upcoming.length });
+        
+        setCurrentCampuses(current);
+        setUpcomingCampuses(upcoming);
+        
+        // Initially show first 9 campuses (3 rows of 3)
+        const initialCurrent = current.slice(0, 9);
+        const initialUpcoming = upcoming.slice(0, 9);
+        
+        console.log('Initial campuses to show:', { current: initialCurrent.length, upcoming: initialUpcoming.length });
+        
+        setCurrentCampusesToShow(initialCurrent);
+        setUpcomingCampusesToShow(initialUpcoming);
+        
+        // Show load more buttons if there are more campuses
+        setShowLoadMoreCurrent(current.length > 9);
+        setShowLoadMoreUpcoming(upcoming.length > 9);
+      } catch (error) {
+        console.error('Error loading campuses:', error);
+      }
     };
     loadCampuses();
   }, []);
+
+  const loadMoreCurrent = () => {
+    const currentShown = currentCampusesToShow.length;
+    const nextBatch = currentCampuses.slice(currentShown, currentShown + 9);
+    setCurrentCampusesToShow([...currentCampusesToShow, ...nextBatch]);
+    setShowLoadMoreCurrent(currentShown + 9 < currentCampuses.length);
+  };
+
+  const loadMoreUpcoming = () => {
+    const upcomingShown = upcomingCampusesToShow.length;
+    const nextBatch = upcomingCampuses.slice(upcomingShown, upcomingShown + 9);
+    setUpcomingCampusesToShow([...upcomingCampusesToShow, ...nextBatch]);
+    setShowLoadMoreUpcoming(upcomingShown + 9 < upcomingCampuses.length);
+  };
 
   return (
     <main className="min-h-screen bg-[var(--color-bg-muted)]">
@@ -115,7 +154,7 @@ export default function LocationsPage() {
       >Alpha School Campuses
       </MainHeading>
       <div className="alpha-section">
-        <div className="flex justify-center mb-16">
+        <div className="flex justify-center my-8">
           <div className="field-wrapper mt-8 !w-[600px] relative !border !border-grey-400">
             <label className="xs-label">Find a campus near you</label>
             <input 
@@ -248,38 +287,79 @@ export default function LocationsPage() {
         )}
         
     </div>
-      <Divider fill="white" />
+    <Divider fill="white" />
       <div className="alpha-section bg-white">
-      <CampusMap />
-      </div>
-      <div className="alpha-section bg-white">
-        <h2 className="heading-style-h3 mb-[var(--space-lg)] col-span-full">Current Locations</h2>
-        <div className="grid gap-4 mb-[var(--space-xl)] mx-auto" style={{ gridTemplateColumns: 'repeat(auto-fit, 340px)' }}>
-            {currentCampuses.map((campus) => (
-              <LocationCard
-                key={campus.name}
-                {...campus}
-                className="w-[340px] bg-[var(--color-sky-blue)] flex-shrink-0 group text-black"
-                tagClassName="!bg-[var(--color-navy-blue)] !text-white"
-                tuitionClassName=""
-              />
-            ))}
+        <div className="mb-[var(--space-4xl)]">
+        <SectionHeading description="A list of all of our current campuses" title="Current Locations"></SectionHeading>
+        <div className="grid gap-4 mb-[var(--space-xl)] mx-auto" style={{ gridTemplateColumns: 'repeat(auto-fit, 340px)', justifyContent: 'center' }}>
+            {currentCampusesToShow.length > 0 ? (
+              currentCampusesToShow.map((campus) => (
+                <LocationCard
+                variant="scheme1"
+                  key={campus.name}
+                  {...campus}
+                  className="w-[340px] flex-shrink-0 group text-black"
+                  tagClassName="!bg-[var(--color-navy-blue)] !text-white"
+                  tuitionClassName=""
+                />
+              ))
+            ) : (
+              <div className="col-span-full text-center py-8">
+                <p>Loading current campuses... ({currentCampusesToShow.length} shown, {currentCampuses.length} total)</p>
+              </div>
+            )}
         </div>
-        <div className="alpha-section bg-white">
-          <h2 className="heading-style-h3 mb-[var(--space-lg)] col-span-full">Upcoming Locations</h2>
-          <div className="grid gap-4 mx-auto" style={{ gridTemplateColumns: 'repeat(auto-fit, 340px)' }}>
-            {upcomingCampuses.map((campus) => (
-              <LocationCard
-                key={campus.name}
-                {...campus}
-                buttonClassName="bg-[var(--color-dark-green)]"
-                className="w-[340px] bg-[var(--color-light-green)] flex-shrink-0 group text-black"
-                tagClassName="!bg-[var(--color-dark-green)] text-white"
-                tuitionClassName=""
-              />
-            ))}
+        {showLoadMoreCurrent && (
+          <div className="flex justify-center mt-8">
+            <Button 
+              onClick={loadMoreCurrent}
+              className="bg-[var(--color-navy-blue)] text-white hover:bg-[var(--color-navy-blue)]/90"
+            >
+              Load More Current Campuses ({currentCampusesToShow.length}/{currentCampuses.length})
+            </Button>
           </div>
+        )}
+
         </div>
+        <div>
+          <SectionHeading description="A list of all of our upcoming campuses" title="Upcoming Locations"></SectionHeading>
+          <div className="grid gap-4 mb-[var(--space-xl)] mx-auto" style={{ gridTemplateColumns: 'repeat(auto-fit, 340px)', justifyContent: 'center' }}>
+            {upcomingCampusesToShow.length > 0 ? (
+              upcomingCampusesToShow.map((campus) => (
+                <LocationCard
+                  key={campus.name}
+                  {...campus}
+                  variant="scheme2"
+                  buttonClassName="bg-[var(--color-dark-green)]"
+                  className="w-[340px] flex-shrink-0 group text-black"
+                  tagClassName="!bg-[var(--color-dark-green)] text-white"
+                  tuitionClassName=""
+                />
+              ))
+            ) : (
+              <div className="col-span-full text-center py-8">
+                <p>Loading upcoming campuses... ({upcomingCampusesToShow.length} shown, {upcomingCampuses.length} total)</p>
+              </div>
+            )}
+          </div>
+          {showLoadMoreUpcoming && (
+            <div className="flex justify-center mt-8">
+              <Button 
+                onClick={loadMoreUpcoming}
+                variant="outline"
+                size="small"
+              >
+                Load More Campuses ({upcomingCampusesToShow.length}/{upcomingCampuses.length})
+              </Button>
+            </div>
+          )}
+
+        </div>
+      </div>
+
+      <div className="alpha-section bg-white">
+        <SectionHeading description="Find a school on the map" title="Campus Locations"></SectionHeading>
+        <CampusMap />
       </div>
       
   </main>

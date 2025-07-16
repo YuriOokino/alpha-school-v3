@@ -34,7 +34,9 @@ export default function AlphaGuidesSection() {
     <section className="alpha-section bg-white">
       <SectionHeading title="More than Teachers: The Alpha Guides" description="At Alpha School, teachers shift from traditional roles like grading and writing lesson plans, to supporting students' emotional and motivational needs and teaching life skills. This impactful transformation frees up teachers to mentor, motivate, and coach students to become self-driven learners." 
       buttonText="Explore our program"
-      buttonHref="/the-program"/>
+      className="text-[var(--color-dark-green)]"
+      buttonHref="/the-program"
+      buttonVariant="darkGreen"/>
     
       
       <div className="alpha-card !p-[var(--space-lg)] flex text-[var(--color-dark-green)] flex-row flex-row gap-[var(--space-md)] mb-[var(--space-xl)] bg-[var(--color-light-green)]">
@@ -85,19 +87,11 @@ export default function AlphaGuidesSection() {
           <GuideCard {...guide} className="flex-shrink-0 group" variant="blue" />
         )}
         visibleCards={3.9}
-        className="bg-[var(--color-bg-muted)]"
+        variant="scheme2"
         title="Meet our Guides"
         buttonText="View all Guides"
         buttonHref="/guides"
-        buttonVariant="default"
-        navigationDotsColor={{
-          active: "bg-[var(--color-navy-blue)]",
-          inactive: "bg-[var(--color-navy-blue)] opacity-30"
-        }}
-        navigationArrowsColor={{
-          background: "bg-[var(--color-navy-blue)]",
-          icon: "var(--color-sky-blue)"
-        }}
+       
       />
     </section>
   )

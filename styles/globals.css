@@ -79,7 +79,7 @@ html, body {
   font-family: 'Material Icons Outlined' !important;
   font-weight: normal !important;
   font-style: normal !important;
-  font-size: 16px !important;
+  font-size: 20px !important;
   line-height: 1 !important;
   letter-spacing: normal !important;
   text-transform: none !important;
@@ -108,6 +108,28 @@ html, body {
   animation: unlock 1.5s ease-in-out;
 }
 
+/* Fade In Blur Animation */
+@keyframes fade-in-blur {
+  0% {
+    opacity: 0;
+    filter: blur(20px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.animate-fade-in-blur {
+  animation: fade-in-blur 1s ease-out forwards;
+}
+
+/* Clipped curve for section transitions */
+.clipped {
+  height: 60px;
+  clip-path: url(#dividerClipPath);
+}
+
 /* Typography System */
 @layer base {
 
@@ -124,7 +146,7 @@ html, body {
   }
 
   p, .body-text {
-    @apply font-normal text-[16px] leading-[1.4];
+    @apply font-normal text-[16px] leading-[1.4] mb-2;
   }
 
   .caption, .text-hint {
@@ -495,11 +517,12 @@ input[type="tel"]::-webkit-inner-spin-button {
   display: flex;
   align-items: center;
 }
-.material-icons-outlined {
-  margin-right: 0.5em; /* or adjust as needed */
-}
 
 .down-45 {
   transform: rotate(45deg);
+}
+
+.form-top-content {
+  @apply m-auto flex !flex-col text-center !gap-0.5 mb-4 max-w-[400px];
 }
 }

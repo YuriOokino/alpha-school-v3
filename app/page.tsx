@@ -83,9 +83,11 @@ export default function Home() {
         <div className="flex flex-col items-center justify-center">
           <SectionHeading
           title="Alpha in action"
+          className="text-[var(--color-primary)]"
           description="From student-led businesses to science challenges and news broadcasts, every day at Alpha is packed with purpose, energy, and real-world learning."
           buttonText="More videos"
           buttonHref="/videos"
+          buttonVariant="primary"
           >
           </SectionHeading>
           </div>
@@ -104,22 +106,13 @@ aspectRatio="16/9"
           <Carousel
             items={events}
             renderItem={(event) => (
-              <EventCard {...event} url={`/events/${event.slug}`} className="flex-shrink-0 group" variant="scheme1" />
+              <EventCard {...event} url={`/events/${event.slug}`} className="flex-shrink-0 group" variant="scheme3" />
             )}
             title="Events & programs"
             visibleCards={4.5}
-            className= "bg-[var(--color-bg-muted)]"
             buttonText="View all Events"
             buttonHref="/events"
-
-            navigationDotsColor={{
-              active: "bg-[#000000]",
-              inactive: "bg-[#000000] opacity-30"
-            }}
-            navigationArrowsColor={{
-              background: "bg-[#ffffff]",
-              icon: "#000000"
-            }}
+            variant="scheme4" // Change this to switch carousel color schemes: 'scheme1', 'scheme2', 'scheme3', or 'scheme4'
           />
         </section>
       )}

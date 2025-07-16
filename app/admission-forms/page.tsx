@@ -9,7 +9,7 @@ import { campuses } from "@/content/campuses"
 
 // Material Icons arrow_forward - Regular variant
 const regularArrowSvg = (
-  <Button className="rounded-full px-3 py-3 bg-[var(--color-navy-blue)] text-white">
+  <Button variant="outline" size="small" className="px-1.5 py-1.5 outline-[var(--color-navy-blue)] text-[var(--color-navy-blue)]">
     <span className="material-icons-outlined !m-0 ml-2">
       arrow_forward
     </span>
@@ -18,7 +18,7 @@ const regularArrowSvg = (
 
 // Material Icons arrow_forward - Inverted variant
 const invertedArrowSvg = (
-  <Button className="rounded-full px-3 py-2">
+  <Button variant="alternate" size="small">
     Apply
     <span className="material-icons-outlined !m-0 ml-2">
       arrow_forward
@@ -323,6 +323,7 @@ export default function AdmissionFormsPage() {
               );
             })}
           </div>
+          
 
           {/* Desktop: 3 cards per row */}
           <div className="hidden lg:block space-y-4">
@@ -407,6 +408,13 @@ export default function AdmissionFormsPage() {
             })}
           </div>
         </div>
+        <div className="mt-[var(--space-4xl)]">
+          <div className="alpha-card flex flex-col gap-2 bg-[var(--color-light-green)] text-[var(--color-dark-green)] max-w-[600px] m-auto">
+            <h5>Cannot find your city?</h5>
+            <p>To get started with an Alpha Expansion School in your area, we are looking for interested families just like you. Ready to lead this educational revolution in your city?</p>
+         <div><Button variant="darkGreen" href="/bring-alpha-to-your-city">Bring Alpha to Your city </Button></div>
+        </div>
+        </div>        
       </section>
     </>
   );

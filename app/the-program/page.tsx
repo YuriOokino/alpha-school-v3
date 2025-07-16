@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import MainHeading from "@/components/layout/headings/main-heading";
 import VideoPlayer from "@/components/ui/video-player";
 import Divider from "@/components/layout/divider";
@@ -8,9 +8,33 @@ import FeatureCard from "@/components/features/content-blocks/feature-card";
 import Link from "next/link";
 import { useIsMobile } from "@/hooks/use-mobile";
 
+const useInView = () => {
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [hasAnimated]);
+
+  return [ref, hasAnimated] as const;
+};
+
 export default function TheProgramPage() {
   const [showVideo1, setShowVideo1] = useState(false);
   const isMobile = useIsMobile();
+  const [ref1, hasAnimated1] = useInView();
+  const [ref2, hasAnimated2] = useInView();
+  const [ref3, hasAnimated3] = useInView();
 
   return (
     <main className="bg-[var(--color-bg-muted)]">
@@ -21,14 +45,14 @@ export default function TheProgramPage() {
         description="At Alpha, we are redefining education with three commitments to families:"
         actions={
           <>
-            <Button variant="lightBlue">
-              <Link href="#love-school">Love School</Link>
+            <Button variant="outline" size="small" className="outline-white text-white"
+              href="#love-school">Love School<span className="material-icons-outlined">arrow_circle_right</span>
             </Button>
-            <Button variant="lightBlue">
-              <Link href="#learn-2x">Learn 2x in 2 hours</Link>
+            <Button variant="outline" size="small" className="outline-white text-white"
+              href="#learn-2x">Learn 2x in 2 hours<span className="material-icons-outlined">arrow_circle_right</span>
             </Button>
-            <Button variant="lightBlue">
-              <Link href="#lifeskills-workshops">Lifeskills Workshop</Link>
+              <Button variant="outline" size="small" className="outline-white text-white"
+              href="#lifeskills-workshops">Lifeskills Workshop<span className="material-icons-outlined">arrow_circle_right</span> 
             </Button>
           </>
         }
@@ -67,11 +91,15 @@ export default function TheProgramPage() {
           <Divider fill="white" direction="down" />
 { /* Commitments */}
 
-
       <section className="alpha-section bg-white">
-        <div id="love-school" className="alpha-card !p-[var(--space-lg)] bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)] mb-16">
+        <div 
+          ref={ref1}
+          className={`alpha-card !p-[var(--space-lg)] bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)] mb-16 transition-transform duration-1000 ${
+            hasAnimated1 ? 'translate-y-0' : 'translate-y-16'
+          }`}
+        >
           <div className={`flex flex-col gap-2 mb-16 text-center align-center max-w-xl mx-auto ${isMobile ? 'mb-4' : ''}`}>
-            <div className="tagline bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)] mx-auto">
+            <div className="tagline bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)] mx-auto mb-4">
               Commitment #1
             </div>
             <h2 className={`display-headline ${isMobile ? 'text-3xl leading-tight' : ''}`}>Kids will love school</h2>
@@ -106,53 +134,60 @@ export default function TheProgramPage() {
           </div>
         </div>
 
-
-<div id="learn-2x" className="alpha-card !p-[var(--space-lg)] bg-[var(--color-light-green)] text-[var(--color-dark-green)] mb-16">
-  <div className={`flex flex-col gap-2 mb-16 text-center align-center max-w-xl mx-auto ${isMobile ? 'mb-8' : ''}`}>
-    <div className="tagline bg-[var(--color-dark-green)] text-[var(--color-light-green)] mx-auto">
-      Commitment #2
-    </div>
-    <h2 className={`display-headline ${isMobile ? 'text-3xl leading-tight' : ''}`}>learn 2x in 2 hours</h2>
-    <p>
-      Through advanced technologies and mastery-based learning, students at Alpha complete core subjects in just two hours daily.
-    </p>
-  </div>
-  <div className={`flex ${isMobile ? 'flex-col gap-6' : 'flex-row gap-8'} items-start`}>
-    {/* Left column: video */}
-    <div className={`flex-1 flex items-center justify-center w-full ${isMobile ? 'order-first' : ''}`}>
-      <VideoPlayer
-        videoUrl="https://youtu.be/Qm6M7_TAVR0"
-        posterImage="/assets/feature-video-overlays/learn-2x.webp"
-        aspectRatio="4/3"
-        className="w-full max-w-md"
-      />
-    </div>
-    {/* Right column: text */}
-    <div className="flex-1">
-     
-      <ul className={`list-disc pl-6 space-y-3 ${isMobile ? 'text-sm' : ''}`}>
-        <li>
-          <strong>2.6x Growth:</strong> On average, Alpha students grow 2.6 times faster than peers on nationally normed MAP tests.
-        </li>
-        <li>
-          <strong>Top Performers:</strong> Our best students achieve up to 6.5x growth.
-        </li>
-        <li>
-          <strong>Top 1-2% nationally:</strong> The majority of students consistently outperform national averages.
-        </li>
-      </ul>
-      <h6 className={`font-semibold mt-4 mb-2 ${isMobile ? 'text-base' : ''}`}>How we do it</h6>
-      <p className={isMobile ? 'text-sm' : ''}>
-        Alpha combines adaptive AI for personalized 1:1 learning, mastery-based methods for deep understanding, and time management techniques like Pomodoro to keep students focused and thriving.
-      </p>
-    </div>
-  </div>
-</div>
-
-
-<div id="lifeskills-workshops" className="alpha-card !p-[var(--space-lg)] bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)] mb-16">
+        <div 
+          ref={ref2}
+          className={`alpha-card !p-[var(--space-lg)] bg-[var(--color-light-green)] text-[var(--color-dark-green)] mb-16 transition-transform duration-1000 ${
+            hasAnimated2 ? 'translate-y-0' : 'translate-y-16'
+          }`}
+        >
           <div className={`flex flex-col gap-2 mb-16 text-center align-center max-w-xl mx-auto ${isMobile ? 'mb-8' : ''}`}>
-            <div className="tagline bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)] mx-auto">
+            <div className="tagline bg-[var(--color-dark-green)] text-[var(--color-light-green)] mx-auto mb-4">
+              Commitment #2
+            </div>
+            <h2 className={`display-headline ${isMobile ? 'text-3xl leading-tight' : ''}`}>learn 2x in 2 hours</h2>
+            <p>
+              Through advanced technologies and mastery-based learning, students at Alpha complete core subjects in just two hours daily.
+            </p>
+          </div>
+          <div className={`flex ${isMobile ? 'flex-col gap-6' : 'flex-row gap-8'} items-start`}>
+            {/* Left column: video */}
+            <div className={`flex-1 flex items-center justify-center w-full ${isMobile ? 'order-first' : ''}`}>
+              <VideoPlayer
+                videoUrl="https://youtu.be/Qm6M7_TAVR0"
+                posterImage="/assets/feature-video-overlays/learn-2x.webp"
+                aspectRatio="4/3"
+                className="w-full max-w-md"
+              />
+            </div>
+            {/* Right column: text */}
+            <div className="flex-1">
+              <ul className={`list-disc pl-6 space-y-3 ${isMobile ? 'text-sm' : ''}`}>
+                <li>
+                  <strong>2.6x Growth:</strong> On average, Alpha students grow 2.6 times faster than peers on nationally normed MAP tests.
+                </li>
+                <li>
+                  <strong>Top Performers:</strong> Our best students achieve up to 6.5x growth.
+                </li>
+                <li>
+                  <strong>Top 1-2% nationally:</strong> The majority of students consistently outperform national averages.
+                </li>
+              </ul>
+              <h6 className={`font-semibold mt-4 mb-2 ${isMobile ? 'text-base' : ''}`}>How we do it</h6>
+              <p className={isMobile ? 'text-sm' : ''}>
+                Alpha combines adaptive AI for personalized 1:1 learning, mastery-based methods for deep understanding, and time management techniques like Pomodoro to keep students focused and thriving.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div 
+          ref={ref3}
+          className={`alpha-card !p-[var(--space-lg)] bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)] mb-16 transition-transform duration-1000 ${
+            hasAnimated3 ? 'translate-y-0' : 'translate-y-16'
+          }`}
+        >
+          <div className={`flex flex-col gap-2 mb-16 text-center align-center max-w-xl mx-auto ${isMobile ? 'mb-8' : ''}`}>
+            <div className="tagline bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)] mx-auto mb-4">
               Commitment #3
             </div>
             <h2 className={`display-headline ${isMobile ? 'text-3xl leading-tight' : ''}`}>Lifeskills For the future</h2>
@@ -186,8 +221,8 @@ export default function TheProgramPage() {
             </div>
           </div>
         </div>
-
       </section>
+      
     </main>
   );
 } 

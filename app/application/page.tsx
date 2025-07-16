@@ -91,20 +91,24 @@ function ApplicationForm() {
   return (
     <main>
       <MainHeading 
+      variant="blue"
         tagline={selectedCampus?.name}
-        taglineVariant="green"
+        taglineVariant="blue"
         description={
           <>
             <p>We are actively enrolling, offering an all-inclusive, revolutionary educational experience. If you have any questions about the admissions process, feel free to reach out to us at <a href="mailto:admissions@alpha.school">admissions@alpha.school</a>.</p>
-            <p><strong>Alpha School requires a separate application and a non-refundable $100 fee for each child.</strong></p>
           </>
         }
       >
-        Application Form
+        Appy to Alpha School
       </MainHeading>
 
       <section className="alpha-section">
         <div className="alpha-form">
+          <div className="form-top-content">
+            <h3 className="heading-style-h4">Aplication form</h3>
+            <p>Alpha School requires a separate application and a non-refundable $100 fee for each child</p>
+          </div>
           <form className="space-y-8" onSubmit={handleSubmit}>
             {/* Hidden campus field */}
             <input type="hidden" name="campus" value={formData.campus} />

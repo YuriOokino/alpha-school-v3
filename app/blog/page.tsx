@@ -120,7 +120,7 @@ export default function BlogPage() {
 
   return (
     <main>
-      <MainHeading tagline="Blog" description="Read the latest blog posts, news articles, insights, and stories from Alpha School.">
+      <MainHeading tagline="Blog" taglineVariant="blue"description="Read the latest blog posts, news articles, insights, and stories from Alpha School.">
       Insights, News, and Ideas
       </MainHeading>
 
@@ -165,7 +165,7 @@ export default function BlogPage() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[var(--space-md)] mx-auto">
                     {featuredArticle && (
-                      <div className="featured-article-card col-span-3 rounded-[var(--radius-lg)] flex bg-[var(--color-sky-blue)] p-[var(--space-lg)] gap-[var(--space-xl)]">
+                      <div className="featured-article-card col-span-3 rounded-[var(--radius-lg)] flex bg-[var(--color-sky-blue)] p-[var(--space-lg)] gap-[var(--space-xl)] group">
                         <div className="flex flex-col flex-1 justify-between h-[350px]">
                           <div className="flex flex-col gap-4">
                             <div className="flex gap-2">
@@ -181,11 +181,11 @@ export default function BlogPage() {
                             </Link>
                           </div>
                         </div>
-                        <div className="flex flex-col flex-1">
+                        <div className="flex flex-col flex-1 overflow-hidden rounded-[var(--radius-lg)]">
                           <img 
                             src={featuredArticle.image} 
                             alt={featuredArticle.title} 
-                            className="rounded-[var(--radius-lg)] w-full h-full object-cover"
+                            className="rounded-[var(--radius-lg)] w-full h-full object-cover transition-transform duration-300 scale-105 group-hover:scale-100"
                           />
                         </div>
                       </div>

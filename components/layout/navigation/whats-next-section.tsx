@@ -12,15 +12,15 @@ export default function WhatsNextSection() {
         <h2 className="my-12 display-headline text-white">What's next?</h2>
 
         <div className="flex flex-wrap justify-center gap-4">
-          <Link href="/learn-more">
-            <Button className="bg-white text-black">Learn More</Button>
-          </Link>
-          <Link href="/events">
-            <Button className="bg-[var(--color-primary)]">View Events</Button>
-          </Link>
-          <Link href="/video-library">
-            <Button className="bg-[var(--color-primary)]">Watch Videos</Button>
-          </Link>
+          
+            <Button variant="alternate" size="small" href="/learn-more">Learn More<span className="material-icons-outlined">arrow_circle_right</span></Button>
+          
+          
+            <Button variant="alternate" size="small"href="/events">View Events<span className="material-icons-outlined">arrow_circle_right</span></Button>
+     
+
+            <Button variant="alternate" size="small"href="/video-library">Watch Videos<span className="material-icons-outlined">arrow_circle_right</span></Button>
+
         </div>
       </div>
     </section>
