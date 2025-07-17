@@ -6,7 +6,7 @@ import { CampusApplicationLink } from "@/components/ui/campus-application-link"
 import VideoPlayer from "@/components/ui/video-player"
 import EventsCarousel from "@/components/features/content-blocks/events-carousel"
 import Divider from "@/components/layout/divider"
-import StarseedsCard from "@/components/features/content-blocks/starseeds-card"
+import StarseedsCard from "@/components/layout/campus-pages/starseeds-card"
 import CampusGallerySection from "@/components/features/content-blocks/campus-gallery-section"
 import WelcomeSection from "@/components/features/content-blocks/welcome-section"
 

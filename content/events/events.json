@@ -129,6 +129,22 @@
       "slug": "brownsville-space-camp",
       "registrationType": "external",
       "registrationUrl": "https://campbtx.com/"
+    },
+    {
+      "id": "santa-barbara-showcase",
+      "title": "Santa Barbara Showcase",
+      "date": "Jul 13, 2025",
+      "time": "9:30 AM",
+      "locationTag": "Santa Barbara",
+      "category": "Showcase",
+      "address": "TBD",
+      "image": {
+        "src": "/assets/locations/santa-barbara/hero/santa-barbara-hero.webp",
+        "alt": "Student Showcase"
+      },
+      "slug": "santa-barbara-showcase",
+      "registrationType": "internal",
+      "registrationUrl": ""
     }
   ]
 } 

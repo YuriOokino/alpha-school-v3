@@ -57,18 +57,17 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
     const classes = cn(buttonVariants({ variant: disabled ? 'disabled' : variant, size, radius, className }))
     if (href) {
       // Remove props that are not valid for <a>
-      const { type, disabled: _disabled, ...anchorProps } = props as ButtonAsAnchor
+      const { type, disabled: _disabled, href: _href, ...anchorProps } = props as ButtonAsAnchor
       return (
-        <Link href={href} passHref legacyBehavior>
-          <a
-            className={classes}
-            ref={ref as React.Ref<HTMLAnchorElement>}
-            aria-disabled={disabled ? 'true' : undefined}
-            tabIndex={disabled ? -1 : undefined}
-            {...anchorProps}
-          >
-            {children}
-          </a>
+        <Link 
+          href={href} 
+          className={classes}
+          ref={ref as React.Ref<HTMLAnchorElement>}
+          aria-disabled={disabled ? 'true' : undefined}
+          tabIndex={disabled ? -1 : undefined}
+          {...anchorProps}
+        >
+          {children}
         </Link>
       )
     }
