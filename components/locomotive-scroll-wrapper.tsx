@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useRef } from 'react';
-import LocomotiveScroll from 'locomotive-scroll';
 
 interface LocomotiveScrollWrapperProps {
   children: React.ReactNode;
@@ -13,12 +12,15 @@ export default function LocomotiveScrollWrapper({ children }: LocomotiveScrollWr
   useEffect(() => {
     // Only initialize on client side
     if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-      // Initialize Locomotive Scroll
-      scrollRef.current = new LocomotiveScroll({
-        el: document.querySelector('[data-scroll-container]') as HTMLElement,
-        smooth: true,
-        lerp: 0.1, // Linear interpolation (smoothness)
-        multiplier: 1, // Scroll speed multiplier
+      // Dynamically import LocomotiveScroll to avoid SSR issues
+      import('locomotive-scroll').then(({ default: LocomotiveScroll }) => {
+        // Initialize Locomotive Scroll
+        scrollRef.current = new LocomotiveScroll({
+          el: document.querySelector('[data-scroll-container]') as HTMLElement,
+          smooth: true,
+          lerp: 0.1, // Linear interpolation (smoothness)
+          multiplier: 1, // Scroll speed multiplier
+        });
       });
     }
 

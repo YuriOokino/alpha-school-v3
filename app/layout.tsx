@@ -5,7 +5,6 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Navbar } from "@/components/layout/navigation/navbar"
 import Footer from "@/components/layout/navigation/footer"
 import WhatsNextSection from "@/components/layout/navigation/whats-next-section"
-import LocomotiveScrollWrapper from "@/components/locomotive-scroll-wrapper"
 
 const inter = Inter({ subsets: ["latin"] })
 const workSans = Work_Sans({ subsets: ["latin"] })
@@ -35,17 +34,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <LocomotiveScrollWrapper>
-            <div className="relative min-h-screen flex flex-col">
-              <Navbar />
-              <main className="flex-grow bg-white">
-                {children}
-              </main>
-              
-              <WhatsNextSection />
-              <Footer />
-            </div>
-          </LocomotiveScrollWrapper>
+          <div className="relative min-h-screen flex flex-col">
+            <Navbar />
+            <main className="flex-grow bg-white">
+              {children}
+            </main>
+            
+            <WhatsNextSection />
+            <Footer />
+          </div>
         </ThemeProvider>
         <script
           dangerouslySetInnerHTML={{
