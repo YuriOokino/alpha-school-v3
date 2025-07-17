@@ -237,8 +237,8 @@ export function Navbar() {
   }
 
   return (
-    <header className="w-full bg-white z-50">
-      <div className="container mx-auto flex items-center justify-between h-20 px-6 relative">
+    <header className="w-full bg-white z-50 relative">
+      <div className="container mx-auto flex items-center justify-between h-20 px-6">
         {/* Logo */}
         <div className="flex items-center h-full">
           <Link href="/" className="flex items-center h-full">
@@ -289,20 +289,20 @@ export function Navbar() {
         <div className="hidden md:block ml-8">
             <Button variant="primary" href="/learn-more">Learn more</Button>
         </div>
-        {/* MegaMenu rendered as sibling, not inside nav or li */}
-        {activeNavItem && megaMenuGroups && (
-          <div
-            onMouseEnter={handleMenuMouseEnter}
-            onMouseLeave={handleMenuMouseLeave}
-          >
-            <MegaMenu
-              groups={megaMenuGroups}
-              sidebar={megaMenuSidebar}
-              onLinkClick={handleMegaMenuClose}
-            />
-          </div>
-        )}
       </div>
+      {/* MegaMenu positioned outside container for full width */}
+      {activeNavItem && megaMenuGroups && (
+        <div
+          onMouseEnter={handleMenuMouseEnter}
+          onMouseLeave={handleMenuMouseLeave}
+        >
+          <MegaMenu
+            groups={megaMenuGroups}
+            sidebar={megaMenuSidebar}
+            onLinkClick={handleMegaMenuClose}
+          />
+        </div>
+      )}
     </header>
   )
 }

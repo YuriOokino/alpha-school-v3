@@ -30,7 +30,7 @@ export function MegaMenu({ groups, sidebar, onLinkClick }: MegaMenuProps) {
 
   return (
     <div className="absolute left-0 right-0 top-full bg-white rounded-b-[var(--radius-lg)] z-50 border-t-2 border-gray-100 w-full">
-      <div className={gridClass}>
+      <div className="grid grid-cols-4 gap-8 p-8 w-full">
         {groupColumns.map((group, idx) => (
           <div key={idx} className="flex-1">
             {group.label && (
@@ -60,4 +60,4 @@ export function MegaMenu({ groups, sidebar, onLinkClick }: MegaMenuProps) {
       </div>
     </div>
   );
-} 
+}

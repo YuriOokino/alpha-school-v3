@@ -30,9 +30,9 @@ export default function CommitmentsSection() {
             <span className="material-icons-outlined">arrow_forward</span>
           </Button>
         </div>
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[var(--space-md)] justify-start items-stretch">
+        <div className="w-full flex flex-col md:flex-row md:flex-wrap lg:flex-nowrap gap-[var(--space-md)]">
           {commitments.map((commitment, index) => (
-            <div key={index} className="flex flex-col items-start bg-[var(--color-sky-blue)] rounded-[var(--radius-lg)] p-6 w-full">
+            <div key={index} className="flex flex-col items-start bg-[var(--color-sky-blue)] rounded-[var(--radius-lg)] p-6 w-full md:w-1/2 lg:w-1/3">
               <div className="w-full flex justify-end mb-2">
                 <Button href={commitment.link} size="icon" className="block bg-[var(--color-navy-blue)]" style={{ transform: 'rotate(-45deg)' }}>
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">

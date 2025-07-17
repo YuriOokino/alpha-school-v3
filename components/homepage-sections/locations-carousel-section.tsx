@@ -25,14 +25,14 @@ export default function LocationsCarouselSection() {
         renderItem={(campus) => (
           <LocationCard
             {...campus}
-            variant="scheme2"
+            variant="scheme1"
           />
         )}
         visibleCards={3.5}
         title="Alpha New Locations"
         buttonText="View all Locations"
         buttonHref="/locations"
-        variant="scheme3" // Change this to switch carousel color schemes: 'scheme1', 'scheme2', or 'scheme3'
+        variant="scheme2" // Change this to switch carousel color schemes: 'scheme1', 'scheme2', or 'scheme3'
       />
     </section>
   )

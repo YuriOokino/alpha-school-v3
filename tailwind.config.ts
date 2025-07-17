@@ -70,6 +70,10 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "unlock": "unlock 0.5s ease-in-out",
+        "fade-up": "fade-up 0.7s ease-out forwards",
+        "fade-left": "fade-left 0.7s ease-out forwards",
+        "fade-right": "fade-right 0.7s ease-out forwards",
+        "fade-scale": "fade-scale 0.7s ease-out forwards",
       },
       keyframes: {
         scroll: {
@@ -88,6 +92,22 @@ const config = {
           '0%': { transform: 'translateX(0)' },
           '50%': { transform: 'translateX(-20px)' },
           '100%': { transform: 'translateX(0)' },
+        },
+        "fade-up": {
+          '0%': { opacity: '0', transform: 'translateY(32px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        "fade-left": {
+          '0%': { opacity: '0', transform: 'translateX(-32px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        "fade-right": {
+          '0%': { opacity: '0', transform: 'translateX(32px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        "fade-scale": {
+          '0%': { opacity: '0', transform: 'scale(0.9)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
         },
       },
     },

@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { testimonials } from "@/content/testimonials"
 import SectionHeading from "@/components/layout/headings/section-heading"
 import { Button } from "@/components/ui/button";
@@ -8,8 +8,10 @@ import { Button } from "@/components/ui/button";
 export default function TestimonialsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [openVideo, setOpenVideo] = useState(false);
-  const visibleCards = 2.5;
+  const [visibleCards, setVisibleCards] = useState<number[]>([]);
+  const visibleCardsCount = 2.5;
   const cardWidth = 430; // Reduced from 480px to 430px
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const testimonialVideoUrl = "https://player.vimeo.com/video/1033250050?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=0&controls=1";
 
@@ -34,8 +36,8 @@ export default function TestimonialsSection() {
       background: 'bg-[var(--color-sky-blue)]',
       button: 'bg-white',
       buttonText: 'text-[var(--color-navy-blue)]',
-      sliderDot: 'bg-white',
-      sliderTrack: 'bg-[#E3E1EC]'
+      sliderDot: 'bg-[var(--color-sky-blue)]',
+      sliderTrack: 'bg-white opacity-80'
     },
     scheme3: {
       background: 'bg-[var(--color-light-green)]',
@@ -122,6 +124,30 @@ const handleDrag = (e: React.MouseEvent | MouseEvent) => {
   const newIndex = Math.round(percent * (testimonials.length - 1));
   setActiveIndex(Math.max(0, Math.min(newIndex, testimonials.length - 1)));
 };
+// Intersection Observer for scroll animations
+useEffect(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = parseInt(entry.target.getAttribute('data-index') || '0');
+          setVisibleCards(prev => [...prev, index]);
+        }
+      });
+    },
+    {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    }
+  );
+
+  cardRefs.current.forEach((ref) => {
+    if (ref) observer.observe(ref);
+  });
+
+  return () => observer.disconnect();
+}, []);
+
 React.useEffect(() => {
   if (!isDragging) return;
   const handleMove = (e: MouseEvent) => handleDrag(e);
@@ -137,7 +163,7 @@ React.useEffect(() => {
 return (
   <section className="alpha-section">
 
-      <div className="two-column-flex mb-[var(--space-2xl)]">
+      <div className="two-column-flex mb-[var(--space-sm)] md:mb-[var(--space-2xl)]">
         <h2 className="text-[var(--color-navy-blue)]">
           Their voices speak of their success
         </h2>
@@ -145,11 +171,19 @@ return (
           See what Alpha students and families say about learning 2x faster, building confidence, and loving school again.
         </p>
       </div>
-      <div className="testimonial-videos-cards-grid flex flex-col md:flex-row justify-center gap-y-6 md:gap-x-8 max-w-6xl mx-auto">
+      <div className="testimonial-videos-cards-grid flex flex-col md:flex-row justify-center gap-y-6 md:gap-x-8 max-w-6xl mx-auto mb-[var(--space-lg)]">
         {/* Left column */}
         <div className="flex flex-col gap-y-6 md:gap-y-8 md:pb-[200px] items-end md:items-end w-full md:w-[500px]">
           {/* Top left card */}
-          <div className="alpha-card bg-[#8B9BFF] w-full md:w-[340px] p-6">
+          <div 
+            ref={(el) => { cardRefs.current[0] = el; }}
+            data-index="0"
+            className={`alpha-card bg-[#8B9BFF] w-full md:w-[340px] p-6 transition-all duration-700 ease-out transform ${
+              visibleCards.includes(0) 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-8'
+            }`}
+          >
             <h6 className="text-white mb-4">
               "{testimonials[0].quote}"
             </h6>
@@ -165,7 +199,15 @@ return (
             </div>
           </div>
           {/* Bottom left card */}
-          <div className="alpha-card bg-[#CBD1FF] w-full p-6">
+          <div 
+            ref={(el) => { cardRefs.current[1] = el; }}
+            data-index="1"
+            className={`alpha-card bg-[#CBD1FF] w-full p-6 transition-all duration-700 ease-out transform ${
+              visibleCards.includes(1) 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-8'
+            }`}
+          >
             <h6 className="text-[var(--color-navy-blue)] mb-4">
               "{testimonials[2].quote}"
             </h6>
@@ -184,7 +226,15 @@ return (
         {/* Right column */}
         <div className="flex flex-col gap-y-6 md:gap-y-8 md:pt-[200px] items-start w-full md:w-[500px]">
           {/* Top right card */}
-          <div className="alpha-card bg-[var(--color-sky-blue)] w-full p-6">
+          <div 
+            ref={(el) => { cardRefs.current[2] = el; }}
+            data-index="2"
+            className={`alpha-card bg-[var(--color-sky-blue)] w-full p-6 transition-all duration-700 ease-out transform ${
+              visibleCards.includes(2) 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-8'
+            }`}
+          >
             <h6 className="text-[var(--color-navy-blue)] mb-4">
               "{testimonials[1].quote}"
             </h6>
@@ -200,7 +250,15 @@ return (
             </div>
           </div>
           {/* Bottom right card */}
-          <div className="alpha-card bg-[var(--color-navy-blue)] w-full md:w-[380px] p-6">
+          <div 
+            ref={(el) => { cardRefs.current[3] = el; }}
+            data-index="3"
+            className={`alpha-card bg-[var(--color-navy-blue)] w-full md:w-[380px] p-6 transition-all duration-700 ease-out transform ${
+              visibleCards.includes(3) 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-8'
+            }`}
+          >
             <h6 className="text-white mb-4">
               "{testimonials[3].quote}"
             </h6>
@@ -218,24 +276,24 @@ return (
         </div>
       </div>
       
-      <div className={`w-full ${styles.background} py-[var(--space-lg)] rounded-[var(--radius-lg)] relative`}>
+      <div className={`w-full ${styles.background} py-[var(--space-sm)] md:py-[var(--space-lg)] rounded-[var(--radius-lg)] relative`}>
         <div className="relative flex items-center">
           <div className="overflow-hidden w-full">
             <div
               className="flex transition-transform duration-700 ease-in-out"
               style={{
-                width: `${testimonials.length * (100 / visibleCards)}%`,
-                transform: `translateX(-${activeIndex * (100 / visibleCards)}%)`,
-                marginLeft: 'var(--space-lg)',
+                width: `${testimonials.length * (100 / visibleCardsCount)}%`,
+                transform: `translateX(-${activeIndex * (100 / visibleCardsCount)}%)`,
+                marginLeft: 'clamp(var(--space-sm), 4vw, var(--space-lg))',
               }}
             >
               {testimonials.map((testimonial, idx) => (
                 <div
                   key={idx}
-                  style={{ flex: `0 0 ${100 / visibleCards}%` }}
+                  style={{ flex: `0 0 ${100 / visibleCardsCount}%` }}
                   className="px-2 max-w-[430px] flex-shrink-0"
                 >
-                  <div className="bg-white rounded-[var(--radius-md)] p-[var(--space-lg)] h-full">
+                  <div className="bg-white rounded-[var(--radius-md)] p-[var(--space-sm)] md:p-[var(--space-lg)] h-full">
                     <div className="flex flex-col gap-[var(--space-md)]">
                       <div className="flex items-center gap-[var(--space-sm)]">
                         <img 
@@ -244,7 +302,7 @@ return (
                           className="w-12 h-12 rounded-full object-cover"
                         />
                         <div>
-                          <h5 className="text-[var(--color-text-main)] font-bold">{testimonial.name}</h5>
+                          <h5 className="text-[var(--color-text-main)]">{testimonial.name}</h5>
                           <p className="text-[var(--color-text-muted)] text-sm">{testimonial.grade}, {testimonial.age}</p>
                         </div>
                       </div>
@@ -257,9 +315,9 @@ return (
           </div>
         </div>
         {/* Navigation below cards */}
-        <div className="flex items-center justify-between mt-[var(--space-lg)] px-[var(--space-lg)]">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between mt-[var(--space-sm)] md:mt-[var(--space-lg)] gap-[var(--space-md)] md:gap-0 px-[var(--space-sm)] md:px-[var(--space-lg)]">
           {/* Switch-style slider navigation - left */}
-          <div className="w-[200px]">
+          <div className="hidden md:block w-[200px]">
             <div
               ref={progressBarRef}
               className={`w-full ${styles.sliderTrack} rounded-full h-10 cursor-pointer relative`}
@@ -283,7 +341,7 @@ return (
               className={`w-10 h-10 flex items-center justify-center rounded-full ${styles.button} disabled:opacity-50`}
               aria-label="Previous"
             >
-              <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M13 15l-5-5 5-5" stroke="#111827" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M13 15l-5-5 5-5" stroke="var(--color-navy-blue)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </button>
             <button
               onClick={nextTestimonial}
@@ -291,7 +349,7 @@ return (
               className={`w-10 h-10 flex items-center justify-center rounded-full ${styles.button} disabled:opacity-50`}
               aria-label="Next"
             >
-              <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M7 5l5 5-5 5" stroke="#111827" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M7 5l5 5-5 5" stroke="var(--color-navy-blue)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </button>
           </div>
         </div>

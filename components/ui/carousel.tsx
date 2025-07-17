@@ -170,10 +170,10 @@ export default function Carousel({
   }, [isDragging]);
 
   return (
-    <div className={`w-full rounded-[var(--radius-lg)] pt-[var(--space-lg)] pb-[var(--space-lg)] relative ${finalCarouselBackground}`}>
-      <div className="pr-[var(--space-lg)]">
+    <div className={`w-full rounded-[var(--radius-lg)] pt-[var(--space-sm)] md:pt-[var(--space-lg)] pb-[var(--space-sm)] md:pb-[var(--space-lg)] relative ${finalCarouselBackground}`}>
+      <div className="pr-[var(--space-sm)] md:pr-[var(--space-lg)]">
         {(title || buttonText) && (
-          <div className="ml-[var(--space-lg)] flex flex-col md:flex-row md:items-center md:justify-between mb-[var(--space-lg)] gap-[var(--space-md)]">
+          <div className="ml-[var(--space-sm)] md:ml-[var(--space-lg)] flex flex-col md:flex-row md:items-center md:justify-between mb-[var(--space-sm)] md:mb-[var(--space-lg)] gap-[var(--space-md)]">
             {title && <h2 className={`${finalTitleColor}`}>{title}</h2>}
             {buttonText && buttonHref && (
               <Button variant={finalButtonVariant} className="gap-2" href={buttonHref}>
@@ -193,7 +193,7 @@ export default function Carousel({
             style={{
               width: `${visibleCards * cardWidth}%`,
               transform: `translateX(-${activeIndex * cardWidth}%)`,
-              marginLeft: 'var(--space-lg)',
+              marginLeft: 'clamp(var(--space-sm), 4vw, var(--space-lg))',
             }}
           >
             {items.map((item, idx) => (
@@ -208,11 +208,11 @@ export default function Carousel({
           </div>
         </div>
       </div>
-      <div className="pr-[var(--space-xl)] pl-[var(--space-xl)]">
+      <div className="pr-[var(--space-sm)] md:pr-[var(--space-lg)] pl-[var(--space-sm)] md:pl-[var(--space-lg)]">
         {/* Navigation below cards */}
-        <div className="flex items-center justify-between mt-[var(--space-lg)]">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between mt-[var(--space-sm)] md:mt-[var(--space-lg)] gap-[var(--space-md)] md:gap-0">
           {/* Navigation Indicators - left */}
-          <div className="flex gap-2">
+          <div className="hidden md:flex gap-2">
             <div className="flex-1 min-w-[200px]">
               <div
                 ref={progressBarRef}
