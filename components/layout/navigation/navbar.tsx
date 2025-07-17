@@ -224,6 +224,17 @@ export function Navbar() {
                       </button>
                     </div>
                   ))}
+                  {/* Learn More Button for Mobile */}
+                  <div>
+                    <Button 
+                      variant="primary" 
+                      href="/learn-more"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="w-full"
+                    >
+                      Learn more
+                    </Button>
+                  </div>
                   <div className="mt-4">
                     <NewsCarouselSidebar articles={newsArticles} />
                   </div>

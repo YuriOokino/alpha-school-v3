@@ -6,7 +6,7 @@ export default function FeaturedLogos() {
   const logos = pressLogos.concat(pressLogos);
   return (
     <div className="relative w-[100%] mx-auto overflow-hidden">
-      <div className="flex animate-scroll-infinite gap-[4rem] w-fit" style={{ animation: 'scroll 30s linear infinite' }}>
+      <div className="flex animate-scroll-infinite md:gap-[4rem] gap-[2rem] w-fit" style={{ animation: 'scroll 30s linear infinite' }}>
         {logos.map((logo, i) => (
           <a
             key={i}

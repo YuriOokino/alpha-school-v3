@@ -94,8 +94,8 @@ export default function TheProgramPage() {
       <section className="alpha-section bg-white">
         <div 
           ref={ref1}
-          className={`alpha-card !p-[var(--space-lg)] bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)] mb-16 transition-transform duration-1000 ${
-            hasAnimated1 ? 'translate-y-0' : 'translate-y-16'
+          className={`alpha-card !p-[var(--space-lg)] bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)] mb-16 ${
+            hasAnimated1 ? 'animate-fade-up' : 'opacity-0 translate-y-8'
           }`}
         >
           <div className={`flex flex-col gap-2 mb-16 text-center align-center max-w-xl mx-auto ${isMobile ? 'mb-4' : ''}`}>
@@ -136,8 +136,8 @@ export default function TheProgramPage() {
 
         <div 
           ref={ref2}
-          className={`alpha-card !p-[var(--space-lg)] bg-[var(--color-light-green)] text-[var(--color-dark-green)] mb-16 transition-transform duration-1000 ${
-            hasAnimated2 ? 'translate-y-0' : 'translate-y-16'
+          className={`alpha-card !p-[var(--space-lg)] bg-[var(--color-light-green)] text-[var(--color-dark-green)] mb-16 ${
+            hasAnimated2 ? 'animate-fade-up' : 'opacity-0 translate-y-8'
           }`}
         >
           <div className={`flex flex-col gap-2 mb-16 text-center align-center max-w-xl mx-auto ${isMobile ? 'mb-8' : ''}`}>
@@ -182,8 +182,8 @@ export default function TheProgramPage() {
 
         <div 
           ref={ref3}
-          className={`alpha-card !p-[var(--space-lg)] bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)] mb-16 transition-transform duration-1000 ${
-            hasAnimated3 ? 'translate-y-0' : 'translate-y-16'
+          className={`alpha-card !p-[var(--space-lg)] bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)] mb-16 ${
+            hasAnimated3 ? 'animate-fade-up' : 'opacity-0 translate-y-8'
           }`}
         >
           <div className={`flex flex-col gap-2 mb-16 text-center align-center max-w-xl mx-auto ${isMobile ? 'mb-8' : ''}`}>

@@ -18,10 +18,10 @@ const regularArrowSvg = (
 
 // Material Icons arrow_forward - Inverted variant
 const invertedArrowSvg = (
-  <Button variant="alternate" size="small">
+  <Button variant="lightBlue" size="small">
     Apply
     <span className="material-icons-outlined !m-0 ml-2">
-      arrow_forward
+      arrow_circle_right
     </span>
   </Button>
 );
@@ -140,7 +140,7 @@ export default function AdmissionFormsPage() {
     <>
       {/* Main Title Section */}
       <MainHeading 
-        tagline="Admissions"
+        tagline="Admission forms"
         taglineVariant="green"
         description={
           <>

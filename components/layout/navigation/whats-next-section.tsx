@@ -13,13 +13,13 @@ export default function WhatsNextSection() {
 
         <div className="flex flex-wrap justify-center gap-4">
           
-            <Button variant="alternate" size="small" href="/learn-more">Learn More<span className="material-icons-outlined">arrow_circle_right</span></Button>
+            <Button variant="outline" className="!outline-white" size="small" href="/learn-more">Learn More<span className="material-icons-outlined">arrow_circle_right</span></Button>
           
           
-            <Button variant="alternate" size="small"href="/events">View Events<span className="material-icons-outlined">arrow_circle_right</span></Button>
+            <Button variant="outline" className="!outline-white" size="small"href="/events">View Events<span className="material-icons-outlined">arrow_circle_right</span></Button>
      
 
-            <Button variant="alternate" size="small"href="/video-library">Watch Videos<span className="material-icons-outlined">arrow_circle_right</span></Button>
+            <Button variant="outline" className="!outline-white" size="small"href="/video-library">Watch Videos<span className="material-icons-outlined">arrow_circle_right</span></Button>
 
         </div>
       </div>

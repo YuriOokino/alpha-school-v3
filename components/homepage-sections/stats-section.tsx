@@ -25,7 +25,7 @@ export default function StatsSection() {
   const [ref, hasAnimated] = useInView();
   return (
     <section className="alpha-section bg-white">
-      <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-[var(--space-md)] md:mb-[var(--space-xl)] gap-[var(--space-md)] md:gap-[var(--space-lg)]">
+      <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-[var(--space-lg)] md:mb-[var(--space-xl)] gap-[var(--space-md)] md:gap-[var(--space-lg)]">
         <h2 className="m-0 text-[var(--color-navy-blue)]">REAL RESULTS FOR REAL LIFE SKILLS</h2>
         <p className="max-w-xl body-text m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
@@ -33,7 +33,7 @@ export default function StatsSection() {
       </div>
       <div
         ref={ref}
-        className={`w-full flex flex-col lg:flex-row text-[var(--color-dark-green)] justify-between gap-[var(--space-md)] bg-[var(--color-light-green)] rounded-[var(--radius-lg)] p-[var(--space-xl)] ${hasAnimated ? 'animate-fade-up' : 'opacity-0 translate-y-8'}`}
+        className={`w-full flex flex-col lg:flex-row text-[var(--color-dark-green)] justify-between gap-[var(--space-md)] bg-[var(--color-light-green)] rounded-[var(--radius-lg)] md:p-[var(--space-lg)] p-[var(--space-md)] ${hasAnimated ? 'animate-fade-up' : 'opacity-0 translate-y-8'}`}
       >
         <div className="flex-1 flex flex-col min-w-[200px]">
           <div className="display-headline !text-[60px] md:!text-[80px] lg:!text-[100px] text-[var(--color-dark-green)] mb-4 whitespace-nowrap">2x</div>

@@ -218,18 +218,18 @@ export default function LearnMorePage() {
                   </label>
                 </div>
               </div>
-              <div>
+              <div className="flex !flex-col gap-4">
                 <label className="xs-label">Which Alpha School location are you interested in?</label>
-                <div>
+                <div className="flex !flex-col gap-4">
                   {schoolOptions.map((option) => (
-                    <label key={option} className="flex items-center gap-2">
+                    <label key={option} className="flex items-center row-on-mobile">
                       <input
                         type="checkbox"
                         value={option}
                         checked={selectedSchools.includes(option)}
                         onChange={() => handleSchoolChange(option)}
                       />
-                      <span>{option}</span>
+                      <span className="ml-0">{option}</span>
                     </label>
                   ))}
                 </div>
@@ -258,7 +258,7 @@ export default function LearnMorePage() {
                   className="field-input"
                 />
               </div>
-              <div className="flex items-start gap-2">
+              <div className="flex items-start gap-2  row-on-mobile">
                 <input
                   type="checkbox"
                   id="consent"

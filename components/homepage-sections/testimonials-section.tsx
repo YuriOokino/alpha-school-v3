@@ -9,19 +9,12 @@ export default function TestimonialsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [openVideo, setOpenVideo] = useState(false);
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
+  const [isPaused, setIsPaused] = useState(false);
   const visibleCardsCount = 2.5;
   const cardWidth = 430; // Reduced from 480px to 430px
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const testimonialVideoUrl = "https://player.vimeo.com/video/1033250050?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=0&controls=1";
-
-  const prevTestimonial = () => {
-    setActiveIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
-  };
-
-  const nextTestimonial = () => {
-    setActiveIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
-  };
+    const testimonialVideoUrl = "https://player.vimeo.com/video/1033250050?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=0&controls=1";
 
   // Variant styles for carousel
   const carouselVariantStyles = {
@@ -98,6 +91,23 @@ const testimonials = [
   },
 ];
 
+  // Duplicate testimonials for seamless infinite scroll
+  const duplicatedTestimonials = [...testimonials, ...testimonials];
+
+
+
+  const prevTestimonial = () => {
+    setActiveIndex((prev) => (prev === 0 ? duplicatedTestimonials.length - 1 : prev - 1));
+    setIsPaused(true);
+    setTimeout(() => setIsPaused(false), 5000); // Resume after 5 seconds
+  };
+
+  const nextTestimonial = () => {
+    setActiveIndex((prev) => (prev === duplicatedTestimonials.length - 1 ? 0 : prev + 1));
+    setIsPaused(true);
+    setTimeout(() => setIsPaused(false), 5000); // Resume after 5 seconds
+  };
+
 const progressBarRef = React.useRef<HTMLDivElement>(null);
 const DOT_SIZE = 32; // px
 const MARGIN = 4; // px
@@ -121,8 +131,12 @@ const handleDrag = (e: React.MouseEvent | MouseEvent) => {
   const max = rect.width - MARGIN - DOT_SIZE / 2;
   const clamped = Math.max(min, Math.min(x, max));
   const percent = (clamped - min) / (max - min);
-  const newIndex = Math.round(percent * (testimonials.length - 1));
-  setActiveIndex(Math.max(0, Math.min(newIndex, testimonials.length - 1)));
+  const newIndex = Math.round(percent * (duplicatedTestimonials.length - 1));
+  setActiveIndex(Math.max(0, Math.min(newIndex, duplicatedTestimonials.length - 1)));
+  
+  // Pause auto-scroll when user drags the slider
+  setIsPaused(true);
+  setTimeout(() => setIsPaused(false), 5000); // Resume after 5 seconds
 };
 // Intersection Observer for scroll animations
 useEffect(() => {
@@ -163,7 +177,7 @@ React.useEffect(() => {
 return (
   <section className="alpha-section">
 
-      <div className="two-column-flex mb-[var(--space-sm)] md:mb-[var(--space-2xl)]">
+      <div className="two-column-flex mb-[var(--space-md)] md:mb-[var(--space-2xl)]">
         <h2 className="text-[var(--color-navy-blue)]">
           Their voices speak of their success
         </h2>
@@ -280,17 +294,18 @@ return (
         <div className="relative flex items-center">
           <div className="overflow-hidden w-full">
             <div
-              className="flex transition-transform duration-700 ease-in-out"
+              className={`flex gap-8 w-fit transition-transform duration-700 ease-in-out ${
+                isPaused ? '' : 'animate-scroll-infinite'
+              }`}
               style={{
-                width: `${testimonials.length * (100 / visibleCardsCount)}%`,
-                transform: `translateX(-${activeIndex * (100 / visibleCardsCount)}%)`,
+                animation: isPaused ? 'none' : 'scroll 20s linear infinite',
+                transform: isPaused ? `translateX(-${activeIndex * (100 / visibleCardsCount)}%)` : undefined,
                 marginLeft: 'clamp(var(--space-sm), 4vw, var(--space-lg))',
               }}
             >
-              {testimonials.map((testimonial, idx) => (
+              {duplicatedTestimonials.map((testimonial, idx) => (
                 <div
                   key={idx}
-                  style={{ flex: `0 0 ${100 / visibleCardsCount}%` }}
                   className="px-2 max-w-[430px] flex-shrink-0"
                 >
                   <div className="bg-white rounded-[var(--radius-md)] p-[var(--space-sm)] md:p-[var(--space-lg)] h-full">
@@ -302,7 +317,7 @@ return (
                           className="w-12 h-12 rounded-full object-cover"
                         />
                         <div>
-                          <h5 className="text-[var(--color-text-main)]">{testimonial.name}</h5>
+                          <h6 className="text-[var(--color-text-main)]">{testimonial.name}</h6>
                           <p className="text-[var(--color-text-muted)] text-sm">{testimonial.grade}, {testimonial.age}</p>
                         </div>
                       </div>
@@ -314,6 +329,7 @@ return (
             </div>
           </div>
         </div>
+        
         {/* Navigation below cards */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mt-[var(--space-sm)] md:mt-[var(--space-lg)] gap-[var(--space-md)] md:gap-0 px-[var(--space-sm)] md:px-[var(--space-lg)]">
           {/* Switch-style slider navigation - left */}
@@ -327,7 +343,7 @@ return (
               <div
                 className={`absolute top-1 w-8 h-8 ${styles.sliderDot} rounded-full cursor-grab active:cursor-grabbing transition-all duration-300 ease-out`}
                 style={{
-                  left: `calc(4px + ${(testimonials.length === 1 ? 0 : activeIndex / (testimonials.length - 1))} * (100% - 40px))`
+                  left: `calc(4px + ${(duplicatedTestimonials.length === 1 ? 0 : activeIndex / (duplicatedTestimonials.length - 1))} * (100% - 40px))`
                 }}
                 onMouseDown={handleDotDown}
               />
@@ -337,7 +353,6 @@ return (
           <div className="flex gap-3">
             <button
               onClick={prevTestimonial}
-              disabled={activeIndex === 0}
               className={`w-10 h-10 flex items-center justify-center rounded-full ${styles.button} disabled:opacity-50`}
               aria-label="Previous"
             >
@@ -345,7 +360,6 @@ return (
             </button>
             <button
               onClick={nextTestimonial}
-              disabled={activeIndex === testimonials.length - 1}
               className={`w-10 h-10 flex items-center justify-center rounded-full ${styles.button} disabled:opacity-50`}
               aria-label="Next"
             >
@@ -353,6 +367,17 @@ return (
             </button>
           </div>
         </div>
+        
+        <style jsx>{`
+          @keyframes scroll {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-${100 / visibleCardsCount * testimonials.length}%);
+            }
+          }
+        `}</style>
       </div>
       {openVideo && (
   <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">

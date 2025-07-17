@@ -8,8 +8,8 @@ export default function HeroSection() {
     <>
       {/* Hero Content Block */}
       <div className="bg-[var(--color-primary)] text-white pt-[var(--space-xl)] md:pt-[var(--space-4xl)] pb-[var(--space-md)] md:pb-12">
-        <div className="container mx-auto px-4 text-center animate-fade-in-blur">
-          <h1 className="display-headline leading-[1.4] mb-6 max-w-[800px] mx-auto">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="display-headline leading-[1.4] mb-6 max-w-[800px] mx-auto  animate-fade-in-blur">
           Crush academics. Build life skills. Love school.</h1>
           <p className="md:text-xl mb-8 max-w-3xl mx-auto">
             Campuses in Austin, Brownsville, Miami, and many more new locations launching soon.

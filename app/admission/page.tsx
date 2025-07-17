@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/accordion";
 import { getAllCampuses } from "@/utils/campuses";
 import type { CampusMetadata } from "@/utils/campuses";
+import Divider from "@/components/layout/divider";
 
 
 
@@ -298,8 +299,8 @@ export default function AdmissionPage() {
         </div>
       </section>
 
-      {/* New Alpha Section with Colored Content Card */}
-      <section className="alpha-section pt-[100px]">
+<Divider fill="white" backgroundColor="var(--color-bg-muted)" direction="up"/>
+      <section className="alpha-section bg-[var(--color-bg-muted)]">
         <SectionHeading
           title="Important details"
           description="We would be delighted to answer any questions you may have about the admissions and enrollment process."
@@ -308,7 +309,7 @@ export default function AdmissionPage() {
           buttonVariant="darkGreen"
           className="text-[var(--color-dark-green)]"
         />
-        <div className="section-content bg-[var(--color-light-green)] max-w-6xl mx-auto">
+        <div className="alpha-card !p-[var(--space-xl)] bg-[var(--color-light-green)] max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Left Column - Important Details */}
             <div className="space-y-8">
@@ -356,23 +357,25 @@ export default function AdmissionPage() {
                       expand_more
                     </span>
                   </button>
-                  {expandedSection === 'immunization-requirements' && (
-                    <div>
-                      <div className="space-y-3 pt-4">
-                        <div className="space-y-2">
-                          <div className="flex flex-col items-start gap-2">
-                            <p>Alpha School requires all students to comply with immunization requirements mandated by their respective state Departments of Health. Each student must provide the appropriate immunization certification or an approved exemption before enrollment. Exemptions, where permissible, must adhere to state-specific guidelines, which may vary by location.</p>
-                         <p><strong>For more information on the required immunizations please visit the following:</strong></p> 
-                          <div className="centered-icon-text indent-2"><span className="material-icons-outlined">file_download</span><a href="https://www.dshs.texas.gov/sites/default/files/LIDS-Immunizations/pdf/pdf_stock/6-14.pdf" target="_blank" rel="noopener noreferrer">Texas</a></div>
-                          <div className="centered-icon-text indent-2"><span className="material-icons-outlined">file_download</span><a href="https://www.floridahealth.gov/programs-and-services/immunization/children-and-adolescents/school-immunization-requirements/index.html" target="_blank" rel="noopener noreferrer">Florida</a></div>
+                  <div 
+                    className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                      expandedSection === 'immunization-requirements' ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                    }`}
+                  >
+                    <div className="space-y-3 pt-4">
+                      <div className="space-y-2">
+                        <div className="flex flex-col items-start gap-2">
+                          <p>Alpha School requires all students to comply with immunization requirements mandated by their respective state Departments of Health. Each student must provide the appropriate immunization certification or an approved exemption before enrollment. Exemptions, where permissible, must adhere to state-specific guidelines, which may vary by location.</p>
+                       <p><strong>For more information on the required immunizations please visit the following:</strong></p> 
+                        <div className="centered-icon-text indent-2"><span className="material-icons-outlined">file_download</span><a href="https://www.dshs.texas.gov/sites/default/files/LIDS-Immunizations/pdf/pdf_stock/6-14.pdf" target="_blank" rel="noopener noreferrer">Texas</a></div>
+                        <div className="centered-icon-text indent-2"><span className="material-icons-outlined">file_download</span><a href="https://www.floridahealth.gov/programs-and-services/immunization/children-and-adolescents/school-immunization-requirements/index.html" target="_blank" rel="noopener noreferrer">Florida</a></div>
 
-                          <div className="centered-icon-text indent-2"><span className="material-icons-outlined">file_download</span><a href="https://cdphe.colorado.gov/schoolrequiredvaccines" target="_blank" rel="noopener noreferrer">Colorado</a></div>
+                        <div className="centered-icon-text indent-2"><span className="material-icons-outlined">file_download</span><a href="https://cdphe.colorado.gov/schoolrequiredvaccines" target="_blank" rel="noopener noreferrer">Colorado</a></div>
 
-                          </div>
                         </div>
                       </div>
                     </div>
-                  )}
+                  </div>
                 </div>
              </div>
 
@@ -465,6 +468,7 @@ export default function AdmissionPage() {
           </div>
         </div>
       </section>
+      <Divider fill="white" backgroundColor="var(--color-bg-muted)" direction="down"/>
 
       {/* Alpha School Campuses Section */}
       <section className="alpha-section">

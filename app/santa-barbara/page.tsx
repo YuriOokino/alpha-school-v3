@@ -33,7 +33,8 @@ export default async function SantaBarbaraPage() {
   const welcomeRightColumn = (
     <>
       <p className="mb-2">At Alpha, we believe that students thrive when they are engaged, challenged, and inspired by their learning environment. Our innovative model fosters a love of school, encourages independence, and equips students with the tools they need to succeed academically and in life.</p>
-      <p>Bringing Alpha School's three commitments—love school, learn 2x in 2 hours, and master life skills—to your city. <strong>Alpha Santa Barbara is launching soon and now accepting applications.</strong></p>
+      <p>Bringing Alpha School's three commitments—love school, learn 2x in 2 hours, and master life skills—to your city.</p>
+      <p><strong>Alpha Santa Barbara is launching soon and now accepting applications.</strong></p>
     </>
   )
   
@@ -206,9 +207,9 @@ export default async function SantaBarbaraPage() {
         ) : (
           <div className="text-center">
             <p className="body-text mb-4">No events currently scheduled for Santa Barbara.</p>
-            <Button variant="outline" href="/events">
-              View all events
-            </Button>
+            <Button variant="default" size="small" className="centered-icon-text" href="/events">
+              View more events
+            <span className="material-icons-outlined">arrow_circle_right</span></Button>
           </div>
         )}
       </section>

@@ -170,18 +170,19 @@ export default function Carousel({
   }, [isDragging]);
 
   return (
-    <div className={`w-full rounded-[var(--radius-lg)] pt-[var(--space-sm)] md:pt-[var(--space-lg)] pb-[var(--space-sm)] md:pb-[var(--space-lg)] relative ${finalCarouselBackground}`}>
+    <div className={`w-full rounded-[var(--radius-lg)] pt-[var(--space-md)] md:pt-[var(--space-lg)] pb-[var(--space-md)] md:pb-[var(--space-lg)] relative ${finalCarouselBackground}`}>
       <div className="pr-[var(--space-sm)] md:pr-[var(--space-lg)]">
         {(title || buttonText) && (
-          <div className="ml-[var(--space-sm)] md:ml-[var(--space-lg)] flex flex-col md:flex-row md:items-center md:justify-between mb-[var(--space-sm)] md:mb-[var(--space-lg)] gap-[var(--space-md)]">
-            {title && <h2 className={`${finalTitleColor}`}>{title}</h2>}
+          <div className="ml-[var(--space-sm)] md:ml-[var(--space-lg)] flex flex-col md:flex-row items-center md:justify-between mb-[var(--space-sm)] md:mb-[var(--space-lg)] md:gap-[var(--space-md)] gap-[var(--space-sm)]">
+            {title && <h2 className={`heading-style-h4 md:heading-style-h4 ${finalTitleColor}`}>{title}</h2>}
             {buttonText && buttonHref && (
-              <Button variant={finalButtonVariant} className="gap-2" href={buttonHref}>
+              <div><Button variant={finalButtonVariant} className="gap-2" href={buttonHref}>
                 {buttonText}
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5.293 12.293L6.707 13.707L13.414 6.99997L6.707 0.292969L5.293 1.70697L9.586 5.99997H0V7.99997H9.586L5.293 12.293Z" fill="currentColor"/>
                 </svg>
               </Button>
+              </div>
             )}
           </div>
         )}

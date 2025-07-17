@@ -22,7 +22,7 @@ const commitments = [
 export default function CommitmentsSection() {
   return (
     <section className="alpha-section bg-white">
-      <div className="w-full bg-[var(--color-navy-blue)] rounded-[var(--radius-lg)] p-[var(--space-lg)] flex flex-col gap-[var(--space-xl)]">
+      <div className="w-full bg-[var(--color-navy-blue)] rounded-[var(--radius-lg)] p-[var(--space-md)] md:p-[var(--space-lg)] flex flex-col gap-[var(--space-xl)]">
         <div className="w-full flex flex-col lg:flex-row lg:items-center lg:justify-between mb-[var(--space-md)] gap-4">
           <h2 className="text-[var(--color-sky-blue)] m-0">Alpha's 3 Commitments</h2>
           <Button href="/the-program" className="bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)] centered-icon-text self-start">
