@@ -50,8 +50,10 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              // Global phone number validation
-              document.addEventListener('DOMContentLoaded', function() {
+              // Only run on client side
+              if (typeof document !== 'undefined') {
+                // Global phone number validation
+                document.addEventListener('DOMContentLoaded', function() {
                 function setupPhoneValidation() {
                   const phoneInputs = document.querySelectorAll('input[name="phone"], input[id="phone"], input[type="tel"]');
                   
@@ -179,6 +181,7 @@ export default function RootLayout({
                   subtree: true
                 });
               });
+                }
             `
           }}
         />
