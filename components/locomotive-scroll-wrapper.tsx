@@ -11,13 +11,16 @@ export default function LocomotiveScrollWrapper({ children }: LocomotiveScrollWr
   const scrollRef = useRef<LocomotiveScroll | null>(null);
 
   useEffect(() => {
-    // Initialize Locomotive Scroll
-    scrollRef.current = new LocomotiveScroll({
-      el: document.querySelector('[data-scroll-container]') as HTMLElement,
-      smooth: true,
-      lerp: 0.1, // Linear interpolation (smoothness)
-      multiplier: 1, // Scroll speed multiplier
-    });
+    // Only initialize on client side
+    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+      // Initialize Locomotive Scroll
+      scrollRef.current = new LocomotiveScroll({
+        el: document.querySelector('[data-scroll-container]') as HTMLElement,
+        smooth: true,
+        lerp: 0.1, // Linear interpolation (smoothness)
+        multiplier: 1, // Scroll speed multiplier
+      });
+    }
 
     // Cleanup on unmount
     return () => {
