@@ -81,7 +81,7 @@ export default function TheProgramPage() {
           </div>
           <VideoPlayer
             videoUrl="https://www.youtube.com/watch?v=udRcIlMwqb0"
-            posterImage="/assets/feature-video-overlays/the-program.webp"
+            posterImage="/assets/feature-video-overlays/how-alpha-works.png"
   
             posterAlt="How Alpha School Works"
             aspectRatio="16/9"
