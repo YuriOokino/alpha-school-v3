@@ -88,30 +88,32 @@ export default async function SantaBarbaraPage() {
         <Divider direction="down" fill="white" />
       </div>
 
-      {/* Photo Gallery Section - Always set up, conditionally hidden */}
-      {hasGallery && (
-        <CampusGallerySection 
-          images={galleryImages}
-          cityName="Santa Barbara"
-          className={!hasGallery ? 'hidden' : ''}
-        />
-      )}
+      {/* Main Content Section - Gallery, Starseeds, Campus Info, Events */}
+      <section className="alpha-section bg-white">
+        {/* Photo Gallery Section - Always set up, conditionally hidden */}
+        {hasGallery && (
+          <CampusGallerySection 
+            images={galleryImages}
+            cityName="Santa Barbara"
+            className={!hasGallery ? 'hidden' : ''}
+          />
+        )}
 
-      {/* Starseeds Section - Always set up, conditionally hidden */}
-      {hasStarseeds && (
-        <section className={`alpha-section bg-white ${!hasStarseeds ? 'hidden' : ''}`}>
+        {/* Starseeds Section - Always set up, conditionally hidden */}
+        {hasStarseeds && (
           <StarseedsCard 
             cityName="Santa Barbara"
             email={campus.email}
+            className={!hasStarseeds ? 'hidden' : ''}
           />
-        </section>
-      )}
+        )}
 
-      {/* Campus & Resources Section */}
-      <ResourcesCard campus={campus} />
+        {/* Campus & Resources Section */}
+        <ResourcesCard campus={campus} />
 
-      {/* Events & Programs Section */}
-      <EventList events={events} campusName="Santa Barbara" />
+        {/* Events & Programs Section */}
+        <EventList events={events} campusName="Santa Barbara" />
+      </section>
     </main>
   )
 }

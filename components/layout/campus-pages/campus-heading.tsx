@@ -35,11 +35,11 @@ export default function CampusHeading({
       
   return (
     <div className="w-screen min-h-[400px]">
-      <div className={`media-heading-content ${variantClass} text-[var(--color-sky-blue)] ${className}`}>
-        <div className="flex flex-col md:flex-row w-full max-w-6xl mx-auto items-start gap-[var(--space-2xl)]">
+      <div className={`media-heading-content ${variantClass} text-[var(--color-sky-blue)] ${className} h-full`}>
+        <div className="flex flex-col lg:flex-row w-full max-w-6xl mx-auto items-start gap-[var(--space-2xl)] h-full">
           <div className="flex-1 min-w-0 w-full">
             {tagline && (
-              <div className="flex justify-center md:justify-start mb-4">
+              <div className="flex justify-start mb-4">
                 <p className={`tagline ${
                   variant === "blue"
                     ? "bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)] px-4 py-1 rounded-[var(--radius-pill)] inline-block"
@@ -50,16 +50,16 @@ export default function CampusHeading({
               </div>
             )}
             <h1
-              className="heading-style-h2 text-center md:text-left w-full max-w-4xl mx-auto md:mx-0 mb-4"
+              className="heading-style-h2 text-left w-full max-w-4xl mb-4"
               tabIndex={-1}
             >
               Private School in {campus.name}
             </h1>
             
             {/* Campus Details */}
-            <p className="font-semibold text-center md:text-left mb-2">{campus.grades}</p>
-            <p className="centered-icon-text mb-4 text-center md:text-left">
-              <span className="material-icons-outlined">location_on</span>
+            <p className="font-semibold text-left mb-2">{campus.grades}</p>
+            <p className="centered-icon-text mb-4 text-left">
+              <span className="material-icons-outlined mr-1">location_on</span>
               {campus.address.toLowerCase().includes('to be announced') ? (
                 campus.address
               ) : (
@@ -72,12 +72,12 @@ export default function CampusHeading({
                 </a>
               )}
             </p>
-            <p className="mb-2 text-center md:text-left">
+            <p className="mb-2 text-left">
               <strong>Email:</strong> {campus.email}
             </p>
             
             {/* Application Link */}
-            <div className="flex justify-center md:justify-start mt-[var(--space-md)]">
+            <div className="flex justify-start mt-[var(--space-md)]">
               <CampusApplicationLink 
                 campusName={campus.name} 
                 className="centered-icon-text bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)]"
@@ -88,9 +88,13 @@ export default function CampusHeading({
           </div>
           
           {/* Hero Image */}
-          <div className="flex-1 min-w-0 flex justify-center items-center">
-            <div className="w-full h-auto rounded-[var(--radius-lg)] overflow-hidden">
-              <img src={campus.heroImage} alt={`${campus.name} Campus`} />
+          <div className="w-full sm:flex-1 sm:min-w-0 flex justify-center items-center">
+            <div className="w-full h-[280px] md:h-[350px] rounded-[var(--radius-lg)] overflow-hidden">
+              <img 
+                src={campus.heroImage} 
+                alt={`${campus.name} Campus`} 
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>

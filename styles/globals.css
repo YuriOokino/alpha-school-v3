@@ -93,7 +93,7 @@ html.has-scroll-dragging {
     --space-4xl: 128px;  /* Extra-large vertical spacing */
     
     /* Border Radius System */
-    --radius-xxs: 2px;
+    --radius-xxs: 4px;
     --radius-xs: 8px;    /* Small inputs, chips, badges */
     --radius-sm: 12px;   /* Cards in structured layouts */
     --radius-md: 16px;   /* Image containers, info panels */

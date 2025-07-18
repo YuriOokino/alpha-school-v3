@@ -124,9 +124,23 @@ export default function EventPage() {
         }
       >
         {eventData?.title || "Event"}
-        <p className="centered-icon-text mb-4"><span className="material-icons-outlined">calendar_today</span>{eventData?.date || "Date TBD"}</p>
-        <p className="centered-icon-text mb-4"><span className="material-icons-outlined">schedule</span>{eventData?.time || "Time TBD"}</p>
-        <p className="centered-icon-text mb-4"><span className="material-icons-outlined">location_on</span>{eventData?.address || "Location TBD"}</p>
+        <p className="centered-icon-text mb-4"><span className="material-icons-outlined mr-2">calendar_today</span>{eventData?.date || "Date TBD"}</p>
+        <p className="centered-icon-text mb-4"><span className="material-icons-outlined mr-2">schedule</span>{eventData?.time || "Time TBD"}</p>
+        <p className="centered-icon-text mb-4">
+          <span className="material-icons-outlined mr-2">location_on</span>
+          {eventData?.address ? (
+            <a 
+              href={`https://maps.google.com/?q=${encodeURIComponent(eventData.address)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              
+            >
+              {eventData.address}
+            </a>
+          ) : (
+            "Location TBD"
+          )}
+        </p>
       </MediaHeading>
 
       {/* Section 1 - Two Column Layout */}
@@ -150,13 +164,55 @@ export default function EventPage() {
 
       <Divider fill="white" direction="down"/>
 
-      {/* Registration Form */}
-      <section className="alpha-section bg-white" >
-        <div className="campus-info">
-          Title
+     
+     
+
+    
+      <section className="alpha-section bg-white">
+ {/* Info card */}
+ <div className="mb-[var(--space-4xl)] bg-[var(--color-light-green)] text-[var(--color-dark-green)] w-[95%] m-auto rounded-[var(--radius-lg)] p-[var(--space-lg)] flex flex-col md:flex-row gap-[var(--space-xl)]">
+          <div className="flex flex-col flex-1 justify-between">
+            <h2 className="heading-style-h2">Why attend?</h2>
+            <div className="space-y-2">
+              <div className="inline-block px-4 py-2 rounded-[var(--radius-xxs)] bg-[var(--color-dark-green)] text-[var(--color-light-green)] uppercase text-sm font-medium">
+                See the model in action
+              </div>
+              <div className="inline-block px-4 py-2 rounded-[var(--radius-xxs)] border border-[var(--color-dark-green)] text-[var(--color-dark-green)] uppercase text-sm font-medium">
+                Educators are not like other teachers
+              </div>
+              <div className="inline-block px-4 py-2 rounded-[var(--radius-xxs)] bg-[var(--color-dark-green)] text-[var(--color-light-green)] uppercase text-sm font-medium">
+                Connect with other families
+              </div>
+              <div className="inline-block px-4 py-2 rounded-[4px] border border-[var(--color-dark-green)] text-[var(--color-dark-green)] uppercase text-sm font-medium">
+                Experience a day in the life
+              </div>
+            </div>
+          </div>
+         
+          <div className="flex flex-col flex-1 gap-3">
+            <div>
+              <h5 className="mb-2">Engaging activities</h5>
+              <p className="body-text">
+                Your child will participate in a variety of fun and educational activities designed to keep them engaged and learning throughout the summer.
+              </p>
+            </div>
+            <div>
+              <h5 className="mb-2">Expert guidance</h5>
+              <p className="body-text">
+                Our experienced staff will ensure your child has a safe and enriching experience while making new friends and learning new skills.
+              </p>
+            </div>
+            <div>
+              <h5 className="mb-2">Convenient location</h5>
+              <p className="body-text">
+                Located at our Austin campus, the camp provides a familiar and comfortable environment for your child to learn and play.
+              </p>
+            </div>
+          </div>
         </div>
-        </section>
-        <section className="alpha-section bg-white">
+
+          {/* Registration Form */}
+
         <div className="alpha-form" id="register">
         <div className="m-auto flex !flex-col text-center !gap-0.5 mb-8 max-w-[800px]">
 
@@ -315,16 +371,16 @@ export default function EventPage() {
           description="Learn more about how Alpha works. Attend a virtual info session, drop by a school tour, or join one of our educational summer camps."
           buttonText="View all events"
           buttonHref="/events"
-          buttonVariant="darkGreen"
-          className="mt-[var(--space-4xl)] text-[var(--color-dark-green)]"
+          buttonVariant="navyBlue"
+          className="mt-[var(--space-4xl)] text-[var(--color-navy-blue)]"
         />
         <Carousel
           items={allEvents.filter(event => event.slug !== slug)}
           renderItem={(event) => (
-            <EventCard {...event} url={`/events/${event.slug}`} className="flex-shrink-0 group" variant="scheme2" />
+            <EventCard {...event} url={`/events/${event.slug}`} className="flex-shrink-0 group" variant="scheme1" />
           )}
           visibleCards={3.75}
-          variant="scheme3"
+          variant="scheme1"
         />
       </section>
     </main>

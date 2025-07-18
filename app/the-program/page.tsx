@@ -126,9 +126,11 @@ export default function TheProgramPage() {
             <div className={`flex-1 flex items-center justify-center w-full ${isMobile ? 'order-first' : ''}`}>
               <VideoPlayer
                 videoUrl="https://youtu.be/abqqOY47-NA"
-                posterImage="/assets/feature-video-overlays/love-school.webp"
+                posterImage="/assets/the-program-overlays/the-alpha-guides.png"
                 aspectRatio="4/3"
                 className="w-full max-w-md"
+                posterAlt="The Alpha Guides"
+                textOverlay="The Alpha Guides"
               />
             </div>
           </div>
@@ -154,9 +156,11 @@ export default function TheProgramPage() {
             <div className={`flex-1 flex items-center justify-center w-full ${isMobile ? 'order-first' : ''}`}>
               <VideoPlayer
                 videoUrl="https://youtu.be/Qm6M7_TAVR0"
-                posterImage="/assets/feature-video-overlays/learn-2x.webp"
+                posterImage="/assets/the-program-overlays/the-results.png"
                 aspectRatio="4/3"
                 className="w-full max-w-md"
+                posterAlt="The Results"
+                textOverlay="The Results"
               />
             </div>
             {/* Right column: text */}
@@ -214,9 +218,11 @@ export default function TheProgramPage() {
             <div className={`flex-1 flex items-center justify-center w-full ${isMobile ? 'order-first' : ''}`}>
               <VideoPlayer
                 videoUrl="https://youtu.be/770I1E2VWhk"
-                posterImage="/assets/feature-video-overlays/lifeskills-workshops.webp"
+                posterImage="/assets/the-program-overlays/lifeskills-workshops.png"
                 aspectRatio="4/3"
                 className="w-full max-w-md"
+                posterAlt="Lifeskills Workshops"
+                textOverlay="Lifeskills Workshops"
               />
             </div>
           </div>

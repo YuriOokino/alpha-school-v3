@@ -13,9 +13,9 @@ interface CampusGallerySectionProps {
 
 export default function CampusGallerySection({ images, cityName, className = "" }: CampusGallerySectionProps) {
   return (
-    <section className={`alpha-section bg-white ${className}`}>
+    <div className={`${className}`}>
       <h2 className="heading-style-h2 text-center mb-8">Campus Gallery</h2>
       <Gallery images={images} />
-    </section>
+    </div>
   )
 } 

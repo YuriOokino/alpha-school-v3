@@ -15,7 +15,7 @@ interface ResourcesCardProps {
 
 export default function ResourcesCard({ campus, className = "" }: ResourcesCardProps) {
   return (
-    <section className={`alpha-section bg-white ${className}`}>
+    <div className={`max-w-[1100px] mb-[var(--space-4xl)] mx-auto ${className}`}>
       <div className="bg-[var(--color-light-green)] text-[var(--color-dark-green)] w-[95%] min-h-[400px] m-auto rounded-[var(--radius-lg)] p-[var(--space-lg)] flex flex-col md:flex-row gap-[var(--space-xl)] items-start">
         <div className="flex-1">
           <h2 className="heading-style-h2 mb-4">{campus.name} Campus</h2>
@@ -64,6 +64,6 @@ export default function ResourcesCard({ campus, className = "" }: ResourcesCardP
           </div>
         </div>
       </div>
-    </section>
+    </div>
   )
 }

@@ -45,7 +45,7 @@ export default function EventList({ events, campusName, className = "" }: EventL
 
   if (campusEvents.length === 0) {
     return (
-      <section className={`alpha-section bg-white ${className}`}>
+      <div className={`${className}`}>
         <h2 className="heading-style-h2 text-center mb-4">Events & Programs</h2>
         <p className="body-text text-center mb-8 max-w-2xl mx-auto">
           Explore our showcases to tour the campus, and enjoy our camps and afterschool programs offering exciting, hands-on experiences for kids.
@@ -56,12 +56,12 @@ export default function EventList({ events, campusName, className = "" }: EventL
             View more events<span className="material-icons-outlined">arrow_circle_right</span>
           </Button>
         </div>
-      </section>
+      </div>
     )
   }
 
   return (
-    <section className={`alpha-section bg-white ${className}`}>
+    <div className={`${className}`}>
       <h2 className="heading-style-h2 text-center mb-4 text-[var(--color-navy-blue)]">Events & Programs</h2>
       <p className="body-text text-center mb-8 max-w-2xl mx-auto">
         Explore our showcases to tour the campus, and enjoy our camps and afterschool programs offering exciting, hands-on experiences for kids.
@@ -85,6 +85,6 @@ export default function EventList({ events, campusName, className = "" }: EventL
           />
         ))}
       </div>
-    </section>
+    </div>
   )
 }

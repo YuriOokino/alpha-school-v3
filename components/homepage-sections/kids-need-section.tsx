@@ -22,11 +22,11 @@ export default function KidsNeedSection() {
       <div className="flex justify-center mt-16">
         <VideoPlayer
           videoUrl="https://www.youtube.com/embed/ENdAWT6N0V4"
-          posterImage=""
+          posterImage="/assets/feature-video-overlays/how-alpha-works.png"
           posterAlt="How Alpha School Works Preview"
           aspectRatio="16/9"
           className="max-w-5xl rounded-[var(--radius-lg)]"
-          textOverlay="How Alpha School Works"
+     
         />
       </div>
     </section>

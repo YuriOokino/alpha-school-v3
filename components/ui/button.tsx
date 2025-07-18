@@ -28,7 +28,7 @@ const buttonVariants = cva(
       },
       radius:{
         default: "rounded-full",
-        small: "rounded-[4px]"
+        small: "rounded-[var(--radius-xxs)]"
       }
     },
     defaultVariants: {
