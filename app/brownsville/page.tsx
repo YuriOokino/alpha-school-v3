@@ -18,7 +18,7 @@ export default async function BrownsvillePage() {
   }
   
   // Configuration flags - customize these for each campus
-  const hasGallery = false // Set to false if this campus doesn't have a gallery
+  const hasGallery = true // Set to false if this campus doesn't have a gallery
   const hasStarseeds = true // Set to false if this campus doesn't have Starseeds program
   
   // Welcome section content - customize for each campus

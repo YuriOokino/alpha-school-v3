@@ -42,7 +42,7 @@ export default function Gallery({ images, className }: GalleryProps) {
         {images.map((img, idx) => (
           <button
             key={idx}
-            className="aspect-square rounded-[var(--radius-md)] overflow-hidden bg-[var(--color-bg-muted)] flex items-center justify-center focus:outline-none"
+            className="aspect-square rounded-[var(--radius-md)] overflow-hidden bg-[var(--color-bg-muted)] flex items-center justify-center focus:outline-none group"
             onClick={() => setOpenIndex(idx)}
             aria-label={`Expand image ${idx + 1}`}
             type="button"
@@ -50,7 +50,7 @@ export default function Gallery({ images, className }: GalleryProps) {
             <img
               src={img.src}
               alt={img.alt}
-              className="object-cover w-full h-full"
+              className="object-cover w-full h-full transition-transform duration-300 scale-105 group-hover:scale-100"
               loading="lazy"
             />
           </button>

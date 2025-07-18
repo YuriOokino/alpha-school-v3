@@ -348,9 +348,10 @@ export default function LocationsPage() {
                 onClick={loadMoreUpcoming}
                 variant="outline"
                 size="small"
+                className-="centered-icon-text"
               >
-                Load More Campuses ({upcomingCampusesToShow.length}/{upcomingCampuses.length})
-              </Button>
+                Load More Campuses
+              <span className="material-icons-outlined">expand_circle_down</span></Button>
             </div>
           )}
 
