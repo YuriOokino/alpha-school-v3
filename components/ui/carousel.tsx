@@ -13,7 +13,7 @@ interface CarouselProps {
   buttonText?: string;
   buttonHref?: string;
   buttonVariant?: "default" | "outline" | "link" | "lightBlue" | "navyBlue" | "darkGreen" | "filter" | "filterOutline" | "primary" | "underline" | "alternate" | "disabled" | null | undefined;
-  variant?: 'scheme1' | 'scheme2' | 'scheme3' | 'scheme4';
+  variant?: 'scheme1' | 'scheme2' | 'scheme3' | 'scheme4' | 'scheme5';
 
   navigationDotsColor?: {
     active: string;
@@ -64,6 +64,16 @@ const carouselVariantStyles = {
     arrowIconColor: "white",
     sliderButtonColor: "bg-[var(--color-primary)]",
     progressBarBackgroundColor: "bg-[#E3E1EC]"
+  },
+
+  scheme5: {
+    carouselBackground: "bg-[var(--color-navy-blue)]",
+    titleColor: "text-white",
+    buttonVariant: "primary" as const,
+    arrowButtonBackground: "bg-[var(--color-sky-blue)]",
+    arrowIconColor: "var(--color-navy-blue)",
+    sliderButtonColor: "bg-[var(--color-navy-blue)]",
+    progressBarBackgroundColor: "bg-[var(--color-sky-blue)]"
   }
 }
 

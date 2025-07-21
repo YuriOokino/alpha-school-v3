@@ -154,136 +154,138 @@ export default function LocationsPage() {
       >Alpha School Campuses
       </MainHeading>
       <div className="alpha-section">
-        <div className="flex justify-center my-8">
-          <div className="field-wrapper mt-8 !w-[600px] relative !border !border-grey-400">
-            <label className="xs-label">Find a campus near you</label>
-            <input 
-              type="search" 
-              placeholder="Enter your city or state" 
-              value={searchQuery}
-              onChange={(e) => {
-                setSearchQuery(e.target.value);
-                setShowSuggestions(true);
-              }}
-              onFocus={() => setShowSuggestions(true)}
-              onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-              className="!text-black"
-            />
-            {showSuggestions && filteredSuggestions.length > 0 && (
-              <div className="absolute top-full left-0 right-0 bg-white border border-gray-300 rounded-b-md shadow-lg z-10 max-h-60 overflow-y-auto">
-                {filteredSuggestions.map((suggestion, index) => (
-                  <button
-                    key={index}
-                    className="w-full text-left px-4 py-2 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
-                    onClick={() => {
-                      setSearchQuery(suggestion);
-                      setShowSuggestions(false);
-                    }}
-                  >
-                    {suggestion}
-                  </button>
-                ))}
-              </div>
-            )}
+        <div className="alpha-card flex flex-col gap-8 justify-center items-center bg-[var(--color-navy-blue)] mx-auto w-fit">
+          <h3 className="text-white text-center">Find a campus near you</h3>
+          <div className="flex justify-center">
+            <div className="field-wrapper relative !border !border-grey-400 w-fit">
+              <label className="xs-label">Search</label>
+              <input 
+                type="search" 
+                placeholder="Enter your city or state" 
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setShowSuggestions(true);
+                }}
+                onFocus={() => setShowSuggestions(true)}
+                onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
+                className="!text-black w-[600px]"
+              />
+                          {showSuggestions && filteredSuggestions.length > 0 && (
+                <div className="absolute top-full left-0 right-0 bg-white border border-gray-300 rounded-b-md shadow-lg z-10 max-h-60 overflow-y-auto">
+                  {filteredSuggestions.map((suggestion, index) => (
+                    <button
+                      key={index}
+                      className="w-full text-left px-4 py-2 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
+                      onClick={() => {
+                        setSearchQuery(suggestion);
+                        setShowSuggestions(false);
+                      }}
+                    >
+                      {suggestion}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
-        {searchQuery.trim() !== "" && (
-          filteredCampuses.length > 0 ? (
-            <>
-              {/* Display first 3 results as campus preview cards */}
-              <div className="grid gap-6 mx-auto mb-8" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(600px, 1fr))' }}>
-                {filteredCampuses.slice(0, 3).map((campus) => (
-                  <div key={campus.name} className="bg-[var(--color-sky-blue)] !text-[var(--color-navy-blue)] p-[var(--space-xl)] rounded-[var(--radius-lg)]">
-                    <div className="flex flex-col md:flex-row w-full items-center gap-8">
-                      <div className="flex-1 min-w-0 w-full">
-                        <div className="flex justify-start mb-4">
-                          <p className="tagline bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)] px-4 py-1 rounded-[var(--radius-pill)] inline-block">
-                            Alpha School
+                {searchQuery.trim() !== "" && (
+          <div className="mt-[var(--space-xl)]">
+            {filteredCampuses.length > 0 ? (
+              <>
+                {/* Display first 3 results as campus preview cards */}
+                <div className="grid gap-6 mx-auto mb-8" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(600px, 1fr))' }}>
+                  {filteredCampuses.slice(0, 3).map((campus) => (
+                    <div key={campus.name} className="bg-[var(--color-sky-blue)] !text-[var(--color-navy-blue)] p-[var(--space-xl)] rounded-[var(--radius-lg)]">
+                      <div className="flex flex-col md:flex-row w-full items-center gap-8">
+                        <div className="flex-1 min-w-0 w-full">
+                          <div className="flex justify-start mb-4">
+                            <p className="tagline bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)] px-4 py-1 rounded-[var(--radius-pill)] inline-block">
+                              Alpha School
+                            </p>
+                          </div>
+                          <h2 className="heading-style-h2 mb-4">
+                            Private School in {campus.name}
+                          </h2>
+                          <p className="font-semibold mb-2">{campus.grades}</p>
+                          <p className="centered-icon-text mb-4">
+                            <span className="material-icons-outlined">location_on</span>
+                            <a 
+                              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(campus.address)}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="hover:underline"
+                            >
+                              {campus.address}
+                            </a>
                           </p>
-                        </div>
-                        <h2 className="heading-style-h2 mb-4">
-                          Private School in {campus.name}
-                        </h2>
-                        <p className="font-semibold mb-2">{campus.grades}</p>
-                        <p className="centered-icon-text mb-4">
-                          <span className="material-icons-outlined">location_on</span>
-                          <a 
-                            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(campus.address)}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:underline"
+                          <p className="mb-2">
+                            <strong>Email:</strong> {campus.email}
+                          </p>
+                          <Button 
+                            href={campus.buttonHref}
+                            className="centered-icon-text mt-[var(--space-md)]"
+                            variant="navyBlue"
                           >
-                            {campus.address}
-                          </a>
-                        </p>
-                        <p className="mb-2">
-                          <strong>Email:</strong> {campus.email}
-                        </p>
-                        <Button 
-                          href={campus.buttonHref}
-                          className="centered-icon-text mt-[var(--space-md)] bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)] max-w-[200px]"
-                        >
-                          View campus<span className="material-icons-outlined">arrow_forward</span>
-                        </Button>
-                      </div>
-                      <div className="flex-1 min-w-0 flex justify-center items-center">
-                        <div className="w-full h-auto rounded-[var(--radius-lg)] overflow-hidden">
-                          <img 
-                            src={campus.heroImage} 
-                            alt={`${campus.name} Campus`}
-                            className="w-full h-auto object-cover"
-                          />
+                            View campus<span className="material-icons-outlined">arrow_forward</span>
+                          </Button>
+                        </div>
+                        <div className="flex-1 min-w-0 flex justify-center items-center">
+                          <div className="w-full h-auto rounded-[var(--radius-lg)] overflow-hidden">
+                            <img 
+                              src={campus.heroImage} 
+                              alt={`${campus.name} Campus`}
+                              className="w-full h-auto object-cover"
+                            />
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-              
-              {/* Display remaining results in carousel if more than 3 */}
-              {filteredCampuses.length > 3 && (
-                <div className="mt-8">
-                  <Carousel
-                    items={filteredCampuses.slice(3)}
-                    renderItem={(campus) => (
-                      <LocationCard
-                        key={campus.name}
-                        {...campus}
-                        className="w-[340px] bg-[var(--color-sky-blue)] flex-shrink-0 group text-black"
-                        tagClassName="!bg-[var(--color-navy-blue)] !text-white"
-                        tuitionClassName=""
-                      />
-                    )}
-                    title={`More ${(() => {
-                      // Try to find state name from search query
-                      const query = searchQuery.toLowerCase();
-                      for (const [code, name] of Object.entries(stateNames)) {
-                        if (name.toLowerCase().includes(query) || code.toLowerCase().includes(query)) {
-                          return name;
-                        }
-                      }
-                      // If no state match, use "Locations" as fallback
-                      return "Locations";
-                    })()} campuses`}
-                    titleClassName="heading-style-h3 text-white"
-                    className="bg-[var(--color-navy-blue)]"
-                   
-                    navigationArrowsColor={{
-                      background: "bg-[var(--color-sky-blue)]",
-                      icon: "var(--color-navy-blue)"
-                    }}
-                    sliderButtonColor="bg-[var(--color-navy-blue)]"
-                    progressBarBackgroundColor="bg-[var(--color-sky-blue)]"
-                  />
+                  ))}
                 </div>
-              )}
-            </>
-          ) : (
-              <div className="flex flex-col items-center justify-center h-full">
-                <p className="text-lg">No campuses found in "{searchQuery}"</p>
-                <p className="text-sm mt-2">Try searching for a different city or state</p>
-              </div>
-          )
+                
+                {/* Display remaining results in carousel if more than 3 */}
+                {filteredCampuses.length > 3 && (
+                  <div className="mt-8">
+                    <Carousel
+                      items={filteredCampuses.slice(3)}
+                      
+                      renderItem={(campus) => (
+                        <LocationCard
+                          key={campus.name}
+                          {...campus}
+                          className="w-[340px] bg-[var(--color-sky-blue)] flex-shrink-0 group text-black"
+                          tagClassName="!bg-[var(--color-navy-blue)] !text-white"
+                          tuitionClassName=""
+                          variant="scheme1"
+                        />
+                      )}
+                      title={`More ${(() => {
+                        // Try to find state name from search query
+                        const query = searchQuery.toLowerCase();
+                        for (const [code, name] of Object.entries(stateNames)) {
+                          if (name.toLowerCase().includes(query) || code.toLowerCase().includes(query)) {
+                            return name;
+                          }
+                        }
+                        // If no state match, use "Locations" as fallback
+                        return "Locations";
+                      })()} campuses`}
+                      titleClassName="heading-style-h3 text-white"
+                      variant="scheme5"
+                     
+                    />
+                  </div>
+                )}
+              </>
+            ) : (
+                <div className="flex flex-col items-center justify-center h-full">
+                  <p className="text-lg">No campuses found in "{searchQuery}"</p>
+                  <p className="text-sm mt-2">Try searching for a different city or state</p>
+                </div>
+            )}
+          </div>
         )}
         
     </div>
@@ -359,8 +361,11 @@ export default function LocationsPage() {
       </div>
 
       <div className="alpha-section bg-white">
-        <SectionHeading description="Find a school on the map" title="Campus Locations"></SectionHeading>
-        <CampusMap />
+        <div className="alpha-card !rounded-[var(--radius-lg)] flex flex-col gap-4 justify-center items-center bg-[var(--color-sky-blue)] mx-auto">
+          <h3 className="text-center">Campus Locations</h3>
+          <p className="text-center">Find a school on the map</p>
+          <CampusMap />
+        </div>
       </div>
       
   </main>

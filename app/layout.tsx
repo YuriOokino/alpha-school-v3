@@ -3,6 +3,7 @@ import { Inter, Work_Sans } from "next/font/google"
 import "../styles/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Navbar } from "@/components/layout/navigation/navbar"
+import { NewsBanner } from "@/components/layout/navigation/news-banner"
 import Footer from "@/components/layout/navigation/footer"
 import WhatsNextSection from "@/components/layout/navigation/whats-next-section"
 
@@ -35,6 +36,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="relative min-h-screen flex flex-col">
+            <NewsBanner />
             <Navbar />
             <main className="flex-grow bg-white">
               {children}
