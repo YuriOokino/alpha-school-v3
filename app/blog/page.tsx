@@ -163,46 +163,59 @@ export default function BlogPage() {
             </div>
           </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[var(--space-md)] mx-auto">
-                    {featuredArticle && (
-                      <div className="featured-article-card col-span-3 rounded-[var(--radius-lg)] flex bg-[var(--color-sky-blue)] p-[var(--space-lg)] gap-[var(--space-xl)] group">
-                        <div className="flex flex-col flex-1 justify-between h-[350px]">
-                          <div className="flex flex-col gap-4">
-                            <div className="flex gap-2">
-                              <div className="tagline bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)]">{featuredArticle.date}</div>
-                              <div className="tagline border border-[var(--color-navy-blue)] text-[var(--color-navy-blue)]">{featuredArticle.type === "news" ? "News" : "Blog"}</div>
-                            </div>
-                            <div><h4 className="text-[var(--color-navy-blue)]">{featuredArticle.title}</h4></div>
-                            <p>{getArticleExcerpt(featuredArticle.content)}</p>
+                  {/* Featured Article Card */}
+                  {featuredArticle && (
+                    <div className="featured-article-card rounded-[var(--radius-lg)] flex flex-col lg:flex-row bg-[var(--color-sky-blue)] p-[var(--space-lg)] gap-[var(--space-xl)] group mb-[var(--space-xl)]" style={{ padding: 'var(--space-lg)', gap: 'var(--space-xl)' }}>
+                      <style jsx>{`
+                        @media (max-width: 1326px) {
+                          .featured-article-card {
+                            padding: var(--space-md) !important;
+                            gap: var(--space-md) !important;
+                          }
+                        }
+                      `}</style>
+                      <div className="flex flex-col flex-1 justify-between h-[350px]">
+                        <div className="flex flex-col gap-4">
+                          <div className="flex gap-2">
+                            <div className="tagline bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)]">{featuredArticle.date}</div>
+                            <div className="tagline border border-[var(--color-navy-blue)] text-[var(--color-navy-blue)]">{featuredArticle.type === "news" ? "News" : "Blog"}</div>
                           </div>
-                          <div>
-                            <Link href={`/blog/${featuredArticle.slug}`}>
-                              <Button variant="navyBlue"className="centered-text-icon">Read More<span className="material-icons-outlined">arrow_forward</span></Button>
-                            </Link>
-                          </div>
+                          <div><h4 className="text-[var(--color-navy-blue)]">{featuredArticle.title}</h4></div>
+                          <p>{getArticleExcerpt(featuredArticle.content)}</p>
                         </div>
-                        <div className="flex flex-col flex-1 overflow-hidden rounded-[var(--radius-lg)]">
-                          <img 
-                            src={featuredArticle.image} 
-                            alt={featuredArticle.title} 
-                            className="rounded-[var(--radius-lg)] w-full h-full object-cover transition-transform duration-300 scale-105 group-hover:scale-100"
-                          />
+                        <div>
+                          <Link href={`/blog/${featuredArticle.slug}`}>
+                            <Button variant="navyBlue"className="centered-text-icon">Read More<span className="material-icons-outlined">arrow_forward</span></Button>
+                          </Link>
                         </div>
                       </div>
-                    )}
-            {filteredArticles.map((item) => (
-              <Link key={item.slug} href={`/blog/${item.slug}`}>
-                <ArticleCard
-                  imageSrc={item.image}
-                  imageAlt={item.title}
-                  title={item.title}
-                  date={item.date}
-                  category={item.type === "news" ? "News" : "Blog"}
-                  href={`/blog/${item.slug}`}
-                />
-              </Link>
-            ))}
-          </div>
+                      <div className="flex flex-col flex-1 overflow-hidden rounded-[var(--radius-lg)]">
+                        <img 
+                          src={featuredArticle.image} 
+                          alt={featuredArticle.title} 
+                          className="rounded-[var(--radius-lg)] w-full h-full object-cover image-hover-effect"
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Regular Article Cards Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
+                    {filteredArticles.map((item) => (
+                      <div key={item.slug} className="w-full max-w-[300px]">
+                        <Link href={`/blog/${item.slug}`}>
+                          <ArticleCard
+                            imageSrc={item.image}
+                            imageAlt={item.title}
+                            title={item.title}
+                            date={item.date}
+                            category={item.type === "news" ? "News" : "Blog"}
+                            href={`/blog/${item.slug}`}
+                          />
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
         </div>
       </section>
 

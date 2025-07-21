@@ -19,7 +19,7 @@ export default function ArticleCard({ imageSrc, imageAlt, title, date, category,
   const imageClass = "w-full aspect-[3/2] object-cover rounded-[var(--radius-md)]";
 
   return (
-    <div className="flex flex-col gap-[var(--space-sm)] group">
+    <div className="flex flex-col gap-[var(--space-sm)] group h-[400px]">
       <Link href={href} className="overflow-hidden rounded-[var(--radius-md)]">
         <img src={imageSrc} alt={imageAlt} className={`${imageClass} image-hover-effect`} />
       </Link>

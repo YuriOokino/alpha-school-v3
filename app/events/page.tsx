@@ -93,10 +93,7 @@ export default function EventsPage() {
               />
             </div>
           </div>
-          <div
-            className="inline-grid gap-[var(--space-md)] mx-auto"
-            style={{ gridTemplateColumns: 'repeat(3, auto)' }}
-          >
+          <div className="flex flex-wrap gap-[var(--space-md)] justify-center">
             {filteredEvents.map((event) => (
               <EventCard
                 key={event.id}
