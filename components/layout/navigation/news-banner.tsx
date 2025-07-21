@@ -41,11 +41,11 @@ export function NewsBanner({
 
   return (
     <div 
-      className={`w-full bg-[var(--color-sky-blue)] h-10 flex items-center justify-center relative transition-all duration-300 ease-out ${
+      className={`w-full bg-[var(--color-sky-blue)] h-auto py-2 flex items-center justify-center relative transition-all duration-300 ease-out ${
         isClosing ? 'opacity-0 -translate-y-full' : 'opacity-100 translate-y-0'
       } ${className}`}
     >
-      <div className="flex items-center justify-center flex-1 px-4">
+      <div className="flex items-center justify-center flex-1 px-12 sm:px-4">
         <span className="text-sm font-medium text-center">
           {message}{' '}
           <a 

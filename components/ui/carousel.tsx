@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 interface CarouselProps {
   items: any[];
   renderItem: (item: any, index: number) => React.ReactNode;
-  visibleCards?: number;
+  visibleCards?: number | { mobile: number; desktop: number };
   className?: string;
   title?: string;
   titleClassName?: string;
@@ -80,7 +80,7 @@ const carouselVariantStyles = {
 export default function Carousel({
   items,
   renderItem,
-  visibleCards = 3.5,
+  visibleCards = { mobile: 1, desktop: 3.5 },
   className = "",
   title,
   titleClassName = "",
@@ -109,8 +109,22 @@ export default function Carousel({
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 768);
   const progressBarRef = useRef<HTMLDivElement>(null);
-  const cardWidth = 100 / visibleCards;
+  
+  // Handle responsive visibleCards with resize listener
+  const getVisibleCards = () => {
+    if (typeof visibleCards === 'object') {
+      const isMobile = windowWidth < 768;
+      return isMobile ? visibleCards.mobile : visibleCards.desktop;
+    }
+    return visibleCards;
+  };
+  
+  const currentVisibleCards = getVisibleCards();
+  const cardWidth = 100 / currentVisibleCards;
 
   const nextItem = () => {
     setActiveIndex((prev) => (prev + 1) % items.length);
@@ -167,6 +181,43 @@ export default function Carousel({
     setActiveIndex(Math.max(0, Math.min(newIndex, items.length - 1)));
   };
 
+  // Touch handlers for mobile swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe && activeIndex < items.length - 1) {
+      nextItem();
+    }
+    if (isRightSwipe && activeIndex > 0) {
+      prevItem();
+    }
+
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
+
+  // Resize listener for responsive behavior
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   useEffect(() => {
     if (isDragging) {
       document.addEventListener('mousemove', handleMouseMove);
@@ -180,10 +231,15 @@ export default function Carousel({
   }, [isDragging]);
 
   return (
-    <div className={`w-full rounded-[var(--radius-lg)] pt-[var(--space-md)] md:pt-[var(--space-lg)] pb-[var(--space-md)] md:pb-[var(--space-lg)] relative ${finalCarouselBackground}`}>
+    <div 
+      className={`w-full rounded-[var(--radius-lg)] pt-[var(--space-md)] md:pt-[var(--space-lg)] pb-[var(--space-md)] md:pb-[var(--space-lg)] relative ${finalCarouselBackground}`}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       <div className="pr-[var(--space-sm)] md:pr-[var(--space-lg)]">
         {(title || buttonText) && (
-          <div className="ml-[var(--space-sm)] md:ml-[var(--space-lg)] flex flex-col md:flex-row items-center md:justify-between mb-[var(--space-sm)] md:mb-[var(--space-lg)] md:gap-[var(--space-md)] gap-[var(--space-sm)]">
+          <div className="ml-[var(--space-sm)] md:ml-[var(--space-lg)] flex flex-col md:flex-row items-start md:items-center md:justify-between mb-[var(--space-lg)] md:mb-[var(--space-lg)] md:gap-[var(--space-md)] gap-[var(--space-sm)]">
             {title && <h2 className={`heading-style-h4 md:heading-style-h4 ${finalTitleColor}`}>{title}</h2>}
             {buttonText && buttonHref && (
               <div><Button variant={finalButtonVariant} className="gap-2" href={buttonHref}>
@@ -199,18 +255,18 @@ export default function Carousel({
       </div>
       <div className="relative flex items-center">
         <div className="overflow-hidden w-full">
-          <div
-            className="flex transition-transform duration-500"
-            style={{
-              width: `${visibleCards * cardWidth}%`,
-              transform: `translateX(-${activeIndex * cardWidth}%)`,
-              marginLeft: 'clamp(var(--space-sm), 4vw, var(--space-lg))',
-            }}
-          >
+                      <div
+              className="flex transition-transform duration-500"
+              style={{
+                width: `${currentVisibleCards * cardWidth}%`,
+                transform: `translateX(-${activeIndex * cardWidth}%)`,
+                marginLeft: 'clamp(var(--space-sm), 4vw, var(--space-lg))',
+              }}
+            >
             {items.map((item, idx) => (
               <div
                 key={idx}
-                style={{ flex: `0 0 340px` }}
+                style={{ flex: `0 0 ${100 / currentVisibleCards}%` }}
                 className="px-2 flex-shrink-0"
               >
                 {renderItem(item, idx)}

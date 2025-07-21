@@ -106,7 +106,7 @@ export default function AlphaGuidesSection() {
         renderItem={(guide) => (
           <GuideCard {...guide} className="flex-shrink-0 group" variant="blue" />
         )}
-        visibleCards={3.9}
+
         variant="scheme2"
         title="Meet our Guides"
         buttonText="View all Guides"

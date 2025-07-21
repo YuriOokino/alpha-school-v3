@@ -109,7 +109,6 @@ aspectRatio="16/9"
               <EventCard {...event} url={`/events/${event.slug}`} className="flex-shrink-0 group" variant="scheme2" />
             )}
             title="Events & programs"
-            visibleCards={4.5}
             buttonText="View all Events"
             buttonHref="/events"
             variant="scheme3" // Change this to switch carousel color schemes: 'scheme1', 'scheme2', 'scheme3', or 'scheme4'

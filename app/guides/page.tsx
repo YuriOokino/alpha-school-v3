@@ -36,7 +36,6 @@ export default function GuidesPage() {
           title="Austin"
           buttonText="Discover Alpha Austin"
           buttonHref="/austin"
-          visibleCards={3.9}
           variant="scheme2"
         />
 
@@ -58,7 +57,7 @@ export default function GuidesPage() {
           buttonText="Discover Alpha Brownsville"
           buttonHref="/brownsville"
           
-          visibleCards={3.9}
+
           
         />
         </div>

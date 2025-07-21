@@ -379,7 +379,7 @@ export default function EventPage() {
           renderItem={(event) => (
             <EventCard {...event} url={`/events/${event.slug}`} className="flex-shrink-0 group" variant="scheme1" />
           )}
-          visibleCards={3.75}
+  
           variant="scheme1"
         />
       </section>

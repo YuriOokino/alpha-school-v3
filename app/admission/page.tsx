@@ -497,7 +497,7 @@ export default function AdmissionPage() {
               className="h-full"
             />
           )}
-          visibleCards={3.25}
+  
          
         />
       </section>

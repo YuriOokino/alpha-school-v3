@@ -154,10 +154,10 @@ export default function LocationsPage() {
       >Alpha School Campuses
       </MainHeading>
       <div className="alpha-section">
-        <div className="alpha-card flex flex-col gap-8 justify-center items-center bg-[var(--color-navy-blue)] mx-auto w-fit">
-          <h3 className="text-white text-center">Find a campus near you</h3>
-          <div className="flex justify-center">
-            <div className="field-wrapper relative !border !border-grey-400 w-fit">
+        <div className="alpha-card flex flex-col gap-8 justify-center items-center bg-[var(--color-light-green)] mx-auto w-fit">
+          <h3 className="text-[var(--color-dark-green)] text-center heading-style-h4">Find a campus near you</h3>
+          <div className="flex justify-center max-w-[600px] w-full">
+            <div className="field-wrapper relative">
               <label className="xs-label">Search</label>
               <input 
                 type="search" 
@@ -169,7 +169,7 @@ export default function LocationsPage() {
                 }}
                 onFocus={() => setShowSuggestions(true)}
                 onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-                className="!text-black w-[600px]"
+                className="!text-black w-full"
               />
                           {showSuggestions && filteredSuggestions.length > 0 && (
                 <div className="absolute top-full left-0 right-0 bg-white border border-gray-300 rounded-b-md shadow-lg z-10 max-h-60 overflow-y-auto">
@@ -195,9 +195,9 @@ export default function LocationsPage() {
             {filteredCampuses.length > 0 ? (
               <>
                 {/* Display first 3 results as campus preview cards */}
-                <div className="grid gap-6 mx-auto mb-8" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(600px, 1fr))' }}>
+                <div className="grid gap-6 mx-auto mb-8" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
                   {filteredCampuses.slice(0, 3).map((campus) => (
-                    <div key={campus.name} className="bg-[var(--color-sky-blue)] !text-[var(--color-navy-blue)] p-[var(--space-xl)] rounded-[var(--radius-lg)]">
+                    <div key={campus.name} className="bg-[var(--color-sky-blue)] !text-[var(--color-navy-blue)] p-[var(--space-md)] md:p-[var(--space-xl)] rounded-[var(--radius-lg)] w-full">
                       <div className="flex flex-col md:flex-row w-full items-center gap-8">
                         <div className="flex-1 min-w-0 w-full">
                           <div className="flex justify-start mb-4">
@@ -250,7 +250,7 @@ export default function LocationsPage() {
                   <div className="mt-8">
                     <Carousel
                       items={filteredCampuses.slice(3)}
-                      
+
                       renderItem={(campus) => (
                         <LocationCard
                           key={campus.name}
@@ -362,8 +362,14 @@ export default function LocationsPage() {
 
       <div className="alpha-section bg-white">
         <div className="alpha-card !rounded-[var(--radius-lg)] flex flex-col gap-4 justify-center items-center bg-[var(--color-sky-blue)] mx-auto">
-          <h3 className="text-center">Campus Locations</h3>
-          <p className="text-center">Find a school on the map</p>
+          <SectionHeading
+          title="Find an Alpha School" 
+          description="Search a current or upcoming location on the map. Cannot find one?"
+         buttonText="Bring Alpha to your city"
+         buttonHref="/bring-alpha-to-your-city"
+         buttonVariant="navyBlue"
+        className="!mb-[var(--space-md)] text-[var(--color-navy-blue)]"
+         />
           <CampusMap />
         </div>
       </div>

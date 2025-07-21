@@ -43,7 +43,7 @@ export default function EventsCarousel({
       renderItem={(event) => (
         <EventCard {...event} url={`/events/${event.slug}`} />
       )}
-      visibleCards={3.75}
+
       className={className}
       title={title}
       variant={variant}

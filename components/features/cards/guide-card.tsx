@@ -40,7 +40,7 @@ export default function GuideCard({ image, name, role, bio, className, variant =
 
   return (
     <div
-      className={`relative w-full min-h-[300px] sm:min-h-[350px] md:min-h-[400px] rounded-[var(--radius-md)] overflow-hidden flex flex-col justify-end group ${className}`}
+      className={`relative w-full max-w-[340px] h-[400px] rounded-[var(--radius-md)] overflow-hidden flex flex-col justify-end group ${className}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >

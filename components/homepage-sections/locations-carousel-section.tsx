@@ -28,7 +28,7 @@ export default function LocationsCarouselSection() {
             variant="scheme1"
           />
         )}
-        visibleCards={3.5}
+
         title="Alpha New Locations"
         buttonText="View all Locations"
         buttonHref="/locations"
