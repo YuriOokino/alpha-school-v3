@@ -131,6 +131,7 @@ export default function TheProgramPage() {
                 className="w-full max-w-md"
                 posterAlt="The Alpha Guides"
                 textOverlay="The Alpha Guides"
+                enableHoverEffect={true}
               />
             </div>
           </div>
@@ -161,6 +162,7 @@ export default function TheProgramPage() {
                 className="w-full max-w-md"
                 posterAlt="The Results"
                 textOverlay="The Results"
+                enableHoverEffect={true}
               />
             </div>
             {/* Right column: text */}
@@ -223,6 +225,7 @@ export default function TheProgramPage() {
                 className="w-full max-w-md"
                 posterAlt="Lifeskills Workshops"
                 textOverlay="Lifeskills Workshops"
+                enableHoverEffect={true}
               />
             </div>
           </div>

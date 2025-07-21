@@ -17,7 +17,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({ url, thumbnail, name, subt
       <img
         src={thumbnail}
         alt={name}
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 scale-105 group-hover:scale-100"
+        className="absolute inset-0 w-full h-full object-cover image-hover-effect"
       />
       {/* Black overlay with 35% opacity */}
       <div className="absolute inset-0 bg-black bg-opacity-35"></div>

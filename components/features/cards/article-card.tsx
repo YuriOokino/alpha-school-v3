@@ -21,7 +21,7 @@ export default function ArticleCard({ imageSrc, imageAlt, title, date, category,
   return (
     <div className="flex flex-col gap-[var(--space-sm)] group">
       <Link href={href} className="overflow-hidden rounded-[var(--radius-md)]">
-        <img src={imageSrc} alt={imageAlt} className={`${imageClass} transition-transform duration-300 scale-105 group-hover:scale-100`} />
+        <img src={imageSrc} alt={imageAlt} className={`${imageClass} image-hover-effect`} />
       </Link>
         
         <div className={contentClass}>

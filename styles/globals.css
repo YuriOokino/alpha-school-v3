@@ -550,4 +550,9 @@ input[type="tel"]::-webkit-inner-spin-button {
 .form-top-content {
   @apply m-auto flex !flex-col text-center !gap-0.5 mb-4 max-w-[400px];
 }
+
+/* Image hover effect - scales down on hover for subtle animation */
+.image-hover-effect {
+  @apply transition-transform duration-300 scale-105 group-hover:scale-100;
+}
 }

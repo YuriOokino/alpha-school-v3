@@ -124,8 +124,11 @@ export default function Carousel({
   };
   
   const currentVisibleCards = getVisibleCards();
-  const cardWidth = 100 / currentVisibleCards;
-
+  
+  // Fixed sizes - cards and gaps never change
+  const CARD_WIDTH = 320; // Fixed card width in pixels
+  const GAP_SIZE = 16; // Fixed gap between cards in pixels
+  
   const nextItem = () => {
     setActiveIndex((prev) => (prev + 1) % items.length);
   };
@@ -255,19 +258,19 @@ export default function Carousel({
       </div>
       <div className="relative flex items-center">
         <div className="overflow-hidden w-full">
-                      <div
-              className="flex transition-transform duration-500"
-              style={{
-                width: `${currentVisibleCards * cardWidth}%`,
-                transform: `translateX(-${activeIndex * cardWidth}%)`,
-                marginLeft: 'clamp(var(--space-sm), 4vw, var(--space-lg))',
-              }}
-            >
+          <div
+            className="flex transition-transform duration-500"
+            style={{
+              gap: `${GAP_SIZE}px`,
+              transform: `translateX(-${activeIndex * (CARD_WIDTH + GAP_SIZE)}px)`,
+              marginLeft: 'clamp(var(--space-sm), 4vw, var(--space-lg))',
+            }}
+          >
             {items.map((item, idx) => (
               <div
                 key={idx}
-                style={{ flex: `0 0 ${100 / currentVisibleCards}%` }}
-                className="px-2 flex-shrink-0"
+                style={{ width: `${CARD_WIDTH}px`, minWidth: `${CARD_WIDTH}px` }}
+                className="flex-shrink-0"
               >
                 {renderItem(item, idx)}
               </div>

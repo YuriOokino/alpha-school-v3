@@ -10,6 +10,7 @@ interface VideoPlayerProps {
   aspectRatio?: "16/9" | "4/3" | "1/1" | "21/9"
   overlayImage?: string
   textOverlay?: string
+  enableHoverEffect?: boolean
 }
 
 export function VideoPlayer({ 
@@ -19,7 +20,8 @@ export function VideoPlayer({
   className = "",
   aspectRatio = "16/9",
   overlayImage,
-  textOverlay
+  textOverlay,
+  enableHoverEffect = false
 }: VideoPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false)
 
@@ -61,13 +63,13 @@ export function VideoPlayer({
   }
 
   return (
-    <div className={`relative rounded-[var(--radius-lg)] overflow-hidden w-full ${aspectRatioClasses[aspectRatio]} ${className}`}>
+    <div className={`relative rounded-[var(--radius-lg)] overflow-hidden w-full ${enableHoverEffect ? 'group' : ''} ${aspectRatioClasses[aspectRatio]} ${className}`}>
       {!isPlaying ? (
         <div className="relative w-full h-full cursor-pointer" onClick={handlePlay}>
           <img
             src={posterImage}
             alt={posterAlt}
-            className="w-full h-full object-cover"
+            className={`w-full h-full object-cover ${enableHoverEffect ? 'image-hover-effect' : ''}`}
           />
           {/* Additional black overlay for better contrast */}
           <div className="absolute inset-0 bg-black/30 z-10"></div>
