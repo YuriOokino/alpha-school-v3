@@ -292,7 +292,11 @@ export default function LocationsPage() {
     <Divider fill="white" />
       <div className="alpha-section bg-white">
         <div className="mb-[var(--space-4xl)]">
-        <SectionHeading description="A list of all of our current campuses" title="Current Locations"></SectionHeading>
+        <SectionHeading 
+           buttonText="Apply to Alpha School"
+           buttonHref="/admission"
+           buttonVariant="navyBlue"
+        description="Discover Alpha School campuses across the country where students are already learning 2x faster, building confidence, and loving school again. Each location offers our proven curriculum and personalized learning approach." title="Current Locations"></SectionHeading>
         <div className="grid gap-4 mb-[var(--space-xl)] mx-auto" style={{ gridTemplateColumns: 'repeat(auto-fit, 340px)', justifyContent: 'center' }}>
             {currentCampusesToShow.length > 0 ? (
               currentCampusesToShow.map((campus) => (
@@ -323,8 +327,12 @@ export default function LocationsPage() {
         )}
 
         </div>
-        <div>
-          <SectionHeading description="A list of all of our upcoming campuses" title="Upcoming Locations"></SectionHeading>
+        <div id="new-locations">
+          <SectionHeading description="Alpha School is expanding! New campuses opening this fall will bring our innovative learning model to more communities. Join the waitlist to be among the first families to experience Alpha's transformative education." 
+          buttonText="Apply to Alpha School"
+          buttonHref="/admission"
+          buttonVariant="darkGreen"
+          title="Opening Fall 2025"></SectionHeading>
           <div className="grid gap-4 mb-[var(--space-xl)] mx-auto" style={{ gridTemplateColumns: 'repeat(auto-fit, 340px)', justifyContent: 'center' }}>
             {upcomingCampusesToShow.length > 0 ? (
               upcomingCampusesToShow.map((campus) => (
@@ -364,7 +372,7 @@ export default function LocationsPage() {
         <div className="alpha-card !rounded-[var(--radius-lg)] flex flex-col gap-4 justify-center items-center bg-[var(--color-sky-blue)] mx-auto">
           <SectionHeading
           title="Find an Alpha School" 
-          description="Search a current or upcoming location on the map. Cannot find one?"
+          description={<>Search a current or upcoming location on the map. <span className="font-semibold text-[var(--color-navy-blue)]">Cannot find one?</span></>}
          buttonText="Bring Alpha to your city"
          buttonHref="/bring-alpha-to-your-city"
          buttonVariant="navyBlue"

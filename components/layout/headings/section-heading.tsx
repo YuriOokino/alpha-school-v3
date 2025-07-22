@@ -5,7 +5,7 @@ import Link from "next/link"
 
 interface SectionHeadingProps {
   title: string
-  description: string
+  description: string | React.ReactNode
   buttonText?: string
   buttonHref?: string
   className?: string

@@ -5,6 +5,7 @@ import Carousel from "@/components/ui/carousel"
 import LocationCard from "@/components/features/cards/location-card"
 import { getAllCampuses } from "@/utils/campuses"
 import type { CampusMetadata } from "@/utils/campuses"
+import SectionHeader from "@/components/layout/headings/section-heading"
 
 export default function LocationsCarouselSection() {
   const [campuses, setCampuses] = React.useState<CampusMetadata[]>([]);
@@ -20,6 +21,13 @@ export default function LocationsCarouselSection() {
 
   return (
     <section className="alpha-section bg-white">
+      <SectionHeader 
+      title="New locations coming this fall!"
+      description="We're expanding to new cities and countries to bring our unique learning experience to more students around the world."
+      buttonText="View all new locations"
+      buttonHref="/locations/#new-locations"
+      buttonVariant="navyBlue"
+      />
       <Carousel
         items={campuses}
         renderItem={(campus) => (

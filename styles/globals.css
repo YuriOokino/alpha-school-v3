@@ -208,26 +208,26 @@ html.has-scroll-dragging {
   }
 
   h3, .heading-style-h3 {
-    @apply font-medium text-[40px] leading-[1.2] uppercase;
+    @apply font-medium text-[40px] leading-[1.1] uppercase;
   }
 
   h4, .heading-style-h4 {
-    @apply font-medium text-[32px] leading-[1.2] uppercase;
+    @apply font-medium text-[32px] leading-[1.1] uppercase;
   }
 
   h5, .heading-style-h5 {
-    @apply font-normal text-[24px] md:text-[24px] leading-[1.3] uppercase;
+    @apply font-normal text-[24px] md:text-[24px] leading-[1.1] uppercase;
   }
 
   h6, .heading-style-h6 {
-    @apply font-medium text-[18px] leading-[1.3] uppercase;
+    @apply font-medium text-[18px] leading-[1.2] uppercase;
   }
   .heading-style-uppercase {
     @apply font-normal text-[16px] uppercase;
   }
 
   .display-headline {
-    @apply font-bagel text-[32px] md:text-[64px] leading-[1.2];
+    @apply font-bagel text-[32px] md:text-[64px] leading-[1.2] tracking-wide;
   }
 
 /* Layout Utilities */

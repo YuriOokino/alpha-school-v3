@@ -29,7 +29,7 @@ export default function TestimonialsSection() {
       background: 'bg-[var(--color-sky-blue)]',
       button: 'bg-white',
       buttonText: 'text-[var(--color-navy-blue)]',
-      sliderDot: 'bg-[var(--color-sky-blue)]',
+      sliderDot: 'bg-[var(--color-navy-blue)]',
       sliderTrack: 'bg-white opacity-80'
     },
     scheme3: {
@@ -91,8 +91,8 @@ const testimonials = [
   },
 ];
 
-  // Duplicate testimonials for seamless infinite scroll
-  const duplicatedTestimonials = [...testimonials, ...testimonials];
+  // Duplicate testimonials multiple times for seamless infinite scroll
+  const duplicatedTestimonials = [...testimonials, ...testimonials, ...testimonials, ...testimonials];
 
 
 
@@ -294,12 +294,10 @@ return (
         <div className="relative flex items-center">
           <div className="overflow-hidden w-full">
             <div
-              className={`flex gap-8 w-fit transition-transform duration-700 ease-in-out ${
-                isPaused ? '' : 'animate-scroll-infinite'
+              className={`flex gap-2 w-fit ${
+                isPaused ? '' : 'animate-scroll-fast'
               }`}
               style={{
-                animation: isPaused ? 'none' : 'scroll 20s linear infinite',
-                transform: isPaused ? `translateX(-${activeIndex * (100 / visibleCardsCount)}%)` : undefined,
                 marginLeft: 'clamp(var(--space-sm), 4vw, var(--space-lg))',
               }}
             >
@@ -336,48 +334,39 @@ return (
           <div className="hidden md:block w-[200px]">
             <div
               ref={progressBarRef}
-              className={`w-full ${styles.sliderTrack} rounded-full h-10 cursor-pointer relative`}
+              className={`w-full ${styles.sliderTrack} rounded-full h-6 cursor-pointer relative p-0.5`}
               onMouseDown={handleMouseDown}
               onClick={handleClick}
             >
               <div
-                className={`absolute top-1 w-8 h-8 ${styles.sliderDot} rounded-full cursor-grab active:cursor-grabbing transition-all duration-300 ease-out`}
+                className={`absolute top-0.5 w-5 h-5 ${styles.sliderDot} rounded-full cursor-grab active:cursor-grabbing transition-all duration-300 ease-out`}
                 style={{
-                  left: `calc(4px + ${(duplicatedTestimonials.length === 1 ? 0 : activeIndex / (duplicatedTestimonials.length - 1))} * (100% - 40px))`
+                  left: `calc(2px + ${(duplicatedTestimonials.length === 1 ? 0 : activeIndex / (duplicatedTestimonials.length - 1))} * (100% - 20px))`
                 }}
                 onMouseDown={handleDotDown}
               />
             </div>
           </div>
           {/* Arrows - right */}
-          <div className="flex gap-3">
+          <div className="flex h-6">
             <button
               onClick={prevTestimonial}
-              className={`w-10 h-10 flex items-center justify-center rounded-full ${styles.button} disabled:opacity-50`}
+              className={`w-8 flex items-center justify-center rounded-l-full ${styles.button} disabled:opacity-50 border-r border-black/10`}
               aria-label="Previous"
             >
-              <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M13 15l-5-5 5-5" stroke="var(--color-navy-blue)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              <span className="material-icons-outlined text-sm" style={{ color: 'var(--color-navy-blue)' }}>chevron_left</span>
             </button>
             <button
               onClick={nextTestimonial}
-              className={`w-10 h-10 flex items-center justify-center rounded-full ${styles.button} disabled:opacity-50`}
+              className={`w-8 flex items-center justify-center rounded-r-full ${styles.button} disabled:opacity-50`}
               aria-label="Next"
             >
-              <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M7 5l5 5-5 5" stroke="var(--color-navy-blue)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              <span className="material-icons-outlined text-sm" style={{ color: 'var(--color-navy-blue)' }}>chevron_right</span>
             </button>
           </div>
         </div>
         
-        <style jsx>{`
-          @keyframes scroll {
-            0% {
-              transform: translateX(0);
-            }
-            100% {
-              transform: translateX(-${100 / visibleCardsCount * testimonials.length}%);
-            }
-          }
-        `}</style>
+
       </div>
       {openVideo && (
   <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">

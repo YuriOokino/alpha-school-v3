@@ -332,7 +332,7 @@ export default function AdmissionPage() {
               {/* Admissions Downloads Section */}
               <div>
                 <h3 className="text-[var(--color-dark-green)] heading-style-h5 mb-4">Admissions Downloads</h3>
-                <div className="space-y-3">
+                <div className="flex flex-col sm:flex-row flex-wrap gap-3">
                   <Button variant="outline" radius="small" href="https://docs.google.com/document/d/1KUh840CMAaCN3XNEJeoXvUclzel0y9Ub/edit?tab=t.0" className="icon-text-center uppercase text-[var(--color-dark-green)] outline-[var(--color-dark-green)]">
                       Previous School Records<span className="material-icons-outlined text-[20px]">file_download</span>
                   </Button>

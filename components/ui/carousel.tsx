@@ -247,9 +247,7 @@ export default function Carousel({
             {buttonText && buttonHref && (
               <div><Button variant={finalButtonVariant} className="gap-2" href={buttonHref}>
                 {buttonText}
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5.293 12.293L6.707 13.707L13.414 6.99997L6.707 0.292969L5.293 1.70697L9.586 5.99997H0V7.99997H9.586L5.293 12.293Z" fill="currentColor"/>
-                </svg>
+                <span className="material-icons-outlined">arrow_forward</span>
               </Button>
               </div>
             )}
@@ -286,15 +284,15 @@ export default function Carousel({
             <div className="flex-1 min-w-[200px]">
               <div
                 ref={progressBarRef}
-                className={`w-full ${finalProgressBarBackgroundColor} rounded-full h-10 cursor-pointer relative`}
+                className={`w-full ${finalProgressBarBackgroundColor} rounded-full h-6 cursor-pointer relative p-0.5`}
                 onMouseDown={handleMouseDown}
                 onClick={handleClick} // optional: allow click-to-jump
               >
                 {/* Switch-style draggable dot */}
                 <div
-                  className={`absolute top-1 w-8 h-8 ${finalSliderButtonColor} rounded-full cursor-grab active:cursor-grabbing transition-all duration-300 ease-out`}
+                  className={`absolute top-0.5 w-5 h-5 ${finalSliderButtonColor} rounded-full cursor-grab active:cursor-grabbing transition-all duration-300 ease-out`}
                   style={{
-                    left: `calc(4px + ${(items.length === 1 ? 0 : activeIndex / (items.length - 1))} * (100% - 40px))`
+                    left: `calc(2px + ${(items.length === 1 ? 0 : activeIndex / (items.length - 1))} * (100% - 20px))`
                   }}
                   onMouseDown={handleDotDown}
                 />
@@ -303,26 +301,22 @@ export default function Carousel({
             </div>
           </div>
           {/* Arrows - right */}
-          <div className="flex gap-3">
+          <div className="flex h-6">
             <button
               onClick={prevItem}
               disabled={activeIndex === 0}
-              className={`w-10 h-10 flex items-center justify-center rounded-full ${finalArrowButtonBackground} disabled:opacity-50`}
+              className={`w-8 flex items-center justify-center rounded-l-full ${finalArrowButtonBackground} disabled:opacity-50 border-r border-black/10`}
               aria-label="Previous"
             >
-              <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
-                <path d="M13 15l-5-5 5-5" stroke={finalArrowIconColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+              <span className="material-icons-outlined text-sm" style={{ color: finalArrowIconColor }}>chevron_left</span>
             </button>
             <button
               onClick={nextItem}
               disabled={activeIndex === items.length - 1}
-              className={`w-10 h-10 flex items-center justify-center rounded-full ${finalArrowButtonBackground} disabled:opacity-50`}
+              className={`w-8 flex items-center justify-center rounded-r-full ${finalArrowButtonBackground} disabled:opacity-50`}
               aria-label="Next"
             >
-              <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
-                <path d="M7 5l5 5-5 5" stroke={finalArrowIconColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+              <span className="material-icons-outlined text-sm" style={{ color: finalArrowIconColor }}>chevron_right</span>
             </button>
           </div>
         </div>

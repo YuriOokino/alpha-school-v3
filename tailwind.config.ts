@@ -66,7 +66,8 @@ const config = {
         bagel: ['Bagel Fat One', 'cursive'],
       },
       animation: {
-        scroll: 'scroll 40s linear infinite',
+        scroll: 'scroll 200s linear infinite',
+        "scroll-fast": 'scroll 80s linear infinite',
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "unlock": "unlock 0.5s ease-in-out",
