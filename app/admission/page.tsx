@@ -271,7 +271,7 @@ export default function AdmissionPage() {
           <div className="two-column-flex max-w-5xl mx-auto mb-24">
             {/* Left: Heading and Description */}
             <div className="flex-1">
-              <h2 className="heading-style-h4 mb-4">Admission Application</h2>
+              <h2 className="heading-style-h4 mb-4 text-[var(--color-navy-blue)]">Admission Application</h2>
               <p>
                 Here's a step-by-step guide to making your application process smooth and simple.
               </p>
@@ -286,7 +286,7 @@ export default function AdmissionPage() {
           <div className="two-column-flex max-w-5xl mx-auto">
             {/* Left: Heading and Description */}
             <div className="flex-1">
-              <h2 className="heading-style-h4 mb-4">Enrollment Process</h2>
+              <h2 className="heading-style-h4 mb-4 text-[var(--color-navy-blue)]">Enrollment Process</h2>
               <p>
                 Next step – finalizing your enrollment and preparing for an incredible educational journey with Alpha.
               </p>
@@ -309,7 +309,7 @@ export default function AdmissionPage() {
           buttonVariant="darkGreen"
           className="text-[var(--color-dark-green)]"
         />
-        <div className="alpha-card !p-[var(--space-xl)] bg-[var(--color-light-green)] max-w-6xl mx-auto">
+        <div className="alpha-card lg:!p-[var(--space-xl)] bg-[var(--color-light-green)] max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Left Column - Important Details */}
             <div className="space-y-8">
@@ -358,8 +358,8 @@ export default function AdmissionPage() {
                     </span>
                   </button>
                   <div 
-                    className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                      expandedSection === 'immunization-requirements' ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                    className={`transition-all duration-300 ease-in-out ${
+                      expandedSection === 'immunization-requirements' ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
                     }`}
                   >
                     <div className="space-y-3 pt-4">
@@ -385,81 +385,81 @@ export default function AdmissionPage() {
               
               <div className="space-y-8">
                 {/* Alpha School Austin */}
-                <div className="flex items-center gap-4">
+                <div className="flex items-start gap-4">
                   <div 
                     className="w-16 h-16 rounded-full bg-cover bg-center flex-shrink-0 overflow-hidden"
                     style={{ backgroundImage: "url('/assets/school-contacts/austin-contact.webp')" }}
                   >
                   </div>
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <h6 className="text-[var(--color-dark-green)] mb-1">Alpha School Austin</h6>
-                    <p className="centered-icon-text">
-                      <span className="material-icons-outlined mr-1">account_circle</span>
+                    <p className="centered-icon-text break-words">
+                      <span className="material-icons-outlined mr-1 flex-shrink-0">account_circle</span>
                       Joanna Lovejoy
                       </p>
-                    <p className="centered-icon-text">
-                      <span className="material-icons-outlined mr-1">mail_outline</span>
-                      <a href="mailto:admissions@alpha.school">admissions@alpha.school</a>
+                    <p className="centered-icon-text break-words">
+                      <span className="material-icons-outlined mr-1 flex-shrink-0">mail_outline</span>
+                      <a href="mailto:admissions@alpha.school" className="break-all">admissions@alpha.school</a>
                     </p>
                   </div>
                 </div>
 
                 {/* Alpha School Miami */}
-                <div className="flex items-center gap-4">
+                <div className="flex items-start gap-4">
                   <div 
                     className="w-16 h-16 rounded-full bg-cover bg-center flex-shrink-0 overflow-hidden"
                     style={{ backgroundImage: "url('/assets/school-contacts/miami-contact.webp')" }}
                   >
                   </div>
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <h6 className="text-[var(--color-dark-green)] mb-1">Alpha School Miami</h6>
-                    <p className="centered-icon-text">
-                      <span className="material-icons-outlined mr-1">account_circle</span>
+                    <p className="centered-icon-text break-words">
+                      <span className="material-icons-outlined mr-1 flex-shrink-0">account_circle</span>
                       Debby Lichtner
                     </p>
-                    <p className="centered-icon-text">
-                      <span className="material-icons-outlined mr-1">mail_outline</span>
-                      <a href="mailto:admissions.miami@alpha.school">admissions.miami@alpha.school</a>
+                    <p className="centered-icon-text break-words">
+                      <span className="material-icons-outlined mr-1 flex-shrink-0">mail_outline</span>
+                      <a href="mailto:admissions.miami@alpha.school" className="break-all">miami@alpha.school</a>
                     </p>
                   </div>
                 </div>
 
                 {/* Alpha School Brownsville */}
-                <div className="flex items-center gap-4">
+                <div className="flex items-start gap-4">
                   <div 
                     className="w-16 h-16 rounded-full bg-cover bg-center flex-shrink-0 overflow-hidden"
                     style={{ backgroundImage: "url('/assets/school-contacts/brownsville-contact.webp')" }}
                   >
                   </div>
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <h6 className="text-[var(--color-dark-green)] mb-1">Alpha School Brownsville</h6>
-                    <p className="centered-icon-text">
-                      <span className="material-icons-outlined mr-1">account_circle</span>
+                    <p className="centered-icon-text break-words">
+                      <span className="material-icons-outlined mr-1 flex-shrink-0">account_circle</span>
                       Kathrine Ledesma
                     </p>
-                    <p className="centered-icon-text">
-                      <span className="material-icons-outlined mr-1">mail_outline</span>
-                      <a href="mailto:admissions.brownsville@alpha.school">admissions.brownsville@alpha.school</a>
+                    <p className="centered-icon-text break-words">
+                      <span className="material-icons-outlined mr-1 flex-shrink-0">mail_outline</span>
+                      <a href="mailto:admissions.brownsville@alpha.school" className="break-all">brownsville@alpha.school</a>
                     </p>
                   </div>
                 </div>
 
                 {/* Alpha Expansion Schools */}
-                <div className="flex items-center gap-4">
+                <div className="flex items-start gap-4">
                   <div 
                     className="w-16 h-16 rounded-full bg-cover bg-center flex-shrink-0 overflow-hidden"
                     style={{ backgroundImage: "url('/assets/school-contacts/expansion-contact.webp')" }}
                   >
                   </div>
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <h6 className="text-[var(--color-dark-green)] mb-1">Alpha Expansion Schools</h6>
-                    <p className="centered-icon-text">
-                      <span className="material-icons-outlined mr-1">account_circle</span>
+                    <p className="centered-icon-text break-words">
+                      <span className="material-icons-outlined mr-1 flex-shrink-0">account_circle</span>
                       Rachel Goodlad
                     </p>
-                    <p className="centered-icon-text">
-                      <span className="material-icons-outlined mr-1">mail_outline</span>
-                      <a href="mailto:rachel.goodlad@alpha.school">rachel.goodlad@alpha.school</a>
+                    <p className="centered-icon-text break-words">
+                      <span className="material-icons-outlined mr-1 flex-shrink-0">mail_outline</span>
+                      <a href="mailto:rachel.goodlad@alpha.school" className="break-all">rachel@alpha.school</a>
                     </p>
                   </div>
                 </div>
