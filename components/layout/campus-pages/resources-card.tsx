@@ -35,7 +35,7 @@ export default function ResourcesCard({ campus, className = "" }: ResourcesCardP
           </p>
           <CampusApplicationLink 
             campusName={campus.name} 
-            className="centered-icon-text mt-[var(--space-md)] bg-[var(--color-dark-green)]"
+            className="centered-icon-text mt-[var(--space-md)] md:mt-[var(--space-sm)]bg-[var(--color-dark-green)]"
           >
             Apply Today<span className="material-icons-outlined">arrow_forward</span>
           </CampusApplicationLink>

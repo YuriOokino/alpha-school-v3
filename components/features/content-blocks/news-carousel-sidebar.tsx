@@ -51,26 +51,20 @@ export default function NewsCarouselSidebar({ articles = [] }: NewsCarouselSideb
     <div className="flex flex-col h-full bg-[var(--color-sky-blue)] rounded-[var(--radius-lg)] p-[var(--space-md)]">
       <div className="flex items-center justify-between w-full mb-4">
         <h3 className="heading-style-h5">In the News</h3>
-        <div className="flex items-center transition-colors gap-1 cursor-pointer">
+        <div className="flex h-6">
           <button
             onClick={prevItem}
-            className="w-5 h-5 flex items-center justify-center rounded-full focus:outline-none"
+            className="w-8 flex items-center justify-center rounded-l-full bg-[var(--color-navy-blue)] hover:bg-[var(--color-navy-blue)]/80 disabled:opacity-50 border-r border-[var(--color-navy-blue)]/20"
             aria-label="Previous"
-            style={{ background: 'transparent' }}
           >
-            <svg width="12" height="12" fill="none" viewBox="0 0 12 12">
-              <path d="M8 2L4 6L8 10" stroke="black" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            <span className="material-icons-outlined text-sm text-[var(--color-sky-blue)]">chevron_left</span>
           </button>
           <button
             onClick={nextItem}
-            className="w-5 h-5 flex items-center justify-center rounded-full focus:outline-none"
+            className="w-8 flex items-center justify-center rounded-r-full bg-[var(--color-navy-blue)] hover:bg-[var(--color-navy-blue)]/80 disabled:opacity-50"
             aria-label="Next"
-            style={{ background: 'transparent' }}
           >
-            <svg width="12" height="12" fill="none" viewBox="0 0 12 12">
-              <path d="M4 2L8 6L4 10" stroke="black" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            <span className="material-icons-outlined text-sm text-[var(--color-sky-blue)]">chevron_right</span>
           </button>
         </div>
       </div>
@@ -82,15 +76,18 @@ export default function NewsCarouselSidebar({ articles = [] }: NewsCarouselSideb
               <img src={item.image} alt={item.title} className="w-full aspect-[3/2] object-cover rounded-[var(--radius-md)]" />
             </Link>
             <div className="flex gap-2">
-              <div className="tag-filled !bg-[var(--color-primary)] text-[var(--color-sky-blue)]">{item.date}</div>
-              <div className="tag-outline !border-[var(--color-primary)] !text-[var(--color-primary)]">{item.type === "news" ? "News" : "Blog"}</div>
+              <div className="tag-filled !bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)]">{item.date}</div>
+              <div className="tag-outline !border-[var(--color-navy-blue)] !text-[var(--color-primary)]">{item.type === "news" ? "News" : "Blog"}</div>
             </div>
             <Link href={`/blog/${item.slug}`}>
               <h6 className="heading-style-uppercase">{item.title}</h6>
             </Link>
             <div className="centered-text-icon">
               <Link href={`/blog/${item.slug}`}>
-                <Button variant="link" className="text-[var(--color-primary)]">Read More<span className="material-icons-outlined text-[var(--color-primary)]">arrow_forward</span></Button>
+                                 <div className="flex items-center gap-1">
+                   <Button variant="link" className="text-[var(--color-navy-blue)] hover:underline">Read More</Button>
+                   <span className="material-icons-outlined text-[var(--color-navy-blue)]">arrow_forward</span>
+                 </div>
               </Link>
             </div>
           </div>

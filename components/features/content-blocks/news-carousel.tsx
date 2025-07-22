@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+
 import { Button } from "@/components/ui/button"
 
 const newsItems = [
@@ -37,15 +37,21 @@ export default function NewsCarousel() {
         <div className="flex-1 overflow-hidden py-3 px-6">
           <div className="whitespace-nowrap">{newsItems[currentIndex]}</div>
         </div>
-        <div className="flex">
-          <Button variant="ghost" size="icon" onClick={prevSlide}>
-            <ChevronLeft className="h-5 w-5" />
-            <span className="sr-only">Previous</span>
-          </Button>
-          <Button variant="ghost" size="icon" onClick={nextSlide}>
-            <ChevronRight className="h-5 w-5" />
-            <span className="sr-only">Next</span>
-          </Button>
+        <div className="flex h-10">
+          <button
+            onClick={prevSlide}
+            className="w-10 flex items-center justify-center rounded-l-full bg-white hover:bg-gray-100 disabled:opacity-50 border-r border-gray-300"
+            aria-label="Previous"
+          >
+            <span className="material-icons-outlined text-blue-700">chevron_left</span>
+          </button>
+          <button
+            onClick={nextSlide}
+            className="w-10 flex items-center justify-center rounded-r-full bg-white hover:bg-gray-100 disabled:opacity-50"
+            aria-label="Next"
+          >
+            <span className="material-icons-outlined text-blue-700">chevron_right</span>
+          </button>
         </div>
       </div>
     </div>

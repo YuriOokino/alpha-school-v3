@@ -367,10 +367,10 @@ export default function AdmissionPage() {
                         <div className="flex flex-col items-start gap-2">
                           <p>Alpha School requires all students to comply with immunization requirements mandated by their respective state Departments of Health. Each student must provide the appropriate immunization certification or an approved exemption before enrollment. Exemptions, where permissible, must adhere to state-specific guidelines, which may vary by location.</p>
                        <p><strong>For more information on the required immunizations please visit the following:</strong></p> 
-                        <div className="centered-icon-text indent-2"><span className="material-icons-outlined">file_download</span><a href="https://www.dshs.texas.gov/sites/default/files/LIDS-Immunizations/pdf/pdf_stock/6-14.pdf" target="_blank" rel="noopener noreferrer">Texas</a></div>
-                        <div className="centered-icon-text indent-2"><span className="material-icons-outlined">file_download</span><a href="https://www.floridahealth.gov/programs-and-services/immunization/children-and-adolescents/school-immunization-requirements/index.html" target="_blank" rel="noopener noreferrer">Florida</a></div>
+                        <div className="centered-icon-text indent-2"><span className="material-icons-outlined">file_download</span><a className="hover:underline" href="https://www.dshs.texas.gov/sites/default/files/LIDS-Immunizations/pdf/pdf_stock/6-14.pdf" target="_blank" rel="noopener noreferrer">Texas</a></div>
+                        <div className="centered-icon-text indent-2"><span className="material-icons-outlined">file_download</span><a className="hover:underline" href="https://www.floridahealth.gov/programs-and-services/immunization/children-and-adolescents/school-immunization-requirements/index.html" target="_blank" rel="noopener noreferrer">Florida</a></div>
 
-                        <div className="centered-icon-text indent-2"><span className="material-icons-outlined">file_download</span><a href="https://cdphe.colorado.gov/schoolrequiredvaccines" target="_blank" rel="noopener noreferrer">Colorado</a></div>
+                        <div className="centered-icon-text indent-2"><span className="material-icons-outlined">file_download</span><a className="hover:underline" href="https://cdphe.colorado.gov/schoolrequiredvaccines" target="_blank" rel="noopener noreferrer">Colorado</a></div>
 
                         </div>
                       </div>

@@ -86,7 +86,7 @@ export default function Home() {
           className="text-[var(--color-primary)]"
           description="From student-led businesses to science challenges and news broadcasts, every day at Alpha is packed with purpose, energy, and real-world learning."
           buttonText="More videos"
-          buttonHref="/videos"
+          buttonHref="/video-library"
           buttonVariant="primary"
           >
           </SectionHeading>

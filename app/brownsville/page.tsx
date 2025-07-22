@@ -31,7 +31,8 @@ export default async function BrownsvillePage() {
   const welcomeRightColumn = (
     <>
       <p className="mb-2">At Alpha, we believe that students thrive when they are engaged, challenged, and inspired by their learning environment. Our innovative model fosters a love of school, encourages independence, and equips students with the tools they need to succeed academically and in life.</p>
-      <p>Bringing Alpha School's three commitments—love school, learn 2x in 2 hours, and master life skills—to your city. <strong>Alpha Brownsville is launching soon and now accepting applications.</strong></p>
+      <p>Bringing Alpha School's three commitments—love school, learn 2x in 2 hours, and master life skills—to your city.</p>
+        <p><strong>Alpha Brownsville is launching soon and now accepting applications.</strong></p>
     </>
   )
   

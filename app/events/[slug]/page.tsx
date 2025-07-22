@@ -118,7 +118,7 @@ export default function EventPage() {
       <MediaHeading
         variant="blue"
         tagline={eventData?.category || "Event"}
-        actions={<Button href="#register" variant="lightBlue" className="rounded-[var(--radius-pill)]">Register<span className="material-icons-outlined down-45">arrow_forward</span></Button>}
+        actions={<Button href="#register" variant="lightBlue" className="rounded-[var(--radius-pill)]">Sign up<span className="material-icons-outlined down-45">arrow_forward</span></Button>}
         media={
           <img src={eventData?.image?.src} alt={eventData?.image?.alt || "Event Image"} />
         }
@@ -220,7 +220,7 @@ export default function EventPage() {
           <p>Due to high demand, please only RSVP if you are certain you can attend. If you are unable to participate due to illness, please notify us as soon as possible.</p>
           </div>
           <form className="space-y-6" onSubmit={handleSubmit}>
-            <h6>Parent/guardian #1 Information</h6>
+            <h6>Parent / guardian #1</h6>
             <div className="flex gap-4">
               <div className="flex-1 field-wrapper">
                 <label htmlFor="parent1FirstName" className="xs-label">Parent #1 First Name<span>*</span></label>
@@ -251,7 +251,7 @@ export default function EventPage() {
               </select>
             </div>
 
-            <h6>Parent/guardian #2 Information</h6>
+            <h6>Parent / guardian #2</h6>
             <div className="flex gap-4">
               <div className="flex-1 field-wrapper">
                 <label htmlFor="parent2FirstName" className="xs-label">Parent #2 First Name</label>
@@ -375,6 +375,7 @@ export default function EventPage() {
           className="mt-[var(--space-4xl)] text-[var(--color-navy-blue)]"
         />
         <Carousel
+        
           items={allEvents.filter(event => event.slug !== slug)}
           renderItem={(event) => (
             <EventCard {...event} url={`/events/${event.slug}`} className="flex-shrink-0 group" variant="scheme1" />
