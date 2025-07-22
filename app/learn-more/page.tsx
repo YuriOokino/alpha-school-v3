@@ -196,7 +196,7 @@ export default function LearnMorePage() {
               <div>
                 <label className="xs-label">Are you a parent or guardian of a student?</label>
                 <div className="flex gap-4">
-                  <label className="flex items-center">
+                  <label className="flex items-center !gap-2">
                     <input
                       type="radio"
                       name="isParent"
@@ -204,9 +204,9 @@ export default function LearnMorePage() {
                       checked={isParent === "yes"}
                       onChange={() => setIsParent("yes")}
                     />
-                    <span className="ml-2">Yes</span>
+                    <span>Yes</span>
                   </label>
-                  <label className="flex items-center">
+                  <label className="flex items-center !gap-2">
                     <input
                       type="radio"
                       name="isParent"
@@ -214,7 +214,7 @@ export default function LearnMorePage() {
                       checked={isParent === "no"}
                       onChange={() => setIsParent("no")}
                     />
-                    <span className="ml-2">No</span>
+                    <span>No</span>
                   </label>
                 </div>
               </div>
@@ -222,12 +222,13 @@ export default function LearnMorePage() {
                 <label className="xs-label">Which Alpha School location are you interested in?</label>
                 <div className="flex !flex-col gap-4">
                   {schoolOptions.map((option) => (
-                    <label key={option} className="flex items-center row-on-mobile">
+                    <label key={option} className="flex items-center row-on-mobile !gap-1">
                       <input
                         type="checkbox"
                         value={option}
                         checked={selectedSchools.includes(option)}
                         onChange={() => handleSchoolChange(option)}
+                        className="!mr-1"
                       />
                       <span className="ml-0">{option}</span>
                     </label>
