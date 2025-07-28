@@ -67,13 +67,17 @@ export default function CampusHeading({
                   href={`https://maps.google.com/?q=${encodeURIComponent(campus.address)}`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="hover-link-effect"
                 >
                   {campus.address}
                 </a>
               )}
             </p>
-            <p className="mb-2 text-left">
-              <strong>Email:</strong> {campus.email}
+            <p className="centered-icon-text mb-4 text-left">
+              <span className="material-icons-outlined mr-1">mail_outline</span>
+              <a href={`mailto:${campus.email}`} className="hover-link-effect">
+                {campus.email}
+              </a>
             </p>
             
             {/* Application Link */}

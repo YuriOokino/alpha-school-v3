@@ -1,28 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
-
-// Intersection Observer hook for scroll animations
-const useInView = () => {
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          setHasAnimated(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [hasAnimated]);
-
-  return [ref, hasAnimated] as const;
-};
+import React from "react";
+import AnimatedSection from "@/components/ui/animated-section";
 
 export default function StatsSection() {
-  const [ref, hasAnimated] = useInView();
   return (
     <section className="alpha-section bg-white">
       <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-[var(--space-lg)] md:mb-[var(--space-xl)] gap-[var(--space-md)] md:gap-[var(--space-lg)]">
@@ -31,10 +10,10 @@ export default function StatsSection() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
         </p>
       </div>
-      <div
-        ref={ref}
-        className={`w-full flex flex-col lg:flex-row text-[var(--color-dark-green)] justify-between gap-[var(--space-md)] bg-[var(--color-light-green)] rounded-[var(--radius-lg)] md:p-[var(--space-lg)] p-[var(--space-md)] ${hasAnimated ? 'animate-fade-up' : 'opacity-0 translate-y-8'}`}
-      >
+      <AnimatedSection animation="fade-up" delay={200}>
+        <div
+          className="w-full flex flex-col lg:flex-row text-[var(--color-dark-green)] justify-between gap-[var(--space-md)] bg-[var(--color-light-green)] rounded-[var(--radius-lg)] md:p-[var(--space-lg)] p-[var(--space-md)]"
+        >
         <div className="flex-1 flex flex-col min-w-[200px]">
           <div className="display-headline !text-[80px] lg:!text-[100px] text-[var(--color-dark-green)] mb-4 whitespace-nowrap">2x</div>
           <h3 className="heading-style-h4 mb-4">Times Faster</h3>
@@ -51,6 +30,7 @@ export default function StatsSection() {
           <div className="body-text">Our classes score in the the top 1-2% nationally across the board.</div>
         </div>
       </div>
+      </AnimatedSection>
     </section>
   );
 } 

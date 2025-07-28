@@ -3,11 +3,12 @@ import MainHeading from "@/components/layout/headings/main-heading"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import MediaHeading from "@/components/layout/headings/media-heading"
 import SectionHeading from "@/components/layout/headings/section-heading"
 import Divider from "@/components/layout/divider"
 import VideoPlayer from "@/components/ui/video-player"
+import AnimatedSection from "@/components/ui/animated-section"
 import {
   Accordion,
   AccordionItem,
@@ -15,9 +16,12 @@ import {
   AccordionContent,
 } from "@/components/ui/accordion"
 
+
+
 export default function AustinSummerCampPage() {
   const [event, setEvent] = useState<any>(null)
   const [loading, setLoading] = useState(true)
+
 
   // Form state - all hooks must be called before any conditional returns
   const [selectedSessions, setSelectedSessions] = useState<string[]>([]);
@@ -68,6 +72,8 @@ export default function AustinSummerCampPage() {
 
     loadEvent()
   }, [])
+
+
 
   if (loading) {
     return <div>Loading...</div>
@@ -232,7 +238,10 @@ export default function AustinSummerCampPage() {
             </div>
             
           </div>
-          <div className="alpha-card !p-[var(--space-lg)] text-[var(--color-dark-green)] bg-[var(--color-light-green)] mt-[var(--space-3xl)] flex flex-col md:flex-row md:flex-wrap lg:flex-nowrap gap-[var(--space-md)]">
+          <AnimatedSection animation="fade-up" delay={200}>
+            <div 
+              className="alpha-card !p-[var(--space-lg)] text-[var(--color-dark-green)] bg-[var(--color-light-green)] mt-[var(--space-3xl)] flex flex-col md:flex-row md:flex-wrap lg:flex-nowrap gap-[var(--space-md)]"
+            >
   <div className="flex flex-col justify-between min-w-0 w-full md:w-1/2 lg:w-1/4">
     <div className="mb-[var(--space-lg)]">
       <svg width="75" height="75" viewBox="0 0 75 75" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -298,6 +307,7 @@ export default function AustinSummerCampPage() {
     <p className="mb-4 h-full">Craft with AI for a virtual reality gallery showcase and get a printed masterpiece to take home.</p>
   </div>
 </div>
+          </AnimatedSection>
         </section>
 
         {/* Video Modal */}
@@ -348,7 +358,7 @@ export default function AustinSummerCampPage() {
                   
                   <div className="space-y-2">
                     {allSessions.map((session: any) => (
-                      <div key={session.id} className="flex items-center gap-3">
+                      <div key={session.id} className="flex items-center gap-3 row-on-mobile">
                         <input
                           type="checkbox"
                           id={`session-${session.id}`}

@@ -399,7 +399,9 @@ export default function AdmissionPage() {
                       </p>
                     <p className="centered-icon-text break-words">
                       <span className="material-icons-outlined mr-1 flex-shrink-0">mail_outline</span>
-                      <a href="mailto:admissions@alpha.school" className="break-all">admissions@alpha.school</a>
+                      <a href="mailto:admissions@alpha.school" className="break-all hover-link-effect">
+                        admissions@alpha.school
+                      </a>
                     </p>
                   </div>
                 </div>
@@ -419,7 +421,7 @@ export default function AdmissionPage() {
                     </p>
                     <p className="centered-icon-text break-words">
                       <span className="material-icons-outlined mr-1 flex-shrink-0">mail_outline</span>
-                      <a href="mailto:admissions.miami@alpha.school" className="break-all">miami@alpha.school</a>
+                      <a href="mailto:admissions.miami@alpha.school" className="break-all hover-link-effect">miami@alpha.school</a>
                     </p>
                   </div>
                 </div>
@@ -439,7 +441,7 @@ export default function AdmissionPage() {
                     </p>
                     <p className="centered-icon-text break-words">
                       <span className="material-icons-outlined mr-1 flex-shrink-0">mail_outline</span>
-                      <a href="mailto:admissions.brownsville@alpha.school" className="break-all">brownsville@alpha.school</a>
+                      <a href="mailto:admissions.brownsville@alpha.school" className="break-all hover-link-effect">brownsville@alpha.school</a>
                     </p>
                   </div>
                 </div>
@@ -459,7 +461,7 @@ export default function AdmissionPage() {
                     </p>
                     <p className="centered-icon-text break-words">
                       <span className="material-icons-outlined mr-1 flex-shrink-0">mail_outline</span>
-                      <a href="mailto:rachel.goodlad@alpha.school" className="break-all">rachel@alpha.school</a>
+                      <a href="mailto:rachel.goodlad@alpha.school" className="break-all hover-link-effect">rachel@alpha.school</a>
                     </p>
                   </div>
                 </div>

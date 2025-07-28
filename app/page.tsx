@@ -17,6 +17,7 @@ import VideoPlayer from "@/components/ui/video-player"
 import Divider from "@/components/layout/divider"
 import HeroSection from "@/components/homepage-sections/hero-section"
 import SectionHeading from "@/components/layout/headings/section-heading"
+import AnimatedSection from "@/components/ui/animated-section"
 
 export default function Home() {
   const [campuses, setCampuses] = useState<CampusMetadata[]>([]);
@@ -91,11 +92,13 @@ export default function Home() {
           >
           </SectionHeading>
           </div>
+<AnimatedSection animation="fade-up" delay={300}>
 <div className="flex justify-center"><VideoPlayer 
 videoUrl=""
 posterImage="/assets/feature-video-overlays/demo.png"
 aspectRatio="16/9"
 /></div>
+</AnimatedSection>
       </section>
       <Divider fill="white" direction="down" />
 

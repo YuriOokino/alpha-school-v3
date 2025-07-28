@@ -19,19 +19,23 @@ export default function ResourcesCard({ campus, className = "" }: ResourcesCardP
       <div className="bg-[var(--color-light-green)] text-[var(--color-dark-green)] w-[95%] min-h-[400px] m-auto rounded-[var(--radius-lg)] p-[var(--space-lg)] flex flex-col md:flex-row gap-[var(--space-xl)] items-start">
         <div className="flex-1">
           <h2 className="heading-style-h2 mb-4">{campus.name} Campus</h2>
-          <ul className="body-text mb-4">
-            <li>
-              <div className="flex flex-col gap-1">
-                <div className="flex items-center gap-2">
-                  <span className="material-icons-outlined">location_on</span>
-                  <strong>{campus.grades}</strong>
-                </div>
-                {campus.address}
-              </div>
-            </li>
-          </ul>
-          <p className="body-text mb-2">
-            <strong>Email:</strong> {campus.email}
+          <p className="font-semibold mb-2">{campus.grades}</p>
+          <p className="centered-icon-text mb-4">
+            <span className="material-icons-outlined mr-1">location_on</span>
+            <a 
+              href={`https://maps.google.com/?q=${encodeURIComponent(campus.address)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover-link-effect"
+            >
+              {campus.address}
+            </a>
+          </p>
+          <p className="centered-icon-text mb-4">
+            <span className="material-icons-outlined mr-1">mail_outline</span>
+            <a href={`mailto:${campus.email}`} className="hover-link-effect">
+              {campus.email}
+            </a>
           </p>
           <CampusApplicationLink 
             campusName={campus.name} 

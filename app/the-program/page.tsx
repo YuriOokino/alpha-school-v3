@@ -1,40 +1,17 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import MainHeading from "@/components/layout/headings/main-heading";
 import VideoPlayer from "@/components/ui/video-player";
 import Divider from "@/components/layout/divider";
 import FeatureCard from "@/components/features/content-blocks/feature-card";
 import Link from "next/link";
 import { useIsMobile } from "@/hooks/use-mobile";
-
-const useInView = () => {
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          setHasAnimated(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-    
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [hasAnimated]);
-
-  return [ref, hasAnimated] as const;
-};
+import AnimatedSection from "@/components/ui/animated-section";
 
 export default function TheProgramPage() {
   const [showVideo1, setShowVideo1] = useState(false);
   const isMobile = useIsMobile();
-  const [ref1, hasAnimated1] = useInView();
-  const [ref2, hasAnimated2] = useInView();
-  const [ref3, hasAnimated3] = useInView();
 
   return (
     <main className="bg-[var(--color-bg-muted)]">
@@ -92,12 +69,11 @@ export default function TheProgramPage() {
 { /* Commitments */}
 
       <section className="alpha-section bg-white">
-        <div 
-          ref={ref1}
-          className={`alpha-card !p-[var(--space-lg)] bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)] mb-16 ${
-            hasAnimated1 ? 'animate-fade-up' : 'opacity-0 translate-y-8'
-          }`}
-        >
+        <AnimatedSection animation="fade-up" delay={100}>
+          <div 
+            id="love-school"
+            className="alpha-card !p-[var(--space-lg)] bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)] mb-16"
+          >
           <div className={`flex flex-col gap-2 mb-16 text-center align-center max-w-xl mx-auto ${isMobile ? 'mb-4' : ''}`}>
             <div className="tagline bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)] mx-auto mb-4">
               Commitment #1
@@ -136,13 +112,13 @@ export default function TheProgramPage() {
             </div>
           </div>
         </div>
+        </AnimatedSection>
 
-        <div 
-          ref={ref2}
-          className={`alpha-card !p-[var(--space-lg)] bg-[var(--color-light-green)] text-[var(--color-dark-green)] mb-16 ${
-            hasAnimated2 ? 'animate-fade-up' : 'opacity-0 translate-y-8'
-          }`}
-        >
+        <AnimatedSection animation="fade-up" delay={200}>
+          <div 
+            id="learn-2x"
+            className="alpha-card !p-[var(--space-lg)] bg-[var(--color-light-green)] text-[var(--color-dark-green)] mb-16"
+          >
           <div className={`flex flex-col gap-2 mb-16 text-center align-center max-w-xl mx-auto ${isMobile ? 'mb-8' : ''}`}>
             <div className="tagline bg-[var(--color-dark-green)] text-[var(--color-light-green)] mx-auto mb-4">
               Commitment #2
@@ -185,13 +161,13 @@ export default function TheProgramPage() {
             </div>
           </div>
         </div>
+        </AnimatedSection>
 
-        <div 
-          ref={ref3}
-          className={`alpha-card !p-[var(--space-lg)] bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)] mb-16 ${
-            hasAnimated3 ? 'animate-fade-up' : 'opacity-0 translate-y-8'
-          }`}
-        >
+        <AnimatedSection animation="fade-up" delay={300}>
+          <div 
+            id="lifeskills-workshops"
+            className="alpha-card !p-[var(--space-lg)] bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)] mb-16"
+          >
           <div className={`flex flex-col gap-2 mb-16 text-center align-center max-w-xl mx-auto ${isMobile ? 'mb-8' : ''}`}>
             <div className="tagline bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)] mx-auto mb-4">
               Commitment #3
@@ -230,6 +206,7 @@ export default function TheProgramPage() {
             </div>
           </div>
         </div>
+        </AnimatedSection>
       </section>
       
     </main>

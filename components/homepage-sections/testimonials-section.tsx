@@ -3,18 +3,15 @@
 import React, { useState, useEffect, useRef } from "react"
 import { testimonials } from "@/content/testimonials"
 import SectionHeading from "@/components/layout/headings/section-heading"
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
+import Carousel from "@/components/ui/carousel"
 
 export default function TestimonialsSection() {
-  const [activeIndex, setActiveIndex] = useState(0);
   const [openVideo, setOpenVideo] = useState(false);
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
-  const [isPaused, setIsPaused] = useState(false);
-  const visibleCardsCount = 2.5;
-  const cardWidth = 430; // Reduced from 480px to 430px
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-    const testimonialVideoUrl = "https://player.vimeo.com/video/1033250050?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=0&controls=1";
+  const testimonialVideoUrl = "https://player.vimeo.com/video/1033250050?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=0&controls=1";
 
   // Variant styles for carousel
   const carouselVariantStyles = {
@@ -91,88 +88,34 @@ const testimonials = [
   },
 ];
 
-  // Duplicate testimonials multiple times for seamless infinite scroll
-  const duplicatedTestimonials = [...testimonials, ...testimonials, ...testimonials, ...testimonials];
-
-
-
-  const prevTestimonial = () => {
-    setActiveIndex((prev) => (prev === 0 ? duplicatedTestimonials.length - 1 : prev - 1));
-    setIsPaused(true);
-    setTimeout(() => setIsPaused(false), 5000); // Resume after 5 seconds
-  };
-
-  const nextTestimonial = () => {
-    setActiveIndex((prev) => (prev === duplicatedTestimonials.length - 1 ? 0 : prev + 1));
-    setIsPaused(true);
-    setTimeout(() => setIsPaused(false), 5000); // Resume after 5 seconds
-  };
-
-const progressBarRef = React.useRef<HTMLDivElement>(null);
-const DOT_SIZE = 32; // px
-const MARGIN = 4; // px
-const handleDotDown = (e: React.MouseEvent) => {
-  setIsDragging(true);
-  e.preventDefault();
-};
-const [isDragging, setIsDragging] = React.useState(false);
-const handleMouseDown = (e: React.MouseEvent) => {
-  setIsDragging(true);
-  handleDrag(e);
-};
-const handleClick = (e: React.MouseEvent) => {
-  handleDrag(e);
-};
-const handleDrag = (e: React.MouseEvent | MouseEvent) => {
-  if (!progressBarRef.current) return;
-  const rect = progressBarRef.current.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const min = MARGIN + DOT_SIZE / 2;
-  const max = rect.width - MARGIN - DOT_SIZE / 2;
-  const clamped = Math.max(min, Math.min(x, max));
-  const percent = (clamped - min) / (max - min);
-  const newIndex = Math.round(percent * (duplicatedTestimonials.length - 1));
-  setActiveIndex(Math.max(0, Math.min(newIndex, duplicatedTestimonials.length - 1)));
   
-  // Pause auto-scroll when user drags the slider
-  setIsPaused(true);
-  setTimeout(() => setIsPaused(false), 5000); // Resume after 5 seconds
-};
-// Intersection Observer for scroll animations
-useEffect(() => {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const index = parseInt(entry.target.getAttribute('data-index') || '0');
-          setVisibleCards(prev => [...prev, index]);
-        }
-      });
-    },
-    {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    }
-  );
 
-  cardRefs.current.forEach((ref) => {
-    if (ref) observer.observe(ref);
-  });
 
-  return () => observer.disconnect();
-}, []);
+  // Intersection Observer for scroll animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.getAttribute('data-index') || '0');
+            setVisibleCards(prev => [...prev, index]);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      }
+    );
 
-React.useEffect(() => {
-  if (!isDragging) return;
-  const handleMove = (e: MouseEvent) => handleDrag(e);
-  const handleUp = () => setIsDragging(false);
-  document.addEventListener('mousemove', handleMove);
-  document.addEventListener('mouseup', handleUp);
-  return () => {
-    document.removeEventListener('mousemove', handleMove);
-    document.removeEventListener('mouseup', handleUp);
-  };
-}, [isDragging]);
+    cardRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+
 
 return (
   <section className="alpha-section">
@@ -290,84 +233,30 @@ return (
         </div>
       </div>
       
-      <div className={`w-full ${styles.background} py-[var(--space-sm)] md:py-[var(--space-lg)] rounded-[var(--radius-lg)] relative`}>
-        <div className="relative flex items-center">
-          <div className="overflow-hidden w-full">
-            <div
-              className={`flex gap-2 w-fit ${
-                isPaused ? '' : 'animate-scroll-fast'
-              }`}
-              style={{
-                marginLeft: 'clamp(var(--space-sm), 4vw, var(--space-lg))',
-              }}
-            >
-              {duplicatedTestimonials.map((testimonial, idx) => (
-                <div
-                  key={idx}
-                  className="px-2 max-w-[430px] flex-shrink-0"
-                >
-                  <div className="bg-white rounded-[var(--radius-md)] p-[var(--space-sm)] md:p-[var(--space-lg)] h-full">
-                    <div className="flex flex-col gap-[var(--space-md)]">
-                      <div className="flex items-center gap-[var(--space-sm)]">
-                        <img 
-                          src={testimonial.imageSrc} 
-                          alt={testimonial.name} 
-                          className="w-12 h-12 rounded-full object-cover"
-                        />
-                        <div>
-                          <h6 className="text-[var(--color-text-main)]">{testimonial.name}</h6>
-                          <p className="text-[var(--color-text-muted)] text-sm">{testimonial.grade}, {testimonial.age}</p>
-                        </div>
-                      </div>
-                      <p className="text-[var(--color-text-main)]">{testimonial.quote}</p>
-                    </div>
-                  </div>
+      <Carousel
+        items={testimonials}
+        renderItem={(testimonial, idx) => (
+          <div className="bg-white rounded-[var(--radius-md)] p-[var(--space-sm)] md:p-[var(--space-lg)] h-full">
+            <div className="flex flex-col gap-[var(--space-md)]">
+              <div className="flex items-center gap-[var(--space-sm)]">
+                <img 
+                  src={testimonial.imageSrc} 
+                  alt={testimonial.name} 
+                  className="w-12 h-12 rounded-full object-cover"
+                />
+                <div>
+                  <h6 className="text-[var(--color-text-main)]">{testimonial.name}</h6>
+                  <p className="text-[var(--color-text-muted)] text-sm">{testimonial.grade}, {testimonial.age}</p>
                 </div>
-              ))}
+              </div>
+              <p className="text-[var(--color-text-main)]">{testimonial.quote}</p>
             </div>
           </div>
-        </div>
-        
-        {/* Navigation below cards */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between mt-[var(--space-sm)] md:mt-[var(--space-lg)] gap-[var(--space-md)] md:gap-0 px-[var(--space-sm)] md:px-[var(--space-lg)]">
-          {/* Switch-style slider navigation - left */}
-          <div className="hidden md:block w-[200px]">
-            <div
-              ref={progressBarRef}
-              className={`w-full ${styles.sliderTrack} rounded-full h-6 cursor-pointer relative p-0.5`}
-              onMouseDown={handleMouseDown}
-              onClick={handleClick}
-            >
-              <div
-                className={`absolute top-0.5 w-5 h-5 ${styles.sliderDot} rounded-full cursor-grab active:cursor-grabbing transition-all duration-300 ease-out`}
-                style={{
-                  left: `calc(2px + ${(duplicatedTestimonials.length === 1 ? 0 : activeIndex / (duplicatedTestimonials.length - 1))} * (100% - 20px))`
-                }}
-                onMouseDown={handleDotDown}
-              />
-            </div>
-          </div>
-          {/* Arrows - right */}
-          <div className="flex h-6">
-            <button
-              onClick={prevTestimonial}
-              className={`w-8 flex items-center justify-center rounded-l-full ${styles.button} disabled:opacity-50 border-r border-black/10`}
-              aria-label="Previous"
-            >
-              <span className="material-icons-outlined text-sm" style={{ color: 'var(--color-navy-blue)' }}>chevron_left</span>
-            </button>
-            <button
-              onClick={nextTestimonial}
-              className={`w-8 flex items-center justify-center rounded-r-full ${styles.button} disabled:opacity-50`}
-              aria-label="Next"
-            >
-              <span className="material-icons-outlined text-sm" style={{ color: 'var(--color-navy-blue)' }}>chevron_right</span>
-            </button>
-          </div>
-        </div>
-        
-
-      </div>
+        )}
+        visibleCards={{ mobile: 1, desktop: 2.5 }}
+        variant="scheme1"
+        className={styles.background}
+      />
       {openVideo && (
   <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
     <div className="bg-white rounded-lg p-4 relative max-w-3xl w-full">

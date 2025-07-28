@@ -35,8 +35,8 @@ const carouselVariantStyles = {
     buttonVariant: "default" as const,
     arrowButtonBackground: "bg-white",
     arrowIconColor: "black",
-    sliderButtonColor: "bg-white",
-    progressBarBackgroundColor: "bg-[#E3E1EC]"
+    sliderButtonColor: "bg-[#8B9BFF]",
+    progressBarBackgroundColor: "bg-white"
   },
   scheme2: {
     carouselBackground: "bg-[var(--color-bg-muted)]",
@@ -276,51 +276,51 @@ export default function Carousel({
           </div>
         </div>
       </div>
-      <div className="pr-[var(--space-sm)] md:pr-[var(--space-lg)] pl-[var(--space-sm)] md:pl-[var(--space-lg)]">
-        {/* Navigation below cards */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between mt-[var(--space-sm)] md:mt-[var(--space-lg)] gap-[var(--space-md)] md:gap-0">
-          {/* Navigation Indicators - left */}
-          <div className="hidden md:flex gap-2">
-            <div className="flex-1 min-w-[200px]">
-              <div
-                ref={progressBarRef}
-                className={`w-full ${finalProgressBarBackgroundColor} rounded-full h-6 cursor-pointer relative p-0.5`}
-                onMouseDown={handleMouseDown}
-                onClick={handleClick} // optional: allow click-to-jump
-              >
-                {/* Switch-style draggable dot */}
+              <div className="pr-[var(--space-sm)] md:pr-[var(--space-lg)] pl-[var(--space-sm)] md:pl-[var(--space-lg)]">
+          {/* Navigation below cards */}
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between mt-[var(--space-sm)] md:mt-[var(--space-lg)] gap-[var(--space-md)] md:gap-0">
+            {/* Navigation Indicators - left */}
+            <div className="hidden md:flex gap-2">
+              <div className="flex-1 min-w-[200px]">
                 <div
-                  className={`absolute top-0.5 w-5 h-5 ${finalSliderButtonColor} rounded-full cursor-grab active:cursor-grabbing transition-all duration-300 ease-out`}
-                  style={{
-                    left: `calc(2px + ${(items.length === 1 ? 0 : activeIndex / (items.length - 1))} * (100% - 20px))`
-                  }}
-                  onMouseDown={handleDotDown}
-                />
+                  ref={progressBarRef}
+                  className={`w-full ${finalProgressBarBackgroundColor} rounded-full h-6 cursor-pointer relative p-0.5`}
+                  onMouseDown={handleMouseDown}
+                  onClick={handleClick} // optional: allow click-to-jump
+                >
+                  {/* Switch-style draggable dot */}
+                  <div
+                    className={`absolute top-0.5 w-5 h-5 ${finalSliderButtonColor} rounded-full cursor-grab active:cursor-grabbing transition-all duration-300 ease-out`}
+                    style={{
+                      left: `calc(2px + ${(items.length === 1 ? 0 : activeIndex / (items.length - 1))} * (100% - 20px))`
+                    }}
+                    onMouseDown={handleDotDown}
+                  />
+                </div>
+                
               </div>
-              
+            </div>
+            {/* Arrows - right */}
+            <div className="flex h-6 self-end md:self-auto">
+              <button
+                onClick={prevItem}
+                disabled={activeIndex === 0}
+                className={`w-8 flex items-center justify-center rounded-l-full ${finalArrowButtonBackground} disabled:opacity-50 border-r border-black/10`}
+                aria-label="Previous"
+              >
+                <span className="material-icons-outlined text-sm" style={{ color: finalArrowIconColor }}>chevron_left</span>
+              </button>
+              <button
+                onClick={nextItem}
+                disabled={activeIndex === items.length - 1}
+                className={`w-8 flex items-center justify-center rounded-r-full ${finalArrowButtonBackground} disabled:opacity-50`}
+                aria-label="Next"
+              >
+                <span className="material-icons-outlined text-sm" style={{ color: finalArrowIconColor }}>chevron_right</span>
+              </button>
             </div>
           </div>
-          {/* Arrows - right */}
-          <div className="flex h-6">
-            <button
-              onClick={prevItem}
-              disabled={activeIndex === 0}
-              className={`w-8 flex items-center justify-center rounded-l-full ${finalArrowButtonBackground} disabled:opacity-50 border-r border-black/10`}
-              aria-label="Previous"
-            >
-              <span className="material-icons-outlined text-sm" style={{ color: finalArrowIconColor }}>chevron_left</span>
-            </button>
-            <button
-              onClick={nextItem}
-              disabled={activeIndex === items.length - 1}
-              className={`w-8 flex items-center justify-center rounded-r-full ${finalArrowButtonBackground} disabled:opacity-50`}
-              aria-label="Next"
-            >
-              <span className="material-icons-outlined text-sm" style={{ color: finalArrowIconColor }}>chevron_right</span>
-            </button>
-          </div>
         </div>
-      </div>
     </div>
   )
 } 
