@@ -249,11 +249,11 @@ function ApplicationForm() {
                 ))}
               </select>
             </div>
-            <div className="flex items-start gap-2">
-              <input type="checkbox" name="smsConsent" id="smsConsent" checked={formData.smsConsent} onChange={handleChange} />
-              <label htmlFor="smsConsent" className="text-sm">
+            <div className="flex items-center row-on-mobile !gap-1">
+              <input type="checkbox" name="smsConsent" id="smsConsent" checked={formData.smsConsent} onChange={handleChange} className="!mr-1" />
+              <div className="text-sm">
                 I agree to receive SMS messages from 2 Hour Learning regarding inquiry follow-up, invitations to events, and personalized updates about applications and enrollment. Messages & data rates may apply. Reply STOP to opt out.
-              </label>
+              </div>
             </div>
             <div className="text-sm">
               <strong>Please note your registration is only complete once you've completed your payment successfully below.</strong>

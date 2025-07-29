@@ -8,7 +8,7 @@ interface StarseedsCardProps {
 
 export default function StarseedsCard({ cityName, email, className = "" }: StarseedsCardProps) {
   return (
-    <div className={`alpha-card bg-[var(--color-sky-blue)] !p-[var(--space-lg)] flex flex-col md:flex-row gap-[var(--space-lg)] mb-[var(--space-4xl)] ${className}`}>
+      <div className={`alpha-card bg-[var(--color-sky-blue)] !p-[var(--space-lg)] flex flex-col md:flex-row gap-[var(--space-lg)] mb-[var(--space-4xl)] animate-on-scroll animate-fade-up ${className}`}>
       <div className="flex-1">
         <img
           src="/assets/starseed.webp"

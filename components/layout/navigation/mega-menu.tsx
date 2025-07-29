@@ -42,8 +42,10 @@ export function MegaMenu({ groups, sidebar, onLinkClick }: MegaMenuProps) {
               {group.items.map((item: MegaMenuItem) => (
                 <li key={item.title}>
                   <Link href={item.href} className="flex flex-col group transition-colors" onClick={onLinkClick}>
-                    <span className={`font-medium flex items-center ${item.style === 'underline' ? 'underline underline-offset-4' : ''}`}>
-                      {item.title}
+                    <span className={`font-medium inline-flex items-center relative ${item.style === 'underline' ? 'underline underline-offset-4' : ''}`}>
+                      <span className="hover-link-effect">
+                        {item.title}
+                      </span>
                     </span>
                     {item.description && (
                       <span className={`text-sm text-gray-600 ${item.style === 'underline' ? 'underline underline-offset-4' : ''}`}>{item.description}</span>

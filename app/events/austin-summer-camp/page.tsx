@@ -529,11 +529,11 @@ export default function AustinSummerCampPage() {
                 </select>
               </div>
               <p><strong>Please note your registration is only complete once you've completed your payment successfully below.</strong></p>
-              <div className="flex items-start gap-2">
-                <input id="consent" type="checkbox" checked={consent} onChange={e => setConsent(e.target.checked)} className="mt-1" />
-                <label htmlFor="consent" className="text-sm">
+              <div className="flex items-center row-on-mobile !gap-1">
+                <input id="consent" type="checkbox" checked={consent} onChange={e => setConsent(e.target.checked)} className="!mr-1" />
+                <div className="text-sm">
                   I agree to receive SMS messages from 2 Hour Learning regarding inquiry follow-up, invitations to events, and personalized updates about applications and enrollments. Message & data rates may apply. Reply STOP to opt out.
-                </label>
+                </div>
               </div>
               <Button type="submit" disabled={selectedSessions.length === 0}>
                 Continue to payment

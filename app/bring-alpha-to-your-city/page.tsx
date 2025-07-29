@@ -243,17 +243,18 @@ export default function BringAlphaToYourCity() {
             </div>
 
             <div>
-              <div className="flex items-start gap-2">
+              <div className="flex items-center row-on-mobile !gap-1">
                 <input
                   type="checkbox"
                   id="smsConsent"
                   name="smsConsent"
                   checked={formData.smsConsent}
                   onChange={handleChange}
+                  className="!mr-1"
                 />
-                <label htmlFor="smsConsent" className="text-sm">
+                <div className="text-sm">
                   I agree to receive SMS messages from 2 Hour Learning regarding inquiry follow-up, invitations to events, and personalized updates about applications and enrollments. Message & data rates may apply. Reply STOP to opt out.
-                </label>
+                </div>
               </div>
             </div>
 

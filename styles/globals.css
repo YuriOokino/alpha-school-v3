@@ -517,15 +517,16 @@ input[type="checkbox"]:checked {
   background-color: #000;
 }
 
+
+
 input[type="checkbox"],
 input[type="radio"] {
   -webkit-appearance: none;
   appearance: none;
   background-color: white !important;
-  accent-color: #000;
+  border: 1px solid #000;
   width: 16px;
   height: 16px;
-  border: 1px solid #000;
   display: inline-block;
   position: relative;
   cursor: pointer;
@@ -545,14 +546,16 @@ input[type="radio"]:checked {
 }
 
 input[type="checkbox"]:checked::after {
-  content: "✓";
+  content: "■";
   position: absolute;
-  top: -1px;
-  left: 2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   color: white;
-  font-size: 12px;
-  font-weight: bold;
+  font-size: 0.6em;
 }
+
+
 
 /* Remove focus ring from search inputs */
 input[type="search"]:focus,

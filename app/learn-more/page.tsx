@@ -259,16 +259,18 @@ export default function LearnMorePage() {
                   className="field-input"
                 />
               </div>
-              <div className="flex items-start gap-2  row-on-mobile">
+              <div className="flex items-center row-on-mobile !gap-1">
                 <input
                   type="checkbox"
                   id="consent"
+                  name="consent"
                   checked={consent}
                   onChange={e => setConsent(e.target.checked)}
+                  className="!mr-1"
                 />
-                <label htmlFor="consent" className="text-sm">
+                <div className="text-sm">
                   I agree to receive SMS messages from 2 Hour Learning regarding inquiry follow-up, invitations to events, and personalized updates about applications and enrollment. Messages & data rates may apply. Reply STOP to opt out.
-                </label>
+                </div>
               </div>
               <Button type="submit">Submit</Button>
             </form>

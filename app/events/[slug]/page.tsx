@@ -347,18 +347,18 @@ export default function EventPage() {
                 <option value="other">Other</option>
               </select>
             </div>
-            <div className="flex items-start gap-2">
+            <div className="flex items-center row-on-mobile !gap-1">
               <input
                 type="checkbox"
                 id="consent"
                 checked={consent}
                 onChange={e => setConsent(e.target.checked)}
-                className="mt-1"
+                className="!mr-1"
                 required
               />
-              <label htmlFor="consent" className="text-sm">
+              <div className="text-sm">
                 I consent to Alpha School contacting me about this event and future communications.<span>*</span>
-              </label>
+              </div>
             </div>
             <Button type="submit">
               Register

@@ -15,12 +15,12 @@ interface ResourcesCardProps {
 
 export default function ResourcesCard({ campus, className = "" }: ResourcesCardProps) {
   return (
-    <div className={`max-w-[1100px] mb-[var(--space-4xl)] mx-auto ${className}`}>
+    <div className={`max-w-[1100px] mb-[var(--space-4xl)] mx-auto animate-on-scroll animate-fade-up ${className}`}>
       <div className="bg-[var(--color-light-green)] text-[var(--color-dark-green)] w-[95%] min-h-[400px] m-auto rounded-[var(--radius-lg)] p-[var(--space-lg)] flex flex-col md:flex-row gap-[var(--space-xl)] items-start">
         <div className="flex-1">
           <h2 className="heading-style-h2 mb-4">{campus.name} Campus</h2>
-          <p className="font-semibold mb-2">{campus.grades}</p>
-          <p className="centered-icon-text mb-4">
+          <p className="heading-style-h5 mb-4">{campus.grades}</p>
+          <p className="centered-icon-text mb-2">
             <span className="material-icons-outlined mr-1">location_on</span>
             <a 
               href={`https://maps.google.com/?q=${encodeURIComponent(campus.address)}`}
@@ -39,7 +39,7 @@ export default function ResourcesCard({ campus, className = "" }: ResourcesCardP
           </p>
           <CampusApplicationLink 
             campusName={campus.name} 
-            className="centered-icon-text mt-[var(--space-md)] md:mt-[var(--space-sm)]bg-[var(--color-dark-green)]"
+            className="centered-icon-text mt-[var(--space-md)] md:mt-[var(--space-sm)] bg-[var(--color-dark-green)]"
           >
             Apply Today<span className="material-icons-outlined">arrow_forward</span>
           </CampusApplicationLink>

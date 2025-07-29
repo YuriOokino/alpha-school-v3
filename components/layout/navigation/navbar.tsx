@@ -284,6 +284,7 @@ export function Navbar() {
                 <Link
                   href={item.href}
                   className={`px-3 py-2 flex items-center text-base transition-colors duration-150 h-full`}
+                  onClick={() => setActiveDropdown(null)}
                 >
                   {item.title}
                   {item.megaMenu && item.megaMenu.length > 0 && (

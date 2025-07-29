@@ -57,8 +57,8 @@ export default function CampusHeading({
             </h1>
             
             {/* Campus Details */}
-            <p className="font-semibold text-left mb-2">{campus.grades}</p>
-            <p className="centered-icon-text mb-4 text-left">
+            <p className="heading-style-h5 text-left mb-4">{campus.grades}</p>
+            <p className="centered-icon-text mb-2 text-left">
               <span className="material-icons-outlined mr-1">location_on</span>
               {campus.address.toLowerCase().includes('to be announced') ? (
                 campus.address
