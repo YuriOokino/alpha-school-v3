@@ -14,7 +14,8 @@ export interface GuideCardProps {
   role: string;
   bio: string;
   className?: string;
-  variant?: "blue" | "green";
+  variant?: "blue" | "green" | "primary";
+  
 }
 
 export default function GuideCard({ image, name, role, bio, className, variant = "blue" }: GuideCardProps) {
@@ -33,6 +34,12 @@ export default function GuideCard({ image, name, role, bio, className, variant =
       tagText: "text-[var(--color-light-green)]",
       nameColor: "text-[var(--color-dark-green)]",
       cardBg: "bg-[var(--color-light-green)]"
+    },
+    primary: {
+      tagBg: "!bg-[var(--color-primary)]",
+      tagText: "text-white",
+      nameColor: "text-[var(--color-primary)]",
+      cardBg: "bg-[var(--color-sky-blue)]"
     }
   };
 

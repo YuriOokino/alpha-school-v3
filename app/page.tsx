@@ -109,12 +109,12 @@ aspectRatio="16/9"
           <Carousel
             items={events}
             renderItem={(event) => (
-              <EventCard {...event} url={`/events/${event.slug}`} className="flex-shrink-0 group" variant="scheme2" />
+              <EventCard {...event} url={`/events/${event.slug}`} className="flex-shrink-0 group" variant="scheme3" />
             )}
             title="Events & programs"
             buttonText="View all Events"
             buttonHref="/events"
-            variant="scheme3" // Change this to switch carousel color schemes: 'scheme1', 'scheme2', 'scheme3', or 'scheme4'
+            variant="scheme4" // Change this to switch carousel color schemes: 'scheme1', 'scheme2', 'scheme3', or 'scheme4'
           />
         </section>
       )}

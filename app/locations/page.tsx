@@ -154,8 +154,8 @@ export default function LocationsPage() {
       >Alpha School Campuses
       </MainHeading>
       <div className="alpha-section">
-        <div className="alpha-card flex flex-col gap-8 justify-center items-center bg-[var(--color-light-green)] mx-auto max-w-[600px] w-full">
-          <h3 className="text-[var(--color-dark-green)] text-center heading-style-h4">Find a campus near you</h3>
+        <div className="alpha-card flex flex-col gap-8 justify-center items-center bg-[var(--color-sky-blue)] mx-auto max-w-[600px] w-full">
+          <h3 className="text-[var(--color-navy-blue)] text-center heading-style-h4">Find a campus near you</h3>
           <div className="flex justify-center w-full">
             <div className="field-wrapper relative">
               <label className="xs-label">Search</label>
@@ -296,6 +296,7 @@ export default function LocationsPage() {
            buttonText="Apply to Alpha School"
            buttonHref="/admission"
            buttonVariant="navyBlue"
+           className="!text-[var(--color-navy-blue)]"
         description="Discover Alpha School campuses across the country where students are already learning 2x faster, building confidence, and loving school again. Each location offers our proven curriculum and personalized learning approach." title="Current Locations"></SectionHeading>
         <div className="grid gap-4 mb-[var(--space-xl)] mx-auto" style={{ gridTemplateColumns: 'repeat(auto-fit, 340px)', justifyContent: 'center' }}>
             {currentCampusesToShow.length > 0 ? (
@@ -331,18 +332,20 @@ export default function LocationsPage() {
           <SectionHeading description="Alpha School is expanding! New campuses opening this fall will bring our innovative learning model to more communities. Join the waitlist to be among the first families to experience Alpha's transformative education." 
           buttonText="Apply to Alpha School"
           buttonHref="/admission"
-          buttonVariant="darkGreen"
-          title="Opening Fall 2025"></SectionHeading>
+          buttonVariant="primary"
+          title="Opening Fall 2025"
+          className="!text-[var(--color-primary)]"
+          ></SectionHeading>
           <div className="grid gap-4 mb-[var(--space-xl)] mx-auto" style={{ gridTemplateColumns: 'repeat(auto-fit, 340px)', justifyContent: 'center' }}>
             {upcomingCampusesToShow.length > 0 ? (
               upcomingCampusesToShow.map((campus) => (
                 <LocationCard
                   key={campus.name}
                   {...campus}
-                  variant="scheme2"
-                  buttonClassName="bg-[var(--color-dark-green)]"
+                  variant="scheme3"
+                  buttonClassName="bg-[var(--color-primary)]"
                   className="w-[340px] flex-shrink-0 group text-black"
-                  tagClassName="!bg-[var(--color-dark-green)] text-white"
+                  tagClassName="!bg-[var(--color-primary)] text-white"
                   tuitionClassName=""
                 />
               ))

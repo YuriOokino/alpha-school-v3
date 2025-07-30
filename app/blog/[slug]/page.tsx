@@ -72,7 +72,7 @@ export default function BlogPostPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-[var(--space-xl)]">
           <div className="md:col-span-2">
             <Button variant="link" className="mb-4 text-gray-500 font-normal" href="/blog"><span className="material-icons-outlined">arrow_back</span> All posts</Button>
-            <h1 className="heading-style-h3 mb-4">{post.title}</h1>
+            <h1 className="heading-style-h4 mb-4">{post.title}</h1>
             <div className="mb-4">
               <div className="text-gray-600">
                 By {post.authorName}

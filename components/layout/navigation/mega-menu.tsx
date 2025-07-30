@@ -34,7 +34,7 @@ export function MegaMenu({ groups, sidebar, onLinkClick }: MegaMenuProps) {
         {groupColumns.map((group, idx) => (
           <div key={idx} className="flex-1">
             {group.label && (
-              <div className="tagline bg-[var(--color-light-green)] text-[var(--color-dark-green)] mb-4">
+              <div className="tagline bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)] mb-4">
                 {group.label}
               </div>
             )}

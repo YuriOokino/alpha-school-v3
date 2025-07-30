@@ -16,7 +16,7 @@ interface LocationCardProps {
   buttonClassName?: string
   className?: string
   tagClassName?: string
-  variant?: 'scheme1' | 'scheme2'
+  variant?: 'scheme1' | 'scheme2' | 'scheme3'
 }
 
 

@@ -41,7 +41,7 @@ export function NewsBanner({
 
   return (
     <div 
-      className={`w-full bg-[var(--color-light-green)] h-auto py-2 flex items-center justify-center relative transition-all duration-300 ease-out ${
+      className={`w-full bg-[var(--color-primary-light)] h-auto py-2 flex items-center justify-center relative transition-all duration-300 ease-out ${
         isClosing ? 'opacity-0 -translate-y-full' : 'opacity-100 translate-y-0'
       } ${className}`}
     >

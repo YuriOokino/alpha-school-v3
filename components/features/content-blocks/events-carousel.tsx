@@ -25,7 +25,7 @@ export default function EventsCarousel({
   locationFilter, 
   title,
   className = "bg-transparent p-0",
-  variant = "scheme1",
+  variant = "scheme4",
   navigationDotsColor,
   navigationArrowsColor
 }: EventsCarouselProps) {

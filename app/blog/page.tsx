@@ -6,6 +6,7 @@ import ArticleCard from "@/components/features/cards/article-card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import articlesData from '@/content/articles.json';
+import AnimatedSection from "@/components/ui/animated-section";
 
 interface Article {
   id: string;
@@ -120,7 +121,7 @@ export default function BlogPage() {
 
   return (
     <main>
-      <MainHeading tagline="Blog" taglineVariant="blue"description="Read the latest blog posts, news articles, insights, and stories from Alpha School.">
+      <MainHeading variant="blue" tagline="Blog" taglineVariant="blue" description="Read the latest blog posts, news articles, insights, and stories from Alpha School.">
       Insights, News, and Ideas
       </MainHeading>
 
@@ -165,54 +166,54 @@ export default function BlogPage() {
 
                   {/* Featured Article Card */}
                   {featuredArticle && (
-                    <div className="featured-article-card rounded-[var(--radius-lg)] flex flex-col lg:flex-row bg-[var(--color-sky-blue)] p-[var(--space-lg)] gap-[var(--space-xl)] group mb-[var(--space-xl)]" style={{ padding: 'var(--space-lg)', gap: 'var(--space-xl)' }}>
-                      <style jsx>{`
-                        @media (max-width: 1326px) {
-                          .featured-article-card {
-                            padding: var(--space-md) !important;
-                            gap: var(--space-md) !important;
+                    <AnimatedSection animation="fade-up" delay={200}>
+                      <div className="featured-article-card rounded-[var(--radius-lg)] flex flex-col lg:flex-row bg-[var(--color-sky-blue)] p-[var(--space-lg)] gap-[var(--space-xl)] group mb-[var(--space-xl)]" style={{ padding: 'var(--space-lg)', gap: 'var(--space-xl)' }}>
+                        <style jsx>{`
+                          @media (max-width: 1326px) {
+                            .featured-article-card {
+                              padding: var(--space-md) !important;
+                              gap: var(--space-md) !important;
+                            }
                           }
-                        }
-                      `}</style>
-                      <div className="flex flex-col flex-1 justify-between h-[350px]">
-                        <div className="flex flex-col gap-4">
-                          <div className="flex gap-2">
-                            <div className="tagline bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)]">{featuredArticle.date}</div>
-                            <div className="tagline border border-[var(--color-navy-blue)] text-[var(--color-navy-blue)]">{featuredArticle.type === "news" ? "News" : "Blog"}</div>
+                        `}</style>
+                        <div className="flex flex-col flex-1 justify-between h-[350px]">
+                          <div className="flex flex-col gap-4">
+                            <div className="flex gap-2">
+                              <div className="tagline bg-[var(--color-primary)] text-[var(--color-primary-light)]">{featuredArticle.date}</div>
+                              <div className="tagline border border-[var(--color-primary)] text-[var(--color-primary)]">{featuredArticle.type === "news" ? "News" : "Blog"}</div>
+                            </div>
+                            <div><h4 className="text-[var(--color-primary)]">{featuredArticle.title}</h4></div>
+                            <p>{getArticleExcerpt(featuredArticle.content)}</p>
                           </div>
-                          <div><h4 className="text-[var(--color-navy-blue)]">{featuredArticle.title}</h4></div>
-                          <p>{getArticleExcerpt(featuredArticle.content)}</p>
+                          <div>
+                            <Link href={`/blog/${featuredArticle.slug}`}>
+                              <Button variant="primary"className="centered-text-icon">Read More<span className="material-icons-outlined">arrow_forward</span></Button>
+                            </Link>
+                          </div>
                         </div>
-                        <div>
-                          <Link href={`/blog/${featuredArticle.slug}`}>
-                            <Button variant="navyBlue"className="centered-text-icon">Read More<span className="material-icons-outlined">arrow_forward</span></Button>
-                          </Link>
+                        <div className="flex flex-col flex-1 overflow-hidden rounded-[var(--radius-lg)]">
+                          <img 
+                            src={featuredArticle.image} 
+                            alt={featuredArticle.title} 
+                            className="rounded-[var(--radius-lg)] w-full h-full object-cover image-hover-effect"
+                          />
                         </div>
                       </div>
-                      <div className="flex flex-col flex-1 overflow-hidden rounded-[var(--radius-lg)]">
-                        <img 
-                          src={featuredArticle.image} 
-                          alt={featuredArticle.title} 
-                          className="rounded-[var(--radius-lg)] w-full h-full object-cover image-hover-effect"
-                        />
-                      </div>
-                    </div>
+                    </AnimatedSection>
                   )}
 
                   {/* Regular Article Cards Grid */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
                     {filteredArticles.map((item) => (
-                      <div key={item.slug} className="w-full max-w-[300px]">
-                        <Link href={`/blog/${item.slug}`}>
-                          <ArticleCard
-                            imageSrc={item.image}
-                            imageAlt={item.title}
-                            title={item.title}
-                            date={item.date}
-                            category={item.type === "news" ? "News" : "Blog"}
-                            href={`/blog/${item.slug}`}
-                          />
-                        </Link>
+                      <div key={item.slug} className="w-full">
+                        <ArticleCard
+                          imageSrc={item.image}
+                          imageAlt={item.title}
+                          title={item.title}
+                          date={item.date}
+                          category={item.type === "news" ? "News" : "Blog"}
+                          href={`/blog/${item.slug}`}
+                        />
                       </div>
                     ))}
                   </div>

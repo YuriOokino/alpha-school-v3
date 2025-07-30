@@ -12,7 +12,7 @@ export default function GuidesPage() {
 
   return (
     <main>
-      <MainHeading variant="blue" description="At Alpha School, teachers become 'Guides,' shifting from their traditional roles to mentoring and motivating learners. With AI-powered support, they focus on emotional growth, life skills, and fostering a passion for learning—giving students the time and freedom to thrive."
+      <MainHeading variant="blue" description="At Alpha School, teachers become 'Guides,' shifting from their traditional roles to mentoring and motivating learners. With AI-powered support, they focus on emotional growth, life skills, and fostering a passion for learning, giving students the time and freedom to thrive."
       tagline="Alpha guides"
       taglineVariant="blue"
       
@@ -49,10 +49,10 @@ export default function GuidesPage() {
                 role={guide.role}
                 bio={guide.bio}
                 className="min-w-[286px] flex-1 max-w-[320px]"
-              variant="green"
+              variant="primary"
             />
           )}
-          variant="scheme3"
+          variant="scheme4"
           title="Brownsville"
           buttonText="Discover Alpha Brownsville"
           buttonHref="/brownsville"

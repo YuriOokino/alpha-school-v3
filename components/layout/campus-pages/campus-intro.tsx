@@ -17,7 +17,7 @@ export default function CampusIntro({
   return (
     <div className={`alpha-section ${className}`}>
       <div>
-        <h2 className="section-headline-left heading-style-h2 mb-8">Welcome to the Future of Education</h2>
+        <h2 className="section-headline-left heading-style-h2 text-[var(--color-navy-blue)] mb-8">Welcome to the Future of Education</h2>
       </div>
       <div className="two-column-flex">
         <div>

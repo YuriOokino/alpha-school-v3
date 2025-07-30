@@ -240,7 +240,7 @@ export default function AustinSummerCampPage() {
           </div>
           <AnimatedSection animation="fade-up" delay={200}>
             <div 
-              className="alpha-card !p-[var(--space-lg)] text-[var(--color-dark-green)] bg-[var(--color-light-green)] mt-[var(--space-3xl)] flex flex-col md:flex-row md:flex-wrap lg:flex-nowrap gap-[var(--space-md)]"
+              className="alpha-card !p-[var(--space-lg)] text-[var(--color-navy-blue)] bg-[var(--color-primary-light)] mt-[var(--space-3xl)] flex flex-col md:flex-row md:flex-wrap lg:flex-nowrap gap-[var(--space-md)]"
             >
   <div className="flex flex-col justify-between min-w-0 w-full md:w-1/2 lg:w-1/4">
     <div className="mb-[var(--space-lg)]">
@@ -342,9 +342,9 @@ export default function AustinSummerCampPage() {
       <section className="alpha-section bg-white" id="form-section">
           
           <div className="alpha-form">
-          <div className="form-top-content">
-                <h3 className="heading-style-h4">Book your spot!</h3>
-                <p className="mb-8">Unlock a summer of innovation! Secure your spot today, limited spots available.</p>
+                        <div className="form-top-content">
+                <h3 className="heading-style-h3 text-[var(--color-primary)]">Book your spot!</h3>
+                <p className="mb-8 text-[var(--color-primary)]">Unlock a summer of innovation! Secure your spot today, limited spots available.</p>
               </div>
             <form className="space-y-6" onSubmit={handleSubmit}>
               
@@ -535,7 +535,7 @@ export default function AustinSummerCampPage() {
                   I agree to receive SMS messages from 2 Hour Learning regarding inquiry follow-up, invitations to events, and personalized updates about applications and enrollments. Message & data rates may apply. Reply STOP to opt out.
                 </div>
               </div>
-              <Button type="submit" disabled={selectedSessions.length === 0}>
+              <Button variant="primary" type="submit" disabled={selectedSessions.length === 0}>
                 Continue to payment
               </Button>
             </form>

@@ -66,8 +66,8 @@ html.has-scroll-dragging {
     --background: #FFFFFF;     /* Default background color */
     --text: #000000;          /* Default text color */
     --color-primary: #4368FF;      /* Main brand color - CTAs, links, highlights */
-    --color-primary-light: #CCDFFF; /* Light blue - Section backgrounds, cards */  /* Warm maroon - Headings, buttons */
-    --color-light-green: #D8FFB7;
+    --color-primary-light: #CBD1FF; /* Light blue - Section backgrounds, cards */  /* Warm maroon - Headings, buttons */
+    --color-light-green: #CDFF86;
     --color-dark-green: #385116;
     --color-navy-blue: #213BA1;
     --color-sky-blue: #E1E8FF;

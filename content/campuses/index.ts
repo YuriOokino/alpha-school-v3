@@ -145,19 +145,6 @@ export const campuses = [
 },
 
 {
-  name: "Nashville",
-  stateCode: "TN",
-  status: "upcoming" as const,
-  address: "Location to be announced soon",
-  tuition: "$40,000",
-  grades: "K-8th Grade",
-  email: "admissions.nashville@alpha.school",
-  heroImage: "/assets/locations/nashville/hero/nashville-hero.webp",
-  buttonHref: "/nashville",
-  applicationStatus: "Applications Open"
-},
-
-{
   name: "Charlotte",
   stateCode: "NC",
   status: "upcoming" as const,
@@ -337,6 +324,19 @@ export const campuses = [
   heroImage: "/assets/locations/san-diego/hero/san-diego-hero.webp",
   buttonHref: "/san-diego",
   applicationStatus: "Applications Open"
+},
+
+{
+  name: "Palm Beach",
+  stateCode: "FL",
+  status: "upcoming" as const,
+  address: "353 Hiatt Drive, Palm Beach Gardens, FL 33418 US",
+  tuition: "$40,000",
+  grades: "K-3rd Grade",
+  email: "admissions.westpalmbeach@alpha.school",
+  heroImage: "/assets/locations/palm-beach/hero/palm-beach-hero.webp",
+  buttonHref: "/palm-beach",
+  applicationStatus: "Fall 2025 applications open"
 }
 
   ]; 

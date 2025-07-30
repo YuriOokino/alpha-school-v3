@@ -8,7 +8,7 @@ interface StarseedsCardProps {
 
 export default function StarseedsCard({ cityName, email, className = "" }: StarseedsCardProps) {
   return (
-      <div className={`alpha-card bg-[var(--color-sky-blue)] !p-[var(--space-lg)] flex flex-col md:flex-row gap-[var(--space-lg)] mb-[var(--space-4xl)] animate-on-scroll animate-fade-up ${className}`}>
+      <div className={`alpha-card bg-[var(--color-primary-light)] !p-[var(--space-lg)] flex flex-col md:flex-row gap-[var(--space-lg)] mb-[var(--space-4xl)] animate-on-scroll animate-fade-up ${className}`}>
       <div className="flex-1">
         <img
           src="/assets/starseed.webp"
@@ -18,7 +18,7 @@ export default function StarseedsCard({ cityName, email, className = "" }: Stars
         />
       </div>
       <div className="flex-1 flex flex-col justify-center">
-        <h2 className="heading-style-h2 mb-4">Starseeds (PreK3 & PreK4)</h2>
+        <h2 className="heading-style-h2 mb-4 text-[var(--color-navy-blue)]">Starseeds (PreK3 & PreK4)</h2>
         <p className="mb-4">
           At Alpha {cityName} Starseeds, we believe every child is born curious, capable, and ready to explore the world. Our PreK3 & PreK4 program blends structured learning with joyful discovery, offering a balance of reading, phonics, math, art, foreign language, music, movement, STEAM, and even aquatic confidence! With a nurturing environment that fosters independence, creativity, and social-emotional growth, your little one will love learning every day.
         </p>
