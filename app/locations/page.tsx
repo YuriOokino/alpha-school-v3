@@ -154,8 +154,8 @@ export default function LocationsPage() {
       >Alpha School Campuses
       </MainHeading>
       <div className="alpha-section">
-        <div className="alpha-card flex flex-col gap-8 justify-center items-center bg-[var(--color-sky-blue)] mx-auto max-w-[600px] w-full">
-          <h3 className="text-[var(--color-navy-blue)] text-center heading-style-h4">Find a campus near you</h3>
+        <div className="alpha-card flex flex-col gap-8 justify-center items-center bg-[var(--color-navy-blue)] mx-auto max-w-[600px] w-full">
+          <h3 className="text-[var(--color-sky-blue)] text-center heading-style-h4">Find a campus near you</h3>
           <div className="flex justify-center w-full">
             <div className="field-wrapper relative">
               <label className="xs-label">Search</label>

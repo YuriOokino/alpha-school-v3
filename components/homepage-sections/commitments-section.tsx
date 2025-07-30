@@ -32,12 +32,10 @@ export default function CommitmentsSection() {
         </div>
         <div className="w-full flex flex-col lg:flex-row gap-[var(--space-md)]">
           {commitments.map((commitment, index) => (
-            <div key={index} className="flex flex-col items-start bg-[var(--color-sky-blue)] rounded-[var(--radius-lg)] p-6 w-full lg:w-1/3">
+            <a key={index} href={commitment.link} className="flex flex-col items-start bg-[var(--color-sky-blue)] rounded-[var(--radius-lg)] p-6 w-full lg:w-1/3 hover:scale-[1.02]1 transition-transform duration-300">
               <div className="w-full flex justify-end mb-2">
-                <Button href={commitment.link} size="icon" className="block bg-[var(--color-navy-blue)]" style={{ transform: 'rotate(-45deg)' }}>
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5.293 12.293L6.707 13.707L13.414 6.99997L6.707 0.292969L5.293 1.70697L9.586 5.99997H0V7.99997H9.586L5.293 12.293Z" fill="currentColor"/>
-                  </svg>
+                <Button size="icon" className="bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)]" style={{ transform: 'rotate(-45deg)' }}>
+                  <span className="material-icons-outlined">arrow_forward</span>
                 </Button>
               </div>
               <div className="w-full flex items-center mb-[var(--space-md)] h-[80px]">
@@ -73,7 +71,7 @@ export default function CommitmentsSection() {
               </div>
               <h3 className="text-[var(--color-navy-blue)] display-headline mb-4 !text-[30px]">{commitment.title}</h3>
               <p className="text-[var(--color-navy-blue)] mb-4">{commitment.description}</p>
-            </div>
+            </a>
           ))}
         </div>
       </div>

@@ -27,6 +27,7 @@ export default function LocationsCarouselSection() {
       buttonText="View all new locations"
       buttonHref="/locations/#new-locations"
       buttonVariant="navyBlue"
+      className="!text-[var(--color-navy-blue)]"
       />
       <Carousel
         items={campuses}
