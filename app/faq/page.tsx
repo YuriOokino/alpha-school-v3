@@ -8,6 +8,7 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
 
 const faqs = [
   {
@@ -75,6 +76,14 @@ export default function FAQPage() {
               </AccordionItem>
             ))}
           </Accordion>
+        </div>
+        
+        <div className="mt-[var(--space-4xl)]">
+          <div className="alpha-card flex flex-col gap-2 bg-[var(--color-sky-blue)] text-[var(--color-primary)] max-w-[600px] m-auto">
+            <h5>Do you have more questions?</h5>
+            <p>If you need further support or have additional questions, please contact us using our contact form. Or reach out at <span className="font-medium"><a href="mailto:admissions@alpha.school">admissions@alpha.school</a></span></p>
+            <div><Button variant="primary" href="/learn-more">Contact Us</Button></div>
+          </div>
         </div>
       </section>
 

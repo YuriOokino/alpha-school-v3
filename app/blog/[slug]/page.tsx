@@ -88,14 +88,14 @@ export default function BlogPostPage() {
             <div className="prose max-w-none space-y-[var(--space-md)]" dangerouslySetInnerHTML={{ __html: post.content }} />
 
             {/* Author Bio Section */}
-            <div className="alpha-card bg-[var(--color-light-green)] mt-[var(--space-lg)] mb-[var(--space-lg)]">
-              <div className="heading-style-h5 mb-2 text-[var(--color-dark-green)]">About the Author</div>
-              <div className="body-text max-w-3xl text-[var(--color-dark-green)]">{post.authorBio}</div>
+            <div className="alpha-card bg-[var(--color-sky-blue)] mt-[var(--space-lg)] mb-[var(--space-lg)]">
+              <div className="heading-style-h5 mb-2 text-[var(--color-primary)]">About the Author</div>
+              <div className="body-text max-w-3xl text-[var(--color-primary)]">{post.authorBio}</div>
             </div>
 
             <div className="mt-8 mb-8">
               <Link href="/blog">
-                <Button className="alpha-btn-primary">Read More</Button>
+                <Button variant="navyBlue">Read More</Button>
               </Link>
             </div>
 

@@ -69,17 +69,6 @@ export function Navbar() {
     }
   }, []);
 
-  let megaMenuGroups = null;
-  let megaMenuSidebar = null;
-  const activeNavItem = navItems.find(item => item.title === activeDropdown);
-  if (activeNavItem) {
-    megaMenuGroups = activeNavItem.megaMenu;
-    // Only create sidebar if the nav item has news sidebar enabled
-    if (activeNavItem.hasNewsSidebar) {
-      megaMenuSidebar = <NewsCarouselSidebar articles={newsArticles} />;
-    }
-  }
-
   // Handlers for hover logic
   const handleNavMouseEnter = (title: string) => {
     if (closeTimeout.current) clearTimeout(closeTimeout.current)
@@ -103,6 +92,17 @@ export function Navbar() {
     }, 120)
   }
   const handleMegaMenuClose = () => setActiveDropdown(null);
+
+  let megaMenuGroups = null;
+  let megaMenuSidebar = null;
+  const activeNavItem = navItems.find(item => item.title === activeDropdown);
+  if (activeNavItem) {
+    megaMenuGroups = activeNavItem.megaMenu;
+    // Only create sidebar if the nav item has news sidebar enabled
+    if (activeNavItem.hasNewsSidebar) {
+      megaMenuSidebar = <NewsCarouselSidebar articles={newsArticles} onLinkClick={handleMegaMenuClose} />;
+    }
+  }
 
   // Mobile menu rendering
   if (isMobile) {
@@ -400,6 +400,7 @@ export const navItems: NavItem[] = [
           { title: "Video Library", href: "/video-library", description: "Dive into Alpha School" },
           { title: "Our Guides", href: "/guides", description: "Meet the amazing people at Alpha" },
           { title: "Admission Forms", href: "/admission-forms", description: "Apply to one of our campuses" },
+          { title: "FAQ", href: "/faq", description: "Frequently asked questions" },
         ],
       },
 
@@ -492,6 +493,7 @@ const createNavItems = (articles: Article[]): NavItem[] => [
         items: [
           { title: "Video Library", href: "/video-library", description: "Dive into Alpha School" },
           { title: "Our Guides", href: "/guides", description: "Meet the amazing people at Alpha" },
+          { title: "FAQ", href: "/faq", description: "Frequently asked questions" },
         ],
       },
     ],

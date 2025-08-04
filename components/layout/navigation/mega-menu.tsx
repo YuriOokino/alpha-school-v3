@@ -57,7 +57,7 @@ export function MegaMenu({ groups, sidebar, onLinkClick }: MegaMenuProps) {
           </div>
         ))}
         <div className="flex-1 flex flex-col h-full">
-          {sidebar ? sidebar : <NewsCarouselSidebar articles={[]} />}
+          {sidebar ? sidebar : <NewsCarouselSidebar articles={[]} onLinkClick={onLinkClick} />}
         </div>
       </div>
     </div>
