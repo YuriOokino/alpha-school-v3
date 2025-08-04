@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import MainHeading from "@/components/layout/headings/main-heading"
 import { Button } from "@/components/ui/button"
 import ApplicationCard from "@/components/features/cards/link-card"
@@ -45,46 +45,40 @@ const stateNames: { [key: string]: string } = {
 
 export default function AdmissionFormsPage() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [showSuggestions, setShowSuggestions] = useState(false);
   const [expandedState, setExpandedState] = useState<string | null>(null);
   const [animationComplete, setAnimationComplete] = useState<string | null>(null);
 
-  // Filter campuses based on search query (copied from locations page)
-  const filteredCampuses = campuses.filter((campus) => {
-    const query = searchQuery.toLowerCase().trim();
-    if (!query) return true;
+  // Get all unique campuses and states for suggestions
+  const allSuggestions = React.useMemo(() => {
+    const suggestions = new Set<string>();
     
-    const campusName = campus.name.toLowerCase();
-    const stateCode = campus.stateCode.toLowerCase();
-    const stateName = stateNames[campus.stateCode]?.toLowerCase() || '';
-    const address = campus.address.toLowerCase();
+    // Add campus names
+    campuses.forEach(campus => {
+      suggestions.add(campus.name);
+    });
     
-    // Check if query matches campus name exactly or starts with it
-    if (campusName.startsWith(query) || campusName === query) {
-      return true;
-    }
+    // Add state names
+    Object.values(stateNames).forEach(stateName => {
+      suggestions.add(stateName);
+    });
     
-    // Check if query matches state code exactly or starts with it
-    if (stateCode.startsWith(query) || stateCode === query) {
-      return true;
-    }
+    // Add state codes
+    Object.keys(stateNames).forEach(stateCode => {
+      suggestions.add(stateCode);
+    });
     
-    // Check if query matches state name exactly or starts with it
-    if (stateName.startsWith(query) || stateName === query) {
-      return true;
-    }
-    
-    // Check if query matches city name in address (more restrictive)
-    const cityMatch = address.split(',')[0].toLowerCase().startsWith(query);
-    if (cityMatch) {
-      return true;
-    }
-    
-    return false;
-  });
+    return Array.from(suggestions).sort();
+  }, []);
 
-  // Group filtered campuses by state code
+  // Filter suggestions based on search query
+  const filteredSuggestions = searchQuery.trim() === "" ? [] : allSuggestions.filter(suggestion => 
+    suggestion.toLowerCase().startsWith(searchQuery.toLowerCase())
+  ).slice(0, 5); // Limit to 5 suggestions
+
+  // Group all campuses by state code (no filtering)
   const campusesByState: { [stateCode: string]: typeof campuses } = {};
-  filteredCampuses.forEach(campus => {
+  campuses.forEach(campus => {
     if (!campusesByState[campus.stateCode]) {
       campusesByState[campus.stateCode] = [];
     }
@@ -141,7 +135,7 @@ export default function AdmissionFormsPage() {
       {/* Main Title Section */}
       <MainHeading 
         tagline="Admission forms"
-        taglineVariant="green"
+        taglineVariant="blue"
         description={
           <>
             Please select the campus you'd like to apply to below.
@@ -156,15 +150,55 @@ export default function AdmissionFormsPage() {
       {/* Campus Card Grid Section */}
       <section className="alpha-section">
         <div>
-          <div className="field-wrapper mb-8 !border !border-gray-300">
+          <div className="field-wrapper mb-8 !border !border-gray-300 relative">
             <label className="xs-label">Search for a campus</label>
             <input 
               type="search" 
               placeholder="Enter a city or state" 
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setShowSuggestions(true);
+              }}
+              onFocus={() => setShowSuggestions(true)}
+              onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
               className="field-input"
             />
+            {showSuggestions && filteredSuggestions.length > 0 && (
+              <div className="absolute top-full left-0 right-0 bg-white border border-gray-300 rounded-b-md shadow-lg z-10 max-h-60 overflow-y-auto">
+                {filteredSuggestions.map((suggestion, index) => {
+                  // Find the campus that matches this suggestion
+                  const matchingCampus = campuses.find(campus => {
+                    const campusName = campus.name.toLowerCase();
+                    const stateCode = campus.stateCode.toLowerCase();
+                    const stateName = stateNames[campus.stateCode]?.toLowerCase() || '';
+                    const address = campus.address.toLowerCase();
+                    const cityName = address.split(',')[0].toLowerCase();
+                    
+                    return suggestion.toLowerCase() === campusName || 
+                           suggestion.toLowerCase() === stateCode || 
+                           suggestion.toLowerCase() === stateName ||
+                           suggestion.toLowerCase() === cityName;
+                  });
+                  
+                  return (
+                    <button
+                      key={index}
+                      className="w-full text-left px-4 py-2 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
+                      onClick={() => {
+                        if (matchingCampus) {
+                          window.location.href = getCampusApplicationUrl(matchingCampus.name);
+                        }
+                        setSearchQuery('');
+                        setShowSuggestions(false);
+                      }}
+                    >
+                      {suggestion}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
           </div>
           
           {sortedStateCodes.length === 0 && (
@@ -362,7 +396,7 @@ export default function AdmissionFormsPage() {
                         <div 
                           className={`w-full h-full p-8 rounded-[var(--radius-lg)] flex flex-col justify-between relative group ${
                             hasMultipleCampuses ? 'bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)]' : 
-                            'bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)]'
+                            'bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)] hover:opacity-80 transition-opacity duration-300'
                           }`}
                           onClick={hasMultipleCampuses ? (e) => handleCardClick(stateCode, e) : () => window.location.href = getCampusApplicationUrl(firstCampus.name)}
                         >
@@ -409,10 +443,10 @@ export default function AdmissionFormsPage() {
           </div>
         </div>
         <div className="mt-[var(--space-4xl)]">
-          <div className="alpha-card flex flex-col gap-2 bg-[var(--color-light-green)] text-[var(--color-dark-green)] max-w-[600px] m-auto">
+          <div className="alpha-card flex flex-col gap-2 bg-[var(--color-sky-blue)] text-[var(--color-primary)] max-w-[600px] m-auto">
             <h5>Cannot find your city?</h5>
             <p>To get started with an Alpha Expansion School in your area, we are looking for interested families just like you. Ready to lead this educational revolution in your city?</p>
-         <div><Button variant="darkGreen" href="/bring-alpha-to-your-city">Bring Alpha to Your city </Button></div>
+         <div><Button variant="primary" href="/bring-alpha-to-your-city">Bring Alpha to Your city </Button></div>
         </div>
         </div>        
       </section>
