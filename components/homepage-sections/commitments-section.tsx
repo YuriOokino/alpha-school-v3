@@ -32,7 +32,7 @@ export default function CommitmentsSection() {
         </div>
         <div className="w-full flex flex-col lg:flex-row gap-[var(--space-md)]">
           {commitments.map((commitment, index) => (
-            <a key={index} href={commitment.link} className="flex flex-col items-start bg-[var(--color-sky-blue)] rounded-[var(--radius-lg)] p-6 w-full lg:w-1/3 hover:scale-[1.02]1 transition-transform duration-300">
+            <a key={index} href={commitment.link} className="flex flex-col items-start bg-[var(--color-sky-blue)] rounded-[var(--radius-lg)] p-6 w-full lg:w-1/3 hover:scale-[1.02] transition-transform duration-300">
               <div className="w-full flex justify-end mb-2">
                 <Button size="icon" className="bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)]" style={{ transform: 'rotate(-45deg)' }}>
                   <span className="material-icons-outlined">arrow_forward</span>
