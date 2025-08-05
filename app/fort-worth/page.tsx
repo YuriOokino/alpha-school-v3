@@ -8,6 +8,7 @@ import CampusIntro from "@/components/layout/campus-pages/campus-intro"
 import ResourcesCard from "@/components/layout/campus-pages/resources-card"
 import EventList from "@/components/layout/campus-pages/event-list"
 import { campuses } from "@/content/campuses"
+import { loadGalleryImages } from "@/utils/gallery-loader"
 
 export default async function FortWorthPage() {
   const events = await loadEvents()
@@ -18,8 +19,8 @@ export default async function FortWorthPage() {
   }
   
   // Configuration flags - customize these for each campus
-  const hasGallery = false // Set to false if this campus doesn't have a gallery
-  const hasStarseeds = true // Set to false if this campus doesn't have Starseeds program
+  const hasGallery = false // Set to true if this campus has a gallery
+  const hasStarseeds = false // Set to true if this campus has Starseeds program
   
   // Welcome section content - customize for each campus
   const welcomeLeftColumn = (
@@ -35,20 +36,8 @@ export default async function FortWorthPage() {
     </>
   )
   
-  const galleryImages = [
-    { src: "/assets/locations/fort-worth/gallery/fort-worth-1.webp", alt: "Fort Worth campus photo" },
-    { src: "/assets/locations/fort-worth/gallery/fort-worth-2.webp", alt: "Fort Worth campus photo" },
-    { src: "/assets/locations/fort-worth/gallery/fort-worth-3.webp", alt: "Fort Worth campus photo" },
-    { src: "/assets/locations/fort-worth/gallery/fort-worth-4.webp", alt: "Fort Worth campus photo" },
-    { src: "/assets/locations/fort-worth/gallery/fort-worth-5.webp", alt: "Fort Worth campus photo" },
-    { src: "/assets/locations/fort-worth/gallery/fort-worth-6.webp", alt: "Fort Worth campus photo" },
-    { src: "/assets/locations/fort-worth/gallery/fort-worth-7.webp", alt: "Fort Worth campus photo" },
-    { src: "/assets/locations/fort-worth/gallery/fort-worth-8.webp", alt: "Fort Worth campus photo" },
-    { src: "/assets/locations/fort-worth/gallery/fort-worth-9.webp", alt: "Fort Worth campus photo" },
-    { src: "/assets/locations/fort-worth/gallery/fort-worth-10.webp", alt: "Fort Worth campus photo" },
-    { src: "/assets/locations/fort-worth/gallery/fort-worth-11.webp", alt: "Fort Worth campus photo" },
-    { src: "/assets/locations/fort-worth/gallery/fort-worth-12.webp", alt: "Fort Worth campus photo" }
-  ]
+  // Load gallery images dynamically
+  const galleryImages = hasGallery ? loadGalleryImages("Fort Worth") : []
 
   return (
     <main className="bg-[var(--color-bg-muted)]">

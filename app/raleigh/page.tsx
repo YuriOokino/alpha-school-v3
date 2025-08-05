@@ -8,6 +8,7 @@ import CampusIntro from "@/components/layout/campus-pages/campus-intro"
 import ResourcesCard from "@/components/layout/campus-pages/resources-card"
 import EventList from "@/components/layout/campus-pages/event-list"
 import { campuses } from "@/content/campuses"
+import { loadGalleryImages } from "@/utils/gallery-loader"
 
 export default async function RaleighPage() {
   const events = await loadEvents()
@@ -18,8 +19,8 @@ export default async function RaleighPage() {
   }
   
   // Configuration flags - customize these for each campus
-  const hasGallery = false // Set to false if this campus doesn't have a gallery
-  const hasStarseeds = true // Set to false if this campus doesn't have Starseeds program
+  const hasGallery = false // Set to true if this campus has a gallery
+  const hasStarseeds = false // Set to true if this campus has Starseeds program
   
   // Welcome section content - customize for each campus
   const welcomeLeftColumn = (
@@ -35,20 +36,8 @@ export default async function RaleighPage() {
     </>
   )
   
-  const galleryImages = [
-    { src: "/assets/locations/raleigh/gallery/raleigh-1.webp", alt: "Raleigh campus photo" },
-    { src: "/assets/locations/raleigh/gallery/raleigh-2.webp", alt: "Raleigh campus photo" },
-    { src: "/assets/locations/raleigh/gallery/raleigh-3.webp", alt: "Raleigh campus photo" },
-    { src: "/assets/locations/raleigh/gallery/raleigh-4.webp", alt: "Raleigh campus photo" },
-    { src: "/assets/locations/raleigh/gallery/raleigh-5.webp", alt: "Raleigh campus photo" },
-    { src: "/assets/locations/raleigh/gallery/raleigh-6.webp", alt: "Raleigh campus photo" },
-    { src: "/assets/locations/raleigh/gallery/raleigh-7.webp", alt: "Raleigh campus photo" },
-    { src: "/assets/locations/raleigh/gallery/raleigh-8.webp", alt: "Raleigh campus photo" },
-    { src: "/assets/locations/raleigh/gallery/raleigh-9.webp", alt: "Raleigh campus photo" },
-    { src: "/assets/locations/raleigh/gallery/raleigh-10.webp", alt: "Raleigh campus photo" },
-    { src: "/assets/locations/raleigh/gallery/raleigh-11.webp", alt: "Raleigh campus photo" },
-    { src: "/assets/locations/raleigh/gallery/raleigh-12.webp", alt: "Raleigh campus photo" }
-  ]
+  // Load gallery images dynamically
+  const galleryImages = hasGallery ? loadGalleryImages("Raleigh") : []
 
   return (
     <main className="bg-[var(--color-bg-muted)]">

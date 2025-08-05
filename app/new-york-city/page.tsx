@@ -8,6 +8,7 @@ import CampusIntro from "@/components/layout/campus-pages/campus-intro"
 import ResourcesCard from "@/components/layout/campus-pages/resources-card"
 import EventList from "@/components/layout/campus-pages/event-list"
 import { campuses } from "@/content/campuses"
+import { loadGalleryImages } from "@/utils/gallery-loader"
 
 export default async function NewYorkCityPage() {
   const events = await loadEvents()
@@ -18,8 +19,8 @@ export default async function NewYorkCityPage() {
   }
   
   // Configuration flags - customize these for each campus
-  const hasGallery = false // Set to false if this campus doesn't have a gallery
-  const hasStarseeds = true // Set to false if this campus doesn't have Starseeds program
+  const hasGallery = false // Set to true if this campus has a gallery
+  const hasStarseeds = false // Set to true if this campus has Starseeds program
   
   // Welcome section content - customize for each campus
   const welcomeLeftColumn = (
@@ -35,20 +36,8 @@ export default async function NewYorkCityPage() {
     </>
   )
   
-  const galleryImages = [
-    { src: "/assets/locations/new-york-city/gallery/new-york-city-1.webp", alt: "New York City campus photo" },
-    { src: "/assets/locations/new-york-city/gallery/new-york-city-2.webp", alt: "New York City campus photo" },
-    { src: "/assets/locations/new-york-city/gallery/new-york-city-3.webp", alt: "New York City campus photo" },
-    { src: "/assets/locations/new-york-city/gallery/new-york-city-4.webp", alt: "New York City campus photo" },
-    { src: "/assets/locations/new-york-city/gallery/new-york-city-5.webp", alt: "New York City campus photo" },
-    { src: "/assets/locations/new-york-city/gallery/new-york-city-6.webp", alt: "New York City campus photo" },
-    { src: "/assets/locations/new-york-city/gallery/new-york-city-7.webp", alt: "New York City campus photo" },
-    { src: "/assets/locations/new-york-city/gallery/new-york-city-8.webp", alt: "New York City campus photo" },
-    { src: "/assets/locations/new-york-city/gallery/new-york-city-9.webp", alt: "New York City campus photo" },
-    { src: "/assets/locations/new-york-city/gallery/new-york-city-10.webp", alt: "New York City campus photo" },
-    { src: "/assets/locations/new-york-city/gallery/new-york-city-11.webp", alt: "New York City campus photo" },
-    { src: "/assets/locations/new-york-city/gallery/new-york-city-12.webp", alt: "New York City campus photo" }
-  ]
+  // Load gallery images dynamically
+  const galleryImages = hasGallery ? loadGalleryImages("New York City") : []
 
   return (
     <main className="bg-[var(--color-bg-muted)]">

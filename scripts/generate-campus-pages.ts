@@ -13,8 +13,6 @@ interface Campus {
   heroImage: string
   buttonHref: string
   applicationStatus: string
-  hasStarseeds?: boolean
-  hasGallery?: boolean
 }
 
 // Read campus data
@@ -47,9 +45,7 @@ function getCampusData(): Campus[] {
     email: `admissions.${name!.toLowerCase().replace(/\s+/g, '')}@alpha.school`,
     heroImage: `/assets/locations/${name!.toLowerCase().replace(/\s+/g, '-')}/hero/${name!.toLowerCase().replace(/\s+/g, '-')}-hero.webp`,
     buttonHref: `/${name!.toLowerCase().replace(/\s+/g, '-')}`,
-    applicationStatus: 'Applications Open',
-    hasStarseeds: true,
-    hasGallery: false
+    applicationStatus: 'Applications Open'
   }))
 }
 
@@ -68,6 +64,7 @@ import CampusIntro from "@/components/layout/campus-pages/campus-intro"
 import ResourcesCard from "@/components/layout/campus-pages/resources-card"
 import EventList from "@/components/layout/campus-pages/event-list"
 import { campuses } from "@/content/campuses"
+import { loadGalleryImages } from "@/utils/gallery-loader"
 
 export default async function ${cityName.replace(/\s+/g, '')}Page() {
   const events = await loadEvents()
@@ -78,8 +75,8 @@ export default async function ${cityName.replace(/\s+/g, '')}Page() {
   }
   
   // Configuration flags - customize these for each campus
-  const hasGallery = ${campus.hasGallery || false} // Set to false if this campus doesn't have a gallery
-  const hasStarseeds = ${campus.hasStarseeds || false} // Set to false if this campus doesn't have Starseeds program
+  const hasGallery = false // Set to true if this campus has a gallery
+  const hasStarseeds = false // Set to true if this campus has Starseeds program
   
   // Welcome section content - customize for each campus
   const welcomeLeftColumn = (
@@ -95,20 +92,8 @@ export default async function ${cityName.replace(/\s+/g, '')}Page() {
     </>
   )
   
-  const galleryImages = [
-    { src: "/assets/locations/${citySlug}/gallery/${citySlug}-1.webp", alt: "${cityName} campus photo" },
-    { src: "/assets/locations/${citySlug}/gallery/${citySlug}-2.webp", alt: "${cityName} campus photo" },
-    { src: "/assets/locations/${citySlug}/gallery/${citySlug}-3.webp", alt: "${cityName} campus photo" },
-    { src: "/assets/locations/${citySlug}/gallery/${citySlug}-4.webp", alt: "${cityName} campus photo" },
-    { src: "/assets/locations/${citySlug}/gallery/${citySlug}-5.webp", alt: "${cityName} campus photo" },
-    { src: "/assets/locations/${citySlug}/gallery/${citySlug}-6.webp", alt: "${cityName} campus photo" },
-    { src: "/assets/locations/${citySlug}/gallery/${citySlug}-7.webp", alt: "${cityName} campus photo" },
-    { src: "/assets/locations/${citySlug}/gallery/${citySlug}-8.webp", alt: "${cityName} campus photo" },
-    { src: "/assets/locations/${citySlug}/gallery/${citySlug}-9.webp", alt: "${cityName} campus photo" },
-    { src: "/assets/locations/${citySlug}/gallery/${citySlug}-10.webp", alt: "${cityName} campus photo" },
-    { src: "/assets/locations/${citySlug}/gallery/${citySlug}-11.webp", alt: "${cityName} campus photo" },
-    { src: "/assets/locations/${citySlug}/gallery/${citySlug}-12.webp", alt: "${cityName} campus photo" }
-  ]
+  // Load gallery images dynamically
+  const galleryImages = hasGallery ? loadGalleryImages("${cityName}") : []
 
   return (
     <main className="bg-[var(--color-bg-muted)]">
@@ -199,8 +184,7 @@ function generateAllCampusPages() {
       
       // Check if page already exists
       if (fs.existsSync(pagePath)) {
-        console.log(`Page already exists for ${campus.name}, skipping...`)
-        continue
+        console.log(`Page already exists for ${campus.name}, overwriting...`)
       }
       
       // Generate and write the page
@@ -214,8 +198,9 @@ function generateAllCampusPages() {
     console.log('\\nNext steps:')
     console.log('1. Review generated pages and customize content as needed')
     console.log('2. Add campus-specific welcome section content')
-    console.log('3. Update gallery images and video URLs')
-    console.log('4. Customize campus data in content/campuses/index.ts')
+    console.log('3. Set hasGallery and hasStarseeds flags in each page')
+    console.log('4. Add gallery images to /public/assets/locations/[campus]/gallery/ if needed')
+    console.log('5. Customize campus data in content/campuses/index.ts')
     
   } catch (error) {
     console.error('❌ Error generating campus pages:', error)

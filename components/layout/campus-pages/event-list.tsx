@@ -52,7 +52,7 @@ export default function EventList({ events, campusName, className = "" }: EventL
         </p>
         <div className="text-center">
           <p className="body-text mb-4">No events currently scheduled for {campusName}.</p>
-          <Button variant="default" size="small" className="centered-icon-text" href="/events">
+          <Button variant="navyBlue" size="small" className="centered-icon-text" href="/events">
             View more events<span className="material-icons-outlined">arrow_circle_right</span>
           </Button>
         </div>

@@ -8,6 +8,7 @@ import CampusIntro from "@/components/layout/campus-pages/campus-intro"
 import ResourcesCard from "@/components/layout/campus-pages/resources-card"
 import EventList from "@/components/layout/campus-pages/event-list"
 import { campuses } from "@/content/campuses"
+import { loadGalleryImages } from "@/utils/gallery-loader"
 
 export default async function ScottsdalePage() {
   const events = await loadEvents()
@@ -18,8 +19,8 @@ export default async function ScottsdalePage() {
   }
   
   // Configuration flags - customize these for each campus
-  const hasGallery = false // Set to false if this campus doesn't have a gallery
-  const hasStarseeds = true // Set to false if this campus doesn't have Starseeds program
+  const hasGallery = false // Set to true if this campus has a gallery
+  const hasStarseeds = false // Set to true if this campus has Starseeds program
   
   // Welcome section content - customize for each campus
   const welcomeLeftColumn = (
@@ -35,20 +36,8 @@ export default async function ScottsdalePage() {
     </>
   )
   
-  const galleryImages = [
-    { src: "/assets/locations/scottsdale/gallery/scottsdale-1.webp", alt: "Scottsdale campus photo" },
-    { src: "/assets/locations/scottsdale/gallery/scottsdale-2.webp", alt: "Scottsdale campus photo" },
-    { src: "/assets/locations/scottsdale/gallery/scottsdale-3.webp", alt: "Scottsdale campus photo" },
-    { src: "/assets/locations/scottsdale/gallery/scottsdale-4.webp", alt: "Scottsdale campus photo" },
-    { src: "/assets/locations/scottsdale/gallery/scottsdale-5.webp", alt: "Scottsdale campus photo" },
-    { src: "/assets/locations/scottsdale/gallery/scottsdale-6.webp", alt: "Scottsdale campus photo" },
-    { src: "/assets/locations/scottsdale/gallery/scottsdale-7.webp", alt: "Scottsdale campus photo" },
-    { src: "/assets/locations/scottsdale/gallery/scottsdale-8.webp", alt: "Scottsdale campus photo" },
-    { src: "/assets/locations/scottsdale/gallery/scottsdale-9.webp", alt: "Scottsdale campus photo" },
-    { src: "/assets/locations/scottsdale/gallery/scottsdale-10.webp", alt: "Scottsdale campus photo" },
-    { src: "/assets/locations/scottsdale/gallery/scottsdale-11.webp", alt: "Scottsdale campus photo" },
-    { src: "/assets/locations/scottsdale/gallery/scottsdale-12.webp", alt: "Scottsdale campus photo" }
-  ]
+  // Load gallery images dynamically
+  const galleryImages = hasGallery ? loadGalleryImages("Scottsdale") : []
 
   return (
     <main className="bg-[var(--color-bg-muted)]">

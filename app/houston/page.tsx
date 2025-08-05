@@ -8,6 +8,7 @@ import CampusIntro from "@/components/layout/campus-pages/campus-intro"
 import ResourcesCard from "@/components/layout/campus-pages/resources-card"
 import EventList from "@/components/layout/campus-pages/event-list"
 import { campuses } from "@/content/campuses"
+import { loadGalleryImages } from "@/utils/gallery-loader"
 
 export default async function HoustonPage() {
   const events = await loadEvents()
@@ -18,8 +19,8 @@ export default async function HoustonPage() {
   }
   
   // Configuration flags - customize these for each campus
-  const hasGallery = false // Set to false if this campus doesn't have a gallery
-  const hasStarseeds = true // Set to false if this campus doesn't have Starseeds program
+  const hasGallery = false // Set to true if this campus has a gallery
+  const hasStarseeds = false // Set to true if this campus has Starseeds program
   
   // Welcome section content - customize for each campus
   const welcomeLeftColumn = (
@@ -35,20 +36,8 @@ export default async function HoustonPage() {
     </>
   )
   
-  const galleryImages = [
-    { src: "/assets/locations/houston/gallery/houston-1.webp", alt: "Houston campus photo" },
-    { src: "/assets/locations/houston/gallery/houston-2.webp", alt: "Houston campus photo" },
-    { src: "/assets/locations/houston/gallery/houston-3.webp", alt: "Houston campus photo" },
-    { src: "/assets/locations/houston/gallery/houston-4.webp", alt: "Houston campus photo" },
-    { src: "/assets/locations/houston/gallery/houston-5.webp", alt: "Houston campus photo" },
-    { src: "/assets/locations/houston/gallery/houston-6.webp", alt: "Houston campus photo" },
-    { src: "/assets/locations/houston/gallery/houston-7.webp", alt: "Houston campus photo" },
-    { src: "/assets/locations/houston/gallery/houston-8.webp", alt: "Houston campus photo" },
-    { src: "/assets/locations/houston/gallery/houston-9.webp", alt: "Houston campus photo" },
-    { src: "/assets/locations/houston/gallery/houston-10.webp", alt: "Houston campus photo" },
-    { src: "/assets/locations/houston/gallery/houston-11.webp", alt: "Houston campus photo" },
-    { src: "/assets/locations/houston/gallery/houston-12.webp", alt: "Houston campus photo" }
-  ]
+  // Load gallery images dynamically
+  const galleryImages = hasGallery ? loadGalleryImages("Houston") : []
 
   return (
     <main className="bg-[var(--color-bg-muted)]">

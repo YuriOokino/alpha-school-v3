@@ -375,10 +375,12 @@ export const navItems: NavItem[] = [
       {
         label: "MORE LOCATIONS",
         items: [
-          { title: "", href: "/locations", description: "See all new locations →", style: "underline"  },
+          { title: "Alpha Anywhere", href: "https://alphaanywhere.com", description: "Remote Learning is here!" },
           { title: "New York City, New York", href: "/new-york-city", description: "Opening August 2025" },
           { title: "Santa Barbara, Arizona", href: "/santa-barbara", description: "Opening August 2025" },
           { title: "Scottsdale, California", href: "/scottsdale", description: "Opening August 2025" },
+          { title: "", href: "/locations", description: "See all locations →", style: "underline"  },
+
         ],
       },
     ],

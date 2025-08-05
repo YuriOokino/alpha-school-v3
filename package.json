@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "generate-campuses": "npx tsx scripts/generate-campus-pages.ts"
+    "generate-campuses": "npx tsx scripts/generate-campus-pages.ts",
+    "sync-campuses": "npx tsx scripts/sync-campus-pages.ts",
+    "pre-deploy": "npx tsx scripts/pre-deploy-sync.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

@@ -8,6 +8,7 @@ import CampusIntro from "@/components/layout/campus-pages/campus-intro"
 import ResourcesCard from "@/components/layout/campus-pages/resources-card"
 import EventList from "@/components/layout/campus-pages/event-list"
 import { campuses } from "@/content/campuses"
+import { loadGalleryImages } from "@/utils/gallery-loader"
 
 export default async function MiamiPage() {
   const events = await loadEvents()
@@ -18,8 +19,8 @@ export default async function MiamiPage() {
   }
   
   // Configuration flags - customize these for each campus
-  const hasGallery = false // Set to false if this campus doesn't have a gallery
-  const hasStarseeds = true // Set to false if this campus doesn't have Starseeds program
+  const hasGallery = true // Set to true if this campus has a gallery
+  const hasStarseeds = false // Set to true if this campus has Starseeds program
   
   // Welcome section content - customize for each campus
   const welcomeLeftColumn = (
@@ -35,20 +36,8 @@ export default async function MiamiPage() {
     </>
   )
   
-  const galleryImages = [
-    { src: "/assets/locations/miami/gallery/miami-1.webp", alt: "Miami campus photo" },
-    { src: "/assets/locations/miami/gallery/miami-2.webp", alt: "Miami campus photo" },
-    { src: "/assets/locations/miami/gallery/miami-3.webp", alt: "Miami campus photo" },
-    { src: "/assets/locations/miami/gallery/miami-4.webp", alt: "Miami campus photo" },
-    { src: "/assets/locations/miami/gallery/miami-5.webp", alt: "Miami campus photo" },
-    { src: "/assets/locations/miami/gallery/miami-6.webp", alt: "Miami campus photo" },
-    { src: "/assets/locations/miami/gallery/miami-7.webp", alt: "Miami campus photo" },
-    { src: "/assets/locations/miami/gallery/miami-8.webp", alt: "Miami campus photo" },
-    { src: "/assets/locations/miami/gallery/miami-9.webp", alt: "Miami campus photo" },
-    { src: "/assets/locations/miami/gallery/miami-10.webp", alt: "Miami campus photo" },
-    { src: "/assets/locations/miami/gallery/miami-11.webp", alt: "Miami campus photo" },
-    { src: "/assets/locations/miami/gallery/miami-12.webp", alt: "Miami campus photo" }
-  ]
+  // Load gallery images dynamically
+  const galleryImages = hasGallery ? loadGalleryImages("Miami") : []
 
   return (
     <main className="bg-[var(--color-bg-muted)]">

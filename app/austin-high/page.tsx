@@ -8,6 +8,7 @@ import CampusIntro from "@/components/layout/campus-pages/campus-intro"
 import ResourcesCard from "@/components/layout/campus-pages/resources-card"
 import EventList from "@/components/layout/campus-pages/event-list"
 import { campuses } from "@/content/campuses"
+import { loadGalleryImages } from "@/utils/gallery-loader"
 
 export default async function AustinHighPage() {
   const events = await loadEvents()
@@ -18,8 +19,8 @@ export default async function AustinHighPage() {
   }
   
   // Configuration flags - customize these for each campus
-  const hasGallery = false // Set to false if this campus doesn't have a gallery
-  const hasStarseeds = true // Set to false if this campus doesn't have Starseeds program
+  const hasGallery = false // Set to true if this campus has a gallery
+  const hasStarseeds = false // Set to true if this campus has Starseeds program
   
   // Welcome section content - customize for each campus
   const welcomeLeftColumn = (
@@ -35,20 +36,8 @@ export default async function AustinHighPage() {
     </>
   )
   
-  const galleryImages = [
-    { src: "/assets/locations/austin-high/gallery/austin-high-1.webp", alt: "Austin High campus photo" },
-    { src: "/assets/locations/austin-high/gallery/austin-high-2.webp", alt: "Austin High campus photo" },
-    { src: "/assets/locations/austin-high/gallery/austin-high-3.webp", alt: "Austin High campus photo" },
-    { src: "/assets/locations/austin-high/gallery/austin-high-4.webp", alt: "Austin High campus photo" },
-    { src: "/assets/locations/austin-high/gallery/austin-high-5.webp", alt: "Austin High campus photo" },
-    { src: "/assets/locations/austin-high/gallery/austin-high-6.webp", alt: "Austin High campus photo" },
-    { src: "/assets/locations/austin-high/gallery/austin-high-7.webp", alt: "Austin High campus photo" },
-    { src: "/assets/locations/austin-high/gallery/austin-high-8.webp", alt: "Austin High campus photo" },
-    { src: "/assets/locations/austin-high/gallery/austin-high-9.webp", alt: "Austin High campus photo" },
-    { src: "/assets/locations/austin-high/gallery/austin-high-10.webp", alt: "Austin High campus photo" },
-    { src: "/assets/locations/austin-high/gallery/austin-high-11.webp", alt: "Austin High campus photo" },
-    { src: "/assets/locations/austin-high/gallery/austin-high-12.webp", alt: "Austin High campus photo" }
-  ]
+  // Load gallery images dynamically
+  const galleryImages = hasGallery ? loadGalleryImages("Austin High") : []
 
   return (
     <main className="bg-[var(--color-bg-muted)]">

@@ -8,6 +8,7 @@ import CampusIntro from "@/components/layout/campus-pages/campus-intro"
 import ResourcesCard from "@/components/layout/campus-pages/resources-card"
 import EventList from "@/components/layout/campus-pages/event-list"
 import { campuses } from "@/content/campuses"
+import { loadGalleryImages } from "@/utils/gallery-loader"
 
 export default async function PalmBeachPage() {
   const events = await loadEvents()
@@ -18,8 +19,8 @@ export default async function PalmBeachPage() {
   }
   
   // Configuration flags - customize these for each campus
-  const hasGallery = false // Set to false if this campus doesn't have a gallery
-  const hasStarseeds = false // Set to false if this campus doesn't have Starseeds program
+  const hasGallery = false // Set to true if this campus has a gallery
+  const hasStarseeds = false // Set to true if this campus has Starseeds program
   
   // Welcome section content - customize for each campus
   const welcomeLeftColumn = (
@@ -35,20 +36,8 @@ export default async function PalmBeachPage() {
     </>
   )
   
-  const galleryImages = [
-    { src: "/assets/locations/palm-beach/gallery/palm-beach-1.webp", alt: "Palm Beach campus photo" },
-    { src: "/assets/locations/palm-beach/gallery/palm-beach-2.webp", alt: "Palm Beach campus photo" },
-    { src: "/assets/locations/palm-beach/gallery/palm-beach-3.webp", alt: "Palm Beach campus photo" },
-    { src: "/assets/locations/palm-beach/gallery/palm-beach-4.webp", alt: "Palm Beach campus photo" },
-    { src: "/assets/locations/palm-beach/gallery/palm-beach-5.webp", alt: "Palm Beach campus photo" },
-    { src: "/assets/locations/palm-beach/gallery/palm-beach-6.webp", alt: "Palm Beach campus photo" },
-    { src: "/assets/locations/palm-beach/gallery/palm-beach-7.webp", alt: "Palm Beach campus photo" },
-    { src: "/assets/locations/palm-beach/gallery/palm-beach-8.webp", alt: "Palm Beach campus photo" },
-    { src: "/assets/locations/palm-beach/gallery/palm-beach-9.webp", alt: "Palm Beach campus photo" },
-    { src: "/assets/locations/palm-beach/gallery/palm-beach-10.webp", alt: "Palm Beach campus photo" },
-    { src: "/assets/locations/palm-beach/gallery/palm-beach-11.webp", alt: "Palm Beach campus photo" },
-    { src: "/assets/locations/palm-beach/gallery/palm-beach-12.webp", alt: "Palm Beach campus photo" }
-  ]
+  // Load gallery images dynamically
+  const galleryImages = hasGallery ? loadGalleryImages("Palm Beach") : []
 
   return (
     <main className="bg-[var(--color-bg-muted)]">

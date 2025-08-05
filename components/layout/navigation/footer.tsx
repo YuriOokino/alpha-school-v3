@@ -56,6 +56,16 @@ export default function Footer() {
             <div className="min-w-[200px] flex-1">
               <h3 className="text-base font-medium mb-2 pb-0">For Parents</h3>
               <ul className="space-y-2">
+              <li>
+                  <Link href="/locations">
+                    Find a Campus
+                  </Link>
+                </li>
+                <li>
+                  <Link href="http://alphaanywhere.co">
+                    Alpha Anywhere
+                  </Link>
+                </li>
                 <li>
                   <Link href="/admission">
                     Admission Guide
@@ -66,11 +76,7 @@ export default function Footer() {
                     Apply Now
                   </Link>
                 </li>
-                <li>
-                  <Link href="/learn-more">
-                    Learn More
-                  </Link>
-                </li>
+               
                 <li>
                   <Link href="/guides">
                     Meet Our Guides
@@ -101,6 +107,11 @@ export default function Footer() {
                 <li>
                   <Link href="/faq">
                     FAQ
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/learn-more">
+                    Learn More
                   </Link>
                 </li>
               </ul>

@@ -8,6 +8,7 @@ import CampusIntro from "@/components/layout/campus-pages/campus-intro"
 import ResourcesCard from "@/components/layout/campus-pages/resources-card"
 import EventList from "@/components/layout/campus-pages/event-list"
 import { campuses } from "@/content/campuses"
+import { loadGalleryImages } from "@/utils/gallery-loader"
 
 export default async function SantaBarbaraPage() {
   const events = await loadEvents()
@@ -18,8 +19,8 @@ export default async function SantaBarbaraPage() {
   }
   
   // Configuration flags - customize these for each campus
-  const hasGallery = false // Set to false if this campus doesn't have a gallery
-  const hasStarseeds = true // Set to false if this campus doesn't have Starseeds program
+  const hasGallery = false // Set to true if this campus has a gallery
+  const hasStarseeds = false // Set to true if this campus has Starseeds program
   
   // Welcome section content - customize for each campus
   const welcomeLeftColumn = (
@@ -31,25 +32,12 @@ export default async function SantaBarbaraPage() {
   const welcomeRightColumn = (
     <>
       <p className="mb-2">At Alpha, we believe that students thrive when they are engaged, challenged, and inspired by their learning environment. Our innovative model fosters a love of school, encourages independence, and equips students with the tools they need to succeed academically and in life.</p>
-      <p>Bringing Alpha School's three commitments—love school, learn 2x in 2 hours, and master life skills—to your city.</p>
-      <p><strong>Alpha Santa Barbara is launching soon and now accepting applications.</strong></p>
+      <p>Bringing Alpha School's three commitments—love school, learn 2x in 2 hours, and master life skills—to your city. <strong>Alpha Santa Barbara is launching soon and now accepting applications.</strong></p>
     </>
   )
   
-  const galleryImages = [
-    { src: "/assets/locations/santa-barbara/gallery/santa-barbara-1.webp", alt: "Santa Barbara campus photo" },
-    { src: "/assets/locations/santa-barbara/gallery/santa-barbara-2.webp", alt: "Santa Barbara campus photo" },
-    { src: "/assets/locations/santa-barbara/gallery/santa-barbara-3.webp", alt: "Santa Barbara campus photo" },
-    { src: "/assets/locations/santa-barbara/gallery/santa-barbara-4.webp", alt: "Santa Barbara campus photo" },
-    { src: "/assets/locations/santa-barbara/gallery/santa-barbara-5.webp", alt: "Santa Barbara campus photo" },
-    { src: "/assets/locations/santa-barbara/gallery/santa-barbara-6.webp", alt: "Santa Barbara campus photo" },
-    { src: "/assets/locations/santa-barbara/gallery/santa-barbara-7.webp", alt: "Santa Barbara campus photo" },
-    { src: "/assets/locations/santa-barbara/gallery/santa-barbara-8.webp", alt: "Santa Barbara campus photo" },
-    { src: "/assets/locations/santa-barbara/gallery/santa-barbara-9.webp", alt: "Santa Barbara campus photo" },
-    { src: "/assets/locations/santa-barbara/gallery/santa-barbara-10.webp", alt: "Santa Barbara campus photo" },
-    { src: "/assets/locations/santa-barbara/gallery/santa-barbara-11.webp", alt: "Santa Barbara campus photo" },
-    { src: "/assets/locations/santa-barbara/gallery/santa-barbara-12.webp", alt: "Santa Barbara campus photo" }
-  ]
+  // Load gallery images dynamically
+  const galleryImages = hasGallery ? loadGalleryImages("Santa Barbara") : []
 
   return (
     <main className="bg-[var(--color-bg-muted)]">

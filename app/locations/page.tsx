@@ -333,7 +333,7 @@ export default function LocationsPage() {
           buttonText="Apply to Alpha School"
           buttonHref="/admission"
           buttonVariant="primary"
-          title="Opening Fall 2025"
+          title="New locations opening in 2025"
           className="!text-[var(--color-primary)]"
           ></SectionHeading>
           <div className="grid gap-4 mb-[var(--space-xl)] mx-auto" style={{ gridTemplateColumns: 'repeat(auto-fit, 340px)', justifyContent: 'center' }}>

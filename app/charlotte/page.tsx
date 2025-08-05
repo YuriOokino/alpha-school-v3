@@ -8,6 +8,7 @@ import CampusIntro from "@/components/layout/campus-pages/campus-intro"
 import ResourcesCard from "@/components/layout/campus-pages/resources-card"
 import EventList from "@/components/layout/campus-pages/event-list"
 import { campuses } from "@/content/campuses"
+import { loadGalleryImages } from "@/utils/gallery-loader"
 
 export default async function CharlottePage() {
   const events = await loadEvents()
@@ -18,8 +19,8 @@ export default async function CharlottePage() {
   }
   
   // Configuration flags - customize these for each campus
-  const hasGallery = false // Set to false if this campus doesn't have a gallery
-  const hasStarseeds = true // Set to false if this campus doesn't have Starseeds program
+  const hasGallery = false // Set to true if this campus has a gallery
+  const hasStarseeds = false // Set to true if this campus has Starseeds program
   
   // Welcome section content - customize for each campus
   const welcomeLeftColumn = (
@@ -35,20 +36,8 @@ export default async function CharlottePage() {
     </>
   )
   
-  const galleryImages = [
-    { src: "/assets/locations/charlotte/gallery/charlotte-1.webp", alt: "Charlotte campus photo" },
-    { src: "/assets/locations/charlotte/gallery/charlotte-2.webp", alt: "Charlotte campus photo" },
-    { src: "/assets/locations/charlotte/gallery/charlotte-3.webp", alt: "Charlotte campus photo" },
-    { src: "/assets/locations/charlotte/gallery/charlotte-4.webp", alt: "Charlotte campus photo" },
-    { src: "/assets/locations/charlotte/gallery/charlotte-5.webp", alt: "Charlotte campus photo" },
-    { src: "/assets/locations/charlotte/gallery/charlotte-6.webp", alt: "Charlotte campus photo" },
-    { src: "/assets/locations/charlotte/gallery/charlotte-7.webp", alt: "Charlotte campus photo" },
-    { src: "/assets/locations/charlotte/gallery/charlotte-8.webp", alt: "Charlotte campus photo" },
-    { src: "/assets/locations/charlotte/gallery/charlotte-9.webp", alt: "Charlotte campus photo" },
-    { src: "/assets/locations/charlotte/gallery/charlotte-10.webp", alt: "Charlotte campus photo" },
-    { src: "/assets/locations/charlotte/gallery/charlotte-11.webp", alt: "Charlotte campus photo" },
-    { src: "/assets/locations/charlotte/gallery/charlotte-12.webp", alt: "Charlotte campus photo" }
-  ]
+  // Load gallery images dynamically
+  const galleryImages = hasGallery ? loadGalleryImages("Charlotte") : []
 
   return (
     <main className="bg-[var(--color-bg-muted)]">
