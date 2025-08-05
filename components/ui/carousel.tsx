@@ -235,7 +235,7 @@ export default function Carousel({
 
   return (
     <div 
-      className={`w-full rounded-[var(--radius-lg)] pt-[var(--space-md)] md:pt-[var(--space-lg)] pb-[var(--space-md)] md:pb-[var(--space-lg)] relative ${finalCarouselBackground}`}
+      className={`w-full alpha-container rounded-[var(--radius-lg)] pt-[var(--space-md)] md:pt-[var(--space-lg)] pb-[var(--space-md)] md:pb-[var(--space-lg)] relative ${finalCarouselBackground}`}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}

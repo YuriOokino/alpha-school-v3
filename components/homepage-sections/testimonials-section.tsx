@@ -120,7 +120,7 @@ const testimonials = [
 return (
   <section className="alpha-section">
 
-      <div className="two-column-flex mb-[var(--space-md)] md:mb-[var(--space-2xl)]">
+      <div className="alpha-container two-column-flex mb-[var(--space-md)] md:mb-[var(--space-2xl)]">
         <h2 className="text-[var(--color-navy-blue)]">
           Their voices speak of their success
         </h2>

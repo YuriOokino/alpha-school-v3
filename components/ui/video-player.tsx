@@ -63,7 +63,7 @@ export function VideoPlayer({
   }
 
   return (
-    <div className={`relative rounded-[var(--radius-lg)] overflow-hidden w-full ${enableHoverEffect ? 'group' : ''} ${aspectRatioClasses[aspectRatio]} ${className}`}>
+    <div className={`relative rounded-[var(--radius-lg)] alpha-container overflow-hidden w-full ${enableHoverEffect ? 'group' : ''} ${aspectRatioClasses[aspectRatio]} ${className}`}>
       {!isPlaying ? (
         <div className="relative w-full h-full cursor-pointer" onClick={handlePlay}>
           <img

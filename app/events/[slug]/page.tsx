@@ -170,20 +170,20 @@ export default function EventPage() {
     
       <section className="alpha-section bg-white">
  {/* Info card */}
- <div className="mb-[var(--space-4xl)] bg-[var(--color-light-green)] text-[var(--color-dark-green)] w-[95%] m-auto rounded-[var(--radius-lg)] p-[var(--space-lg)] flex flex-col md:flex-row gap-[var(--space-xl)]">
+ <div className="mb-[var(--space-4xl)] alpha-container bg-[var(--color-sky-blue)] text-[var(--color-primary)] w-[95%] m-auto rounded-[var(--radius-lg)] p-[var(--space-lg)] flex flex-col md:flex-row gap-[var(--space-xl)]">
           <div className="flex flex-col flex-1 justify-between">
             <h2 className="heading-style-h2">Why attend?</h2>
             <div className="space-y-2">
-              <div className="inline-block px-4 py-2 rounded-[var(--radius-xxs)] bg-[var(--color-dark-green)] text-[var(--color-light-green)] uppercase text-sm font-medium">
+              <div className="inline-block px-4 py-2 rounded-[var(--radius-xxs)] bg-[var(--color-primary)] text-[var(--color-sky-blue)] uppercase text-sm font-medium">
                 See the model in action
               </div>
-              <div className="inline-block px-4 py-2 rounded-[var(--radius-xxs)] border border-[var(--color-dark-green)] text-[var(--color-dark-green)] uppercase text-sm font-medium">
+              <div className="inline-block px-4 py-2 rounded-[var(--radius-xxs)] border border-[var(--color-primary)] text-[var(--color-primary)] uppercase text-sm font-medium">
                 Educators are not like other teachers
               </div>
-              <div className="inline-block px-4 py-2 rounded-[var(--radius-xxs)] bg-[var(--color-dark-green)] text-[var(--color-light-green)] uppercase text-sm font-medium">
+              <div className="inline-block px-4 py-2 rounded-[var(--radius-xxs)] bg-[var(--color-primary)] text-[var(--color-sky-blue)] uppercase text-sm font-medium">
                 Connect with other families
               </div>
-              <div className="inline-block px-4 py-2 rounded-[4px] border border-[var(--color-dark-green)] text-[var(--color-dark-green)] uppercase text-sm font-medium">
+              <div className="inline-block px-4 py-2 rounded-[4px] border border-[var(--color-primary)] text-[var(--color-primary)] uppercase text-sm font-medium">
                 Experience a day in the life
               </div>
             </div>

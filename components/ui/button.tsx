@@ -15,8 +15,8 @@ const buttonVariants = cva(
         lightBlue: "bg-[var(--color-sky-blue)] text-[var(--color-navy-blue)] hover:opacity-80",
         navyBlue: "bg-[var(--color-navy-blue)] text-[var(--color-sky-blue)] hover:opacity-80",
         darkGreen: "bg-[var(--color-dark-green)] !text-[var(--color-light-green)] hover:opacity-80",
-        filter: "uppercase py-1.5 bg-[var(--color-light-green)] text-sm text-[var(--color-dark-green)]",
-        filterOutline: "uppercase py-1.5  bg-transparent text-sm text-[var(--color-dark-green)] border border-[var(--color-dark-green)]",
+        filter: "uppercase py-1.5 bg-[var(--color-primary-light)] text-sm text-[var(--color-navy-blue)]",
+        filterOutline: "uppercase py-1.5  bg-transparent text-sm text-[var(--color-navy-blue)] border border-[var(--color-navy-blue)]",
         alternate: "bg-white text-[var(--color-primary)] hover:opacity-80 ",
         underline: "underline",
         disabled: "bg-black  text-white opacity-50 cursor-not-allowed pointer-events-none"

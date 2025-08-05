@@ -72,7 +72,7 @@ export default function TheProgramPage() {
         <AnimatedSection animation="fade-up" delay={100}>
           <div 
             id="love-school"
-            className="alpha-card !p-[var(--space-lg)] bg-[var(--color-sky-blue)] text-[var(--color-primary)] mb-16"
+            className="alpha-card alpha-container !p-[var(--space-lg)] bg-[var(--color-sky-blue)] text-[var(--color-primary)] mb-16"
           >
           <div className={`flex flex-col gap-2 mb-16 text-center align-center max-w-xl mx-auto ${isMobile ? 'mb-4' : ''}`}>
             <div className="tagline bg-[var(--color-primary)] text-[var(--color-sky-blue)] mx-auto mb-4">
@@ -117,7 +117,7 @@ export default function TheProgramPage() {
         <AnimatedSection animation="fade-up" delay={200}>
           <div 
             id="learn-2x"
-            className="alpha-card !p-[var(--space-lg)] bg-[var(--color-primary-light)] text-[var(--color-navy-blue)] mb-16"
+            className="alpha-card alpha-container !p-[var(--space-lg)] bg-[var(--color-primary-light)] text-[var(--color-navy-blue)] mb-16"
           >
           <div className={`flex flex-col gap-2 mb-16 text-center align-center max-w-xl mx-auto ${isMobile ? 'mb-8' : ''}`}>
             <div className="tagline bg-[var(--color-navy-blue)] text-[var(--color-primary-light)] mx-auto mb-4">
@@ -166,7 +166,7 @@ export default function TheProgramPage() {
         <AnimatedSection animation="fade-up" delay={300}>
           <div 
             id="lifeskills-workshops"
-            className="alpha-card !p-[var(--space-lg)] bg-[var(--color-sky-blue)] text-[var(--color-primary)] mb-16"
+            className="alpha-card alpha-container !p-[var(--space-lg)] bg-[var(--color-sky-blue)] text-[var(--color-primary)] mb-16"
           >
           <div className={`flex flex-col gap-2 mb-16 text-center align-center max-w-xl mx-auto ${isMobile ? 'mb-8' : ''}`}>
             <div className="tagline bg-[var(--color-primary)] text-[var(--color-sky-blue)] mx-auto mb-4">

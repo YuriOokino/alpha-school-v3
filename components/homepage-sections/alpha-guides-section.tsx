@@ -42,7 +42,7 @@ export default function AlphaGuidesSection() {
       
       <AnimatedSection animation="fade-up" delay={200}>
         <div 
-          className="alpha-card !p-[var(--space-lg)] text-[var(--color-navy-blue)] bg-[var(--color-primary-light)] mb-[var(--space-xl)] flex flex-col md:flex-row md:flex-wrap lg:flex-nowrap gap-[var(--space-md)]"
+          className="alpha-card alpha-container !p-[var(--space-lg)] text-[var(--color-navy-blue)] bg-[var(--color-primary-light)] mb-[var(--space-xl)] flex flex-col md:flex-row md:flex-wrap lg:flex-nowrap gap-[var(--space-md)]"
         >
         <div className="flex flex-col justify-between min-w-0 w-full md:w-full lg:w-1/3">
           <div className="mb-[var(--space-sm)] md:mb-[var(--space-lg)]">

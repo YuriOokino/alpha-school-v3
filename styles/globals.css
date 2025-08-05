@@ -306,7 +306,7 @@ html.has-scroll-dragging {
 }
   
   .alpha-container {
-    @apply max-w-[1280px] mx-auto px-6 md:px-[var(--space-md)] pt-[var(--space-xl)];
+    @apply max-w-[1300px] mx-auto;
   }
 
 
@@ -331,7 +331,7 @@ html.has-scroll-dragging {
 @layer utilities {
   /* Cards */
   .alpha-card {
-    @apply p-[var(--space-md)] rounded-[var(--radius-md)];
+    @apply p-[var(--space-md)] rounded-[var(--radius-md)] max-w-[1300px];
   }
   
   /* Section Content Card */
@@ -341,7 +341,7 @@ html.has-scroll-dragging {
   
   /* Two Column Flex Container */
   .two-column-flex {
-    @apply flex flex-col md:flex-row gap-[var(--space-md)] md:gap-[var(--space-2xl)];
+    @apply flex flex-col md:flex-row gap-[var(--space-md)] md:gap-[var(--space-2xl)] max-w-[1300px] mx-auto;
   }
   
   .two-column-flex > * {
@@ -365,7 +365,7 @@ html.has-scroll-dragging {
 
   /* Forms */
   .alpha-form {
-    @apply bg-[var(--color-sky-blue)] rounded-[var(--radius-md)] px-[var(--space-sm)] py-[var(--space-lg)] md:p-[var(--space-lg)] lg:p-[var(--space-xl)] shadow-none border-0 mx-auto;
+    @apply bg-[var(--color-sky-blue)] rounded-[var(--radius-md)] px-[var(--space-sm)] py-[var(--space-lg)] md:p-[var(--space-lg)] lg:p-[var(--space-xl)] shadow-none border-0 mx-auto max-w-[1300px];
     display: flex;
     flex-direction: column;
     gap: 1rem;

@@ -33,7 +33,7 @@ export default function MainHeading({
     <div className="w-full">
       <div className={`main-heading-content ${variantClass} ${className}`}>
       <div className="flex-1 min-w-0 w-full">
-        <div className="flex flex-col w-full max-w-6xl mx-auto items-center gap-1 pb-4">
+        <div className=" flex flex-col w-full max-w-6xl mx-auto items-center gap-1 pb-4">
           
             {tagline && (
               <div className="flex justify-center mb-4">

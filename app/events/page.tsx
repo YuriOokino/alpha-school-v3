@@ -54,7 +54,7 @@ export default function EventsPage() {
       </MainHeading>
       <section className="alpha-section">
        
-        <div className="flex flex-col items-center w-full">
+        <div className="flex flex-col items-center w-full alpha-container">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full mb-[var(--space-lg)]">
             <div className="field-wrapper border border-gray-300">
               <label className="xs-label">Filter by School</label>

@@ -42,7 +42,7 @@ export default function VideoLibrary() {
         Alpha in action
       </MainHeading>
       <section className="alpha-section">
-        <div className="container">
+        <div className="alpha-container">
         
           
           {/* Filter buttons */}

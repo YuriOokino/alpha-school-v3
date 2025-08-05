@@ -4,7 +4,7 @@ import AnimatedSection from "@/components/ui/animated-section";
 export default function StatsSection() {
   return (
     <section className="alpha-section bg-white">
-      <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-[var(--space-lg)] md:mb-[var(--space-xl)] gap-[var(--space-md)] md:gap-[var(--space-lg)]">
+      <div className="alpha-container flex flex-col md:flex-row md:items-start md:justify-between mb-[var(--space-xl)] md:mb-[var(--space-2xl)] gap-[var(--space-md)] md:gap-[var(--space-lg)]">
         <h2 className="m-0 text-[var(--color-navy-blue)]">REAL RESULTS FOR REAL LIFE SKILLS</h2>
         <p className="max-w-xl body-text m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
@@ -12,7 +12,7 @@ export default function StatsSection() {
       </div>
       <AnimatedSection animation="fade-up" delay={200}>
         <div
-          className="w-full flex flex-col lg:flex-row text-[var(--color-navy-blue)] justify-between gap-[var(--space-md)] bg-[var(--color-primary-light)] rounded-[var(--radius-lg)] md:p-[var(--space-lg)] p-[var(--space-md)]"
+          className="w-full alpha-container flex flex-col lg:flex-row text-[var(--color-navy-blue)] justify-between gap-[var(--space-md)] bg-[var(--color-primary-light)] rounded-[var(--radius-lg)] md:p-[var(--space-lg)] p-[var(--space-md)]"
         >
         <div className="flex-1 flex flex-col min-w-[200px]">
           <div className="display-headline !text-[80px] lg:!text-[100px] text-[var(--color-navy-blue)] mb-4 whitespace-nowrap">2x</div>

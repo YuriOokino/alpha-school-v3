@@ -27,7 +27,7 @@ const admissionsSteps = [
     title: '1. Attend a Showcase or Schedule a Tour',
     content: (
       <>
-        <div className="text-sm text-gray-600">
+        <div className="text-sm">
           Discover our unique learning approach and explore the environment that sets Alpha apart.
         </div>
         <div className="flex gap-3 mt-4">
@@ -42,7 +42,7 @@ const admissionsSteps = [
     title: '2. Submit Application Form',
     content: (
       <>
-        <div className="text-sm text-gray-600">
+        <div className="text-sm">
           Complete our comprehensive application form with student information, academic history, and family details.
         </div>
         <div className="flex gap-3 mt-4">
@@ -56,7 +56,7 @@ const admissionsSteps = [
     title: '3. Shadow Day',
     content: (
       <>
-        <div className="text-sm text-gray-600">
+        <div className="text-sm">
           After submitting an application and attending a showcase, tour, or having an individual conversation with admissions, you will be eligible to schedule your Shadow Day. This day will let your child experience Alpha firsthand. During their visit, students engage with our core skills AI applications and participate in life skills-focused afternoon workshops.
         </div>
         <div className="mt-4">
@@ -105,7 +105,7 @@ const admissionsSteps = [
             </li>
           </ul>
         </div>
-        <div className="mt-4 text-sm text-gray-600">
+        <div className="mt-4 text-sm">
           Your dedicated admissions counselor will work with you to schedule the ideal day for your student to visit.
         </div>
       </>
@@ -119,7 +119,7 @@ const enrollmentSteps = [
     title: '1. Meet with Your Admissions Coordinator',
     content: (
       <>
-        <div className="text-sm text-gray-600">
+        <div className="text-sm">
           During your meeting, we will review the MAP exam results, feedback from your child's Shadow Day or Observation, and discuss your academic goals. Our admissions team will also address any remaining questions to ensure your family is fully informed and confident in your decision.
         </div>
       </>
@@ -130,7 +130,7 @@ const enrollmentSteps = [
     title: '2. Finalize Enrollment',
     content: (
       <>
-        <div className="text-sm text-gray-600">
+        <div className="text-sm">
           Review admissions enrollment offer and complete the following:
         </div>
         <div className="mt-4">
@@ -161,7 +161,7 @@ const enrollmentSteps = [
             </li>
           </ul>
         </div>
-        <div className="mt-4 text-sm text-gray-600">
+        <div className="mt-4 text-sm">
           The deposit is refundable and is credited towards tuition once enrolled.
         </div>
       </>
@@ -172,7 +172,7 @@ const enrollmentSteps = [
     title: '3. Welcome to the Alpha Family',
     content: (
       <>
-        <div className="text-sm text-gray-600">
+        <div className="text-sm">
           Congratulations on joining the Alpha community! We are thrilled to embark on this transformative journey of growth and opportunity together. We're excited to have you as part of our family!
         </div>
         <div className="mt-4">
@@ -306,16 +306,16 @@ export default function AdmissionPage() {
           description="We would be delighted to answer any questions you may have about the admissions and enrollment process."
           buttonText="Contact Us"
           buttonHref="mailto:admissions@alpha.school"
-          buttonVariant="darkGreen"
-          className="text-[var(--color-dark-green)]"
+          buttonVariant="primary"
+          className="text-[var(--color-primary)]"
         />
-        <div className="alpha-card lg:!p-[var(--space-xl)] bg-[var(--color-light-green)] max-w-6xl mx-auto">
+        <div className="alpha-card lg:!p-[var(--space-xl)] bg-[var(--color-sky-blue)] max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Left Column - Important Details */}
             <div className="space-y-8">
               {/* Deposit Section */}
               <div>
-                <h3 className="heading-style-h5 text-[var(--color-dark-green)]">Deposit</h3>
+                <h3 className="heading-style-h5 text-[var(--color-primary)]">Deposit</h3>
                 <p className="mb-4">
                   Once admission is offered to a student, a $1,000 non-refundable deposit is required to secure your student's spot at Alpha. <strong>This deposit will be deducted from your overall tuition balance.</strong>
                 </p>
@@ -323,7 +323,7 @@ export default function AdmissionPage() {
 
               {/* Sibling Discounts Section */}
               <div>
-                <h3 className="heading-style-h5 text-[var(--color-dark-green)]">Sibling Discounts</h3>
+                <h3 className="heading-style-h5 text-[var(--color-primary)]">Sibling Discounts</h3>
                 <p className="mb-4">
                   We offer a 5% discount on tuition for the second child and beyond in families with two or more children enrolled at our school.
                 </p>
@@ -331,15 +331,15 @@ export default function AdmissionPage() {
 
               {/* Admissions Downloads Section */}
               <div>
-                <h3 className="text-[var(--color-dark-green)] heading-style-h5 mb-4">Admissions Downloads</h3>
+                <h3 className="text-[var(--color-primary)] heading-style-h5 mb-4">Admissions Downloads</h3>
                 <div className="flex flex-col sm:flex-row flex-wrap gap-3">
-                  <Button variant="outline" radius="small" href="https://docs.google.com/document/d/1KUh840CMAaCN3XNEJeoXvUclzel0y9Ub/edit?tab=t.0" className="icon-text-center uppercase text-[var(--color-dark-green)] outline-[var(--color-dark-green)]">
+                  <Button variant="outline" radius="small" href="https://docs.google.com/document/d/1KUh840CMAaCN3XNEJeoXvUclzel0y9Ub/edit?tab=t.0" className="icon-text-center uppercase !text-[var(--color-primary)] outline-[var(--color-primary)]">
                       Previous School Records<span className="material-icons-outlined text-[20px]">file_download</span>
                   </Button>
-                  <Button variant="darkGreen" radius="small" href="https://drive.google.com/file/d/1Qll3MKJwUUzkryhhNC8kp5PR14Sagfx1/view?usp=sharing" className="icon-text-center uppercase text-[var(--color-dark-green)] outline-[var(--color-dark-green)]">
+                    <Button variant="primary" radius="small" href="https://drive.google.com/file/d/1Qll3MKJwUUzkryhhNC8kp5PR14Sagfx1/view?usp=sharing" className="icon-text-center uppercase text-[var(--color-sky-blue)] outline-[var(--color-primary)]">
                       Physical exam form<span className="material-icons-outlined text-[20px]">file_download</span>
                   </Button>
-                  <Button variant="outline" radius="small" href="https://drive.google.com/file/d/1QK_fclEeSDZ_hPNUp1Ca6pI9E4rpo79L/view?usp=sharing" className="icon-text-center uppercase text-[var(--color-dark-green)] outline-[var(--color-dark-green)]">
+                  <Button variant="outline" radius="small" href="https://drive.google.com/file/d/1QK_fclEeSDZ_hPNUp1Ca6pI9E4rpo79L/view?usp=sharing" className="icon-text-center uppercase !text-[var(--color-primary)] outline-[var(--color-primary]">
                       Immunization form<span className="material-icons-outlined text-[20px]">file_download</span>
                   </Button>
                 </div>
@@ -348,12 +348,12 @@ export default function AdmissionPage() {
               {/* Immunization Requirements Section */}
               
                 <div>
-                  <button
+                  <button 
                     onClick={() => toggleSection('immunization-requirements')}
                     className="w-full text-left flex items-center justify-between"
                   >
-                    <h4 className="heading-style-h6 text-[var(--color-dark-green)] centered-icon-text"><span className="material-icons-outlined mr-1">info</span>Immunization Requirements</h4>
-                    <span className={`material-icons-outlined transition-transform duration-200 text-[var(--color-dark-green)] ${expandedSection === 'immunization-requirements' ? 'rotate-180' : ''}`}>
+                    <h4 className="heading-style-h6 text-[var(--color-primary)] centered-icon-text"><span className="material-icons-outlined mr-1">info</span>Immunization Requirements</h4>
+                    <span className={`material-icons-outlined transition-transform duration-200 text-[var(--color-primary)] ${expandedSection === 'immunization-requirements' ? 'rotate-180' : ''}`}>
                       expand_more
                     </span>
                   </button>
@@ -381,7 +381,7 @@ export default function AdmissionPage() {
 
             {/* Right Column - Contact Information */}
             <div>
-             <h4 className="heading-style-h5 text-[var(--color-dark-green)] mb-6">Alpha School Contacts</h4>
+             <h4 className="heading-style-h5 text-[var(--color-primary)] mb-6">Alpha School Contacts</h4>
               
               <div className="space-y-8">
                 {/* Alpha School Austin */}
@@ -392,7 +392,7 @@ export default function AdmissionPage() {
                   >
                   </div>
                   <div className="min-w-0 flex-1">
-                    <h6 className="text-[var(--color-dark-green)] mb-1">Alpha School Austin</h6>
+                    <h6 className="text-[var(--color-primary)] mb-1">Alpha School Austin</h6>
                     <p className="centered-icon-text break-words">
                       <span className="material-icons-outlined mr-1 flex-shrink-0">account_circle</span>
                       Joanna Lovejoy
@@ -414,7 +414,7 @@ export default function AdmissionPage() {
                   >
                   </div>
                   <div className="min-w-0 flex-1">
-                    <h6 className="text-[var(--color-dark-green)] mb-1">Alpha School Miami</h6>
+                    <h6 className="text-[var(--color-primary)] mb-1">Alpha School Miami</h6>
                     <p className="centered-icon-text break-words">
                       <span className="material-icons-outlined mr-1 flex-shrink-0">account_circle</span>
                       Debby Lichtner
@@ -434,7 +434,7 @@ export default function AdmissionPage() {
                   >
                   </div>
                   <div className="min-w-0 flex-1">
-                    <h6 className="text-[var(--color-dark-green)] mb-1">Alpha School Brownsville</h6>
+                    <h6 className="text-[var(--color-primary)] mb-1">Alpha School Brownsville</h6>
                     <p className="centered-icon-text break-words">
                       <span className="material-icons-outlined mr-1 flex-shrink-0">account_circle</span>
                       Kathrine Ledesma
@@ -454,7 +454,7 @@ export default function AdmissionPage() {
                   >
                   </div>
                   <div className="min-w-0 flex-1">
-                    <h6 className="text-[var(--color-dark-green)] mb-1">Alpha Expansion Schools</h6>
+                    <h6 className="text-[var(--color-primary)] mb-1">Alpha Expansion Schools</h6>
                     <p className="centered-icon-text break-words">
                       <span className="material-icons-outlined mr-1 flex-shrink-0">account_circle</span>
                       Rachel Goodlad
