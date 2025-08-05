@@ -3,7 +3,7 @@ export const campuses = [
       name: "Austin",
       stateCode: "TX",
       status: "current" as const,
-      address: "1201 Spyglass Dr. Austin, Texas 78746",
+      address: "1201 Spyglass Dr. Austin, TX 78746",
       tuition: "$40,000",
       grades: "PK-8",
       email: "admissions.austin@alpha.school",
@@ -94,7 +94,7 @@ export const campuses = [
         name: "Miami",
         stateCode: "FL",
         status: "current" as const,
-        address: "8000 SW 56th St. Miami, Florida 33155",
+        address: "8000 SW 56th St. Miami, FL 33155",
         tuition: "$50,000",
         grades: "K-10",
         email: "admissions.miami@alpha.school",
@@ -156,18 +156,6 @@ export const campuses = [
 },
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 {
   name: "San Francisco",
   stateCode: "CA",
@@ -180,10 +168,6 @@ export const campuses = [
   buttonHref: "/san-francisco",
   applicationStatus: "Applications Open"
 },
-
-
-
-
 
 {
   name: "Palm Beach",

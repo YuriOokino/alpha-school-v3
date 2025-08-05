@@ -10,6 +10,9 @@ import EventList from "@/components/layout/campus-pages/event-list"
 import { campuses } from "@/content/campuses"
 import { loadGalleryImages } from "@/utils/gallery-loader"
 
+// Enable ISR - revalidate every 60 seconds
+export const revalidate = 60
+
 export default async function SantaBarbaraPage() {
   const events = await loadEvents()
   const campus = campuses.find(c => c.name === "Santa Barbara")
